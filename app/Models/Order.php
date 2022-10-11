@@ -11,6 +11,6 @@ class Order extends Model
     ];
 
     public function restaurants(){
-        return $this->belongsToMany('App\Models\Restaurant');
+        return $this->hasOne('App\Models\Restaurant');
     }
 }
