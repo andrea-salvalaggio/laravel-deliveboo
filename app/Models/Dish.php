@@ -13,4 +13,8 @@ class Dish extends Model
     public function orders(){
         return $this->belongsToMany('App\Models\Order');
     }
+
+    public function ingredients(){
+        return $this->belongsToMany('App\Models\Ingredient');
+    }
 }
