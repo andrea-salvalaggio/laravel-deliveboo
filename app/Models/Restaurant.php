@@ -9,4 +9,8 @@ class Restaurant extends Model
     protected $fillable = [
         'name', 'address', 'open', 'close', 'restaurantPic',
     ];
+
+    public function user (){
+        return $this->belongsTo('App\User');
+    }
 }
