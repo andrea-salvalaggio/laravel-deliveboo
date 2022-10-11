@@ -9,4 +9,8 @@ class Dish extends Model
     protected $fillable =[
         'name', 'visible', 'price', 'description', 'dishPic'
     ];
+
+    public function orders(){
+        return $this->belongsToMany('App\Models\Order');
+    }
 }
