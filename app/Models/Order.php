@@ -9,4 +9,8 @@ class Order extends Model
     protected $fillable = [
         'name', 'surname', 'address', 'comment', 'price'
     ];
+
+    public function restaurants(){
+        return $this->belongsToMany('App\Models\Restaurant');
+    }
 }
