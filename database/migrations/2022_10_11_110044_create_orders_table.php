@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('surname');
             $table->text('address');
             $table->text('comment')->nullable();
-            $table->float('price')->unsigned();
+            $table->double('price')->unsigned();
             $table->timestamps();
         });
     }
