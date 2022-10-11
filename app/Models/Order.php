@@ -10,7 +10,7 @@ class Order extends Model
         'name', 'surname', 'address', 'comment', 'price'
     ];
 
-    public function restaurants(){
-        return $this->hasOne('App\Models\Restaurant');
+    public function restaurant(){
+        return $this->belongsTo('App\Models\Restaurant');
     }
 }
