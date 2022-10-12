@@ -31,13 +31,18 @@ class IngredientsTableSeeder extends Seeder
             [
                 'name'=> 'beef',
                 'ingredientPic'=> 'https://e7.pngegg.com/pngimages/611/768/png-clipart-mcdonald-s-big-mac-mcdonald-s-chicken-mcnuggets-hamburger-mcdonald-s-quarter-pounder-fast-food-salt.png',
-                'price'=> 10,
+                'price'=> 10.00,
             ],
             [
                 'name'=> 'bread',
                 'ingredientPic'=> 'https://e7.pngegg.com/pngimages/611/768/png-clipart-mcdonald-s-big-mac-mcdonald-s-chicken-mcnuggets-hamburger-mcdonald-s-quarter-pounder-fast-food-salt.png',
                 'price'=> 1.50,
             ],
+            [
+                'name'=>'potatoes',    
+                'ingredientPic'=> 'https://e7.pngegg.com/pngimages/611/768/png-clipart-mcdonald-s-big-mac-mcdonald-s-chicken-mcnuggets-hamburger-mcdonald-s-quarter-pounder-fast-food-salt.png',
+                'price'=> 1.00,
+            ]
         ];
 
         foreach ($ingredients as $ingredient) {
