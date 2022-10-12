@@ -18,7 +18,9 @@ class DishOrderTableSeeder extends Seeder
         $dishes = Dish::all();
 
         foreach ($orders as $order) {
-            // $dishes = $order->restaurant;
+            // $dishes = $order->restaurant->dishes;
+
+            /*Prendiamo i piatti del ristorante del singolo ordine */
             $randomDishes=[];
             foreach($dishes as $dish) {
                 if ($dish->restaurant_id == $order->restaurant_id) {
