@@ -15,6 +15,7 @@ class RestaurantsTableSeeder extends Seeder
         //
         $restaurants=[
             [
+                'user_id' => 1,
                 'name'=> 'McDonald\'s',
                 'address'=> 'Via Roma 27',
                 'open'=> '07:00',
@@ -24,6 +25,7 @@ class RestaurantsTableSeeder extends Seeder
             ],
 
             [
+                'user_id' => 2,
                 'name'=> 'Da Michele',
                 'address'=> 'Via Napoli 12',
                 'open'=> '11:00',
@@ -33,6 +35,7 @@ class RestaurantsTableSeeder extends Seeder
             ],
 
             [
+                'user_id' => 3,
                 'name'=> 'Los Pollos Hermanos',
                 'address'=> 'Via Albuquerque 66',
                 'open'=> '00:00',
@@ -47,6 +50,7 @@ class RestaurantsTableSeeder extends Seeder
 
             $newRestaurant = new Restaurant();
 
+            $newRestaurant->user_id = $restaurant['user_id'];
             $newRestaurant->name = $restaurant['name'];
             $newRestaurant->address = $restaurant['address'];
             $newRestaurant->open = $restaurant['open'];

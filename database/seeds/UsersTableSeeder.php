@@ -21,7 +21,15 @@ class UsersTableSeeder extends Seeder
                 'p_iva'=>'398294329',
                 'role'=> 1,
                 'profilePic'=> 'https://wips.plug.it/cips/notizie.virgilio.it/cms/2022/07/pippo-franco-ricoverato-ictus.jpg',
+            ],
 
+            [
+                'name'=> 'Jon Doh',
+                'email'=> 'jondoh@ciao.com',
+                'password'=> Hash::make('123jon'),
+                'p_iva'=>'398249324',
+                'role'=> 1,
+                'profilePic'=> 'https://upload.wikimedia.org/wikipedia/commons/5/5a/John_Doe%2C_born_John_Nommensen_Duchac.jpg',
             ],
 
             [
@@ -31,7 +39,6 @@ class UsersTableSeeder extends Seeder
                 'p_iva'=>'327984279',
                 'role'=> 1,
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
-
             ],
 
         ];
