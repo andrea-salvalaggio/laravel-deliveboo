@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     protected $fillable = [
-        'name', 'address', 'open', 'close', 'restaurantPic',
+        'name', 'user_id', 'address', 'open', 'close', 'restaurantPic',
     ];
 
     public function user (){
