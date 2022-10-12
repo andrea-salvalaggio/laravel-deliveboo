@@ -35,7 +35,7 @@ class CategoryRestaurantTableSeeder extends Seeder
             }
         } */
 
-        $categories=Category::all();
+/*         $categories=Category::all();
         $restaurant=Restaurant::findOrFail(1);
         $categories[0]->restaurants()->attach($restaurant->id);
 
@@ -43,6 +43,18 @@ class CategoryRestaurantTableSeeder extends Seeder
         $categories[1]->restaurants()->attach($restaurant->id);
 
         $restaurant=Category::findOrFail(3);
-        $categories[2]->restaurants()->attach($restaurant->id);
+        $categories[2]->restaurants()->attach($restaurant->id); */
+
+        $restaurants=Restaurant::all();
+        $categories=Category::all();
+
+        $restaurants[0]->categories()->attach($categories[1]);
+
+        $restaurants[1]->categories()->attach($categories[0]);
+        
+        $restaurants[2]->categories()->attach($categories[1]);
+        
+
+       
     }
 }

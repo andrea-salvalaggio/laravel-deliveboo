@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RestaurantsTableSeeder::class,
             CategoriesTableSeeder::class,
+            CategoryRestaurantTableSeeder::class,
             DishesTableSeeder::class,
             IngredientsTableSeeder::class,
             OrdersTableSeeder::class,
-            CategoryRestaurantTableSeeder::class,
         ]
     );
     }
