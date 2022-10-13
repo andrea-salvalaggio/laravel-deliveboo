@@ -39,7 +39,8 @@ class DishController extends Controller
     public function store(Request $request)
     {
         $sentData = $request->all();
-        dd($sentData);
+        // dd($sentData);
+        
     }
 
     /**

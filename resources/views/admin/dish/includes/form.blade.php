@@ -31,13 +31,13 @@
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="visible" id="available">
+                    <input class="form-check-input" type="radio" name="visible" id="available" checked value="0">
                     <label class="form-check-label" for="available">
                         Available
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="visible" id="notAvailable" checked>
+                    <input class="form-check-input" type="radio" name="visible" id="notAvailable" value="1">
                     <label class="form-check-label" for="notAvailable">
                         Not Available
                     </label>

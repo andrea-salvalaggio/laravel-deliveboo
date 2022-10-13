@@ -31,7 +31,13 @@
             <tr>
                 <th scope="row">{{ $dish->id }}</th>
                 <td class="text-capitalize">{{ $dish->name }}</td>
-                <td>{{ $dish->description }}</td>
+                <td>
+                    @if (strlen($dish->description) > 15)
+                        {{ substr($dish->description, 0, 15) }}...
+                    @else
+                        {{ $dish->description }}
+                    @endif
+                </td>
                 <td>€{{ $dish->price }}</td>
                 <td>
                     @if ($dish->visible==0)
