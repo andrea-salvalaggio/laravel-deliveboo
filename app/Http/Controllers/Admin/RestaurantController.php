@@ -63,7 +63,8 @@ class RestaurantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newRestaurant = Restaurant::findOrFail($id);
+        return view('admin.restaurant.edit', compact('newRestaurant'));
     }
 
     /**
@@ -75,7 +76,10 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sentData = $request->all();
+        $newRestaurant = Restaurant::findOrFail($id);
+        $newRestaurant = $newRestaurant->update($sentData);
+        return redirect()->route('admin.restaurant.index');
     }
 
     /**

@@ -8,7 +8,9 @@
     </h1>
     <div class="container-fluid p-0 my-3 position-relative" >
         <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-2 ">
-        <a href="" class="btn btn-info position-absolute floating-btn rounded-pill">Change img</a>
+        <a href="{{ route('admin.restaurant.edit', $restaurants->id) }}" class="btn btn-info position-absolute floating-btn rounded-pill">
+            Change restaurant info
+        </a>
     </div>
     @if (session('delete'))
         <div class="alert alert-danger" role="alert">
