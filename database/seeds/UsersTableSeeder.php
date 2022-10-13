@@ -15,27 +15,27 @@ class UsersTableSeeder extends Seeder
     {
         $users=[
             [
-                'name'=> 'Pippo Franco',
-                'email'=> 'pippofranco@ciao.com',
-                'password'=> Hash::make('123pippo'),
+                'name'=> 'boolean',
+                'email'=> 'deliveboo1@ciao.com',
+                'password'=> Hash::make('team4'),
                 'p_iva'=>'398294329',
                 'role'=> 1,
                 'profilePic'=> 'https://wips.plug.it/cips/notizie.virgilio.it/cms/2022/07/pippo-franco-ricoverato-ictus.jpg',
             ],
 
             [
-                'name'=> 'Jon Doh',
-                'email'=> 'jondoh@ciao.com',
-                'password'=> Hash::make('123jon'),
+                'name'=> 'boolean',
+                'email'=> 'deliveboo2@ciao.com',
+                'password'=> Hash::make('team4'),
                 'p_iva'=>'398249324',
                 'role'=> 1,
                 'profilePic'=> 'https://upload.wikimedia.org/wikipedia/commons/5/5a/John_Doe%2C_born_John_Nommensen_Duchac.jpg',
             ],
 
             [
-                'name'=> 'Gustavo Fring',
-                'email'=> 'gustavofring@badguy.com',
-                'password'=> Hash::make('gustfringus666'),
+                'name'=> 'boolean',
+                'email'=> 'deliveboo3@ciao.com',
+                'password'=> Hash::make('team4'),
                 'p_iva'=>'327984279',
                 'role'=> 1,
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',

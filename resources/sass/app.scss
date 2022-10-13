@@ -28,3 +28,10 @@ body{
         font-size: 0.9rem;
     }     
 }
+
+.containerdaeliminare{
+    height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
