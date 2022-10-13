@@ -9,7 +9,7 @@
       <p class="card-text">{{ $dish->description }}.</p>
       <div class="d-flex">
         <div>
-          <a href="#" class="btn btn-success rounded-pill">Edit</a>
+          <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn btn-success rounded-pill">Edit</a>
         </div>
         
         <div class="mx-2">

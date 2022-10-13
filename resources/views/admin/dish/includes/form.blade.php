@@ -13,8 +13,7 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" placeholder="Insert the dish description"
-                        name="description" rows="3">
-            {{ old('name', $newDish->description) }}
+                        name="description" rows="3">{{ old('name', $newDish->description) }}
         </textarea>
                 </div>
 
