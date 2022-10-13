@@ -26,7 +26,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        $newDish = new Dish();
+        return view('admin.dish.create', compact('newDish'));
     }
 
     /**
@@ -37,7 +38,8 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sentData = $request->all();
+        dd($sentData);
     }
 
     /**

@@ -22,8 +22,8 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
-            <th scope="col">Avaible</th>
-            <th scope="col"><a href="" class="btn btn-outline-dark btn-warning rounded-pill">Add new Dish</a></th>
+            <th scope="col">Available</th>
+            <th scope="col"><a href="{{ route('admin.dish.create') }}" class="btn btn-outline-dark btn-warning rounded-pill">Add new Dish</a></th>
           </tr>
         </thead>
         <tbody>
