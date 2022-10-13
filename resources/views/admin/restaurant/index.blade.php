@@ -32,6 +32,7 @@
                 <th scope="row">{{ $dish->id }}</th>
                 <td class="text-capitalize">{{ $dish->name }}</td>
                 <td>
+                    {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
                     @if (strlen($dish->description) > 15)
                         {{ substr($dish->description, 0, 15) }}...
                     @else
