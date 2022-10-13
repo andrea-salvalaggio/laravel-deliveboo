@@ -1,7 +1,7 @@
 <div class="container-lg">
     <div class="row">
         <div class="col-12">
-            <form action="{{ route($route, $argument) }}" method="POST">
+            <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
                 <div class="mb-3">
@@ -19,8 +19,10 @@
 
                 <div class="mb-3">
                     <label for="dishPic" class="form-label">Dish Picture</label>
-                    <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
-                        name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}">
+                    {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
+                        name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
+                    <input type="file"  class="form-control" id="dishPic" placeholder="Insert the dish picture"
+                        name="dishPic" required>
                 </div>
 
                 <div class="mb-3">

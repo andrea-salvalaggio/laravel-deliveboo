@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Dish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Scalar\MagicConst\Dir;
 
 class DishController extends Controller
@@ -45,8 +46,9 @@ class DishController extends Controller
     public function store(Request $request)
     {
         $sentData = $request->all();
-        $sentData['restaurant_id'] = Auth::user()->restaurant->id;
         $newDish = new Dish();
+        $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
+        $sentData['restaurant_id'] = Auth::user()->restaurant->id;
         $newDish = $newDish->create($sentData);
         return redirect()->route('admin.dish.show', $newDish->id)->with('created', $newDish->name);
     }
