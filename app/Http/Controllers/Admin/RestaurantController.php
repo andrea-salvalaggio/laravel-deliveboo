@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -78,6 +79,7 @@ class RestaurantController extends Controller
     {
         $sentData = $request->all();
         $newRestaurant = Restaurant::findOrFail($id);
+        $sentData['restaurantPic']= Storage::put('uploads', $sentData['restaurantPic']);
         $newRestaurant = $newRestaurant->update($sentData);
         return redirect()->route('admin.restaurant.index');
     }

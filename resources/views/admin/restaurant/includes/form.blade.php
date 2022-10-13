@@ -30,8 +30,10 @@
 
                 <div class="mb-3">
                     <label for="restaurantPic" class="form-label">Restaurant Picture</label>
-                    <input class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
-                        name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}">
+                    {{-- <input class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
+                        name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}"> --}}
+                    <input type="file" class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
+                        name="restaurantPic" required>
                 </div>
 
                 <button type="submit" class="btn btn-warning mt-3 rounded-pill">Update</button>
