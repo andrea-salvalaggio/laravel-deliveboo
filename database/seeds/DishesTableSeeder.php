@@ -18,7 +18,7 @@ class DishesTableSeeder extends Seeder
                 'restaurant_id'=> 1,
                 'name'=> 'big mac',
                 'description'=> 'One of the most iconic hamburger of the history, you can find it all around the world!',
-                'dishPic'=> 'https://assets.stickpng.com/images/5882482de81acb96424ffaac.png',
+                'dishPic'=> 'https://images.dissapore.com/wp-content/uploads/2022/08/big-mac-chicken.jpg',
                 'price'=> 4.53,
                 'visible'=> 0,
             ],
