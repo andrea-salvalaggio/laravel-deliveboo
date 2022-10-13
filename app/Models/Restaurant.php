@@ -23,4 +23,8 @@ class Restaurant extends Model
     { 
         return $this->belongsToMany('App\Models\Category');
     }
+
+    public function dishes(){
+        return $this->hasMany('App\Models\Dish');
+    }
 }

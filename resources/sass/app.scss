@@ -6,3 +6,16 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+#restaurant{
+    .container-fluid{
+        img{
+            border-radius: 20px;
+            width: 100%;
+        }
+        .floating-btn{
+            bottom: 10px;
+            right: 10px;
+        }
+    }
+}
