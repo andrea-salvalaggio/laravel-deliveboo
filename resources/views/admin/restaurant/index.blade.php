@@ -17,53 +17,55 @@
            <span class="text-capitalize">{{ session('delete') }}</span> has been deleted.
         </div>
     @endif
-    <table class="table table-striped mt-5">
-        <thead >
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Available</th>
-            <th scope="col" class="text-center"><a href="{{ route('admin.dish.create') }}" class="btn btn-warning rounded-pill px-5 ">Add new Dish</a></th>
-          </tr>
-        </thead>
-        <tbody>
-            @forelse ($restaurants->dishes as $dish)
-            <tr>
-                <th scope="row">{{ $dish->id }}</th>
-                <td class="text-capitalize">{{ $dish->name }}</td>
-                <td>
-                    {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-                    @if (strlen($dish->description) > 15)
-                        {{ substr($dish->description, 0, 15) }}...
-                    @else
-                        {{ $dish->description }}
-                    @endif
-                </td>
-                <td>€{{ $dish->price }}</td>
-                <td>
-                    @if ($dish->visible==0)
-                        Yes
-                    @else
-                        No
-                    @endif
-                </td>
-                <td class="d-flex justify-content-center">
-                    <a href="{{ route('admin.dish.show' , $dish->id) }}" class="btn btn-primary rounded-pill">View</a>
-                    <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn btn-success rounded-pill mx-1">Edit</a>
-                    <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger rounded-pill">Delete</button>
-                    </form>
-                </td>
-
-            @empty
-                <td scope="row">Could not find any dish</td>
-            @endforelse
-          </tr>
-        </tbody>
-      </table>
+    <div class="container-lg my-container">
+        <table class="table table-striped mt-5">
+            <thead >
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Available</th>
+                <th scope="col" class="text-center"><a href="{{ route('admin.dish.create') }}" class="btn btn-warning rounded-pill px-5 ">Add new Dish</a></th>
+              </tr>
+            </thead>
+            <tbody>
+                @forelse ($restaurants->dishes as $dish)
+                <tr>
+                    <th scope="row">{{ $dish->id }}</th>
+                    <td class="text-capitalize">{{ $dish->name }}</td>
+                    <td>
+                        {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
+                        @if (strlen($dish->description) > 15)
+                            {{ substr($dish->description, 0, 15) }}...
+                        @else
+                            {{ $dish->description }}
+                        @endif
+                    </td>
+                    <td>€{{ $dish->price }}</td>
+                    <td>
+                        @if ($dish->visible==0)
+                            Yes
+                        @else
+                            No
+                        @endif
+                    </td>
+                    <td class="d-flex justify-content-center">
+                        <a href="{{ route('admin.dish.show' , $dish->id) }}" class="btn btn-primary rounded-pill">View</a>
+                        <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn btn-success rounded-pill mx-1">Edit</a>
+                        <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger rounded-pill">Delete</button>
+                        </form>
+                    </td>
+    
+                @empty
+                    <td scope="row">Could not find any dish</td>
+                @endforelse
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </div>
 @endsection
