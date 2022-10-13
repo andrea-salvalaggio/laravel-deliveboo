@@ -17,7 +17,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
-            <th scope="col">Aviable</th>
+            <th scope="col">Avaible</th>
             <th scope="col"><a href="" class="btn btn-outline-dark btn-warning rounded-pill">Add new Dish</a></th>
           </tr>
         </thead>
