@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dish;
 use Illuminate\Http\Request;
+use PhpParser\Node\Scalar\MagicConst\Dir;
 
 class DishController extends Controller
 {
@@ -47,6 +49,9 @@ class DishController extends Controller
     public function show($id)
     {
         //
+
+        $dish = Dish::findOrFail($id);
+        return view('admin.dish.show' , compact('dish'));
     }
 
     /**
@@ -81,5 +86,8 @@ class DishController extends Controller
     public function destroy($id)
     {
         //
+        $dish=Dish::findOrFail($id);
+        $dish->delete();
+        return redirect()->route('admin.restaurant.index')->with('delete' , $dish->name);
     }
 }

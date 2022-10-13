@@ -18,7 +18,7 @@ class DishesTableSeeder extends Seeder
                 'restaurant_id'=> 1,
                 'name'=> 'big mac',
                 'description'=> 'One of the most iconic hamburger of the history, you can find it all around the world!',
-                'dishPic'=> 'https://e7.pngegg.com/pngimages/611/768/png-clipart-mcdonald-s-big-mac-mcdonald-s-chicken-mcnuggets-hamburger-mcdonald-s-quarter-pounder-fast-food-salt.png',
+                'dishPic'=> 'https://assets.stickpng.com/images/5882482de81acb96424ffaac.png',
                 'price'=> 4.53,
                 'visible'=> 0,
             ],

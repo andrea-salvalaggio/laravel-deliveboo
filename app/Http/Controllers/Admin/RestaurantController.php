@@ -19,7 +19,7 @@ class RestaurantController extends Controller
     {
         //
         $restaurants=Auth::user()->restaurant;
-        return view('admin.restaurants.index', compact('restaurants'));
+        return view('admin.restaurant.index', compact('restaurants'));
     }
 
     /**
