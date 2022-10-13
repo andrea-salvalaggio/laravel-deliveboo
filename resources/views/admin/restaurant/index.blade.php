@@ -3,9 +3,17 @@
 @section('content')
 <div class="container" id="restaurant">
 
-    <h1 class="mt-1"> 
-        Ristorante: {{ $restaurants->name }}
+    <h1 class="mt-1 d-flex align-items-center"> 
+       {{ $restaurants->name }} 
+        @forelse ($restaurants->categories as $category)
+            <span class="badge badge-danger badge-pill small-badge mx-4">{{ $category->name }}</span>
+        @empty
+            
+        @endforelse
     </h1>
+    <p>
+        {{ $restaurants->address }} | {{ substr( $restaurants->open , 0 , 5 ) }} - {{ substr( $restaurants->close , 0 , 5 ) }}
+    </p>
     <div class="container-fluid p-0 my-3 position-relative" >
         <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-2 ">
         <a href="{{ route('admin.restaurant.edit', $restaurants->id) }}" class="btn btn-info position-absolute floating-btn rounded-pill">
