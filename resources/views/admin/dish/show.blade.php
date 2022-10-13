@@ -8,11 +8,11 @@
       <h5 class="card-title text-capitalize">{{ $dish->name }}</h5>
       <p class="card-text">{{ $dish->description }}.</p>
       <div class="d-flex">
-        <div class="me-2">
+        <div>
           <a href="#" class="btn btn-success rounded-pill">Edit</a>
         </div>
         
-        <div>
+        <div class="mx-2">
           <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST">
           @csrf
           @method('DELETE')
