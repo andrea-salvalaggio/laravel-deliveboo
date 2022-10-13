@@ -4,6 +4,7 @@
     @include('admin.dish.includes.form', [
         'route' => 'admin.dish.store',
         'method' => 'POST',
-        'argument' => ' '
+        'argument' => ' ',
+        'submit' => 'Crea'
     ])
 @endsection

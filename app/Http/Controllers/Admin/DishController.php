@@ -90,6 +90,7 @@ class DishController extends Controller
     {
         $sentData = $request->all();
         $dish = Dish::findOrFail($id);
+        $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
         $dish = $dish->update($sentData);
         return redirect()->route('admin.dish.show', compact('dish'));
     }

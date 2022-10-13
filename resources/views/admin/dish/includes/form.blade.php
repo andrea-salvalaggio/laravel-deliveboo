@@ -21,7 +21,7 @@
                     <label for="dishPic" class="form-label">Dish Picture</label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
-                    <input type="file"  class="form-control" id="dishPic" placeholder="Insert the dish picture"
+                    <input type="file" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" required>
                 </div>
 
@@ -44,7 +44,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-warning mt-3 rounded-pill">Create</button>
+                <button type="submit" class="btn btn-warning mt-3 rounded-pill">{{ $submit }}</button>
             </form>
         </div>
     </div>

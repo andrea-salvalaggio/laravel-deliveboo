@@ -4,6 +4,7 @@
     @include('admin.dish.includes.form', [
         'route' => 'admin.dish.update',
         'method' => 'PUT',
-        'argument' => $newDish->id
+        'argument' => $newDish->id,
+        'submit' => 'Aggiorna'
     ])
 @endsection
