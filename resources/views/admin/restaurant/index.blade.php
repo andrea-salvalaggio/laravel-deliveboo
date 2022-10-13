@@ -49,7 +49,7 @@
                 </td>
                 <td class="d-flex">
                     <a href="{{ route('admin.dish.show' , $dish->id) }}" class="btn btn-primary rounded-pill">View</a>
-                    <a href="" class="btn btn-success rounded-pill mx-1">Edit</a>
+                    <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn btn-success rounded-pill mx-1">Edit</a>
                     <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

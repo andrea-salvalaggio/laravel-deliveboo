@@ -21,7 +21,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
+        return view('admin.dish.index', compact('dishes'));
     }
 
     /**
@@ -72,7 +73,8 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newDish = Dish::findOrFail($id);
+        return view('admin.dish.edit', compact('newDish'));
     }
 
     /**
@@ -84,7 +86,10 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sentData = $request->all();
+        $dish = Dish::findOrFail($id);
+        $dish = $dish->update($sentData);
+        return redirect()->route('admin.dish.show', compact('dish'));
     }
 
     /**
