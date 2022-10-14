@@ -54,7 +54,11 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
-        return view('admin.order.show', compact('order'));
+        if($order->restaurant->user_id == auth()->id()) {
+            return view('admin.order.show' , compact('order'));
+        } else {
+            return view('admin.dish.errors.accessDenied');
+        }
     }
 
     /**
