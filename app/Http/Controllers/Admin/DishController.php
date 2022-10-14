@@ -34,11 +34,14 @@ class DishController extends Controller
     public function create()
     {
         $newDish = new Dish();
-        if($newDish->restaurant->user_id == auth()->id()) {
-            return view('admin.dish.create', compact('newDish'));
-        } else {
-            return view('admin.dish.errors.accessDenied');
-        }  
+        $newDish->restaurant_id = Auth::user()->restaurant->id;
+
+        return view('admin.dish.create', compact('newDish'));
+        // if($newDish->restaurant->user_id == auth()->id()) {
+        //     return view('admin.dish.create', compact('newDish'));
+        // } else {
+        //     return view('admin.dish.errors.accessDenied');
+        // }  
     }
 
     /**
