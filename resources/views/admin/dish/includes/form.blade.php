@@ -11,22 +11,25 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
+                    <label for="description" class="form-label">Description*</label>
                     <textarea class="form-control" id="description" placeholder="Insert the dish description"
                         name="description" rows="3">{{ old('name', $newDish->description) }}
         </textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="dishPic" class="form-label">Dish Picture</label>
+                    <label for="dishPic" class="form-label">Dish Picture*</label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
                     <input type="file" class="form-control" id="dishPic" placeholder="Insert the dish picture"
-                        name="dishPic" required>
+                        name="dishPic" 
+                        @if ($method === 'POST')
+                            required
+                        @endif >
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" class="form-label">Price</label>
+                    <label for="price" class="form-label">Price*</label>
                     <input type="number" step=".01" class="form-control" id="price" placeholder="Insert the dish price"
                         name="price" value="{{ old('price', $newDish->price) }}">
                 </div>

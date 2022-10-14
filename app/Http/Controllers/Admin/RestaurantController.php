@@ -20,7 +20,9 @@ class RestaurantController extends Controller
     {
         //
         $restaurants=Auth::user()->restaurant;
+      
         return view('admin.restaurant.index', compact('restaurants'));
+     
     }
 
     /**
@@ -65,7 +67,11 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $newRestaurant = Restaurant::findOrFail($id);
-        return view('admin.restaurant.edit', compact('newRestaurant'));
+        if($newRestaurant->user_id == auth()->id()) {
+            return view('admin.restaurant.edit', compact('newRestaurant'));
+        } else {
+            return view('admin.dish.errors.accessDenied');
+        }  
     }
 
     /**

@@ -34,7 +34,11 @@ class DishController extends Controller
     public function create()
     {
         $newDish = new Dish();
-        return view('admin.dish.create', compact('newDish'));
+        if($newDish->restaurant->user_id == auth()->id()) {
+            return view('admin.dish.create', compact('newDish'));
+        } else {
+            return view('admin.dish.errors.accessDenied');
+        }  
     }
 
     /**
@@ -64,7 +68,11 @@ class DishController extends Controller
         //
 
         $dish = Dish::findOrFail($id);
-        return view('admin.dish.show' , compact('dish'));
+        if($dish->restaurant->user_id == auth()->id()) {
+            return view('admin.dish.show' , compact('dish'));
+        } else {
+            return view('admin.dish.errors.accessDenied');
+        }
     }
 
     /**
@@ -76,7 +84,11 @@ class DishController extends Controller
     public function edit($id)
     {
         $newDish = Dish::findOrFail($id);
-        return view('admin.dish.edit', compact('newDish'));
+        if($newDish->restaurant->user_id == auth()->id()) {
+            return view('admin.dish.edit', compact('newDish'));
+        } else {
+            return view('admin.dish.errors.accessDenied');
+        }  
     }
 
     /**
@@ -90,7 +102,13 @@ class DishController extends Controller
     {
         $sentData = $request->all();
         $dish = Dish::findOrFail($id);
-        $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
+      
+        if(array_key_exists('dishPic', $sentData)){
+            $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
+        }
+        else{
+            $sentData['dishPic'] = $dish->dishPic; 
+        } 
         $dish = $dish->update($sentData);
         return redirect()->route('admin.dish.show', $id);
     }
