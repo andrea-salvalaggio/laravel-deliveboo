@@ -41,7 +41,7 @@ class DishController extends Controller
         //     return view('admin.dish.create', compact('newDish'));
         // } else {
         //     return view('admin.dish.errors.accessDenied');
-        // }  
+        // }
     }
 
     /**
@@ -91,7 +91,7 @@ class DishController extends Controller
             return view('admin.dish.edit', compact('newDish'));
         } else {
             return view('admin.dish.errors.accessDenied');
-        }  
+        }
     }
 
     /**
@@ -105,13 +105,13 @@ class DishController extends Controller
     {
         $sentData = $request->all();
         $dish = Dish::findOrFail($id);
-      
+
         if(array_key_exists('dishPic', $sentData)){
             $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
         }
         else{
-            $sentData['dishPic'] = $dish->dishPic; 
-        } 
+            $sentData['dishPic'] = $dish->dishPic;
+        }
         $dish = $dish->update($sentData);
         return redirect()->route('admin.dish.show', $id);
     }
@@ -127,6 +127,6 @@ class DishController extends Controller
         //
         $dish=Dish::findOrFail($id);
         $dish->delete();
-        return redirect()->route('admin.restaurant.index')->with('delete' , $dish->name);
+        return redirect()->route('admin.restaurant.index')->with('delete' , 'The dish ' . $dish->name . ' has been deleted!');
     }
 }
