@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -14,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Auth::user()->restaurant->orders;
+        return view('admin.order.index', compact('orders'));
     }
 
     /**
@@ -35,7 +38,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* LAVORO SOSPESO */
+        $sentData = $request->all();
+        $newOrder = new Order();
+        $newOrder = $newOrder->create($sentData);
+        return ;
     }
 
     /**
@@ -46,7 +53,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('admin.order.show', compact('order'));
     }
 
     /**
@@ -80,6 +88,9 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return redirect()->route('admin.restaurant.index')->with('delete', 'The order of ' . $order->name . ' ' . $order->surname . ' has been deleted');
     }
 }
