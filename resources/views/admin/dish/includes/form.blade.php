@@ -31,7 +31,7 @@
                 <div class="mb-3">
                     <label for="price" class="form-label">Price*</label>
                     <input type="number" step=".01" class="form-control" id="price" placeholder="Insert the dish price"
-                        name="price" value="{{ old('price', $newDish->price) }}">
+                        name="price" value="{{ old('price', $newDish->price) }}" min="0.1">
                 </div>
 
                 <div class="form-check">
