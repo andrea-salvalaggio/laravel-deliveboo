@@ -35,3 +35,15 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+/* non visibile le freccette ai lati nell'input type number  */
+/* chrome safari */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+  }
