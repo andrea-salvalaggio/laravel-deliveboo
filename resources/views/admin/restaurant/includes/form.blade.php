@@ -36,7 +36,7 @@
                         name="restaurantPic" required>
                 </div>
 
-                <button type="submit" class="btn btn-warning mt-3 rounded-pill">Update</button>
+                <button type="submit" class="btn btn-warning mt-3 rounded-pill">Send</button>
             </form>
         </div>
     </div>

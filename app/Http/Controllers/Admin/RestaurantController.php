@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use LDAP\Result;
 
 class RestaurantController extends Controller
 {
@@ -20,8 +21,12 @@ class RestaurantController extends Controller
     {
         //
         $restaurants=Auth::user()->restaurant;
-      
-        return view('admin.restaurant.index', compact('restaurants'));
+
+        if ($restaurants === null) {
+            return redirect()->route('admin.restaurant.create');
+        } else{
+            return view('admin.restaurant.index', compact('restaurants'));
+        }
      
     }
 
@@ -33,6 +38,8 @@ class RestaurantController extends Controller
     public function create()
     {
         //
+        $newRestaurant = new Restaurant();
+        return view('admin.restaurant.create', compact('newRestaurant'));
         
     }
 
@@ -45,6 +52,15 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         //
+        $sentData = $request->all();
+        // dd($sentData);
+        $newRestaurant = new Restaurant();
+        $newRestaurant['user_id'] = Auth::user()->id;
+        // dd($newRestaurant);
+        $newRestaurant->fill($sentData);
+        $newRestaurant->restaurantPic = Storage::put('uploads/user', $sentData['restaurantPic']);
+        $newRestaurant->save();
+        return redirect()->route('admin.restaurant.index');
     }
 
     /**
