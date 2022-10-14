@@ -5,6 +5,6 @@
         'route' => 'admin.dish.update',
         'method' => 'PUT',
         'argument' => $newDish->id,
-        'submit' => 'Aggiorna'
+        'submit' => 'Update'
     ])
 @endsection

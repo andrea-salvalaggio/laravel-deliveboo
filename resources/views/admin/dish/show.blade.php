@@ -17,6 +17,7 @@
             <div class="card-body">
                 <h5 class="card-title text-capitalize">{{ $dish->name }}</h5>
                 <p class="card-text">{{ $dish->description }}.</p>
+                <p class="card-text">Price: {{ $dish->price }} €</p>
                 <div class="d-flex">
                     <div>
                         <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn btn-success rounded-pill">Edit</a>

@@ -1,7 +1,7 @@
 <div class="container-lg">
     <div class="row">
         <div class="col-12">
-            <form action="{{ route($route, $argument) }}" method="POST">
+            <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
                 <div class="mb-3">

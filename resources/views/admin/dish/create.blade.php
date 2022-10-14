@@ -5,6 +5,6 @@
         'route' => 'admin.dish.store',
         'method' => 'POST',
         'argument' => ' ',
-        'submit' => 'Crea'
+        'submit' => 'Create'
     ])
 @endsection

@@ -79,7 +79,7 @@ class RestaurantController extends Controller
     {
         $sentData = $request->all();
         $newRestaurant = Restaurant::findOrFail($id);
-        $sentData['restaurantPic']= Storage::put('uploads', $sentData['restaurantPic']);
+        $sentData['restaurantPic'] = Storage::put('uploads', $sentData['restaurantPic']);
         $newRestaurant = $newRestaurant->update($sentData);
         return redirect()->route('admin.restaurant.index');
     }
