@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Restaurant;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,13 +22,11 @@ class RestaurantController extends Controller
     {
         //
         $restaurants=Auth::user()->restaurant;
-
         if ($restaurants === null) {
             return redirect()->route('admin.restaurant.create');
         } else{
             return view('admin.restaurant.index', compact('restaurants'));
         }
-     
     }
 
     /**
@@ -39,7 +38,8 @@ class RestaurantController extends Controller
     {
         //
         $newRestaurant = new Restaurant();
-        return view('admin.restaurant.create', compact('newRestaurant'));
+        $categories = Category::all();
+        return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
         
     }
 
@@ -60,6 +60,7 @@ class RestaurantController extends Controller
         $newRestaurant->fill($sentData);
         $newRestaurant->restaurantPic = Storage::put('uploads/user', $sentData['restaurantPic']);
         $newRestaurant->save();
+        $newRestaurant->categories()->sync($sentData['categories']);
         return redirect()->route('admin.restaurant.index');
     }
 
@@ -83,8 +84,9 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $newRestaurant = Restaurant::findOrFail($id);
+        $categories = Category::all();
         if($newRestaurant->user_id == auth()->id()) {
-            return view('admin.restaurant.edit', compact('newRestaurant'));
+            return view('admin.restaurant.edit', compact(['newRestaurant', 'categories']));
         } else {
             return view('admin.dish.errors.accessDenied');
         }  
@@ -101,7 +103,17 @@ class RestaurantController extends Controller
     {
         $sentData = $request->all();
         $newRestaurant = Restaurant::findOrFail($id);
-        $sentData['restaurantPic'] = Storage::put('uploads', $sentData['restaurantPic']);
+
+        /**
+         * Controllo se nell'edit è stata inserita un immagine o meno, nel secondo caso l'immagine finale sarà quella precedente!
+         */
+        if (array_key_exists('restaurantPic', $sentData)) {
+            $sentData['restaurantPic'] = Storage::put('uploads', $sentData['restaurantPic']);
+        }else{
+            $sentData['restaurantPic'] = $newRestaurant->restaurantPic;
+        }
+        
+        $newRestaurant->categories()->sync($sentData['categories']);
         $newRestaurant = $newRestaurant->update($sentData);
         return redirect()->route('admin.restaurant.index');
     }

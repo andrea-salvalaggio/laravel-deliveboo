@@ -33,7 +33,31 @@
                     {{-- <input class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
                         name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}"> --}}
                     <input type="file" class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
-                        name="restaurantPic" required>
+                        name="restaurantPic" @if ($method == 'POST')
+                            required
+                        @endif >
+                </div>
+
+                <div class="mb-3">
+                    @forelse ($categories as $category)
+                    <div class="form-check">
+                        @if ($errors->any())
+                        <input class="form-check-input" type="checkbox" name="categories[]" id="categories" value="{{ $category->id }}" 
+                        {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="category">
+                            {{ $tag->name }}
+                        </label>
+                        @else
+                        <input class="form-check-input" type="checkbox" name="categories[]" id="categories" value="{{ $category->id }}" 
+                        {{ $newRestaurant->categories->contains($category->id) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="category">
+                            {{ $category->name }}
+                        </label>
+                        @endif
+                    </div>
+                    @empty
+                    There is no category!
+                    @endforelse
                 </div>
 
                 <button type="submit" class="btn btn-warning mt-3 rounded-pill">Send</button>
