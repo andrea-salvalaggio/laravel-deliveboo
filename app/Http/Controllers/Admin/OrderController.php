@@ -91,6 +91,6 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->delete();
 
-        return redirect()->route('admin.restaurant.index')->with('delete', 'The order of' . $order->name . ' ' . $order->surname . 'has been deleted');
+        return redirect()->route('admin.restaurant.index')->with('delete', 'The order of ' . $order->name . ' ' . $order->surname . ' has been deleted');
     }
 }

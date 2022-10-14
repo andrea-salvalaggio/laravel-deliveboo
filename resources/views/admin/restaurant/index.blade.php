@@ -99,6 +99,7 @@
                     <th scope='col'>Description</th>
                     <th scope="col">Address</th>
                     <th scope="col">Total Price</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
