@@ -87,5 +87,15 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        const deleteElements = document.querySelectorAll('.btn-delete');
+        deleteElements.forEach(formElement =>{
+            formElement.addEventListener('submit', function(event){
+                event.preventDefault();
+                const result =window.confirm('Are you sure?')
+                if(result) this.submit();
+            })
+        })
+    </script>
 </body>
 </html>

@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="mx-2">
-                        <form action="{{ route('admin.dish.destroy', $dish->id) }}" method="POST">
+                        <form action="{{ route('admin.dish.destroy', $dish->id) }}" method="POST" class="btn-delete">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger rounded-pill">Delete</button>
