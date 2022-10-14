@@ -77,6 +77,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger rounded-pill ">Delete</button>
+                            
                         </form>
                     </td>
 
