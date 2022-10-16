@@ -22,12 +22,6 @@
         <img src="{{ asset('storage/' . $restaurants->restaurantPic) }}" alt="{{ $restaurants->name }} photo"
             class="rounded-2">
         @endif
-
-
-        <a href="{{ route('admin.restaurant.edit', $restaurants->id) }}"
-            class="btn btn-info position-absolute floating-btn rounded-pill">
-            Change restaurant info
-        </a>
     </div>
     @if (session('delete'))
     <div class="alert alert-danger" role="alert">
@@ -88,22 +82,70 @@
             </tbody>
         </table>
         --}}
+        <div class="row ">
+            <div class="col-12 my-5">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <a href="{{ route('admin.restaurant.edit', $restaurants->id) }}"
+                            class="btn btn-outline-secondary rounded-pill w-100 py-3 font-weight-bold">
+                            <i class="fa-solid fa-gear"></i> Change restaurant info
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 mt-5 mt-md-0">
+                        <a href="{{ route('admin.dish.create') }}"
+                            class="btn btn-outline-warning rounded-pill w-100 py-3 font-weight-bold"><i class="fa-solid fa-plus"></i> Add new Dish
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 my-4">
                 <h2 ><i class="fa-solid fa-utensils"></i> &nbsp;<span class="text-capitalize">dishes</span> </h2>
             </div>
         </div>
-        <div class="row mx-auto justify-content-between px-5">
+        <div class="row justify-content-between px-md-5">
             @forelse ($restaurants->dishes as $dish)
-                <div class="col-11 col-md-5 my-card p-md-4 mb-4 py-4">
+                <div class="col-12 col-md-5 my-card p-md-4 mb-5 py-4">
                     <div class="row">
                         <div class="col-2 my-text">ID</div>
-                        <div class="col-3 my-text">Name</div>
-                        <div class="col-3 my-text">Price</div>
+                        <div class="col-4 my-text">Name</div>
+                        <div class="col-2 my-text px-0">Price €</div>
                         <div class="col-4 my-text">Status</div>
                         <div class="col-12 pr-md-4 w-100"><hr></div>
                     </div>
+                    <div class="row">
+                        <div class="col-2">{{ $dish->id }}</div>
+                        <div class="col-4 text-capitalize">{{ $dish->name }}</div>
+                        <div class="col-2 px-1">{{ $dish->price }}</div>
+                        <div class="col-4">
+                            @if ($dish->visible==0)
+                            <div class="badge badge-success badge-pill w-100"><small>available</small></div>
+                            @else
+                           <div class="badge badge-pill badge-danger w-100"><small>not available</small></div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 py-2 text-center mt-4">
+                            <a href="{{ route('admin.dish.show' , $dish->id) }}"
+                            class="btn btn-primary rounded-pill w-100">View</a>
+                        </div>
+                        <div class="col-4  py-2 text-center mt-4">
+                            <a href="{{ route('admin.dish.edit', $dish->id) }}"
+                                class="btn btn-success rounded-pill w-100">Edit</a>
+                        </div>
+                        <div class="col-4  py-2 text-center mt-4">
+                            <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST" class="btn-delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-pill w-100">Delete</button>
+    
+                            </form>
+                        </div>
+                    </div>
                 </div>
+
             @empty
                 
             @endforelse
