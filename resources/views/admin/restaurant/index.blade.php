@@ -2,8 +2,17 @@
 
 @section('content')
 <div class="container" id="restaurant">
-
-    <h1 class="mt-1 d-flex align-items-center">
+    <div class="row mt-1 align-items-center">
+        <div class="col-md-5 col-6"><h1>{{ $restaurants->name }}</h1></div>
+        <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
+            @forelse ($restaurants->categories as $category)
+            <span class="badge badge-danger badge-pill small-badge mr-1">{{ $category->name }}</span>
+            @empty
+    
+            @endforelse
+        </div>
+    </div>
+    {{-- <h1 class="mt-1 d-flex align-items-center">
         {{ $restaurants->name }}
         @forelse ($restaurants->categories as $category)
         <span class="badge badge-danger badge-pill small-badge mx-4">{{ $category->name }}</span>
@@ -14,7 +23,7 @@
     <p>
         {{ $restaurants->address }} | {{ substr( $restaurants->open , 0 , 5 ) }} - {{ substr( $restaurants->close , 0 ,
         5 ) }}
-    </p>
+    </p> --}}
     <div class="container-fluid p-0 my-3 position-relative">
         @if (filter_var($restaurants->restaurantPic, FILTER_VALIDATE_URL))
         <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-2 ">
@@ -22,20 +31,14 @@
         <img src="{{ asset('storage/' . $restaurants->restaurantPic) }}" alt="{{ $restaurants->name }} photo"
             class="rounded-2">
         @endif
-
-
-        <a href="{{ route('admin.restaurant.edit', $restaurants->id) }}"
-            class="btn btn-info position-absolute floating-btn rounded-pill">
-            Change restaurant info
-        </a>
     </div>
     @if (session('delete'))
     <div class="alert alert-danger" role="alert">
         <span class="text-capitalize">{{ session('delete') }}</span> has been deleted.
     </div>
     @endif
-    <div class="container-lg my-container">
-        <table class="table table-striped mt-5">
+    <div class="container-lg">
+        {{-- <table class="table table-striped mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -52,14 +55,14 @@
                 <tr>
                     <th scope="row">{{ $dish->id }}</th>
                     <td class="text-capitalize">{{ $dish->name }}</td>
-                    <td>
+                    <td> --}}
                         {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-                        @if (strlen($dish->description) > 15)
+                        {{-- @if (strlen($dish->description) > 15)
                         {{ substr($dish->description, 0, 15) }}...
                         @else
                         {{ $dish->description }}
-                        @endif
-                    </td>
+                        @endif --}}
+                  {{--   </td>
                     <td>€{{ $dish->price }}</td>
                     <td>
                         @if ($dish->visible==0)
@@ -87,9 +90,79 @@
                 </tr>
             </tbody>
         </table>
+        --}}
+        <div class="row ">
+            <div class="col-12 my-5">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <a href="{{ route('admin.restaurant.edit', $restaurants->id) }}"
+                            class="btn btn-outline-secondary rounded-pill w-100 py-3 font-weight-bold">
+                            <i class="fa-solid fa-gear"></i> Change restaurant info
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 mt-5 mt-md-0">
+                        <a href="{{ route('admin.dish.create') }}"
+                            class="btn btn-outline-warning rounded-pill w-100 py-3 font-weight-bold"><i class="fa-solid fa-plus"></i> Add new Dish
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 my-4">
+                <h2 ><i class="fa-solid fa-utensils"></i> &nbsp;<span class="text-capitalize">dishes</span> </h2>
+            </div>
+        </div>
+        <div class="row justify-content-between px-md-5">
+            @forelse ($restaurants->dishes as $dish)
+                <div class="col-12 col-md-5 my-card p-md-4 mb-5 py-4">
+                    <div class="row">
+                        <div class="col-2 my-text">ID</div>
+                        <div class="col-4 my-text">Name</div>
+                        <div class="col-2 my-text px-0">Price €</div>
+                        <div class="col-4 my-text">Status</div>
+                        <div class="col-12 pr-md-4 w-100"><hr></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">#{{ $dish->id }}</div>
+                        <div class="col-4 text-capitalize">{{ $dish->name }}</div>
+                        <div class="col-2 px-1">{{ $dish->price }}</div>
+                        <div class="col-4">
+                            @if ($dish->visible==0)
+                            <div class="badge badge-success badge-pill w-100"><small>available</small></div>
+                            @else
+                           <div class="badge badge-pill badge-danger w-100"><small>not available</small></div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 py-2 text-center mt-4">
+                            <a href="{{ route('admin.dish.show' , $dish->id) }}"
+                            class="btn btn-primary rounded-pill w-100">View</a>
+                        </div>
+                        <div class="col-4  py-2 text-center mt-4">
+                            <a href="{{ route('admin.dish.edit', $dish->id) }}"
+                                class="btn btn-success rounded-pill w-100">Edit</a>
+                        </div>
+                        <div class="col-4  py-2 text-center mt-4">
+                            <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST" class="btn-delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-pill w-100">Delete</button>
+    
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            @empty
+                
+            @endforelse
+        </div>
+
 
         {{-- TABELLA ORDINI --}}
-
+        {{-- 
          <table class="table table-striped mt-5">
             <thead>
                 <tr>
@@ -108,14 +181,14 @@
                     <th scope="row">{{ $order->id }}</th>
                     <td class="text-capitalize">{{ $order->name }}</td>
                     <td class="text-capitalize">{{ $order->surname }}</td>
-                    <td>
+                    <td> --}}
                         {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-                        @if (strlen($order->description) > 15)
+                      {{--   @if (strlen($order->description) > 15)
                         {{ substr($order->description, 0, 15) }}...
                         @else
                         {{ $order->description }}
-                        @endif
-                    </td>
+                        @endif --}}
+                   {{--  </td>
                     <td>{{ $order->address }}</td>
                     <td>€ {{ $order->price}}</td>
 
@@ -135,7 +208,58 @@
                     @endforelse
                 </tr>
             </tbody>
-        </table>
+        </table> --}}
+        <div class="row">
+            <div class="col-12 my-4">
+                <h2 ><i class="fa-solid fa-table-list"></i> &nbsp;<span class="text-capitalize">orders</span> </h2>
+            </div>
+        </div>
+        <div class="row justify-content-between px-md-5">
+            @forelse ($restaurants->orders as $order)
+                <div class="col-12 col-md-5 my-card p-md-4 mb-5 py-4">
+                    <div class="row">
+                        <div class="col-2 my-text">ID</div>
+                        <div class="col-5 my-text">Name</div>
+                        <div class="col-5 my-text px-0">Surname</div>
+                        <div class="col-12 pr-md-4 w-100"><hr></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">#{{ $order->id }}</div>
+                        <div class="col-5 text-capitalize">{{ $order->name }}</div>
+                        <div class="col-5 px-1">{{ $order->surname }}</div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-5 my-text text-capitalize">address</div>
+                        <div class="col-4 my-text text-capitalize">comment</div>
+                        <div class="col-3 my-text text-capitalize">total price</div>
+                        <div class="col-12 pr-md-4 w-100"><hr></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">{{ $order->address}}</div>
+                        <div class="col-4 text-capitalize">{{ $order->comment }}</div>
+                        <div class="col-3 ">{{ $order->price }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 py-2 text-center mt-4">
+                            <a href="{{ route('admin.order.show' , $order->id) }}"
+                            class="btn btn-primary rounded-pill w-100">View</a>
+                        </div>
+                        <div class="col-6  py-2 text-center mt-4">
+                            <form action="{{ route('admin.order.destroy' , $order->id) }}" method="POST" class="btn-delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-pill w-100">Delete</button>
+    
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            @empty
+                
+            @endforelse
+        </div>
+
     </div>
 </div>
 @endsection
