@@ -93,14 +93,15 @@
                 <h2 ><i class="fa-solid fa-utensils"></i> &nbsp;<span class="text-capitalize">dishes</span> </h2>
             </div>
         </div>
-        <div class="row mx-auto">
+        <div class="row mx-auto justify-content-between px-5">
             @forelse ($restaurants->dishes as $dish)
-                <div class="col-11 col-md-5 my-card">
+                <div class="col-11 col-md-5 my-card p-md-4 mb-4 py-4">
                     <div class="row">
-                        <div class="col-4">ID</div>
-                        <div class="col-4">Name</div>
-                        <div class="col-4">Price</div>
-                        <div class="col-4">Status</div>
+                        <div class="col-2 my-text">ID</div>
+                        <div class="col-3 my-text">Name</div>
+                        <div class="col-3 my-text">Price</div>
+                        <div class="col-4 my-text">Status</div>
+                        <div class="col-12 pr-md-4 w-100"><hr></div>
                     </div>
                 </div>
             @empty
