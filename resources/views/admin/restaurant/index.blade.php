@@ -34,8 +34,8 @@
         <span class="text-capitalize">{{ session('delete') }}</span> has been deleted.
     </div>
     @endif
-    <div class="container-lg my-container">
-        <table class="table table-striped mt-5">
+    <div class="container-lg">
+        {{-- <table class="table table-striped mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -52,14 +52,14 @@
                 <tr>
                     <th scope="row">{{ $dish->id }}</th>
                     <td class="text-capitalize">{{ $dish->name }}</td>
-                    <td>
+                    <td> --}}
                         {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-                        @if (strlen($dish->description) > 15)
+                        {{-- @if (strlen($dish->description) > 15)
                         {{ substr($dish->description, 0, 15) }}...
                         @else
                         {{ $dish->description }}
-                        @endif
-                    </td>
+                        @endif --}}
+                  {{--   </td>
                     <td>€{{ $dish->price }}</td>
                     <td>
                         @if ($dish->visible==0)
@@ -87,9 +87,30 @@
                 </tr>
             </tbody>
         </table>
+        --}}
+        <div class="row">
+            <div class="col-12 my-4">
+                <h2 ><i class="fa-solid fa-utensils"></i> &nbsp;<span class="text-capitalize">dishes</span> </h2>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            @forelse ($restaurants->dishes as $dish)
+                <div class="col-11 col-md-5 my-card">
+                    <div class="row">
+                        <div class="col-4">ID</div>
+                        <div class="col-4">Name</div>
+                        <div class="col-4">Price</div>
+                        <div class="col-4">Status</div>
+                    </div>
+                </div>
+            @empty
+                
+            @endforelse
+        </div>
+
 
         {{-- TABELLA ORDINI --}}
-
+        {{-- 
          <table class="table table-striped mt-5">
             <thead>
                 <tr>
@@ -108,14 +129,14 @@
                     <th scope="row">{{ $order->id }}</th>
                     <td class="text-capitalize">{{ $order->name }}</td>
                     <td class="text-capitalize">{{ $order->surname }}</td>
-                    <td>
+                    <td> --}}
                         {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-                        @if (strlen($order->description) > 15)
+                      {{--   @if (strlen($order->description) > 15)
                         {{ substr($order->description, 0, 15) }}...
                         @else
                         {{ $order->description }}
-                        @endif
-                    </td>
+                        @endif --}}
+                   {{--  </td>
                     <td>{{ $order->address }}</td>
                     <td>€ {{ $order->price}}</td>
 
@@ -135,7 +156,7 @@
                     @endforelse
                 </tr>
             </tbody>
-        </table>
+        </table> --}}
     </div>
 </div>
 @endsection
