@@ -2,8 +2,17 @@
 
 @section('content')
 <div class="container" id="restaurant">
-
-    <h1 class="mt-1 d-flex align-items-center">
+    <div class="row mt-1 align-items-center">
+        <div class="col-md-5 col-6"><h1>{{ $restaurants->name }}</h1></div>
+        <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
+            @forelse ($restaurants->categories as $category)
+            <span class="badge badge-danger badge-pill small-badge mr-1">{{ $category->name }}</span>
+            @empty
+    
+            @endforelse
+        </div>
+    </div>
+    {{-- <h1 class="mt-1 d-flex align-items-center">
         {{ $restaurants->name }}
         @forelse ($restaurants->categories as $category)
         <span class="badge badge-danger badge-pill small-badge mx-4">{{ $category->name }}</span>
@@ -14,7 +23,7 @@
     <p>
         {{ $restaurants->address }} | {{ substr( $restaurants->open , 0 , 5 ) }} - {{ substr( $restaurants->close , 0 ,
         5 ) }}
-    </p>
+    </p> --}}
     <div class="container-fluid p-0 my-3 position-relative">
         @if (filter_var($restaurants->restaurantPic, FILTER_VALIDATE_URL))
         <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-2 ">
@@ -115,7 +124,7 @@
                         <div class="col-12 pr-md-4 w-100"><hr></div>
                     </div>
                     <div class="row">
-                        <div class="col-2">{{ $dish->id }}</div>
+                        <div class="col-2">#{{ $dish->id }}</div>
                         <div class="col-4 text-capitalize">{{ $dish->name }}</div>
                         <div class="col-2 px-1">{{ $dish->price }}</div>
                         <div class="col-4">
@@ -200,6 +209,57 @@
                 </tr>
             </tbody>
         </table> --}}
+        <div class="row">
+            <div class="col-12 my-4">
+                <h2 ><i class="fa-solid fa-table-list"></i> &nbsp;<span class="text-capitalize">orders</span> </h2>
+            </div>
+        </div>
+        <div class="row justify-content-between px-md-5">
+            @forelse ($restaurants->orders as $order)
+                <div class="col-12 col-md-5 my-card p-md-4 mb-5 py-4">
+                    <div class="row">
+                        <div class="col-2 my-text">ID</div>
+                        <div class="col-5 my-text">Name</div>
+                        <div class="col-5 my-text px-0">Surname</div>
+                        <div class="col-12 pr-md-4 w-100"><hr></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">#{{ $order->id }}</div>
+                        <div class="col-5 text-capitalize">{{ $order->name }}</div>
+                        <div class="col-5 px-1">{{ $order->surname }}</div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-5 my-text text-capitalize">address</div>
+                        <div class="col-4 my-text text-capitalize">comment</div>
+                        <div class="col-3 my-text text-capitalize">total price</div>
+                        <div class="col-12 pr-md-4 w-100"><hr></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">{{ $order->address}}</div>
+                        <div class="col-4 text-capitalize">{{ $order->comment }}</div>
+                        <div class="col-3 ">{{ $order->price }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 py-2 text-center mt-4">
+                            <a href="{{ route('admin.order.show' , $order->id) }}"
+                            class="btn btn-primary rounded-pill w-100">View</a>
+                        </div>
+                        <div class="col-6  py-2 text-center mt-4">
+                            <form action="{{ route('admin.order.destroy' , $order->id) }}" method="POST" class="btn-delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-pill w-100">Delete</button>
+    
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            @empty
+                
+            @endforelse
+        </div>
+
     </div>
 </div>
 @endsection
