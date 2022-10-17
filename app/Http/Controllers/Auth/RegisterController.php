@@ -49,11 +49,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // return Validator::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'p_iva' => ['required', ],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]);
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'p_iva' => ['required', ],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'min:2', 'max:30', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'min:5', 'max:40', 'unique:users'],
+            'p_iva' => ['required', 'min:11', 'max:11', 'numeric'],
+            'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed'],
         ]);
     }
 
