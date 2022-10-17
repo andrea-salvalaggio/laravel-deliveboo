@@ -50,7 +50,7 @@
                         name="close" value="{{ old('close', $newRestaurant->close) }}" required>
                 </div>
 
-                @error('image')
+                @error('restaurantPic')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>

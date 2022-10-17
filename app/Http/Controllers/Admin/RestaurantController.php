@@ -18,7 +18,7 @@ class RestaurantController extends Controller
         'address' =>'required|min:6|max:80, deve contenere un numero',
         'open' => 'required|date_format:H:i',
         'close' => 'required|date_format:H:i|after:open',
-        'image'=> 'required|',
+        'restaurantPic'=> 'required|image',
 
     ];
 
@@ -37,10 +37,8 @@ class RestaurantController extends Controller
         'open.required'=> 'open time is required',
         'close.required' => 'open time is required',
 
-        'image.required' => 'RestaurantPic is required',
-        'image.image' => 'RestaurantPic must be an image',
-        'image.size' => 'RestaurantPic must be 1MB',
-
+        'restaurantPic.required' => 'RestaurantPic is required',
+        'restaurantPic.image' => 'RestaurantPic must be an image',
     ];
 
     public function index()
