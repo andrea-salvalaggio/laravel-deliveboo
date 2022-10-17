@@ -38,7 +38,7 @@
             <div class="container">
                 <a class="navbar-brand py-4 d-none d-md-block" href="{{ url('/admin/restaurant') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
-                    <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo" class="w-50">
+                    <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo" class="w-75">
                 </a>
                 <a href="{{ url('/admin/restaurant') }}" class="d-block d-md-none">
                     <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo" class="w-50">
@@ -57,12 +57,12 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li class="nav-item my-btn rounded-pill py-1 px-4 mr-3 my-btn-shadow  mt-2 mt-md-0 text-center">
+                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Sign In') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center ">
+                                    <a class="nav-link text-white px-0" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                                 </li>
                             @endif
                         @else
