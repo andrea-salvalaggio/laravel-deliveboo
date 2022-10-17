@@ -4,17 +4,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7">
-            <div class="card border-0">
+            <div class="card border-0 my-rounded my-shadow">
                 <div class="text-center pt-5 pb-3"><h2>{{ __('Registration') }}</h2></div>
 
-                <div class="card-body my-shadow">
+                <div class="card-body ">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
                         {{--     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
                             <div class="col-md-8 mx-auto mb-2">
-                                <input id="name" type="text" class="py-4 border-0 bg-light form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name" >
+                                <input id="name" type="text" class="py-4 border-0 px-4 my-rounded bg-light form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name" >
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                             {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
 
                             <div class="col-md-8 mx-auto mb-2">
-                                <input id="email" type="email" class="py-4 border-0 bg-light form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail">
+                                <input id="email" type="email" class="py-4 border-0 px-4 my-rounded bg-light form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             {{-- <label for="p_iva" class="col-md-4 col-form-label text-md-right">{{ __('P. IVA') }}</label> --}}
 
                             <div class="col-md-8 mx-auto mb-2">
-                                <input id="p_iva" type="number" class="py-4 border-0 bg-light form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required min="10000000000" max="99999999999" placeholder="P. IVA">
+                                <input id="p_iva" type="number" class="py-4 border-0 px-4 my-rounded bg-light form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required min="10000000000" max="99999999999" placeholder="P. IVA">
 
                                 @error('p_iva')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
                             <div class="col-md-8 mx-auto mb-2">
-                                <input id="password" type="password" class="py-4 border-0 bg-light form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                                <input id="password" type="password" class="py-4 border-0 px-4 my-rounded bg-light form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -71,14 +71,14 @@
                             {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
 
                             <div class="col-md-8 mx-auto mb-4">
-                                <input id="password-confirm" type="password" class="py-4 border-0 bg-light form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                                <input id="password-confirm" type="password" class="py-4 border-0 px-4 my-rounded bg-light form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                             </div>
                         </div>
 
                         <div class="form-group row mb-5">
                             <div class="col-md-8 mx-auto">
-                                <button type="submit" class="btn btn-primary w-100">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn my-btn w-100 my-rounded py-3">
+                                    {{ __('Sign up') }}
                                 </button>
                             </div>
                         </div>
