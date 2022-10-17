@@ -14,13 +14,13 @@
             @else
                 <img src="{{ asset('storage/' . $dish->dishPic)}}" class="card-img-top" alt="{{ $dish->name }} photo">
             @endif --}}
-            <div class="card-body">
+            <div class="card-body p-5">
                 <h5 class="card-title text-capitalize">{{ $dish->name }}</h5>
                 <p class="card-text">{{ $dish->description }}.</p>
                 <p class="card-text">Price: {{ $dish->price }} €</p>
                 <div class="d-flex">
                     <div>
-                        <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn btn-success rounded-pill">Edit</a>
+                        <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn my-btn-success rounded-pill text-white my-btn-shadow p-2">Edit</a>
                     </div>
 
                     <div class="mx-2">
