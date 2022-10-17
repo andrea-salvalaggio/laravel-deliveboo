@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-lg mt-4">
+    <div class="container-lg my-5">
         <div class="card my-rounded my-shadow mx-auto w-50 border-0">
             {{-- @dd(asset('/' . $dish->dishPic)) --}}
             @if (filter_var($dish->dishPic, FILTER_VALIDATE_URL))
