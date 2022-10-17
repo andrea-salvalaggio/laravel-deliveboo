@@ -6,7 +6,7 @@
         <div class="col-md-5 col-6"><h1>{{ $restaurants->name }}</h1></div>
         <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
             @forelse ($restaurants->categories as $category)
-            <span class="badge category-badge badge-pill text-white font-weight-lighter">{{ $category->name }}</span>
+            <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow">{{ $category->name }}</span>
             @empty
     
             @endforelse
