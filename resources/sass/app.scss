@@ -30,7 +30,6 @@ body{
     .my-card{
         background-color: white;
         border-radius: 30px;
-        box-shadow: 5px 40px 50px rgba(0, 0, 0, 0.1);
         padding: 30px;
 
         .my-text{
@@ -52,9 +51,7 @@ body{
         background-color: $dangerBtnColor;
     }
 
-    .my-btn-shadow{
-        box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.12);
-    }
+    
 
     .my-badge-success{
         background-color: $successBadgeColor;
@@ -93,4 +90,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
   }
-  
+
+.my-btn-shadow{
+    box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.12);
+}
+.my-shadow{
+    box-shadow: 5px 40px 50px rgba(0, 0, 0, 0.1);
+}

@@ -124,7 +124,7 @@
         </div>
         <div class="row justify-content-between px-md-5">
             @forelse ($restaurants->dishes as $dish)
-                <div class="col-12 col-md-5 my-card mb-5">
+                <div class="col-12 col-md-5 my-card my-shadow mb-5">
                     <div class="row">
                         <div class="col-2 my-text">ID</div>
                         <div class="col-4 my-text">Name</div>
@@ -227,7 +227,7 @@
         </div>
         <div class="row justify-content-between px-md-5">
             @forelse ($restaurants->orders as $order)
-                <div class="col-12 col-md-5 my-card mb-5">
+                <div class="col-12 col-md-5 my-card my-shadow mb-5">
                     <div class="row">
                         <div class="col-4 my-text">ID</div>
                         <div class="col-4 my-text">Name</div>
