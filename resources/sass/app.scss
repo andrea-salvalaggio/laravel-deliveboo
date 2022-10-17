@@ -107,3 +107,9 @@ input[type=number] {
         color: white;
     }
 }
+input::placeholder {
+    font-size: 0.7rem;
+}
+ul{
+    list-style: none;
+}
