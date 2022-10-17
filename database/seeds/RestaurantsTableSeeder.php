@@ -54,6 +54,35 @@ class RestaurantsTableSeeder extends Seeder
 
             ],
 
+            [
+                'user_id' => 5,
+                'name'=> 'Maharajah indian',
+                'address'=> 'Via della Stazione 34',
+                'open'=> '11:30',
+                'close'=>'23:59',
+                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/17/80/37/65/our-restaurant.jpg',
+
+            ],
+
+            [
+                'user_id' => 6,
+                'name'=> 'La vecchia stalla',
+                'address'=> 'Via della Quadro 34',
+                'open'=> '11:30',
+                'close'=>'23:59',
+                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/0b/9b/a7/88/cremeria-la-vecchia-stalla.jpg',
+
+            ],
+
+            [
+                'user_id' => 7,
+                'name'=> 'Mikonos',
+                'address'=> 'Via della Porrettana 154',
+                'open'=> '11:30',
+                'close'=>'23:59',
+                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c7/da/9e/mykonos-interior.jpg',
+
+            ],
         ];
 
         foreach ($restaurants as $restaurant) {

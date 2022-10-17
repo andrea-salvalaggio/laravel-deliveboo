@@ -77,6 +77,8 @@ class UsersTableSeeder extends Seeder
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
             ],
 
+            
+
         ];
 
         foreach ($users as $user) {
