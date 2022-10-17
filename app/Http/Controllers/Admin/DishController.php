@@ -52,7 +52,46 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $sentData = $request->all();
+
+        $request->validate(
+            [
+                'name' => [
+                    'required',
+                    'min:2',
+                    'max:50',
+
+                ],
+
+
+                'price' => [
+                    'required',
+                    'digits_between:0.01, 999.99',
+                    'numeric',
+                ],
+
+                'description' => [
+                    'required',
+                    'min:10',
+                    'max:1000',
+                ],
+
+
+                'image' => [
+                    'required',
+                    'size:1024',
+                    'image'
+                ],
+
+                'visible' => [
+                    'required',
+                    'boolean'
+                ],
+
+            ]);
+
         $newDish = new Dish();
         $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
         $sentData['restaurant_id'] = Auth::user()->restaurant->id;
@@ -104,6 +143,44 @@ class DishController extends Controller
     public function update(Request $request, $id)
     {
         $sentData = $request->all();
+
+        $request->validate(
+            [
+                'name' => [
+                    'required',
+                    'min:2',
+                    'max:50',
+
+                ],
+
+
+                'price' => [
+                    'required',
+                    'digits_between:0.01, 999.99',
+                    'numeric',
+                ],
+
+                'description' => [
+                    'required',
+                    'min:10',
+                    'max:1000',
+                ],
+
+
+                'image' => [
+                    'required',
+                    'size:1024',
+                    'image'
+                ],
+
+                'visible' => [
+                    'required',
+                    'boolean'
+                ],
+
+            ]);
+
+
         $dish = Dish::findOrFail($id);
 
         if(array_key_exists('dishPic', $sentData)){
