@@ -44,6 +44,16 @@ class RestaurantsTableSeeder extends Seeder
 
             ],
 
+            [
+                'user_id' => 4,
+                'name'=> 'Ginza',
+                'address'=> 'Via Porrettana 15',
+                'open'=> '11:30',
+                'close'=>'23:59',
+                'restaurantPic'=> 'https://upload.wikimedia.org/wikipedia/commons/5/5c/San-ai_Building_at_night.jpg',
+
+            ],
+
         ];
 
         foreach ($restaurants as $restaurant) {
