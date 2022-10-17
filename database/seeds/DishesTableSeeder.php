@@ -62,6 +62,16 @@ class DishesTableSeeder extends Seeder
                 'price'=> 2.00,
                 'visible'=> 1,
             ],
+
+            [
+                'restaurant_id'=> 4,
+                'name'=> 'gyoza',
+                'description'=> 'Gyoza are traditional Chinese dumplings that are extremely popular in East Asian countries, with their origins in China. They are also known as Jiaozi and are an essential part of traditional Chinese New Year celebrations.',
+                'dishPic'=> 'https://media-assets.lacucinaitaliana.it/photos/61fd2d235455c3ec4f002f7c/4:3/w_800,h_600,c_limit/Gyoza-alla-piastra.jpg',
+                'price'=> 4.00,
+                'visible'=> 1,
+            ],
+
         ];
 
         foreach ($dishes as $dish) {
