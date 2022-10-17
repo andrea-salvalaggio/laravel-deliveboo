@@ -8,18 +8,18 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: #F7F7F9;
+    background-color: $backgroundColor;
 }
 #restaurant{
     .container-fluid{
         img{
-            border-radius: 20px;
+            border-radius: 40px;
+            box-shadow: 5px 30px 50px rgba(0, 0, 0, 0.2);
             width: 100%;
         }
         .floating-btn{
             bottom: 10px;
             right: 10px;
-
         }
     }
     .small-badge{
@@ -29,12 +29,49 @@ body{
     //! stile delle carte nel backoffice
     .my-card{
         background-color: white;
-        border-radius: 15px;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.288);
+        border-radius: 30px;
+        box-shadow: 5px 40px 50px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+
         .my-text{
-            color: grey;
-            font-size: 0.8rem;
+            color: #999999;
+            font-size: 0.9rem;
         }
+    }
+
+    // Bottoni personalizzati nel backoffice
+    .my-btn-primary{
+        background-color: $primaryBtnColor;
+    }
+
+    .my-btn-success{
+        background-color: $successBtnColor;
+    }
+
+    .my-btn-danger{
+        background-color: $dangerBtnColor;
+    }
+
+    .my-btn-shadow{
+        box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .my-badge-success{
+        background-color: $successBadgeColor;
+        color: #66dd42;
+        padding: 5px 0;
+    }
+
+    .my-badge-danger{
+        background-color: $dangerBadgeColor;
+        color: #ea3323;
+        padding: 5px 0;
+    }
+
+    .category-badge{
+        background-color: #df4579; // Da eliminare
+        padding: 10px 20px;
+
     }
 }
 
