@@ -1,7 +1,7 @@
 <div class="container-lg">
     <div class="row">
         <div class="col-12">
-            <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data" id="checkGroup">
                 @csrf
                 @method($method)
                 <div class="mb-3">
@@ -60,7 +60,7 @@
                     @endforelse
                 </div>
 
-                <button type="submit" class="btn btn-warning mt-3 rounded-pill">Send</button>
+                <button type="submit" class="btn btn-warning mt-3 rounded-pill"  name="submit">Send</button>
             </form>
         </div>
     </div>

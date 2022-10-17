@@ -99,6 +99,28 @@
                 if(result) this.submit();
             })
         })
+        function validationCheck(){
+            let checks = document.querySelectorAll('.form-check-input');
+            let checked = 0;
+            for(let i=0; i<checks.length; i++){
+                if(checks[i].checked === true)
+                {
+                    checked++
+                }
+            }
+            if (checked > 0){
+                checks[checks.length - 1].setCustomValidity("");
+                document.getElementById('checkGroup').submit();
+            }
+            else{
+                checks[checks.length - 1].setCustomValidity('You have to check at least one category');
+                checks[checks.length - 1].reportValidity();
+            }
+        }
+
+        document.querySelector('[name=submit]').addEventListener('click', () => {
+            validationCheck()
+        });
     </script>
 </body>
 </html>
