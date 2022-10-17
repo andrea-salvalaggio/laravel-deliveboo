@@ -31,7 +31,7 @@
                 <div class="mb-3">
                     <label for="open" class="form-label">Open*</label>
                     <input type="text" class="form-control" id="open" placeholder="Insert the opening time"
-                    name="open" value="{{ old('open', $newRestaurant->open) }}" required maxlength="5">
+                    name="open" value="{{ old('open', substr($newRestaurant->open , 0 , 5 )) }}" required maxlength="5">
                 </div>
                 @error('open')
                     <div class="alert alert-danger">
@@ -42,7 +42,7 @@
                 <div class="mb-3">
                     <label for="close" class="form-label">Close*</label>
                     <input type="text" class="form-control" id="close" placeholder="Insert the closing time"
-                    name="close" value="{{ old('close', $newRestaurant->close) }}" required maxlength="5">
+                    name="close" value="{{ old('close', substr($newRestaurant->close , 0 , 5 )) }}" required maxlength="5">
                 </div>
                 @error('close')
                     <div class="alert alert-danger">
