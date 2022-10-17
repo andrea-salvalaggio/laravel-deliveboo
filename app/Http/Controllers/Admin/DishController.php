@@ -11,7 +11,40 @@ use PhpParser\Node\Scalar\MagicConst\Dir;
 
 class DishController extends Controller
 {
-    protected $validationRules = [
+
+    private $validationRules = [
+
+        'name' => [
+            'required',
+            'min:2',
+            'max:50',
+
+    ],
+
+
+        'price' => [
+            'required',
+            'numeric',
+            'max:1000',
+            'min:0.01',
+        ],
+
+        'description' => [
+            'required',
+            'min:10',
+            'max:1000',
+        ],
+
+
+        'dishPic' => [
+            'required',
+            'image'
+        ],
+
+        'visible' => [
+            'required',
+            'boolean'
+        ],
 
     ];
 
@@ -53,44 +86,9 @@ class DishController extends Controller
     public function store(Request $request)
     {
 
-
         $sentData = $request->all();
 
-        $request->validate(
-            [
-                'name' => [
-                    'required',
-                    'min:2',
-                    'max:50',
-
-                ],
-
-
-                'price' => [
-                    'required',
-                    'digits_between:0.01, 999.99',
-                    'numeric',
-                ],
-
-                'description' => [
-                    'required',
-                    'min:10',
-                    'max:1000',
-                ],
-
-
-                'image' => [
-                    'required',
-                    'size:1024',
-                    'image'
-                ],
-
-                'visible' => [
-                    'required',
-                    'boolean'
-                ],
-
-            ]);
+        $request->validate($this->validationRules);
 
         $newDish = new Dish();
         $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
@@ -142,43 +140,14 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $sentData = $request->all();
 
-        $request->validate(
-            [
-                'name' => [
-                    'required',
-                    'min:2',
-                    'max:50',
-
-                ],
+        $request->validate($this->validationRules);
 
 
-                'price' => [
-                    'required',
-                    'digits_between:0.01, 999.99',
-                    'numeric',
-                ],
 
-                'description' => [
-                    'required',
-                    'min:10',
-                    'max:1000',
-                ],
-
-
-                'image' => [
-                    'required',
-                    'size:1024',
-                    'image'
-                ],
-
-                'visible' => [
-                    'required',
-                    'boolean'
-                ],
-
-            ]);
 
 
         $dish = Dish::findOrFail($id);
