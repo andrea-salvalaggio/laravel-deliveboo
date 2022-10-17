@@ -57,10 +57,10 @@ class RegisterController extends Controller
         // ]);
 
         return Validator::make($data, [
-            'name' => ['required', 'string', 'min:2', 'max:30', 'unique:users'],
+            'name' => ['required', 'string', 'min:2', 'max:30'],
             'email' => ['required', 'string', 'email', 'min:5', 'max:40', 'unique:users'],
-            'p_iva' => ['required', 'min:11', 'max:11', 'numeric'],
-            'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed'],
+            'p_iva' => ['required', 'size:11'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
