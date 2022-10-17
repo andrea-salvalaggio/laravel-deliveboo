@@ -16,8 +16,8 @@ class RestaurantController extends Controller
     protected $validateDatas = [
         'name' => 'required|min:2|max:40',
         'address' =>'required|min:6|max:80, deve contenere un numero',
-        'open' => 'required|date_format:H:i',
-        'close' => 'required|date_format:H:i|after:open',
+        'open' => 'required|date_format:H:i:s',
+        'close' => 'required|date_format:H:i:s',
         'restaurantPic'=> 'required|image',
 
     ];
