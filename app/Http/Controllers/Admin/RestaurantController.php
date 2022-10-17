@@ -35,8 +35,10 @@ class RestaurantController extends Controller
         'address.min' => 'Restaurant address need to be min 10 characters',
         'address.max' => 'Restaurant address need to be max 80 characters',
 
-        'open.required'=> 'open time is required',
-        'close.required' => 'open time is required',
+        'open.required'=> 'Opening time is required',
+        'open.date_format'=> 'Opening time must be Hours:Minutes',
+        'close.required' => 'Closing time is required',
+        'close.date_format' => 'Closing time must be Hours:Minutes',
 
         'restaurantPic.required' => 'RestaurantPic is required',
         'restaurantPic.image' => 'RestaurantPic must be an image',
@@ -79,8 +81,15 @@ class RestaurantController extends Controller
     {
 
         //
-        $sentData = $request->validate($this->validateDatas,$this->validateDateMsgs);
-         dd($sentData);
+        $sentData = $request->validate([
+            'name' => 'required|min:2|max:40',
+            'address' => 'required|min:6|max:80, deve contenere un numero',
+            'open' => 'required|date_format:H:i',
+            'close' => 'required|date_format:H:i',
+            'restaurantPic' => 'required|image',
+            'categories' => 'required'
+        ], $this->validateDateMsgs);
+        //  dd($sentData);
         $newRestaurant = new Restaurant();
         $newRestaurant['user_id'] = Auth::user()->id;
         // dd($newRestaurant);
@@ -128,7 +137,14 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sentData = $request->validate($this->validateDatas,$this->validateDateMsgs);
+        $sentData = $request->validate([
+            'name' => 'required|min:2|max:40',
+            'address' => 'required|min:6|max:80, deve contenere un numero',
+            'open' => 'required|date_format:H:i',
+            'close' => 'required|date_format:H:i',
+            'categories' => 'required'
+        ], $this->validateDateMsgs);
+
         $newRestaurant = Restaurant::findOrFail($id);
 
         /**
