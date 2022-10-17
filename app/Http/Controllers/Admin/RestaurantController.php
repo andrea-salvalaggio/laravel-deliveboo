@@ -15,10 +15,10 @@ class RestaurantController extends Controller
 {
     protected $validateDatas = [
         'name' => 'required|min:2|max:40',
-        'address' =>'unique|required|min:10|max:80, deve contenere un numero',
+        'address' =>'required|min:6|max:80, deve contenere un numero',
         'open' => 'required|date_format:H:i',
         'close' => 'required|date_format:H:i|after:open',
-        'image'=> 'required|image!size:1024',
+        'image'=> 'required|',
 
     ];
 
@@ -78,7 +78,7 @@ class RestaurantController extends Controller
     {
 
         //
-        $sentData = $request->all();
+        $sentData = $request->validate($this->validateDatas,$this->validateDateMsgs);
         // dd($sentData);
         $newRestaurant = new Restaurant();
         $newRestaurant['user_id'] = Auth::user()->id;
@@ -127,7 +127,7 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sentData = $request->all();
+        $sentData = $request->validate($this->validateDatas,$this->validateDateMsgs);
         $newRestaurant = Restaurant::findOrFail($id);
 
         /**
