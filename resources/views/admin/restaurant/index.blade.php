@@ -3,12 +3,14 @@
 @section('content')
 <div class="container" id="restaurant">
     <div class="row mt-1 align-items-center">
-        <div class="col-md-5 col-6"><h1>{{ $restaurants->name }}</h1></div>
+        <div class="col-md-5 col-6">
+            <h1>{{ $restaurants->name }}</h1>
+        </div>
         <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
             @forelse ($restaurants->categories as $category)
             <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow">{{ $category->name }}</span>
             @empty
-    
+
             @endforelse
         </div>
         <div class="col-md-5 col-6 mb-3">
@@ -66,7 +68,7 @@
                         @else
                         {{ $dish->description }}
                         @endif --}}
-                  {{--   </td>
+                        {{-- </td>
                     <td>€{{ $dish->price }}</td>
                     <td>
                         @if ($dish->visible==0)
@@ -163,14 +165,14 @@
                 </div>
 
             @empty
-                
+            <h5>No dishes already created!</h5>
             @endforelse
         </div>
 
 
         {{-- TABELLA ORDINI --}}
-        {{-- 
-         <table class="table table-striped mt-5">
+        {{--
+        <table class="table table-striped mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -190,12 +192,12 @@
                     <td class="text-capitalize">{{ $order->surname }}</td>
                     <td> --}}
                         {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-                      {{--   @if (strlen($order->description) > 15)
+                        {{-- @if (strlen($order->description) > 15)
                         {{ substr($order->description, 0, 15) }}...
                         @else
                         {{ $order->description }}
                         @endif --}}
-                   {{--  </td>
+                        {{-- </td>
                     <td>{{ $order->address }}</td>
                     <td>€ {{ $order->price}}</td>
 
@@ -265,11 +267,10 @@
                 </div>
 
             @empty
-                
+            <h5>No orders!</h5>
             @endforelse
         </div>
-        
+
     </div>
 </div>
 @endsection
-

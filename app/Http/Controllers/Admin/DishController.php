@@ -11,7 +11,40 @@ use PhpParser\Node\Scalar\MagicConst\Dir;
 
 class DishController extends Controller
 {
-    protected $validationRules = [
+
+    private $validationRules = [
+
+        'name' => [
+            'required',
+            'min:2',
+            'max:50',
+
+    ],
+
+
+        'price' => [
+            'required',
+            'numeric',
+            'max:1000',
+            'min:0.01',
+        ],
+
+        'description' => [
+            'required',
+            'min:10',
+            'max:1000',
+        ],
+
+
+        'dishPic' => [
+            'required',
+            'image'
+        ],
+
+        'visible' => [
+            'required',
+            'boolean'
+        ],
 
     ];
 
@@ -52,7 +85,11 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+
         $sentData = $request->all();
+
+        $request->validate($this->validationRules);
+
         $newDish = new Dish();
         $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
         $sentData['restaurant_id'] = Auth::user()->restaurant->id;
@@ -103,7 +140,16 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $sentData = $request->all();
+
+        $request->validate($this->validationRules);
+
+
+
+
+
         $dish = Dish::findOrFail($id);
 
         if(array_key_exists('dishPic', $sentData)){
