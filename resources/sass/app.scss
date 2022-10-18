@@ -111,10 +111,6 @@ textarea::placeholder {
     font-size: 0.8rem;
 }
 
-#remember{
-    font-size: 0.8rem;
-}
-
 ul{
     list-style: none;
 }
@@ -138,5 +134,13 @@ ul{
 
     &:hover{
         color: $secondaryColor;
+    }
+}
+
+.user-pill{
+    background-color: white;
+    box-shadow: 5px 3px 20px rgba(0, 0, 0, 0.1);
+    a{
+        font-size: 0.9rem;
     }
 }
