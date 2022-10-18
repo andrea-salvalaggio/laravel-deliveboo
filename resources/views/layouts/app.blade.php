@@ -67,9 +67,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown btn user-pill rounded-pill px-3">
-                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle p-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <span class="material-symbols-outlined align-middle pr-1">account_circle</span> {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
