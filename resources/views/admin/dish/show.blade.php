@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-lg my-5">
-        <div class="card my-rounded my-shadow mx-auto w-50 border-0">
+        <div class="card col-lg-6 col-md-6 col-sm-10 my-rounded my-shadow mx-auto border-0">
             {{-- @dd(asset('/' . $dish->dishPic)) --}}
             @if (filter_var($dish->dishPic, FILTER_VALIDATE_URL))
                 <img src="{{ $dish->dishPic }}" class="card-img-top my-rounded-top" alt="{{ $dish->name }} photo">
