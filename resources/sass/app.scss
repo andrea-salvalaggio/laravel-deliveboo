@@ -111,6 +111,10 @@ textarea::placeholder {
     font-size: 0.8rem;
 }
 
+#remember{
+    font-size: 0.8rem;
+}
+
 ul{
     list-style: none;
 }
@@ -126,4 +130,13 @@ ul{
 
 .my-btn-danger{
     background-color: $dangerBtnColor;
+}
+
+.msg-pwd{
+    font-size: 0.8rem;
+    color: $secondaryColor;
+    
+    &:hover{
+        color: $primaryColor;
+    }
 }

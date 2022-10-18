@@ -28,7 +28,7 @@
                         <div class="form-group row">
                             {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
-                            <div class="col-md-10 mx-auto mb-2">
+                            <div class="col-md-10 mx-auto">
                                 <input id="password" type="password" class="py-4 border-0 px-4 my-rounded bg-light form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
 
                                 @error('password')
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-9 mx-auto">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -51,14 +51,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mt-5 mb-0">
                             <div class="col-md-10 mx-auto">
                                 <button type="submit" class="btn my-btn w-100 my-rounded py-3 my-btn-shadow">
                                     {{ __('Login') }}
                                 </button>
                                 <br>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link mt-3 mb-5 msg-pwd" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
