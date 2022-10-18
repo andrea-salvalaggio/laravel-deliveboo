@@ -14,15 +14,66 @@ class CategoriesTableSeeder extends Seeder
     {
         //
         $categories=[
-            'pizzeria', 'fast food', 'asian fusion', 'italian', 'bakery', 'ice-cream shop', 'mexican', 'indian', 'greek', 'salads',
-            'spanish', 'japanese', 'chinese'
+            [
+                'name' => 'pizzeria',
+                'color' => '#8DCEFF'
+            ],
+            [
+                'name' => 'fast food',
+                'color' => '#E66947'
+            ],
+            [
+                'name' => 'asian fusion',
+                'color' => '#A1D543'
+            ],
+            [
+                'name' => 'italian',
+                'color' => '#6E6676'
+            ],
+            [
+                'name' => 'bakery',
+                'color' => '#F16BB2'
+            ],
+            [
+                'name' => 'ice-cream shop',
+                'color' => '#4465C0'
+            ],
+            [
+                'name' => 'mexican',
+                'color' => '#000000'
+            ],
+            [
+                'name' => 'indian',
+                'color' => '#8D2B00'
+            ],
+            [
+                'name' => 'greek',
+                'color' => '#71989B'
+            ],
+            [
+                'name' => 'salads',
+                'color' => '#527E4B'
+            ],
+            [
+                'name' => 'spanish',
+                'color' => '#EE3239'
+            ],
+            [
+                'name' => 'japanese',
+                'color' => '#9D6AB9'
+            ],
+            [
+                'name' => 'chinese',
+                'color' => '#FE8D6F'
+            ],
         ];
 
         foreach ($categories as $category) {
 
             $newCategory = new Category();
 
-            $newCategory->name = $category;
+            $newCategory->name = $category['name'];
+            $newCategory->color = $category['color'];
             $newCategory->save();
         }
     }

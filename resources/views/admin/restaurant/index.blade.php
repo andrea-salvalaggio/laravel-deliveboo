@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
             @forelse ($restaurants->categories as $category)
-            <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow">{{ $category->name }}</span>
+            <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow" style="color: {{ $category->color }}">{{ $category->name }}</span>
             @empty
 
             @endforelse
