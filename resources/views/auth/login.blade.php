@@ -52,8 +52,8 @@
 
                         <div class="form-group row mt-5 mb-0">
                             <div class="col-md-10 mx-auto">
-                                <button type="submit" class="btn my-btn w-100 my-rounded py-3 my-btn-shadow">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn-secondary w-100 my-rounded py-3 my-btn-shadow">
+                                    {{ __('Log In') }}
                                 </button>
                                 <br>
                                 @if (Route::has('password.request'))
