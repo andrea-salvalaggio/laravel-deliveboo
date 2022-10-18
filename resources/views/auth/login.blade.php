@@ -7,13 +7,12 @@
             <div class="card border-0 my-rounded my-shadow">
                 <div class="text-center pt-5 pb-3"><h2>{{ __('Login') }}</h2></div>
 
-                <div class="card-body">
+                <hr>
+                <div class="card-body mt-3">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group row">
                             {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
-
                             <div class="col-md-10 mx-auto mb-2">
                                 <input id="email" type="email" class="py-4 border-0 px-4 my-rounded bg-light form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" autofocus>
 
