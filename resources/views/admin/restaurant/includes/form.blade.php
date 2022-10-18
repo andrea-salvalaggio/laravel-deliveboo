@@ -6,7 +6,7 @@
                 @method($method)
 
                 <div class="mb-3">
-                    <label for="name" class="form-label font-weight-lighter">Name*</label>
+                    <label for="name" class="form-label">Name*</label>
                     <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the restaurant name" name="name" value="{{ old('name', $newRestaurant->name) }}" required>
                 </div>
                 @error('name')
@@ -16,7 +16,7 @@
                 @enderror
 
                 <div class="mb-3">
-                    <label for="address" class="form-label font-weight-lighter">Address*</label>
+                    <label for="address" class="form-label">Address*</label>
                     <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="address"
                     placeholder="Insert the restaurant address" name="address"
                     value="{{ old('address', $newRestaurant->address) }}" required>
@@ -29,7 +29,7 @@
 
                 <div class="mb-3">
                     <label for="open" class="form-label">Open*</label>
-                    <input type="text" class="form-control" id="open" placeholder="Insert the opening time"
+                    <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="open" placeholder="Insert the opening time"
                     name="open" value="{{ old('open', substr($newRestaurant->open , 0 , 5 )) }}" required maxlength="5">
                 </div>
                 @error('open')
@@ -40,7 +40,7 @@
 
                 <div class="mb-3">
                     <label for="close" class="form-label">Close*</label>
-                    <input type="text" class="form-control" id="close" placeholder="Insert the closing time"
+                    <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="close" placeholder="Insert the closing time"
                     name="close" value="{{ old('close', substr($newRestaurant->close , 0 , 5 )) }}" required maxlength="5">
                 </div>
                 @error('close')
@@ -53,7 +53,7 @@
                     <label for="restaurantPic" class="form-label">Restaurant Picture*</label>
                     {{-- <input class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
                     name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}"> --}}
-                    <input type="file" class="form-control" id="restaurantPic"
+                    <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="restaurantPic"
                     placeholder="Insert the restaurant picture" name="restaurantPic"
                     @if ($method == 'POST')  required @endif>
                 </div>
@@ -93,7 +93,7 @@
                 @enderror
 
 
-                <button type="submit" class="btn btn-warning mt-3 rounded-pill" name="submit">Send</button>
+                <button type="submit" class="btn btn-warning mt-5 rounded-pill px-5" name="submit">Send</button>
             </form>
         </div>
     </div>
