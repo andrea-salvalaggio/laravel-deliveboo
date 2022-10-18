@@ -15,10 +15,10 @@
                 <img src="{{ asset('storage/' . $dish->dishPic)}}" class="card-img-top" alt="{{ $dish->name }} photo">
             @endif --}}
             <div class="card-body p-5">
-                <h5 class="card-title text-capitalize font-weight-bold h2">{{ $dish->name }}</h5>
+                <h2 class="card-title text-capitalize font-weight-bold">{{ $dish->name }}</h2>
                 <p class="card-text my-4">{{ $dish->description }}</p>
                 <hr>
-                <p class="card-text h4 font-weight-bolder mt-4">€ {{ $dish->price }}</p>
+                <h4 class="card-text font-weight-bolder mt-4">€ {{ $dish->price }}</h4>
                 <div class="row mt-5">
                     <div class="col-12 p-0">
                         <a href="{{ route('admin.dish.edit', $dish->id) }}" class="btn my-btn-success w-100 rounded-pill text-white my-btn-shadow p-2">Edit</a>
