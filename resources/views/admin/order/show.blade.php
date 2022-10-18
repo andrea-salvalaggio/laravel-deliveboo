@@ -3,10 +3,12 @@
 @section('content')
     <div class="container-lg mt-4">
         <div class="card col-lg-6 col-md-6 col-sm-10 mx-auto my-rounded my-shadow mx-auto border-0">
-            <div class="card-body">
-                <h5 class="card-title text-capitalize">{{ $order->name . ' ' . $order->surname}}</h5>
-                <p class="card-text">{{ $order->address }}.</p>
-                <p class="card-text">{{ $order->description }}.</p>
+            <div class="card-body p-5">
+                <h2 class="font-weight-bold">Details</h2>
+                <hr>
+                <p class="card-title text-capitalize mt-5">Name: &nbsp;{{ $order->name . ' ' . $order->surname}}</p>
+                <p class="card-text">Address: &nbsp;{{ $order->address }}</p>
+                <p class="card-text text-capitalize">Other info: &nbsp;{{ $order->description }}.</p>
                 <p class="card-text">Price: {{ $order->price }} €</p>
                 <div class="row">
                     <div class="col-12 p-0">
