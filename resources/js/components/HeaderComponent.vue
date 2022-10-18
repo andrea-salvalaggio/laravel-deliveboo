@@ -17,14 +17,10 @@
                 </div>
                 <!-- bottoni in desktop -->
                 <div class="col-4 d-none d-md-flex align-items-center justify-content-end">
-                    <div class="row w-75">
-                        <div class="col-5 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center mr-3">
-                            <a href="/login" class="nav-link text-white px-0 ">Login</a>
+                    <div class="row w-75 justify-content-end">
+                        <div class="col-8 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center">
+                            <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
                         </div>
-                        <div class="col-5 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center " >
-                            <a href="/register" class="nav-link text-white px-0">Register</a> 
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -33,10 +29,7 @@
             <div class="row flex-column my-dropdown py-3 w-50" :class="isClicked=== true ? 'd-flex fade-in-top' : isFirst()">
 
                 <div class="col-12 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center">
-                    <a href="/login" class="nav-link text-white px-0 ">Login</a>
-                </div>
-                <div class="col-12 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center " >
-                    <a href="/register" class="nav-link text-white px-0">Register</a> 
+                    <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
                 </div>
             </div>
     </header>
