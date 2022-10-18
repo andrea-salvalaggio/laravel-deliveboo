@@ -15,10 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all()->paginate(12);
+        $categories = Category::all();
         return response()->json([
             'response' => true,
-            'count' => ($categories),
+            'count' => count($categories),
             'results' => $categories,
         ]);
     }
