@@ -1,37 +1,39 @@
 <template>
-    <header class="position-relative">
-        <div class="container-lg ">
-            <div class="row justify-content-between py-4 px-md-0 px-2 align-content-center">
-                <div class="col-4">
-                    <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo image" class="d-md-block d-none">
-                    <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none">
-                </div>
-                <!-- hamburger menu -->
-                <div class="col-3 d-md-none d-flex justify-content-end" @click="changeStatusHamburger(), setTimeoutfunction()">
-                    <div id="menuToggle">
-                        <input type="checkbox" />
-                        <span id="span1"></span>
-                        <span id="span2"></span>
-                        <span id="span3"></span>
+    <header class="position-fixed w-100">
+        <div class="position-relative w-100">
+            <div class="container-lg ">
+                <div class="row justify-content-between py-4 px-md-0 px-2 align-content-center">
+                    <div class="col-4">
+                        <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo image" class="d-md-block d-none">
+                        <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none">
                     </div>
-                </div>
-                <!-- bottoni in desktop -->
-                <div class="col-4 d-none d-md-flex align-items-center justify-content-end">
-                    <div class="row w-75 justify-content-end">
-                        <div class="col-8 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center">
-                            <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
+                    <!-- hamburger menu -->
+                    <div class="col-3 d-md-none d-flex justify-content-end" @click="changeStatusHamburger(), setTimeoutfunction()">
+                        <div id="menuToggle">
+                            <input type="checkbox" />
+                            <span id="span1"></span>
+                            <span id="span2"></span>
+                            <span id="span3"></span>
+                        </div>
+                    </div>
+                    <!-- bottoni in desktop -->
+                    <div class="col-4 d-none d-md-flex align-items-center justify-content-end">
+                        <div class="row w-75 justify-content-end">
+                            <div class="col-8 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center">
+                                <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-            <!-- menu che appare al click dell'hamburger -->
-            <div class="row flex-column my-dropdown py-3 w-50" :class="isClicked=== true ? 'd-flex fade-in-top' : isFirst()">
+                <!-- menu che appare al click dell'hamburger -->
+                <div class="row flex-column my-dropdown py-3 w-50" :class="isClicked=== true ? 'd-flex fade-in-top' : isFirst()">
 
-                <div class="col-12 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center">
-                    <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
+                    <div class="col-12 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center">
+                        <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
+                    </div>
                 </div>
-            </div>
+        </div>
     </header>
 </template>
 
@@ -189,8 +191,8 @@
     /* dropdown */
     .my-dropdown{
         position: absolute;
-        right: 15px;
-        bottom: -130px;
+        right: 30px;
+        bottom: -80px;
     }
 
 
