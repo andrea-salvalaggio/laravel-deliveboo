@@ -6,9 +6,8 @@
                 @method($method)
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Restaurant Name*</label>
-                    <input type="text" class="form-control" id="name" placeholder="Insert the restaurant name"
-                    name="name" value="{{ old('name', $newRestaurant->name) }}" required>
+                    <label for="name" class="form-label font-weight-lighter">Name*</label>
+                    <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the restaurant name" name="name" value="{{ old('name', $newRestaurant->name) }}" required>
                 </div>
                 @error('name')
                     <div class="alert alert-danger">
@@ -17,8 +16,8 @@
                 @enderror
 
                 <div class="mb-3">
-                    <label for="address" class="form-label">Restaurant Address*</label>
-                    <input type="text" class="form-control" id="address"
+                    <label for="address" class="form-label font-weight-lighter">Address*</label>
+                    <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="address"
                     placeholder="Insert the restaurant address" name="address"
                     value="{{ old('address', $newRestaurant->address) }}" required>
                 </div>

@@ -4,6 +4,7 @@
             <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
+                
                 <div class="mb-3">
                     <label for="name" class="form-label font-weight-lighter">Name*</label>
                     <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the dish name" name="name"
