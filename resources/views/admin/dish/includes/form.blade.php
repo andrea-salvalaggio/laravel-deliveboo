@@ -4,9 +4,9 @@
             <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
-                
+
                 <div class="mb-3">
-                    <label for="name" class="form-label font-weight-lighter">Name*</label>
+                    <label for="name" class="form-label">Name*</label>
                     <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the dish name" name="name"
                         value="{{ old('name', $newDish->name) }}" required>
                         @error('name')
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="description" class="form-label font-weight-lighter">Description*</label>
+                    <label for="description" class="form-label">Description*</label>
                     <textarea class="form-control border-0 mb-4 font-weight-lighter" id="description" placeholder="Insert the dish description" name="description" rows="3">{{ old('description', $newDish->description) }}</textarea>
                     @error('description')
                     <div class="alert alert-danger">
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="dishPic" class="form-label font-weight-lighter">Dish Picture*</label>
+                    <label for="dishPic" class="form-label">Dish Picture*</label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
                     <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="dishPic" placeholder="Insert the dish picture"
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" class="form-label font-weight-light">Price*</label>
+                    <label for="price" class="form-label">Price*</label>
                     <input type="number" step=".01" class="form-control rounded-pill border-0 mb-4 font-weight-light" id="price" placeholder="Insert the dish price"
                         name="price" value="{{ old('price', $newDish->price) }}" min="0.01">
                         @error('price')

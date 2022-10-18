@@ -50,7 +50,7 @@
                 @enderror
 
                 <div class="mb-3">
-                    <label for="restaurantPic" class="form-label">Restaurant Picture*</label>
+                    <label for="restaurantPic" class="form-label">Picture*</label>
                     {{-- <input class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
                     name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}"> --}}
                     <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="restaurantPic"
@@ -63,37 +63,37 @@
                     </div>
                 @enderror
 
-                <div class="mb-3">
-                    @forelse ($categories as $category)
-                        <div class="form-check">
-                            @if ($errors->any())
-                                <input class="form-check-input" type="checkbox" name="categories[]" id="categories"
-                                    value="{{ $category->id }}"
-                                    {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="category">
-                                    {{ $category->name }}
-                                </label>
-                            @else
-                                <input class="form-check-input" type="checkbox" name="categories[]" id="categories"
-                                    value="{{ $category->id }}"
-                                    {{ $newRestaurant->categories->contains($category->id) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="category">
-                                    {{ $category->name }}
-                                </label>
-                            @endif
-                        </div>
-                    @empty
-                        There is no category!
-                    @endforelse
-                </div>
-                @error('categories')
-                    <div class="alert alert-danger">
-                        {{ $message }}
+                <label class="form-label mt-4">Choose the categories*</label>
+                    <div class="d-flex flex-wrap mb-3">
+                            @forelse ($categories as $category)
+                                <div class="col-3 my-2 form-check">
+                                    @if ($errors->any())
+                                        <input class="form-check-input" type="checkbox" name="categories[]" id="categories"
+                                            value="{{ $category->id }}"
+                                            {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label text-capitalize" for="category">
+                                            {{ $category->name }}
+                                        </label>
+                                    @else
+                                        <input class="form-check-input" type="checkbox" name="categories[]" id="categories"
+                                            value="{{ $category->id }}"
+                                            {{ $newRestaurant->categories->contains($category->id) ? 'checked' : '' }}>
+                                        <label class="form-check-label text-capitalize" for="category">
+                                            {{ $category->name }}
+                                        </label>
+                                    @endif
+                                </div>
+                            @empty
+                                There is no category!
+                            @endforelse
                     </div>
-                @enderror
+                    @error('categories')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
-
-                <button type="submit" class="btn btn-warning mt-5 rounded-pill px-5" name="submit">Send</button>
+                <button type="submit" class="btn btn-warning mt-5 rounded-pill px-5 mb-5" name="submit">Send</button>
             </form>
         </div>
     </div>
