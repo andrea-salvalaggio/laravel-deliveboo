@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-lg mt-4">
-        <div class="card mx-auto w-50 border-0">
+        <div class="card col-lg-6 col-md-6 col-sm-10 mx-auto my-rounded my-shadow mx-auto border-0">
             <div class="card-body">
                 <h5 class="card-title text-capitalize">{{ $order->name . ' ' . $order->surname}}</h5>
                 <p class="card-text">{{ $order->address }}.</p>
