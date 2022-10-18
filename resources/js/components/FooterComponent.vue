@@ -1,83 +1,83 @@
 <template>
-  <!-- Footer -->
-  <footer class="page-footer font-small blue pt-4">
-    <!-- Footer Links -->
-    <div class="container-lg text-center text-md-left">
-      <!-- Grid row -->
+  <footer class="p-5">
+    <div class="container-lg">
       <div class="row">
-        <!-- Grid column -->
-        <div class="col-3 mt-3">
-          <!-- Content -->
-          <img src="" alt="" />
+
+        <!-- Colonna logo -->
+        <div class="col-3 mt-5">
+
+          <!-- Logo -->
+          <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="deliveboo-logo" />
         </div>
-        <!-- Grid column -->
 
-        <!-- Grid column -->
-        <div class="col-3 mb-3">
+        <!-- Colonna join us -->
+        <div class="col-3 mb-5">
           <!-- Links -->
-          <h5 class="text-uppercase">Join Us</h5>
-
+          <h5 class="text-uppercase font-weight-bold h4">join us</h5>
           <ul class="list-unstyled">
-            <li>
+            <li class="my-2">
               <a href="#!">Careers</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">Restaurants</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">Become a Courier</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">About</a>
             </li>
           </ul>
         </div>
 
-        <!-- Grid column -->
-        <div class="col-3 mb-3">
+        <!-- Colonna Let us help you -->
+        <div class="col-3 mb-5">
           <!-- Links -->
-          <h5 class="text-uppercase">Let us help you</h5>
+          <h5 class="text-uppercase font-weight-bold h4">let us help you</h5>
 
           <ul class="list-unstyled">
-            <li>
+            <li class="my-2">
               <a href="#!">Help Center</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">Support</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">Contacts</a>
             </li>
           </ul>
         </div>
 
-        <!-- Grid column -->
-        <div class="col-3 mb-3">
+        <!-- Colonna Follow us -->
+        <div class="col-3 mb-5">
           <!-- Links 3 -->
-          <h5 class="text-uppercase">Follow us</h5>
+          <h5 class="text-uppercase font-weight-bold h4">follow us</h5>
 
           <ul class="list-unstyled">
-            <li>
+            <li class="my-2">
               <a href="#!">Facebook</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">Twitter</a>
             </li>
-            <li>
+            <li class="my-2">
               <a href="#!">Instagram</a>
             </li>
           </ul>
         </div>
       </div>
+
+      <!-- Divisore -->
       <div class="col-12 divisor"></div>
+
       <!-- Copyright -->
-      <div class="copyright-container d-flex justify-content-between">
+      <div class="copyright-container d-flex justify-content-between mt-4">
         <div class="footer-copyright">
-        <p>© All right reserved Made &#128155 by Team 4 - Class #67</p>
+        <p>© All right reserved Made &#129505; by Team 4 - Class #67</p>
       </div>
       <div class="footer-copyright-links">
         <p>
-            <a href="#!">Privacy Policy</a> | <a href="#!">Terms & condition</a> | <a href="#!">Cookies Policy</a>
+            <a class="mx-2" href="#!">Privacy Policy</a> | <a class="mx-2" href="#!">Terms & condition</a> | <a class="mx-2" href="#!">Cookies Policy</a>
         </p>
       </div>
       </div>
@@ -110,7 +110,9 @@ h5 {
   color: white;
 }
 
-.footer-copyright {
-  padding: 2rem, 0rem, 5rem, 0rem;
+.copyright-container {
+  p{
+    font-size: 0.7rem;
+  }
 }
 </style>
