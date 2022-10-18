@@ -1,9 +1,8 @@
 <template>
   <div>
     <HeaderComponent />
-    <main class="">
- 
-      
+    <main>
+      <router-view></router-view>
     </main>
   </div>
 </template>
@@ -18,5 +17,7 @@ export default {
 </script>
 
 <style scoped>
-
+main{
+  padding-top: 103px;
+}
 </style>
