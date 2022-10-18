@@ -1,13 +1,13 @@
 <template>
-    <header>
-        <div class="container-lg">
+    <header class="position-relative">
+        <div class="container-lg ">
             <div class="row justify-content-between py-4 px-md-0 px-2 align-content-center">
                 <div class="col-4">
                     <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo image" class="d-md-block d-none">
                     <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none">
                 </div>
                 <!-- hamburger menu -->
-                <div class="col-4 d-md-none" @click="changeStatusHamburger()">
+                <div class="col-3 d-md-none d-flex justify-content-end" @click="changeStatusHamburger(), setTimeoutfunction()">
                     <div id="menuToggle">
                         <input type="checkbox" />
                         <span id="span1"></span>
@@ -16,16 +16,29 @@
                     </div>
                 </div>
                 <!-- bottoni in desktop -->
-                <div class="col-4 d-none d-md-block">
+                <div class="col-4 d-none d-md-flex align-items-center justify-content-end">
+                    <div class="row w-75">
+                        <div class="col-5 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center mr-3">
+                            <a href="/login" class="nav-link text-white px-0 ">Login</a>
+                        </div>
+                        <div class="col-5 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center " >
+                            <a href="/register" class="nav-link text-white px-0">Register</a> 
+                        </div>
 
+                    </div>
                 </div>
             </div>
-            <!-- menu che appare al click dell'hamburger -->
-            <div class="row text-center" :class="isClicked=== true ? 'd-block scale-in-tr' : 'd-none'">
-                <a href="/login" class="btn btn-primary rounded-pill">Login</a>
-                <a href="/register" class="btn btn-warning rounded-pill">Register</a> 
-            </div>
         </div>
+            <!-- menu che appare al click dell'hamburger -->
+            <div class="row flex-column my-dropdown py-3 w-50" :class="isClicked=== true ? 'd-flex fade-in-top' : isFirst()">
+
+                <div class="col-12 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center">
+                    <a href="/login" class="nav-link text-white px-0 ">Login</a>
+                </div>
+                <div class="col-12 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center " >
+                    <a href="/register" class="nav-link text-white px-0">Register</a> 
+                </div>
+            </div>
     </header>
 </template>
 
@@ -34,11 +47,29 @@
         data:function() {
             return {
                 isClicked: false,
+                first: 0,
+                class: 'fade-out-top'
             }
         },
         methods: {
             changeStatusHamburger(){
+                this.first++
                 this.isClicked = !this.isClicked
+            },
+            isFirst(){
+                if(this.first == 0){
+                    return 'd-none'
+                }
+                else{
+                    return this.class
+                }
+            },
+            setTimeoutfunction(){
+                if(this.isClicked==false){ 
+                    setTimeout(() => {
+                        this.class='d-none'
+                    }, 700);
+                }
             }
         },
     }
@@ -48,8 +79,8 @@
     #menuToggle {
         overflow: hidden;
         position: absolute;
-        width: 100%;
-        height: 100%;
+        width: 57px;
+        height: 57px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -102,40 +133,72 @@
     }
 
     /* animzione nella tendina entrata */
-    .scale-in-tr {
-	-webkit-animation: scale-in-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: scale-in-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    .fade-in-top {
+	-webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     }
-    @-webkit-keyframes scale-in-tr {
+    @-webkit-keyframes fade-in-top {
     0% {
-        -webkit-transform: scale(0);
-                transform: scale(0);
-        -webkit-transform-origin: 100% 0%;
-                transform-origin: 100% 0%;
-        opacity: 1;
+        -webkit-transform: translateY(-50px);
+                transform: translateY(-50px);
+        opacity: 0;
     }
     100% {
-        -webkit-transform: scale(1);
-                transform: scale(1);
-        -webkit-transform-origin: 100% 0%;
-                transform-origin: 100% 0%;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
         opacity: 1;
     }
     }
-    @keyframes scale-in-tr {
+    @keyframes fade-in-top {
     0% {
-        -webkit-transform: scale(0);
-                transform: scale(0);
-        -webkit-transform-origin: 100% 0%;
-                transform-origin: 100% 0%;
-        opacity: 1;
+        -webkit-transform: translateY(-50px);
+                transform: translateY(-50px);
+        opacity: 0;
     }
     100% {
-        -webkit-transform: scale(1);
-                transform: scale(1);
-        -webkit-transform-origin: 100% 0%;
-                transform-origin: 100% 0%;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
         opacity: 1;
     }
+    }
+
+    /* animzione nella tendina entrata */
+    .fade-out-top {
+	-webkit-animation: fade-out-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: fade-out-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }   
+    @-webkit-keyframes fade-out-top {
+    0% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(-50px);
+                transform: translateY(-50px);
+        opacity: 0;
+    }
+    }
+    @keyframes fade-out-top {
+    0% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(-50px);
+                transform: translateY(-50px);
+        opacity: 0;
+    }
+    }
+  
+    
+    /* dropdown */
+    .my-dropdown{
+        position: absolute;
+        right: 15px;
+        bottom: -130px;
+    }
+
+
  </style>

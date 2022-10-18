@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    <main class="container-lg text-center mt-5">
+    <main class="">
 
       
     </main>
@@ -17,6 +17,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
