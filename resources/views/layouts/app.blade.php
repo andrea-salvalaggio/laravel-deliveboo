@@ -36,11 +36,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light mb-5">
             <div class="container">
-                <a class="navbar-brand py-4 d-none d-md-block" href="{{ url('/admin/restaurant') }}">
+                <a class="navbar-brand py-4 d-none d-md-block" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                     <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo" class="w-75">
                 </a>
-                <a href="{{ url('/admin/restaurant') }}" class="d-block d-md-none">
+                <a href="{{ url('/') }}" class="d-block d-md-none">
                     <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo" class="w-50">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

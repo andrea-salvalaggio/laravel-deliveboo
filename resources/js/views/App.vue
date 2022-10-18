@@ -2,7 +2,7 @@
   <div>
     <HeaderComponent />
     <main class="">
-
+ 
       
     </main>
   </div>
