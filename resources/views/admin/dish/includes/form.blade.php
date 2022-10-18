@@ -30,7 +30,7 @@
                     <label for="dishPic" class="form-label font-weight-lighter">Dish Picture*</label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
-                    <input type="file" class="form-control rounded-pill border-0 mb-4" id="dishPic" placeholder="Insert the dish picture"
+                    <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic"
                         @if ($method === 'POST')
                             required
@@ -45,7 +45,7 @@
 
                 <div class="mb-3">
                     <label for="price" class="form-label font-weight-light">Price*</label>
-                    <input type="number" step=".01" class="form-control rounded-pill border-0 mb-4" id="price" placeholder="Insert the dish price"
+                    <input type="number" step=".01" class="form-control rounded-pill border-0 mb-4 font-weight-light" id="price" placeholder="Insert the dish price"
                         name="price" value="{{ old('price', $newDish->price) }}" min="0.01">
                         @error('price')
                         <div class="alert alert-danger">
