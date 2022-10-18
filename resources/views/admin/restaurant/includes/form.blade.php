@@ -56,7 +56,7 @@
                     name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}"> --}}
                     <input type="file" class="form-control" id="restaurantPic"
                     placeholder="Insert the restaurant picture" name="restaurantPic"
-                    @if ($method == 'POST') required @endif>
+                    @if ($method == 'POST')  required @endif>
                 </div>
                 @error('restaurantPic')
                     <div class="alert alert-danger">

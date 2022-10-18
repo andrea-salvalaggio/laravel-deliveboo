@@ -13,39 +13,11 @@ class DishController extends Controller
 {
 
     private $validationRules = [
-
-        'name' => [
-            'required',
-            'min:2',
-            'max:50',
-
-    ],
-
-
-        'price' => [
-            'required',
-            'numeric',
-            'max:1000',
-            'min:0.01',
-        ],
-
-        'description' => [
-            'required',
-            'min:10',
-            'max:1000',
-        ],
-
-
-        'dishPic' => [
-            'required',
-            'image'
-        ],
-
-        'visible' => [
-            'required',
-            'boolean'
-        ],
-
+        'name' => ['required', 'min:2', 'max:50',],
+        'price' => ['required', 'numeric', 'max:1000', 'min:0.01',],
+        'description' => ['required', 'min:10', 'max:1000',],
+        'dishPic' => ['required', 'image'],
+        'visible' => ['required', 'boolean'],
     ];
 
     /**
@@ -144,11 +116,13 @@ class DishController extends Controller
 
         $sentData = $request->all();
 
-        $request->validate($this->validationRules);
-
-
-
-
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:50',],
+            'price' => ['required', 'numeric', 'max:1000', 'min:0.01',],
+            'description' => ['required', 'min:10', 'max:1000',],
+            'dishPic' => ['image'],
+            'visible' => ['required', 'boolean'],
+        ]);
 
         $dish = Dish::findOrFail($id);
 
