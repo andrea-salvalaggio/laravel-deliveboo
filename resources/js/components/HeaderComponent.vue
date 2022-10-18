@@ -7,7 +7,7 @@
                     <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none">
                 </div>
                 <!-- hamburger menu -->
-                <div class="col-4 d-md-none">
+                <div class="col-4 d-md-none" @click="changeStatusHamburger()">
                     <div id="menuToggle">
                         <input type="checkbox" />
                         <span id="span1"></span>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <!-- menu che appare al click dell'hamburger -->
-            <div class="row">
+            <div class="row text-center" :class="isClicked=== true ? 'd-block scale-in-tr' : 'd-none'">
                 <a href="/login" class="btn btn-primary rounded-pill">Login</a>
                 <a href="/register" class="btn btn-warning rounded-pill">Register</a> 
             </div>
@@ -30,7 +30,18 @@
 </template>
 
 <script>
-
+    export default {
+        data:function() {
+            return {
+                isClicked: false,
+            }
+        },
+        methods: {
+            changeStatusHamburger(){
+                this.isClicked = !this.isClicked
+            }
+        },
+    }
 </script>
  <style scoped lang="scss">
  @import '../../sass/variables';
@@ -89,4 +100,42 @@
     transform: rotate(45deg);
     opacity: 0;
     }
+
+    /* animzione nella tendina entrata */
+    .scale-in-tr {
+	-webkit-animation: scale-in-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes scale-in-tr {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        -webkit-transform-origin: 100% 0%;
+                transform-origin: 100% 0%;
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        -webkit-transform-origin: 100% 0%;
+                transform-origin: 100% 0%;
+        opacity: 1;
+    }
+    }
+    @keyframes scale-in-tr {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        -webkit-transform-origin: 100% 0%;
+                transform-origin: 100% 0%;
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        -webkit-transform-origin: 100% 0%;
+                transform-origin: 100% 0%;
+        opacity: 1;
+    }
+    }   
  </style>
