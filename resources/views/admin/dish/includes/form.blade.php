@@ -1,12 +1,12 @@
 <div class="container-lg">
-    <div class="row">
+    <div class="row p-3">
         <div class="col-12">
             <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name*</label>
-                    <input type="text" class="form-control" id="name" placeholder="Insert the dish name" name="name"
+                    <label for="name" class="form-label font-weight-lighter">Name*</label>
+                    <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the dish name" name="name"
                         value="{{ old('name', $newDish->name) }}" required>
                         @error('name')
                         <div class="alert alert-danger">
@@ -16,8 +16,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description*</label>
-                    <textarea class="form-control" id="description" placeholder="Insert the dish description" name="description" rows="3">{{ old('description', $newDish->description) }}</textarea>
+                    <label for="description" class="form-label font-weight-lighter">Description*</label>
+                    <textarea class="form-control border-0 mb-4 font-weight-lighter" id="description" placeholder="Insert the dish description" name="description" rows="3">{{ old('description', $newDish->description) }}</textarea>
                     @error('description')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -27,10 +27,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="dishPic" class="form-label">Dish Picture*</label>
+                    <label for="dishPic" class="form-label font-weight-lighter">Dish Picture*</label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
-                    <input type="file" class="form-control" id="dishPic" placeholder="Insert the dish picture"
+                    <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic"
                         @if ($method === 'POST')
                             required
@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" class="form-label">Price*</label>
-                    <input type="number" step=".01" class="form-control" id="price" placeholder="Insert the dish price"
+                    <label for="price" class="form-label font-weight-light">Price*</label>
+                    <input type="number" step=".01" class="form-control rounded-pill border-0 mb-4 font-weight-light" id="price" placeholder="Insert the dish price"
                         name="price" value="{{ old('price', $newDish->price) }}" min="0.01">
                         @error('price')
                         <div class="alert alert-danger">
@@ -60,7 +60,7 @@
                         checked
                     @endif
                     value="0">
-                    <label class="form-check-label" for="available">
+                    <label class="form-check-label font-weight-light" for="available">
                         Available
                     </label>
                 </div>
@@ -70,7 +70,7 @@
                         checked
                     @endif
                     value="1">
-                    <label class="form-check-label" for="notAvailable">
+                    <label class="form-check-label font-weight-light" for="notAvailable">
                         Not Available
                     </label>
                 </div>
@@ -79,7 +79,7 @@
                     {{ $message }}
                 </div>
                 @enderror
-                <button type="submit" class="btn btn-warning mt-3 rounded-pill">{{ $submit }}</button>
+                <button type="submit" class="btn btn-warning mt-5 rounded-pill px-5">{{ $submit }}</button>
             </form>
         </div>
     </div>
