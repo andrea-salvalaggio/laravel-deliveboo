@@ -57,8 +57,8 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item my-btn rounded-pill py-1 px-4 mr-3 my-btn-shadow  mt-2 mt-md-0 text-center">
-                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                            <li class="nav-item btn btn-outline-secondary rounded-pill py-1 px-4 mr-3 mt-2 mt-md-0 text-center">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Log In') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-2 mt-md-0 text-center ">
