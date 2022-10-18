@@ -3,9 +3,13 @@
 @section('content')
 <div class="container" id="restaurant">
     <div class="row mt-1 align-items-center">
+<<<<<<< HEAD
         <div class="col-md-5 col-6">
             <h1>{{ $restaurants->name }}</h1>
         </div>
+=======
+        <div class="col-md-5 col-6"><h1 class="font-weight-bolder">{{ $restaurants->name }}</h1></div>
+>>>>>>> Table
         <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
             @forelse ($restaurants->categories as $category)
             <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow mx-3" style="background-color: {{ $category->color }}">{{ $category->name }}</span>
