@@ -3,14 +3,14 @@
     <!-- banner -->
 
     <!-- categorie -->
-    <div class="container-lg">
-      <div class="row"> 
-        <div class="col-3 my-4" v-for="category in categories" :key="category.id">
+    <div class="container-fluid slider">
+      <div class="row flex-nowrap "> 
+        <div class="col-6 col-md-2 my-4" v-for="category in categories" :key="category.id">
           <div class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"  :id="'categoria'+category.id"
               @click="activeCard(category)" >
               {{ category.name }}
           </div>
-         </div>
+        </div>
       </div>
     </div>
 
@@ -74,5 +74,29 @@ export default {
     .active-card{
         background-color: $primaryColor;
         color: white;
-    } 
+    }
+    .slider{
+      width: 100%;
+      height: 200px;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        height: 5px;
+        border-radius: 5px;
+
+      }
+
+    /* Track */
+        &::-webkit-scrollbar-track {
+          background: transparent;
+          
+        }
+
+    /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: $primaryColor;
+          border-radius: 5px;
+        }
+    }
+    
+  
 </style>
