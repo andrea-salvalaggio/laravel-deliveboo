@@ -1,17 +1,19 @@
 <template>
   <footer class="p-5">
     <div class="container-lg">
-      <div class="row">
+      <div class="row justify-content-between">
 
         <!-- Colonna logo -->
-        <div class="col-3 mt-5">
+        <div class="col-3 mt-5 img-container">
 
           <!-- Logo AL MOMENTO PLACEHOLDER -->
-          <img src="https://media.discordapp.net/attachments/1027584701415833620/1032191239577153586/deliveboo-logo-invert-desktop.png" alt="logo" />
+          <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1032191240126611536/deliveboo-logo-invert-mobile.png" alt="logo" class="d-lg-none" />
+          <img src="https://media.discordapp.net/attachments/1027584701415833620/1032191239577153586/deliveboo-logo-invert-desktop.png" alt="logo" 
+          class="d-none d-lg-block" />
         </div>
 
         <!-- Colonna join us -->
-        <div class="col-3 mb-5">
+        <div class="col-6 col-md-3 mb-5">
           <!-- Links -->
           <h5 class="text-uppercase font-weight-bold h4">join us</h5>
           <ul class="list-unstyled">
@@ -31,7 +33,7 @@
         </div>
 
         <!-- Colonna Let us help you -->
-        <div class="col-3 mb-5">
+        <div class="col-6 col-md-3 mb-5">
           <!-- Links -->
           <h5 class="text-uppercase font-weight-bold h4">let us help you</h5>
 
@@ -49,7 +51,7 @@
         </div>
 
         <!-- Colonna Follow us -->
-        <div class="col-3 mb-5">
+        <div class="col-6 col-md-3 mb-5">
           <!-- Links 3 -->
           <h5 class="text-uppercase font-weight-bold h4">follow us</h5>
 
@@ -94,6 +96,16 @@ export default {};
 
 footer {
   background-color: $footerColor;
+
+  .img-container{
+    img{
+      width: 100%;
+    }
+    .d-lg-none{
+      max-width: 72px;
+      min-width: 72px;
+    }
+  }
 }
 
 .divisor {
