@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="dishPic" class="form-label">Dish Picture*</label>
+                    <label for="dishPic" class="form-label">Picture*</label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
                     <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="dishPic" placeholder="Insert the dish picture"
