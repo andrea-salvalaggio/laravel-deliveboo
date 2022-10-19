@@ -15,14 +15,13 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::paginate(4);
+        $restaurants = Restaurant::paginate(6);
         return response()->json([
             'response' => true,
             'count' => count($restaurants),
             'results' => $restaurants
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *

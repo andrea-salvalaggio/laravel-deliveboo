@@ -14,21 +14,30 @@
       </div>
     </div>
 
+    <!-- Ristoranti -->
+    <div class="container-lg pt-5">
+      <div class="row flex-wrap">
+        <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import RestaurantCard from '../components/RestaurantCard.vue';
 
 export default {
   components:{
-  },
+    RestaurantCard
+},
   data: function(){
     return{
       categories: [],
       currentActive: '',
       isClicked: false,
       idCategory: null,
+      restaurants: [],
     }
   },
   methods:{
@@ -51,10 +60,21 @@ export default {
       this.currentActive= document.getElementById('categoria'+this.idCategory).classList.add('active-card')
 
       console.log(this.idCategory)
-    }
+    },
+
+    getRestaurants(){
+            axios.get(`/api/restaurant`)
+            .then((response) => {
+                console.log(response.data.results.data);
+                this.restaurants = response.data.results.data;
+            }).catch((error) => {
+                console.error(error)
+            });
+        }
   },
   created(){
-    this.ApiCallAllCategories()
+    this.ApiCallAllCategories();
+    this.getRestaurants()
   }
 }
 </script>
