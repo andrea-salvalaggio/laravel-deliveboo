@@ -71,10 +71,10 @@ class RestaurantController extends Controller
         $categories = Category::all();
         $restaurants = Auth::user()->restaurant;
         if ($restaurants === null) {
-            return redirect()->route('admin.restaurant.create');
+            return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
         } else {
             $dishes = Dish::where('restaurant_id', Auth::id())->orderBy('name', 'asc')->get();
-            return view('admin.restaurant.index', compact(['restaurants', 'dishes']));
+            return view('admin.dish.errors.accessDenied', compact(['restaurants', 'dishes']));
         }
         // return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
 
