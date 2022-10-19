@@ -69,7 +69,14 @@ class RestaurantController extends Controller
         //
         $newRestaurant = new Restaurant();
         $categories = Category::all();
-        return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
+        $restaurants = Auth::user()->restaurant;
+        if ($restaurants === null) {
+            return redirect()->route('admin.restaurant.create');
+        } else {
+            $dishes = Dish::where('restaurant_id', Auth::id())->orderBy('name', 'asc')->get();
+            return view('admin.restaurant.index', compact(['restaurants', 'dishes']));
+        }
+        // return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
 
     }
 
