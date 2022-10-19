@@ -1,6 +1,6 @@
 <template>
   <section>
-      <div class="banner-container">
+      <div class="banner-container d-flex justify-content-center">
           <img class="img-fluid" :src="restaurant.restaurantPic" :alt="restaurant.name">
       </div>
 
@@ -47,5 +47,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.banner-container{
+  img{
+    border-radius: 30px;
+  }
+  
+}
 </style>

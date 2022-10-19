@@ -99,19 +99,7 @@ input[type=number] {
     }
 }
 
-input::placeholder {
-    font-size: 0.8rem;
-}
-
-textarea::placeholder {
-    font-size: 0.8rem;
-}
-
 #dishPic{
-    font-size: 0.8rem;
-}
-
-#remember{
     font-size: 0.8rem;
 }
 
@@ -137,6 +125,18 @@ ul{
     color: $secondaryColor;
 
     &:hover{
-        color: $primaryColor;
+        color: $secondaryColor;
     }
+}
+
+.user-pill{
+    background-color: white;
+    box-shadow: 5px 3px 20px rgba(0, 0, 0, 0.1);
+    a{
+        font-size: 0.9rem;
+    }
+}
+
+.my-user-name{
+    color: $primaryColor;
 }
