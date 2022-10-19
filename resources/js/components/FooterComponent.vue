@@ -1,11 +1,9 @@
 <template>
   <footer class="p-5">
-    <div class="container-lg">
+    <div class="container-lg my-5">
       <div class="row justify-content-between">
-
         <!-- Colonna logo -->
         <div class="col-3 img-container">
-
           <!-- Logo -->
           <img
             src="https://cdn.discordapp.com/attachments/1027584701415833620/1032191240126611536/deliveboo-logo-invert-mobile.png"
@@ -20,7 +18,7 @@
         </div>
 
         <!-- Colonna join us -->
-        <div class="col-6 col-md-3 mb-5">
+        <div class="col-6 col-md-3">
           <!-- Links -->
           <h5 class="text-uppercase font-weight-bold h4">join us</h5>
           <ul class="list-unstyled">
@@ -40,7 +38,7 @@
         </div>
 
         <!-- Colonna Let us help you -->
-        <div class="col-6 col-md-3 mb-5">
+        <div class="col-6 col-md-3">
           <!-- Links -->
           <h5 class="text-uppercase font-weight-bold h4">let us help you</h5>
 
@@ -58,7 +56,7 @@
         </div>
 
         <!-- Colonna Follow us -->
-        <div class="col-6 col-md-3 mb-5">
+        <div class="col-6 col-md-3">
           <!-- Links 3 -->
           <h5 class="text-uppercase font-weight-bold h4">follow us</h5>
 
@@ -77,17 +75,19 @@
       </div>
 
       <!-- Divisore -->
-      <div class="col-12 divisor"></div>
+      <div class="col-12 divisor my-5"></div>
 
       <!-- Copyright -->
-      <div class="copyright-container d-flex justify-content-between mt-4">
+      <div class="copyright-container d-flex justify-content-between">
         <div class="footer-copyright">
-          <p>© All right reserved Made &#129505; by Team 4 - Class #67</p>
+          <p class="m-0">
+            © All right reserved Made &#129505; by Team 4 - Class #67
+          </p>
         </div>
         <div class="footer-copyright-links">
-          <p>
-            <a class="mx-2" href="#!">Privacy Policy</a> |
-            <a class="mx-2" href="#!">Terms & condition</a> |
+          <p class="m-0">
+            <a class="mx-2" href="#!">Privacy Policy</a><span class="pipe-line">|</span>
+            <a class="mx-2" href="#!">Terms & condition</a><span class="pipe-line">|</span>
             <a class="mx-2" href="#!">Cookies Policy</a>
           </p>
         </div>
@@ -118,7 +118,7 @@ footer {
 }
 
 .divisor {
-  border-bottom: 1px solid white;
+  border-bottom: 0.5px solid #999999;
 }
 
 a {
@@ -136,6 +136,21 @@ h5 {
 .copyright-container {
   p {
     font-size: 0.7rem;
+    font-weight: 300;
   }
 }
+
+.pipe-line{
+  color: #999999;
+}
+
+// .text-title {
+//   display: inline-block;
+//   margin-left: 45px;
+//   -webkit-transform: scale(2, 1);
+//   -moz-transform: scale(2, 1);
+//   -o-transform: scale(2, 1);
+//   transform: scale(2, 1);
+// }
+
 </style>
