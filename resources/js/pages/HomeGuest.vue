@@ -7,7 +7,7 @@
       <div class="container-lg">
         <div class="row">
           <div class="col-8">
-            <h1 class="text-white big-title">Restaurant <span>Food</span>, takeaway and groceries <span>Delivered.</span></h1>
+            <h1 class="text-white big-title">Restaurant <span>Food</span>, takeaway and groceries <span>Delivered</span>.</h1>
           </div>
         </div>
       </div>
