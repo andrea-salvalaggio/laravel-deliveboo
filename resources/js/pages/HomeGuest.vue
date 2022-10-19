@@ -1,6 +1,10 @@
 <template>
   <div class="main-container">
     <!-- banner -->
+    <!-- <div class="container-fluid">
+      <img src="/images/jumbotron.jpg" alt="">
+    </div> -->
+
 
     <!-- categorie -->
     <div class="container-fluid slider">

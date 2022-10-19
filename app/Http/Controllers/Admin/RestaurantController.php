@@ -144,6 +144,7 @@ class RestaurantController extends Controller
             'address' => 'required|min:6|max:80, deve contenere un numero',
             'open' => 'required|date_format:H:i',
             'close' => 'required|date_format:H:i',
+            'restaurantPic' => 'image',
             'categories' => 'required'
         ], $this->validateDateMsgs);
 
