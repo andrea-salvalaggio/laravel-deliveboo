@@ -2,18 +2,20 @@
 
 @section('content')
     <div class="container-lg my-5">
-        @if (session('edited'))
+        <div class="col-lg-6 col-md-6 col-sm-10 mx-auto mb-4">
+            @if (session('edited'))
             <div class="alert alert-success" role="alert">
                 <span class="text-capitalize">{{ session('edited') }}</span>
             </div>
-        @endif
+            @endif
 
-        @if (session('created'))
-            <div class="alert alert-success" role="alert">
-                <span class="text-capitalize">{{ session('created') }}</span>
-            </div>
-        @endif
-
+            @if (session('created'))
+                <div class="alert alert-success" role="alert">
+                    <span class="text-capitalize">{{ session('created') }}</span>
+                </div>
+            @endif
+        </div>
+        
         <div class="card col-lg-6 col-md-6 col-sm-10 my-rounded my-shadow mx-auto border-0">
             {{-- @dd(asset('/' . $dish->dishPic)) --}}
 
