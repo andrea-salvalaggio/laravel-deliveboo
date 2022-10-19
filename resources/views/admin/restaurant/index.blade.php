@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" id="restaurant">
-
+        
         @if (session('delete'))
             <div class="alert alert-danger" role="alert">
                 <span class="text-capitalize">{{ session('delete') }}</span>
