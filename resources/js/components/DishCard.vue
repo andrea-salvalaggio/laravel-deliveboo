@@ -2,7 +2,7 @@
     <div class="col-4">
         <div class="dish-card d-flex align-items-end flex-wrap ">
             <div class="col-12 img-container">
-                <img class="img-fluid image" :src="dish.dishPic" :alt="dish.name">
+                <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name">
             </div>
 
             <div class="d-flex justify-content-between align-items-center w-100 mt-3">
@@ -37,6 +37,17 @@ export default {
             required: true,
         },
     },
+    methods:{
+        checkUrl(img){
+            console.log()
+            if(img.includes('http')){
+                return img
+            }else{
+              return '/storage/'+img
+            }
+        },
+    
+    }
 }
 </script>
 
