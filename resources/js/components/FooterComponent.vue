@@ -105,6 +105,7 @@ footer {
 
 a {
   color: $secondaryColor;
+  text-decoration: none;
   font-weight: 300;
 }
 
