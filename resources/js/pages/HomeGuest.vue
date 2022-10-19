@@ -163,7 +163,7 @@ export default {
   top: 200px;
   font-size: 3.5rem;
   line-height: 4.8rem;
-  font-weight: 600;
+  font-weight: 500;
   
   span{
     color: $primaryColor;
