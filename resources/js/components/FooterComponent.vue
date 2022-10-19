@@ -6,8 +6,8 @@
         <!-- Colonna logo -->
         <div class="col-3 mt-5">
 
-          <!-- Logo -->
-          <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo" />
+          <!-- Logo AL MOMENTO PLACEHOLDER -->
+          <img src="https://media.discordapp.net/attachments/1027584701415833620/1032191239577153586/deliveboo-logo-invert-desktop.png" alt="logo" />
         </div>
 
         <!-- Colonna join us -->
