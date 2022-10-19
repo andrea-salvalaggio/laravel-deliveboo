@@ -26,7 +26,7 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description*</label>
-                    <textarea class="form-control border-0 mb-4 font-weight-lighter" id="description" placeholder="Insert the dish description" name="description" rows="3">{{ old('description', $newDish->description) }}</textarea>
+                    <textarea class="form-control border-0 mb-4 font-weight-lighter" id="description" placeholder="Insert the dish description" name="description" rows="3" required>{{ old('description', $newDish->description) }}</textarea>
                     @error('description')
                     <div class="alert alert-danger">
                         {{ $message }}
