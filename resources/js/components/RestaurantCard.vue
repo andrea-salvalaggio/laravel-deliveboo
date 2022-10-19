@@ -1,17 +1,14 @@
 <template>
     <div class="col-6 col-md-4 my-3">
-        <div class="card-container bg-white my-rounded my-shadow">
-            <div class="img-container">
-                <img class="my-rounded" :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name">
+        <a :href="'/HomeRestaurant/'+restaurant.id">
+            <div class="card-container bg-white my-rounded my-shadow">
+                <div class="img-container">
+                    <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name">
+                </div>
+                <h4 class="p-4">{{restaurant.name}}</h4>
             </div>
-        </div>
+        </a>
     </div>
-<!--  @if (filter_var($restaurants->restaurantPic, FILTER_VALIDATE_URL))
-        <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-5">
-        @else
-        <img src="{{ asset('storage/' . $restaurants->restaurantPic) }}" alt="{{ $restaurants->name }} photo"
-            class="rounded-5">
-@endif -->
 </template>
 <script>
 import axios from 'axios'
@@ -44,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 .card-container {
     width: 95%;
-
+    cursor: pointer;
     .img-container {
         height: 174px;
         width: 100%;
@@ -52,7 +49,16 @@ export default {
             width: 100%;
             height: 174px;
             object-fit: cover;
+            border-radius: 30px 30px 0 0;
         }
     }
+    h4{
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 </style>
