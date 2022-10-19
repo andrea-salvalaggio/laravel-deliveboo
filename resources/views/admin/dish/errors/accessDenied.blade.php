@@ -9,11 +9,15 @@
 
     <h1 class="text-center">Access Denied</h1>
     <div class="text-error text-center">Sorry, but you are not allowed to enter this section.</div>
-    <div class="text-center">
-        <div class="button btn btn-warning mt-5 rounded-pill px-5 mb-5 white">
-            <a class="nav-link px-0" href="/">Go Home</a>
+
+    <div class="">
+        <div class="mx-auto w-25">
+            <div class="my-btn my-btn-shadow mt-5 rounded-pill text-center">
+                <a class="nav-link px-0" href="/">Go Home</a>
+            </div>
         </div>
     </div>
+
 
 
 @endsection
