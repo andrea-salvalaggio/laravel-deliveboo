@@ -4,7 +4,7 @@
 
     <!-- categorie -->
     <div class="container-fluid slider">
-      <div class="row flex-nowrap "> 
+      <div class="row flex-nowrap ">
         <div class="col-6 col-md-2 my-4" v-for="category in categories" :key="category.id">
           <div class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"  :id="'categoria'+category.id"
               @click="activeCard(category)" >
@@ -31,7 +31,7 @@ export default {
     }
   },
   methods:{
-    //! funzione per effettuare la chiamata 
+    //! funzione per effettuare la chiamata
     ApiCallAllCategories(){
       axios.get('/api/category')
       .then((result)=>{
@@ -86,7 +86,7 @@ export default {
     /* Track */
         &::-webkit-scrollbar-track {
           background: transparent;
-          
+
         }
 
     /* Handle */
