@@ -122,6 +122,8 @@ export default {
       width: 100%;
       height: 900px;
       background-image: url('../../images/jumbotron.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
     }
 </style>
