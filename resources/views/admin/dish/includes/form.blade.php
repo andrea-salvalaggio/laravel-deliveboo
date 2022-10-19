@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" class="form-label">Price*</label>
+                    <label for="price" class="form-label">Price € *</label>
                     <input type="number" step=".01" class="form-control rounded-pill border-0 mb-4 font-weight-light" id="price" placeholder="Insert the dish price"
                         name="price" value="{{ old('price', $newDish->price) }}" min="0.01">
                         @error('price')
