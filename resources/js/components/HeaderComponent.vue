@@ -1,5 +1,5 @@
 <template>
-    <header class="position-fixed w-100">
+    <header class="position-fixed w-100 bg-light">
         <div class="position-relative w-100">
             <div class="container-lg ">
                 <div class="row justify-content-between py-4 px-md-0 px-2 align-content-center">
@@ -194,6 +194,8 @@
         right: 30px;
         bottom: -80px;
     }
-
+    header{
+        z-index: 3;
+    }
 
  </style>
