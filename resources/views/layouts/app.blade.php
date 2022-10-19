@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,700&display=swap" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -125,6 +125,27 @@
         document.querySelector('[name=submit]').addEventListener('click', () => {
             validationCheck()
         });
+
+        let password = getElementById('password');
+        let passwordToMatch = getElementById('password-confirm');
+        let signUpBtn = getElementById('sign-up-button');
+
+        signUpBtn.addEventListener('click', ()=> {checkIfPswMatch});
+
+        function checkIfPswMatch(){
+
+            if(password.value != passwordToMatch.value){
+                console.error('Password did not match, please try again');
+            }
+            else if(password.value == ''){
+                console.error('Please enter password');
+            }
+            else if(passwordToMatch.value == ''){
+                console.error('Please enter password to confirm');
+            }
+        }
+
+         signUpBtn.addEventListener('click', ()=> {checkIfPswMatch});
     </script>
 </body>
 </html>

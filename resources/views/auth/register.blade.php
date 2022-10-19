@@ -75,10 +75,9 @@
                                 <input id="password-confirm" type="password" class="py-4 border-0 px-4 my-rounded bg-light form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password*">
                             </div>
                         </div>
-
                         <div class="form-group row mb-5">
                             <div class="col-md-10 mx-auto">
-                                <button type="submit" class="btn my-btn w-100 my-rounded py-3 my-btn-shadow">
+                                <button id="sing-up-button" type="submit" class="btn my-btn w-100 my-rounded py-3 my-btn-shadow">
                                     {{ __('Sign up') }}
                                 </button>
                             </div>
