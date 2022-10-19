@@ -1,5 +1,5 @@
 <template>
-    <div class="col-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3">
         <a :href="'/HomeRestaurant/'+restaurant.id">
             <div class="card-container bg-white my-rounded my-shadow">
                 <div class="img-container">

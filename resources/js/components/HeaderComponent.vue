@@ -2,7 +2,7 @@
     <header class="position-fixed w-100 bg-light">
         <div class="position-relative w-100">
             <div class="container-lg ">
-                <div class="row justify-content-between py-4 px-md-0 px-2 align-content-center">
+                <div class="row justify-content-between px-md-0 px-2 align-content-center">
                     <div class="col-4">
                         <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" alt="logo image" class="d-md-block d-none">
                         <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none">
@@ -196,6 +196,12 @@
     }
     header{
         z-index: 3;
+        height: 105.25px;
+        display: flex;
+        align-items: center;
+        img{
+            height: 41.25px;
+        }
     }
 
  </style>
