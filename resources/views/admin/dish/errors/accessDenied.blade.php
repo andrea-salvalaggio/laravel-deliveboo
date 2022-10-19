@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex">
         <div class="container-fluid myBackground text-center align-self-center">
-            <img class="col-xs-4 col-sm-4 col-md-3 col-lg-2 col-xl-2 error-image pt-3" src="{{ asset('images/hamburger.png') }}" alt="no pass">
+            <img class="error-img-responsive pt-3" src="{{ asset('images/hamburger.png') }}" alt="no pass">
         </div>
     </div>
 

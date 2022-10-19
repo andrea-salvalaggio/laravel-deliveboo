@@ -153,17 +153,15 @@ ul{
     margin-bottom: 0px;
 }
 
-.error-image{
-    size: 70%;
-}
 
 h1{
-    padding-top: 80px;
+    margin-top: 150px;
     font-size: 2em;
     font-family: 'Poppins';
 }
 
 text-error{
+    margin-top: 150px;
     font-size: 1em;
     font-family: 'Poppins';
 }
@@ -172,4 +170,10 @@ text-error{
 .my-btn-errorpage{
     width: 150px;
 }
+
+.error-img-responsive {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
 
