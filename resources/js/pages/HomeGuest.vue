@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <!-- banner -->
 
     <!-- categorie -->
@@ -28,7 +28,6 @@ export default {
       currentActive: '',
       isClicked: false,
       idCategory: null,
-      activeClass: '',
     }
   },
   methods:{
@@ -51,7 +50,6 @@ export default {
       this.currentActive= document.getElementById('categoria'+this.idCategory).classList.add('active-card')
 
       console.log(this.idCategory)
-      /* if(this.currentActive == this.idCategory &&) */
     }
   },
   created(){
@@ -97,6 +95,7 @@ export default {
           border-radius: 5px;
         }
     }
-    
-  
+  .main-container{
+    height: 110vh;
+  }
 </style>
