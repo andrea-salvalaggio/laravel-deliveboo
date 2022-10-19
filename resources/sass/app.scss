@@ -25,7 +25,7 @@ body{
     .small-badge{
         font-size: 0.9rem;
     }
-    
+
     //! stile delle carte nel backoffice
     .my-card{
         background-color: white;
@@ -139,4 +139,31 @@ ul{
 
 .my-user-name{
     color: $primaryColor;
+}
+
+/* style per la pagina di errore */
+.myBackground{
+    background-image: url("../images/bg_error.jpg");
+    width: 100vw;
+    background-size: cover;
+    height: 25vh;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin-top: -60px;
+    margin-bottom: 0px;
+}
+
+.error-image{
+    size: 70%;
+}
+
+h1{
+    padding-top: 80px;
+    font-size: 2em;
+    font-family: 'Poppins';
+}
+
+text-error{
+    font-size: 1em;
+    font-family: 'Poppins';
 }
