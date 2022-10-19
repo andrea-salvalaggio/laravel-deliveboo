@@ -5,7 +5,7 @@
 
 
     <!-- categorie -->
-    <div class="container-fluid slider">
+    <div class="container-fluid slider mt-3">
       <div class="row flex-nowrap ">
         <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
           <div class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"  :id="'categoria'+category.id"
