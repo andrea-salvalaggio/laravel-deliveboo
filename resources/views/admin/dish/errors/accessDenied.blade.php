@@ -13,7 +13,7 @@
     <div class="">
         <div class="mx-auto my-btn-errorpage">
             <div class="my-btn my-btn my-btn-shadow mt-5 p-1 rounded-pill text-center">
-                <a class="nav-link px-0 white" href="/">Go Home</a>
+                <a class="nav-link px-0 text-white" href="/">Go Home</a>
             </div>
         </div>
     </div>
