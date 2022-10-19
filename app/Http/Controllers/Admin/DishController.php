@@ -66,7 +66,7 @@ class DishController extends Controller
         $sentData['dishPic']= Storage::put('uploads', $sentData['dishPic']);
         $sentData['restaurant_id'] = Auth::user()->restaurant->id;
         $newDish = $newDish->create($sentData);
-        return redirect()->route('admin.dish.show', $newDish->id)->with('created', $newDish->name);
+        return redirect()->route('admin.dish.show', $newDish->id)->with('created' , 'The dish ' . '"' . $sentData['name'] . '"' . ' has been created!');
     }
 
     /**
@@ -133,7 +133,7 @@ class DishController extends Controller
             $sentData['dishPic'] = $dish->dishPic;
         }
         $dish = $dish->update($sentData);
-        return redirect()->route('admin.dish.show', $id);
+        return redirect()->route('admin.dish.show', $id)->with('edited' , 'The dish ' . '"' . $sentData['name'] . '"' . ' has been edited!');
     }
 
     /**
@@ -147,6 +147,6 @@ class DishController extends Controller
         //
         $dish=Dish::findOrFail($id);
         $dish->delete();
-        return redirect()->route('admin.restaurant.index')->with('delete' , 'The dish ' . $dish->name . ' has been deleted!');
+        return redirect()->route('admin.restaurant.index')->with('delete' , 'The dish ' . '"' . $dish->name . '"' . ' has been deleted!');
     }
 }

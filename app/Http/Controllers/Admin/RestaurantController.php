@@ -99,7 +99,7 @@ class RestaurantController extends Controller
         $newRestaurant->restaurantPic = Storage::put('uploads/user', $sentData['restaurantPic']);
         $newRestaurant->save();
         $newRestaurant->categories()->sync($sentData['categories']);
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurant.index')->with('created' , 'The restaurant ' . '"' . $sentData['name'] . '"' . ' has been created!');
     }
 
     /**
@@ -161,7 +161,7 @@ class RestaurantController extends Controller
 
         $newRestaurant->categories()->sync($sentData['categories']);
         $newRestaurant = $newRestaurant->update($sentData);
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurant.index')->with('edited' , 'The restaurant ' . '"' . $sentData['name'] . '"' . ' has been edited!');
     }
 
     /**
