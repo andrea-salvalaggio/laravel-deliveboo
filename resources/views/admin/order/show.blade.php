@@ -10,7 +10,7 @@
                 <p class="card-text text-capitalize">Other info: &nbsp;{{ $order->description }}</p>
                 <hr class="my-4">
                 <p class="mb-0">Total Price: <span class="card-text font-weight-bolder h4 align-botton">&nbsp;€ {{ $order->price }}</span></p>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-12 p-0 mt-5">
                         <form action="{{ route('admin.order.destroy', $order->id) }}" method="POST" class="btn-delete">
                             @csrf
@@ -18,7 +18,7 @@
                             <button type="submit" class="btn my-btn-danger w-100 rounded-pill text-white my-btn-shadow">Delete</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
