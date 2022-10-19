@@ -1,15 +1,13 @@
 <template>
-  <div class="main-container">
+  <div>
     <!-- banner -->
-    <!-- <div class="container-fluid">
-      <img src="/images/jumbotron.jpg" alt="">
-    </div> -->
+    <div class="container-jumbo d-none d-lg-block"></div>
 
 
     <!-- categorie -->
     <div class="container-fluid slider">
       <div class="row flex-nowrap ">
-        <div class="col-6 col-md-2 my-4" v-for="category in categories" :key="category.id">
+        <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
           <div class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"  :id="'categoria'+category.id"
               @click="activeCard(category)" >
               {{ category.name }}
@@ -120,7 +118,10 @@ export default {
           border-radius: 5px;
         }
     }
-  .main-container{
-    height: 110vh;
-  }
+    .container-jumbo{
+      width: 100%;
+      height: 900px;
+      background-image: url('../../images/jumbotron.jpg');
+      background-position: center;
+    }
 </style>
