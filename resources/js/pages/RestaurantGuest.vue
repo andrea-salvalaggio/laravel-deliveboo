@@ -72,7 +72,7 @@
                       {{ cartItem.name }}
                     </div>
                     <div class="col-3">
-                      Qt. {{ cartItem.quantity }}
+                      € {{ cartItem.price }}
                     </div>
                   </div>
               </div>
@@ -107,14 +107,14 @@ export default {
 
         //! funzione che pusha in un array i piatti selezionati
         addToCart(dish){
-          if(this.cart.find(element => element.id = dish.id)){
-            this.cart.find(element => element.id = dish.id).quantity++
+          /* if(this.cart.includes(dish)){
+            console.log(this.cart.quantity)
           }
-          else{
-            dish.quantity = 1
+          else{ */
+            /* dish.quantity = 1 */
             this.cart.push(dish)
-          }
-          console.log(this.cart)
+            console.log(this.cart)
+          /* } */
         },
 
         //! funzione che controlla il path delle immagini se sono link o immagini caricate
