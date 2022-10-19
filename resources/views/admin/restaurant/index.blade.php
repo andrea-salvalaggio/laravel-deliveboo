@@ -249,18 +249,18 @@
                         <div class="col-4 font-weight-lighter px-0">€ {{ $order->price }}</div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-6 py-2 text-center">
+                        <div class="col-12 py-2 text-center">
                             <a href="{{ route('admin.order.show' , $order->id) }}"
                             class="btn my-btn-primary rounded-pill w-100 text-white my-btn-shadow p-2">View</a>
                         </div>
-                        <div class="col-6 py-2 text-center">
+                        {{-- <div class="col-6 py-2 text-center">
                             <form action="{{ route('admin.order.destroy' , $order->id) }}" method="POST" class="btn-delete">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn my-btn-danger rounded-pill w-100 text-white my-btn-shadow p-2">Delete</button>
     
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
