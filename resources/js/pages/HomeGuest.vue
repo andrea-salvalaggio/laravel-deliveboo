@@ -120,7 +120,4 @@ export default {
           border-radius: 5px;
         }
     }
-  .main-container{
-    height: 110vh;
-  }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section>
       <div class="banner-container d-flex justify-content-center">
-          <img class="img-fluid" :src="restaurant.restaurantPic" :alt="restaurant.name">
+          <img :src="restaurant.restaurantPic" :alt="restaurant.name">
       </div>
 
       <div class="container">
@@ -9,7 +9,6 @@
           <div class="col-12 text-center my-5">
             <h2>Restaurant Menu</h2>
             <div class="menu-container d-flex flex-wrap">
-              <DishCard v-for="dish in restaurant.dishes" :key="dish.id" :dish="dish"/>
               <DishCard v-for="dish in restaurant.dishes" :key="dish.id" :dish="dish"/>
             </div>
           </div>
@@ -53,7 +52,9 @@ export default {
 .banner-container{
   img{
     border-radius: 30px;
+    width: 100%;
   }
-  
+  width: 1266px;
+  margin: 0 auto;
 }
 </style>

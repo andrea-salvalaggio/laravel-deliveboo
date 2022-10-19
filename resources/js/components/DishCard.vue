@@ -1,11 +1,11 @@
 <template>
     <div class="col-4">
         <div class="dish-card d-flex align-items-end flex-wrap ">
-            <div class="col-12 img-container mt-3">
+            <div class="col-12 img-container">
                 <img class="img-fluid image" :src="dish.dishPic" :alt="dish.name">
             </div>
 
-            <div class="d-flex justify-content-between align-items-center w-100">
+            <div class="d-flex justify-content-between align-items-center w-100 mt-3">
                 <div>
                     <div class="text-left font-weight-bold col-12 text-capitalize px-4">
                         {{ dish.name }}
@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <div class="add-button-container mx-3">
+                <div class="add-button-container mx-3 mb-3">
                     <div class="add-button">
                         +
                     </div>
@@ -54,10 +54,15 @@ export default {
 }
 
 .img-container {
-    height: 200px;
-
+    padding: 0;
+    margin: 0;
+    width: 334px;
+    height: 250px;
     .image {
         object-fit: contain;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        height: 100%;
     }
 }
 
