@@ -1,20 +1,6 @@
 <template>
     <section>
-        <!--       <div class="banner-container d-flex justify-content-center">
-          <img :src="restaurant.restaurantPic" :alt="restaurant.name">
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center my-5">
-            <h2>Restaurant Menu</h2>
-            <div class="menu-container d-flex flex-wrap">
-              <DishCard v-for="dish in restaurant.dishes" :key="dish.id" :dish="dish"/>
-            </div>
-          </div>
-        </div>
-      </div> -->
-        <!-- junbo -->
+        <!-- jumbo -->
         <div class="jumbo">
             <img :src="restaurant.restaurantPic" :alt="restaurant.name + 'photo'">
         </div>
@@ -34,7 +20,7 @@
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
                         <div class="row mt-5">
                             <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
-                                <div class="dish-card row d-flex align-items-end flex-wrap mx-auto my-shadow">
+                                <div class="dish-card row d-flex align-items-end flex-wrap mx-auto my-shadow" :class="dish.visible == 1 ? 'grey-filter' : ''">
                                     <div class="col-12 img-container ">
                                         <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name">
                                     </div>
@@ -49,7 +35,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="add-button-container mx-3 mb-3" @click="addToCart(dish)">
+                                        <div class="add-button-container mx-3 mb-3" @click="addToCart(dish)" :class="dish.visible==1 ? 'd-none' : ''">
                                             <div class="add-button">
                                                 +
                                             </div>
@@ -64,21 +50,27 @@
                 <!-- Carrello -->
                 <div class="col-lg-4 col-12">
                     <div class="menu-container m-0 my-rounded py-4 px-5 mx-auto ">
-                      <div class="row border-bottom align-items-center">
-                        <div class="col-8">
-                          <h3 class="text-capitalize  py-4 m-0"><i class="fa-solid fa-cart-shopping"></i>
-                              cart
-                          </h3>
+                        <div class="row border-bottom align-items-center">
+                            <div class="col-8">
+                                <h3 class="text-capitalize  py-4 m-0"><i class="fa-solid fa-cart-shopping"></i>
+                                    cart
+                                </h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">Clear
+                                    Cart</button>
+                            </div>
                         </div>
-                        <div class="col-4">
-                          <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">Clear Cart</button>
-                        </div>
-                      </div>
                         <div class="row bg-white my-shadow my-rounded mt-5">
                             <div class="col-12  p-5">
                                 <div class="row cart">
+                                    <div class="col-12 restaurant-in-cart">
+                                        <h3>Your Order :</h3>
+                                    </div>
                                     <div class="col-12">
-                                        <div class="row" v-for="(cartItem , index) in cart" :key="index">
+                                        <div class="row border-bottom py-2" v-for="(cartItem , index) in cart"
+                                            :key="index">
+
                                             <div class="col-8 text-capitalize">
                                                 {{ cartItem.name }}
                                             </div>
@@ -86,16 +78,25 @@
                                                 € {{ cartItem.price }}
                                             </div>
                                             <div class="col-1 trash" @click='deleteSingleDish(cartItem, index)'>
-                                              <i class="fa-solid fa-trash-can"></i>
+                                                <i class="fa-solid fa-trash-can"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row" :class="length==0 ? 'd-none' : '' ">
+                                    <div class="col-8 text-capitalize">
+                                        total:
+                                    </div>
+                                    <div class="col-4">
+                                        €{{ total }}
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 text-center">
-                              <button class="btn btn-primary">invia</button>
+                                <button class="btn btn-primary">invia</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -111,7 +112,9 @@
             return {
                 restaurant: {},
                 cart: [],
-                counter: 0
+                counter: 0,
+                total: 0,
+                length:0
             };
         },
         methods: {
@@ -120,6 +123,8 @@
                     .then((response) => {
                         this.restaurant = response.data.results;
                         this.cart = JSON.parse(localStorage.getItem("cart"));
+                        this.length = this.cart.length
+                        this.total = localStorage.getItem("total")
                     }).catch((error) => {
                         console.warn(error);
                     });
@@ -127,51 +132,72 @@
 
             //! funzione che pusha in un array i piatti selezionati e li carica sul local storage
             addToCart(dish) {
-              //? fixa il local storage al primo avvio o al clear in quanto risulta null
-              if (this.cart == null) {
-                  this.cart = []
-              }
+                //? fixa il local storage al primo avvio o al clear in quanto risulta null
+                if (this.cart == null) {
+                    this.cart = []
+                }
 
-              //? se il carrello e' vuoto pusha il piatto
-              if(this.cart.length==0){
-                this.cart.push(dish)
-                localStorage.setItem("cart", JSON.stringify(this.cart));
-              }
-              //!  se il carrello non e' vuoto controlliamo che stiamo ordinando dallo stesso ristorante in caso contrario resettiamo il cart e pushamo il piatto
-              else if(this.cart[0].restaurant_id != this.$route.params.id){
-                const result =window.confirm('If you click add here we\'ll clear your cart, because our policy says "you can order from only one restaurant", Are you sure?')
-                if(result){
-                  this.cart=[]
-                  localStorage.clear();
-                  this.cart.push(dish)
-                  localStorage.setItem("cart", JSON.stringify(this.cart));
-                } 
-              }
-              //! pushamo il piatto aggiuntivo
-              else{
-                this.cart.push(dish)
-                localStorage.setItem("cart", JSON.stringify(this.cart));
-              }
+                //? se il carrello e' vuoto pusha il piatto
+                if (this.cart.length == 0) {
+                    this.cart.push(dish)
+                    this.length++
+                    localStorage.setItem("cart", JSON.stringify(this.cart));
+
+                }
+                //!  se il carrello non e' vuoto controlliamo che stiamo ordinando dallo stesso ristorante in caso contrario resettiamo il cart e pushamo il piatto
+                else if (this.cart[0].restaurant_id != this.$route.params.id) {
+                    const result = window.confirm(
+                        'If you click add here we\'ll clear your cart, because our policy says "you can order from only one restaurant", Are you sure?'
+                        )
+                    if (result) {
+                        this.cart = []
+                        localStorage.clear();
+                        this.cart.push(dish)
+                        this.length++
+                        localStorage.setItem("cart", JSON.stringify(this.cart));
+                    }
+                }
+                //! pushamo il piatto aggiuntivo
+                else {
+                    this.cart.push(dish)
+                    this.length++
+                    localStorage.setItem("cart", JSON.stringify(this.cart));
+                }
+
+                this.total = this.total+dish.price
+                localStorage.setItem('total', this.total)
+
             },
 
             //! clear del carrello
-            clearCart(){
-              //!popup per la conferma della cancellazione
-              if(this.cart != null  && this.cart.length>0){ 
-                const result =window.confirm('Are you sure?')
-                if(result){
-                  this.cart=[]
-                  localStorage.clear();
-                } 
-              }
-              else{
-                const alert= window.alert('No item on cart')
-              }
+            clearCart() {
+                //!popup per la conferma della cancellazione
+                if (this.cart != null && this.cart.length > 0) {
+                    const result = window.confirm('Are you sure?')
+                    if (result) {
+                        this.cart = []
+                        localStorage.clear();
+                        this.total = 0
+                        this.length= 0
+                    }
+                } else {
+                    const alert = window.alert('No item on cart')
+                }
             },
-            deleteSingleDish(dish, id){
-              this.cart.splice(id, 1)
-              localStorage.clear();
-              localStorage.setItem("cart", JSON.stringify(this.cart));
+            deleteSingleDish(dish, id) {
+                console.log(dish)
+                this.cart.splice(id, 1)
+                this.length--
+                localStorage.clear();
+                localStorage.setItem("cart", JSON.stringify(this.cart));
+                if(this.cart.length!=0){
+                    this.total = this.total - dish.price
+                }
+                else{
+                    this.total = 0
+                }
+                
+
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -234,7 +260,7 @@
     }
 
     .cart {
-        height: 400px;
+        height: 200px;
         overflow-y: scroll;
     }
 
@@ -274,7 +300,12 @@
         line-height: 40px;
         cursor: pointer;
     }
-    .trash{
-      cursor: pointer;
+
+    .trash {
+        cursor: pointer;
+    }
+    .grey-filter{
+          filter: grayscale(100%);
+
     }
 </style>
