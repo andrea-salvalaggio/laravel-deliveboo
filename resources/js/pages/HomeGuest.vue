@@ -39,7 +39,7 @@
         <!-- Ristoranti -->
         <div class="container-lg pt-5">
             <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
-            <div class="row flex-wrap mb-5">
+            <div class="row flex-wrap my-5">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
             </div>
         </div>
@@ -70,7 +70,7 @@
         <!-- Loghi brand -->
         <div class="container-lg">
             <h1 class="restaurant-title mb-3">Popular restaurant</h1>
-            <div class="row flex-row justify-content-between mb-5">
+            <div class="row flex-row justify-content-between my-5">
                 <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1"/>
                 </div>
