@@ -305,7 +305,7 @@
         cursor: pointer;
     }
     .grey-filter{
-          filter: grayscale(100%);
-
+        filter: grayscale(100%);
+        opacity: 0.5;
     }
 </style>
