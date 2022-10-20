@@ -88,7 +88,7 @@
                                         total:
                                     </div>
                                     <div class="col-4">
-                                        €{{ total }}
+                                        €{{ Math.round(total*100)/100 }}
                                     </div>
                                 </div>
                             </div>
