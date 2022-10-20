@@ -126,26 +126,8 @@
             validationCheck()
         });
 
-        let password = getElementById('password');
-        let passwordToMatch = getElementById('password-confirm');
-        let signUpBtn = getElementById('sign-up-button');
 
-        signUpBtn.addEventListener('click', ()=> {checkIfPswMatch});
 
-        function checkIfPswMatch(){
-
-            if(password.value != passwordToMatch.value){
-                console.error('Password did not match, please try again');
-            }
-            else if(password.value == ''){
-                console.error('Please enter password');
-            }
-            else if(passwordToMatch.value == ''){
-                console.error('Please enter password to confirm');
-            }
-        }
-
-         signUpBtn.addEventListener('click', ()=> {checkIfPswMatch});
     </script>
 </body>
 </html>
