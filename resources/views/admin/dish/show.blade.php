@@ -7,7 +7,7 @@
             <div class="alert alert-success my-alert-success container-lg" role="alert">
                 <div class="row align-items-center">
                     <div class="box-success-img ">
-                        <img src="{{ asset('images/success.png') }}" alt="success">
+                        <img src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                     </div>
                     <div class="col-9">
                         <strong>Success!</strong>
@@ -21,7 +21,7 @@
             <div class="alert alert-success my-alert-success container-lg" role="alert">
                 <div class="row align-items-center">
                     <div class="box-success-img ">
-                        <img src="{{ asset('images/success.png') }}" alt="success">
+                        <img src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                     </div>
                     <div class="col-9">
                         <strong>Success!</strong>

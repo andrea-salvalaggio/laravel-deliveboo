@@ -8,7 +8,7 @@
 
                     <div class="row align-items-center">
                         <div class="box-delete-img ">
-                            <img src="{{ asset('images/delete.png') }}" alt="success">
+                            <img src="{{ url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Oxygen480-actions-trash-empty.svg/192px-Oxygen480-actions-trash-empty.svg.png?20190510103517') }}" alt="success">
                         </div>
                         <div class="col-8">
                             <strong>Deleted!</strong>
@@ -24,7 +24,7 @@
             <div class="alert alert-success my-alert-success container-lg" role="alert">
                 <div class="row align-items-center">
                     <div class="box-success-img ">
-                        <img src="{{ asset('images/success.png') }}" alt="success">
+                        <img src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                     </div>
                     <div class="col-9">
                         <strong>Success!</strong>
@@ -37,7 +37,7 @@
         @if (session('created'))
             <div class="alert alert-success my-alert-success" role="alert">
                 <div class="pb-2">
-                    <img class="w-25" src="{{ asset('images/success.png') }}" alt="success">
+                    <img class="w-25" src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                 </div>
                 <strong>Success!</strong>
                 <span class="text-capitalize">{{ session('created') }}</span>
