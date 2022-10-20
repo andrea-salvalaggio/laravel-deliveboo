@@ -12,7 +12,7 @@ body{
 }
 #restaurant{
     .container-fluid{
-        img{
+        .radius-shadow{
             border-radius: 40px;
             box-shadow: 5px 30px 50px rgba(0, 0, 0, 0.2);
             width: 100%;
@@ -25,7 +25,7 @@ body{
     .small-badge{
         font-size: 0.9rem;
     }
-    
+
     //! stile delle carte nel backoffice
     .my-card{
         background-color: white;
@@ -124,18 +124,69 @@ ul{
     color: $primaryColor;
 }
 
-.my-badge-success{
-    background-color: $successBadgeColor;
-    color: #66dd42;
-    padding: 5px 0;
+/* style per la pagina di errore */
+.myBackground{
+    background-image: url("../images/bg_error.jpg");
+    width: 100vw;
+    background-size: cover;
+    height: 25vh;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin-top: -60px;
+    margin-bottom: 0px;
 }
 
-.my-badge-danger{
-    background-color: $dangerBadgeColor;
-    color: #ea3323;
-    padding: 5px 0;
+
+.txt-denied{
+    margin-top: 150px;
+    font-size: 2em;
+    font-family: 'Poppins';
 }
 
-.category-badge{
-    padding: 10px 20px;
+text-error{
+    margin-top: 150px;
+    font-size: 1em;
+    font-family: 'Poppins';
 }
+
+
+.my-btn-errorpage{
+    width: 150px;
+}
+
+.error-img-responsive {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+/* alerts messages */
+
+.my-alert-success{
+    border-radius: 20px;
+    padding: 18px;
+    text-align: center;
+    background-color: #c8fedd;
+    color: rgb(0, 165, 8);
+    font-size: 20px;
+}
+
+.my-alert-delete{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #ffd0d0;
+    color: rgb(194, 0, 0);
+    font-size: 18px;
+    align-items: center;
+}
+
+.box-delete-img, .box-success-img{
+    img{
+        width: 50px;
+        margin-left: 20px;
+    }
+}
+
+
+
+

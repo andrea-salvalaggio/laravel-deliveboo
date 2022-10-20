@@ -2,20 +2,36 @@
 
 @section('content')
     <div class="container-lg my-5">
-        <div class="col-lg-6 col-md-6 col-sm-10 mx-auto mb-4">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 mx-auto mb-4">
             @if (session('edited'))
-            <div class="alert alert-success" role="alert">
-                <span class="text-capitalize">{{ session('edited') }}</span>
+            <div class="alert alert-success my-alert-success container-lg" role="alert">
+                <div class="row align-items-center">
+                    <div class="box-success-img ">
+                        <img src="{{ asset('images/success.png') }}" alt="success">
+                    </div>
+                    <div class="col-9">
+                        <strong>Success!</strong>
+                        <span class="text-capitalize">{{ session('edited') }}</span>
+                    </div>
+                </div>
             </div>
             @endif
 
             @if (session('created'))
-                <div class="alert alert-success" role="alert">
-                    <span class="text-capitalize">{{ session('created') }}</span>
+            <div class="alert alert-success my-alert-success container-lg" role="alert">
+                <div class="row align-items-center">
+                    <div class="box-success-img ">
+                        <img src="{{ asset('images/success.png') }}" alt="success">
+                    </div>
+                    <div class="col-9">
+                        <strong>Success!</strong>
+                        <span class="text-capitalize">{{ session('created') }}</span>
+                    </div>
                 </div>
+            </div>
             @endif
         </div>
-        
+
         <div class="card col-lg-6 col-md-6 col-sm-10 my-rounded my-shadow mx-auto border-0">
             {{-- @dd(asset('/' . $dish->dishPic)) --}}
 
@@ -37,7 +53,7 @@
                 @else
                     <div class="badge my-badge-danger badge-pill w-25 mb-3"><small>not available</small></div>
                 @endif
-                
+
                 <h2 class="card-title text-capitalize font-weight-bold">{{ $dish->name }}</h2>
                 <p class="card-text my-4">{{ $dish->description }}</p>
                 <hr>

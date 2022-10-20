@@ -74,7 +74,7 @@ class RestaurantController extends Controller
             return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
         } else {
             $dishes = Dish::where('restaurant_id', Auth::id())->orderBy('name', 'asc')->get();
-            return view('admin.restaurant.index', compact(['restaurants', 'dishes']));
+            return view('admin.dish.errors.accessDenied', compact(['restaurants', 'dishes']));
         }
         // return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
 
