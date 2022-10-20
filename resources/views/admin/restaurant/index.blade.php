@@ -26,7 +26,7 @@
                     <div class="box-success-img ">
                         <img src="{{ asset('images/success.png') }}" alt="success">
                     </div>
-                    <div class="col-8">
+                    <div class="col-9">
                         <strong>Success!</strong>
                         <span class="text-capitalize">{{ session('edited') }}</span>
                     </div>
