@@ -19,32 +19,66 @@
     <div class="container-fluid bg-light">
       <div class="container-lg slider">
         <div class="row flex-nowrap">
-          <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
-            <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
-              :id="'categoria' + category.id" @click="activeCard(category)">
+          <div
+            class="col-6 col-lg-2 my-3"
+            v-for="category in categories"
+            :key="category.id"
+          >
+            <div
+              class="
+                mx-auto
+                my-rounded
+                order-card
+                d-flex
+                align-items-center
+                justify-content-center
+                text-capitalize
+              "
+              :id="'categoria' + category.id"
+              @click="activeCard(category), filterRestaurants(category.id)"
+            >
               {{ category.name }}
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Ristoranti -->
     <div class="container-lg pt-5">
       <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
       <div class="row flex-wrap mb-5">
-        <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant"/>
+        <RestaurantCard
+          v-for="restaurant in restaurants"
+          :key="restaurant.id"
+          :restaurant="restaurant"
+        />
       </div>
     </div>
 
     <!-- Banner info -->
-    <div class="container-lg d-none d-lg-block info-container my-rounded my-shadow">
+    <div
+      class="container-lg d-none d-lg-block info-container my-rounded my-shadow"
+    >
       <div class="overlay my-rounded"></div>
       <div class="col-12 cta-container d-flex flex-column align-items-center">
         <h2 class="text-white cta-title">Do you have a restaurant?</h2>
-        <h3 class="text-white font-weight-lighter mb-5">Find out all the advantages of home delivery</h3>
-        <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
-          <a href="/register" class="nav-link text-white px-0 ">Sign up</a>
+        <h3 class="text-white font-weight-lighter mb-5">
+          Find out all the advantages of home delivery
+        </h3>
+        <div
+          class="
+            nav-item
+            my-btn
+            rounded-pill
+            py-1
+            px-4
+            my-btn-shadow
+            mt-md-0
+            text-center
+          "
+        >
+          <a href="/register" class="nav-link text-white px-0">Sign up</a>
         </div>
       </div>
     </div>
@@ -52,109 +86,100 @@
     <!-- Loghi brand -->
     <div class="container-lg">
       <h1 class="restaurant-title mb-5">Popular restaurant</h1>
-      <div class="row flex-row justify-content-between mb-5">
-        <div class="col-3 brand-container">
-          Logo 1
+      <div class="row flex-row justify-content-between">
+        <div
+          class="
+            col-2
+            brand-container
+            d-flex
+            justify-content-center
+            align-items-center
+            my-rounded my-shadow
+          "
+        >
+          <img src="../../images/mc-logo.png" alt="Logo McDonald's" />
         </div>
-        <div class="col-3 brand-container">
-          Logo 2
-        </div>
-        <div class="col-3 brand-container">
-          Logo 3
-        </div>
-        <div class="col-3 brand-container">
-          Logo 4
-        </div>
-        <div class="col-3 brand-container">
-          Logo 5
-        </div>
-        <div class="col-3 brand-container">
-          Logo 6
-        </div>
+        <div class="col-2 brand-container">Logo 2</div>
+        <div class="col-2 brand-container">Logo 3</div>
+        <div class="col-2 brand-container">Logo 4</div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import RestaurantCard from "../components/RestaurantCard.vue";
+import axios from 'axios';
+import RestaurantCard from '../components/RestaurantCard.vue';
 
 export default {
   components: {
-    RestaurantCard,
+    RestaurantCard
   },
   data: function () {
     return {
       categories: [],
-      currentActive: "",
+      currentActive: '',
       isClicked: false,
       idCategory: null,
       restaurants: [],
-      controlFilter: -1,
-    };
+      controlFilter: -1
+    }
   },
   methods: {
     //! funzione per effettuare la chiamata
     ApiCallAllCategories() {
-      axios
-        .get("/api/category")
+      axios.get('/api/category')
         .then((result) => {
-          this.categories = result.data.results;
-          console.log(this.categories);
+          this.categories = result.data.results
+          console.log(this.categories)
         })
         .catch((error) => {
-          console.error(error);
-        });
+          console.error(error)
+        })
     },
     activeCard(category) {
-      if (document.querySelector(".active-card") != null) {
-        document.querySelector(".active-card").classList.remove("active-card");
+      if (document.querySelector('.active-card') != null) {
+        document.querySelector('.active-card').classList.remove('active-card')
       }
-      this.idCategory = category.id;
-      this.currentActive = document
-        .getElementById("categoria" + this.idCategory)
-        .classList.add("active-card");
+      this.idCategory = category.id
+      this.currentActive = document.getElementById('categoria' + this.idCategory).classList.add('active-card')
 
-      console.log(this.idCategory);
+      console.log(this.idCategory)
     },
 
     getRestaurants() {
-      axios
-        .get(`/api/restaurant`)
+      axios.get(`/api/restaurant`)
         .then((response) => {
           console.log(response.data.results.data);
           this.restaurants = response.data.results.data;
-        })
-        .catch((error) => {
-          console.error(error);
+        }).catch((error) => {
+          console.error(error)
         });
     },
 
     filterRestaurants(id) {
       if (this.controlFilter == id) {
         this.getRestaurants();
-        this.controlFilter = -1;
+        this.controlFilter = -1
       } else {
-        axios
-          .get(`/api/restaurant/filter/${id}`)
+        axios.get(`/api/restaurant/filter/${id}`)
           .then((response) => {
             console.log(response.data.results.data);
             this.restaurants = response.data.results.data;
+          }).catch((error) => {
+            console.error(error)
           })
-          .catch((error) => {
-            console.error(error);
-          });
-        this.controlFilter = id;
+        this.controlFilter = id
       }
-    },
+
+
+    }
   },
   created() {
     this.ApiCallAllCategories();
-    this.getRestaurants();
-  },
-};
+    this.getRestaurants()
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -204,7 +229,7 @@ export default {
   background-position: bottom;
 }
 
-.info-container{
+.info-container {
   width: 100%;
   height: 450px;
   background-image: url("../../images/delivery-info.jpg");
@@ -230,13 +255,13 @@ export default {
   }
 }
 
-.restaurant-title{
+.restaurant-title {
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
 }
 
-.overlay{
+.overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -247,21 +272,25 @@ export default {
   opacity: 0.3;
 }
 
-.cta-container{
+.cta-container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
 }
 
-.cta-title{
+.cta-title {
   font-size: 3.7rem;
   font-weight: 800;
 }
 
-.brand-container{
-  width: calc(100% / 3 - 20px);
-  margin: 0 10px;
-}
+.brand-container {
+  width: calc(100% / 3 - 40px);
+  height: 120px;
+  margin: 0 20px;
 
+  img {
+    width: 50%;
+  }
+}
 </style>
