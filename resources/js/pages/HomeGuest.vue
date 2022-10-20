@@ -16,32 +16,19 @@
     </div>
 
     <!-- categorie -->
-    <div class="container-fluid slider mt-3">
-      <div class="row flex-nowrap">
-        <div
-          class="col-6 col-lg-2 my-3"
-          v-for="category in categories"
-          :key="category.id"
-        >
-          <div
-            class="
-              mx-auto
-              my-rounded my-shadow
-              order-card
-              d-flex
-              align-items-center
-              justify-content-center
-              text-capitalize
-            "
-            :id="'categoria' + category.id"
-            @click="activeCard(category)"
-          >
-            {{ category.name }}
+    <div class="container-fluid bg-light">
+      <div class="container-lg slider">
+        <div class="row flex-nowrap">
+          <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
+            <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
+              :id="'categoria' + category.id" @click="activeCard(category)">
+              {{ category.name }}
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+    
     <!-- Ristoranti -->
     <div class="container-lg pt-5">
       <div class="row flex-wrap">
@@ -191,7 +178,7 @@ export default {
 
   span {
     color: $primaryColor;
-    font-family: 'Syncopate', sans-serif;
+    font-family: "Syncopate", sans-serif;
     font-weight: 800;
   }
 }
