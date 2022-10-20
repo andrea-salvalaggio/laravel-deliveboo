@@ -49,6 +49,31 @@
       </div>
     </div>
 
+    <!-- Loghi brand -->
+    <div class="container-lg">
+      <h1 class="restaurant-title mb-5">Popular restaurant</h1>
+      <div class="row flex-row justify-content-between mb-5">
+        <div class="col-3 brand-container">
+          Logo 1
+        </div>
+        <div class="col-3 brand-container">
+          Logo 2
+        </div>
+        <div class="col-3 brand-container">
+          Logo 3
+        </div>
+        <div class="col-3 brand-container">
+          Logo 4
+        </div>
+        <div class="col-3 brand-container">
+          Logo 5
+        </div>
+        <div class="col-3 brand-container">
+          Logo 6
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -232,6 +257,11 @@ export default {
 .cta-title{
   font-size: 3.7rem;
   font-weight: 800;
+}
+
+.brand-container{
+  width: calc(100% / 3 - 20px);
+  margin: 0 10px;
 }
 
 </style>
