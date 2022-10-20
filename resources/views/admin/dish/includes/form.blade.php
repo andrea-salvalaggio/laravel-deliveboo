@@ -5,6 +5,14 @@
                 @csrf
                 @method($method)
 
+                @if ($argument == ' ')
+                    <h1 class="font-weight-bolder">Create new dish</h1>
+                    <hr class="my-5">
+                @else
+                    <h1 class="font-weight-bolder">Edit dish</h1>
+                    <hr class="my-5">
+                @endif
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Name*</label>
                     <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the dish name" name="name"
@@ -18,7 +26,7 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description*</label>
-                    <textarea class="form-control border-0 mb-4 font-weight-lighter" id="description" placeholder="Insert the dish description" name="description" rows="3">{{ old('description', $newDish->description) }}</textarea>
+                    <textarea class="form-control border-0 mb-4 font-weight-lighter" id="description" placeholder="Insert the dish description" name="description" rows="3" required>{{ old('description', $newDish->description) }}</textarea>
                     @error('description')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -28,7 +36,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="dishPic" class="form-label">Dish Picture*</label>
+                    <label for="dishPic" class="form-label">Picture
+                        @if ($argument == ' ')
+                            <span>*</span>
+                        @else
+                        @endif
+                    </label>
                     {{-- <input type="text" class="form-control" id="dishPic" placeholder="Insert the dish picture"
                         name="dishPic" value="{{ old('dishPic', $newDish->dishPic) }}"> --}}
                     <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="dishPic" placeholder="Insert the dish picture"
@@ -45,7 +58,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" class="form-label">Price*</label>
+                    <label for="price" class="form-label">Price € *</label>
                     <input type="number" step=".01" class="form-control rounded-pill border-0 mb-4 font-weight-light" id="price" placeholder="Insert the dish price"
                         name="price" value="{{ old('price', $newDish->price) }}" min="0.01">
                         @error('price')

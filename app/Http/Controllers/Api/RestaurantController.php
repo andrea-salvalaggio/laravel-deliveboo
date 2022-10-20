@@ -22,6 +22,21 @@ class RestaurantController extends Controller
             'results' => $restaurants
         ]);
     }
+
+    public function filter($id)
+    {
+        $restaurants = Restaurant::whereHas('categories', function($query) use ($id){
+            $query->where('category_id', $id);
+        })->paginate(6);
+        return response()->json([
+            'response' => true,
+            'count' => count($restaurants),
+            'results' => $restaurants
+        ]);
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *

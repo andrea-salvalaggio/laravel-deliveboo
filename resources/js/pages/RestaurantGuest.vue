@@ -67,8 +67,13 @@
             <h3 class="text-capitalize border-bottom py-4 m-0"><i class="fa-solid fa-cart-shopping"></i> cart</h3>
             <div class="row bg-white my-shadow my-rounded mt-5">
               <div class="col-12 cart p-5">
-                  <div class="row" v-for="cartItem in cart" :key="cartItem.id" >
-                    {{ cartItem['name'] }}
+                  <div class="row" v-for="(cartItem , index) in cart" :key="index" >
+                    <div class="col-9 text-capitalize">
+                      {{ cartItem.name }}
+                    </div>
+                    <div class="col-3">
+                      € {{ cartItem.price }}
+                    </div>
                   </div>
               </div>
             </div>
@@ -87,14 +92,13 @@ export default {
         return {
             restaurant: {},
             cart: [],
-            quantity: [], 
+            counter : 0
         };
     },
     methods: {
         getRestaurant() {
             axios.get(`http://127.0.0.1:8000/api/restaurant/${this.$route.params.id}`)
                 .then((response) => {
-                console.log(response.data.results);
                 this.restaurant = response.data.results;
             }).catch((error) => {
                 console.warn(error);
@@ -103,11 +107,14 @@ export default {
 
         //! funzione che pusha in un array i piatti selezionati
         addToCart(dish){
-          this.cart.push(dish)
-          for(let i=0; i<this.cart.length -1; i++){
-            this.quantity[i] = 1
-            console.log (this.quantity)
-          } 
+          /* if(this.cart.includes(dish)){
+            console.log(this.cart.quantity)
+          }
+          else{ */
+            /* dish.quantity = 1 */
+            this.cart.push(dish)
+            console.log(this.cart)
+          /* } */
         },
 
         //! funzione che controlla il path delle immagini se sono link o immagini caricate

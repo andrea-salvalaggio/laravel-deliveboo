@@ -68,7 +68,8 @@ export default {
       isClicked: false,
       idCategory: null,
       restaurants: [],
-    };
+      controlFilter: -1
+    }
   },
   methods: {
     //! funzione per effettuare la chiamata
@@ -96,16 +97,32 @@ export default {
     },
 
     getRestaurants() {
-      axios
-        .get(`/api/restaurant`)
+      axios.get(`/api/restaurant`)
         .then((response) => {
           console.log(response.data.results.data);
           this.restaurants = response.data.results.data;
-        })
-        .catch((error) => {
-          console.error(error);
+        }).catch((error) => {
+          console.error(error)
         });
     },
+
+    filterRestaurants(id) {
+      if (this.controlFilter == id) {
+        this.getRestaurants();
+        this.controlFilter = -1
+      } else {
+        axios.get(`/api/restaurant/filter/${id}`)
+          .then((response) => {
+            console.log(response.data.results.data);
+            this.restaurants = response.data.results.data;
+          }).catch((error) => {
+            console.error(error)
+          })
+        this.controlFilter = id
+      }
+
+
+    }
   },
   created() {
     this.ApiCallAllCategories();
@@ -120,22 +137,26 @@ export default {
 .order-card {
   width: 90%;
   height: 100px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   color: $secondaryColor;
   cursor: pointer;
 }
+
 .active-card {
   background-color: $primaryColor;
   color: white;
 }
+
 .slider {
   width: 100%;
   height: 200px;
   overflow-x: scroll;
+
   &::-webkit-scrollbar {
     height: 5px;
     border-radius: 5px;
+
   }
 
   /* Track */

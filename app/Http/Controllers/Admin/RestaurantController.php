@@ -69,7 +69,14 @@ class RestaurantController extends Controller
         //
         $newRestaurant = new Restaurant();
         $categories = Category::all();
-        return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
+        $restaurants = Auth::user()->restaurant;
+        if ($restaurants === null) {
+            return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
+        } else {
+            $dishes = Dish::where('restaurant_id', Auth::id())->orderBy('name', 'asc')->get();
+            return view('admin.restaurant.index', compact(['restaurants', 'dishes']));
+        }
+        // return view('admin.restaurant.create', compact(['newRestaurant', 'categories']));
 
     }
 
@@ -99,7 +106,7 @@ class RestaurantController extends Controller
         $newRestaurant->restaurantPic = Storage::put('uploads/user', $sentData['restaurantPic']);
         $newRestaurant->save();
         $newRestaurant->categories()->sync($sentData['categories']);
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurant.index')->with('created' , 'The restaurant ' . '"' . $sentData['name'] . '"' . ' has been created!');
     }
 
     /**
@@ -161,7 +168,7 @@ class RestaurantController extends Controller
 
         $newRestaurant->categories()->sync($sentData['categories']);
         $newRestaurant = $newRestaurant->update($sentData);
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurant.index')->with('edited' , 'The restaurant ' . '"' . $sentData['name'] . '"' . ' has been edited!');
     }
 
     /**
