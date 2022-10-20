@@ -236,8 +236,6 @@
     }
 
     .big-title {
-        // position: absolute;
-        // top: 80px;
         font-size: 3.5rem;
         line-height: 4.8rem;
         font-weight: 500;
