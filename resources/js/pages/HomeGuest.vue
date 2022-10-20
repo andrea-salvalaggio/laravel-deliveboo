@@ -5,7 +5,7 @@
             <!-- testo principale -->
             <div class="container-lg">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-5 title-container">
                         <h1 class="text-white big-title">
                             Restaurant <span>Food</span>, takeaway and groceries
                             <span>Delivered</span>.
@@ -236,8 +236,8 @@
     }
 
     .big-title {
-        position: absolute;
-        top: 80px;
+        // position: absolute;
+        // top: 80px;
         font-size: 3.5rem;
         line-height: 4.8rem;
         font-weight: 500;
@@ -283,6 +283,13 @@
         width: calc(100% / 3 - 40px);
         height: 120px;
         margin: 40px 20px;
+    }
+
+    .title-container {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
     }
     
 </style>
