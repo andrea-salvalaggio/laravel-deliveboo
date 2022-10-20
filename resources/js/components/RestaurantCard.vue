@@ -14,7 +14,7 @@
                     </div>
                     <div>
                         <p class="m-0"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
-                        <p class="m-0"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open}} – {{restaurant.close}}</p>
+                        <p class="m-0"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
                     </div>
                 </div>
             </div>

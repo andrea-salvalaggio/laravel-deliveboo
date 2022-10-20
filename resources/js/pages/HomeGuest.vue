@@ -16,10 +16,10 @@
         </div>
 
         <!-- categorie -->
-        <div class="container-fluid bg-light">
-            <div class="container-lg slider">
+        <div class="container-fluid">
+            <div class="container-lg mt-5 slider">
                 <div class="row flex-nowrap">
-                    <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
+                    <div class="col-6 col-lg-2" v-for="category in categories" :key="category.id">
                         <div class="
                 mx-auto
                 my-rounded
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Ristoranti -->
-        <div class="container-lg pt-5">
+        <div class="container-lg">
             <h1 class="restaurant-title mb-5">List of restaurant</h1>
             <div class="row flex-wrap my-5">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
@@ -194,24 +194,58 @@
 
     .slider {
         width: 100%;
-        height: 200px;
+        height: 150px;
         overflow-x: scroll;
 
-        &::-webkit-scrollbar {
-            height: 5px;
-            border-radius: 5px;
+        &:hover::-webkit-scrollbar-thumb{
+            background-color: $primaryColor;
+            border-radius: 10px;
         }
 
-        /* Track */
-        &::-webkit-scrollbar-track {
-            background: transparent;
+        &::-webkit-scrollbar{
+          width: 10px;
+          height: 8px;
         }
 
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $primaryColor;
-            border-radius: 5px;
+        &::-webkit-scrollbar-track{
+          background-color: transparent;
         }
+
+        // &::-webkit-scrollbar-thumb{
+        //   &:hover{
+        //     background-color: $primaryColor;
+        //     border-radius: 10px;
+        //   }
+        // }
+
+        // &::-webkit-scrollbar {
+        //     height: 5px;
+        //     border-radius: 5px;
+        //     display: none;
+        // }
+
+        // /* Track */
+        // &::-webkit-scrollbar-track {
+        //     background: transparent;
+        // }
+
+        // /* Handle */
+        // &::-webkit-scrollbar-thumb {
+        //     background: $primaryColor;
+        //     border-radius: 5px;
+        //     opacity: 0;
+        // }
+
+        // &::-webkit-scrollbar-thumb:hover{
+        //     display: block;
+        // }
+
+        // -ms-overflow-style: none;
+        // scrollbar-width: none;
+        
+        // &:hover{
+        //   scrollbar-width: 5px;
+        // }
     }
 
     .container-jumbo {
@@ -283,4 +317,5 @@
         height: 120px;
         margin: 40px 20px;
     }
+    
 </style>
