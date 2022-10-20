@@ -38,7 +38,12 @@
     </div>
 
     <!-- Banner info -->
-    <div class="container-lg d-none d-lg-block info-container">
+    <div class="container-lg d-none d-lg-block info-container my-rounded my-shadow">
+      <div class="overlay my-rounded"></div>
+      <div class="col-12 cta-container d-flex flex-column align-items-center">
+        <h2 class="text-white cta-title">Do you have a restaurant?</h2>
+        <h3 class="text-white font-weight-lighter">Find out all the advantages of home delivery</h3>
+      </div>
     </div>
 
   </div>
@@ -173,13 +178,14 @@ export default {
 
 .info-container{
   width: 100%;
-  height: 400px;
+  height: 450px;
   background-image: url("../../images/delivery-info.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
   margin-top: 200px;
   margin-bottom: 200px;
+  position: relative;
 }
 
 .big-title {
@@ -200,6 +206,29 @@ export default {
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.cta-container{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.cta-title{
+  font-size: 3.7rem;
+  font-weight: 800;
 }
 
 </style>
