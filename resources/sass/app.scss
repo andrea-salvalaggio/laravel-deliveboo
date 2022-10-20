@@ -12,7 +12,7 @@ body{
 }
 #restaurant{
     .container-fluid{
-        img{
+        .radius-shadow{
             border-radius: 40px;
             box-shadow: 5px 30px 50px rgba(0, 0, 0, 0.2);
             width: 100%;
@@ -159,4 +159,34 @@ text-error{
     max-width: 350px;
     height: auto;
   }
+
+/* alerts messages */
+
+.my-alert-success{
+    border-radius: 20px;
+    padding: 18px;
+    text-align: center;
+    background-color: #c8fedd;
+    color: rgb(0, 165, 8);
+    font-size: 20px;
+}
+
+.my-alert-delete{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #ffd0d0;
+    color: rgb(194, 0, 0);
+    font-size: 18px;
+    align-items: center;
+}
+
+.box-delete-img, .box-success-img{
+    img{
+        width: 50px;
+        margin-left: 20px;
+    }
+}
+
+
+
 

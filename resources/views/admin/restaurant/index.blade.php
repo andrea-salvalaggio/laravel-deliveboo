@@ -2,21 +2,44 @@
 
 @section('content')
     <div class="container" id="restaurant">
-        
+
         @if (session('delete'))
-            <div class="alert alert-danger" role="alert">
-                <span class="text-capitalize">{{ session('delete') }}</span>
+            <div class="alert alert-success my-alert-delete container-lg" role="alert">
+
+                    <div class="row align-items-center">
+                        <div class="box-delete-img ">
+                            <img src="{{ asset('images/delete.png') }}" alt="success">
+                        </div>
+                        <div class="col-8">
+                            <strong>Deleted!</strong>
+                            <span class="text-capitalize">{{ session('delete') }}</span>
+                        </div>
+                    </div>
+
             </div>
+
         @endif
 
         @if (session('edited'))
-            <div class="alert alert-success" role="alert">
-                <span class="text-capitalize">{{ session('edited') }}</span>
+            <div class="alert alert-success my-alert-success container-lg" role="alert">
+                <div class="row align-items-center">
+                    <div class="box-success-img ">
+                        <img src="{{ asset('images/success.png') }}" alt="success">
+                    </div>
+                    <div class="col-9">
+                        <strong>Success!</strong>
+                        <span class="text-capitalize">{{ session('edited') }}</span>
+                    </div>
+                </div>
             </div>
         @endif
 
         @if (session('created'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success my-alert-success" role="alert">
+                <div class="pb-2">
+                    <img class="w-25" src="{{ asset('images/success.png') }}" alt="success">
+                </div>
+                <strong>Success!</strong>
                 <span class="text-capitalize">{{ session('created') }}</span>
             </div>
         @endif
@@ -53,10 +76,10 @@
     </p> --}}
         <div class="container-fluid p-0 my-3 position-relative">
             @if (filter_var($restaurants->restaurantPic, FILTER_VALIDATE_URL))
-                <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-5">
+                <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-5 radius-shadow">
             @else
                 <img src="{{ asset('storage/' . $restaurants->restaurantPic) }}" alt="{{ $restaurants->name }} photo"
-                    class="rounded-5">
+                    class="rounded-5 radius-shadow">
             @endif
         </div>
 
@@ -286,7 +309,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn my-btn-danger rounded-pill w-100 text-white my-btn-shadow p-2">Delete</button>
-    
+
                             </form>
                         </div> --}}
                         </div>

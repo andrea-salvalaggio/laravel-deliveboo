@@ -19,8 +19,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../../sass/variables";
+
 main{
   padding: 105px 0;
+  background-color: $backgroundColor;
 }
+
 </style>
