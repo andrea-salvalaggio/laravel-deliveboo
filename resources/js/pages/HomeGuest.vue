@@ -2,12 +2,14 @@
   <div>
     <!-- banner -->
     <div class="container-jumbo d-none d-lg-block position-relative">
-
       <!-- testo principale -->
       <div class="container-lg">
         <div class="row">
           <div class="col-8">
-            <h1 class="text-white big-title">Restaurant <span>Food</span>, takeaway and groceries <span>Delivered</span>.</h1>
+            <h1 class="text-white big-title">
+              Restaurant <span>Food</span>, takeaway and groceries
+              <span>Delivered</span>.
+            </h1>
           </div>
         </div>
       </div>
@@ -68,8 +70,8 @@ export default {
       isClicked: false,
       idCategory: null,
       restaurants: [],
-      controlFilter: -1
-    }
+      controlFilter: -1,
+    };
   },
   methods: {
     //! funzione per effettuare la chiamata
@@ -97,32 +99,34 @@ export default {
     },
 
     getRestaurants() {
-      axios.get(`/api/restaurant`)
+      axios
+        .get(`/api/restaurant`)
         .then((response) => {
           console.log(response.data.results.data);
           this.restaurants = response.data.results.data;
-        }).catch((error) => {
-          console.error(error)
+        })
+        .catch((error) => {
+          console.error(error);
         });
     },
 
     filterRestaurants(id) {
       if (this.controlFilter == id) {
         this.getRestaurants();
-        this.controlFilter = -1
+        this.controlFilter = -1;
       } else {
-        axios.get(`/api/restaurant/filter/${id}`)
+        axios
+          .get(`/api/restaurant/filter/${id}`)
           .then((response) => {
             console.log(response.data.results.data);
             this.restaurants = response.data.results.data;
-          }).catch((error) => {
-            console.error(error)
           })
-        this.controlFilter = id
+          .catch((error) => {
+            console.error(error);
+          });
+        this.controlFilter = id;
       }
-
-
-    }
+    },
   },
   created() {
     this.ApiCallAllCategories();
@@ -137,7 +141,7 @@ export default {
 .order-card {
   width: 90%;
   height: 100px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: $secondaryColor;
   cursor: pointer;
@@ -156,7 +160,6 @@ export default {
   &::-webkit-scrollbar {
     height: 5px;
     border-radius: 5px;
-
   }
 
   /* Track */
@@ -179,16 +182,17 @@ export default {
   background-position: bottom;
 }
 
-.big-title{
+.big-title {
   position: absolute;
-  top: 200px;
+  top: 80px;
   font-size: 3.5rem;
   line-height: 4.8rem;
   font-weight: 500;
-  
-  span{
+
+  span {
     color: $primaryColor;
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 800;
   }
 }
-
 </style>
