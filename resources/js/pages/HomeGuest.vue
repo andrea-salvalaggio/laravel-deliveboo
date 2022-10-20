@@ -31,14 +31,20 @@
     
     <!-- Ristoranti -->
     <div class="container-lg pt-5">
+      <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
       <div class="row flex-wrap">
-        <RestaurantCard
-          v-for="restaurant in restaurants"
-          :key="restaurant.id"
-          :restaurant="restaurant"
-        />
+        <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant"/>
       </div>
     </div>
+
+    <!-- Banner info -->
+    <div class="container-lg pt-5">
+      <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
+      <div class="row flex-wrap">
+        <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant"/>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -182,4 +188,11 @@ export default {
     font-weight: 800;
   }
 }
+
+.restaurant-title{
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+}
+
 </style>
