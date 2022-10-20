@@ -42,7 +42,10 @@
       <div class="overlay my-rounded"></div>
       <div class="col-12 cta-container d-flex flex-column align-items-center">
         <h2 class="text-white cta-title">Do you have a restaurant?</h2>
-        <h3 class="text-white font-weight-lighter">Find out all the advantages of home delivery</h3>
+        <h3 class="text-white font-weight-lighter mb-5">Find out all the advantages of home delivery</h3>
+        <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
+          <a href="/register" class="nav-link text-white px-0 ">Sign up</a>
+        </div>
       </div>
     </div>
 
