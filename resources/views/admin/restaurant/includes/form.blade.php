@@ -5,6 +5,14 @@
                 @csrf
                 @method($method)
 
+                @if ($argument == ' ')
+                    <h1 class="font-weight-bolder">Create new restaurant</h1>
+                    <hr class="my-5">
+                @else
+                    <h1 class="font-weight-bolder">Edit restaurant info</h1>
+                    <hr class="my-5">
+                @endif
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Name*</label>
                     <input type="text" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="name" placeholder="Insert the restaurant name" name="name" value="{{ old('name', $newRestaurant->name) }}" required>
@@ -50,7 +58,12 @@
                 @enderror
 
                 <div class="mb-3">
-                    <label for="restaurantPic" class="form-label">Picture*</label>
+                    <label for="restaurantPic" class="form-label">Picture
+                        @if ($argument == ' ')
+                            <span>*</span>
+                        @else
+                        @endif
+                    </label>
                     {{-- <input class="form-control" id="restaurantPic" placeholder="Insert the restaurant picture"
                     name="restaurantPic" value="{{ old('restaurantPic', $newRestaurant->restaurantPic) }}"> --}}
                     <input type="file" class="form-control rounded-pill border-0 mb-4 font-weight-lighter" id="restaurantPic"

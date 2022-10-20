@@ -8,9 +8,10 @@
     <div class="container-fluid slider mt-3">
       <div class="row flex-nowrap ">
         <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
-          <div class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"  :id="'categoria'+category.id"
-              @click="activeCard(category)" >
-              {{ category.name }}
+          <div
+            class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"
+            :id="'categoria'+category.id" @click="activeCard(category), filterRestaurants(category.id)">
+            {{ category.name }}
           </div>
         </div>
       </div>
@@ -30,51 +31,70 @@ import axios from 'axios';
 import RestaurantCard from '../components/RestaurantCard.vue';
 
 export default {
-  components:{
+  components: {
     RestaurantCard
-},
-  data: function(){
-    return{
+  },
+  data: function () {
+    return {
       categories: [],
       currentActive: '',
       isClicked: false,
       idCategory: null,
       restaurants: [],
+      controlFilter: -1
     }
   },
-  methods:{
+  methods: {
     //! funzione per effettuare la chiamata
-    ApiCallAllCategories(){
+    ApiCallAllCategories() {
       axios.get('/api/category')
-      .then((result)=>{
-        this.categories= result.data.results
-        console.log(this.categories)
-      })
-      .catch((error)=>{
-        console.error(error)
-      })
+        .then((result) => {
+          this.categories = result.data.results
+          console.log(this.categories)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     },
-    activeCard(category){
-      if( document.querySelector('.active-card') != null ){
+    activeCard(category) {
+      if (document.querySelector('.active-card') != null) {
         document.querySelector('.active-card').classList.remove('active-card')
       }
       this.idCategory = category.id
-      this.currentActive= document.getElementById('categoria'+this.idCategory).classList.add('active-card')
+      this.currentActive = document.getElementById('categoria' + this.idCategory).classList.add('active-card')
 
       console.log(this.idCategory)
     },
 
-    getRestaurants(){
-            axios.get(`/api/restaurant`)
-            .then((response) => {
-                console.log(response.data.results.data);
-                this.restaurants = response.data.results.data;
-            }).catch((error) => {
-                console.error(error)
-            });
-        }
+    getRestaurants() {
+      axios.get(`/api/restaurant`)
+        .then((response) => {
+          console.log(response.data.results.data);
+          this.restaurants = response.data.results.data;
+        }).catch((error) => {
+          console.error(error)
+        });
+    },
+
+    filterRestaurants(id) {
+      if (this.controlFilter == id) {
+        this.getRestaurants();
+        this.controlFilter = -1
+      } else {
+        axios.get(`/api/restaurant/filter/${id}`)
+          .then((response) => {
+            console.log(response.data.results.data);
+            this.restaurants = response.data.results.data;
+          }).catch((error) => {
+            console.error(error)
+          })
+        this.controlFilter = id
+      }
+
+
+    }
   },
-  created(){
+  created() {
     this.ApiCallAllCategories();
     this.getRestaurants()
   }
@@ -82,35 +102,38 @@ export default {
 </script>
 
 <style scoped lang="scss">
- @import '../../sass/variables';
+@import '../../sass/variables';
 
-    .order-card{
-        width: 90%;
-        height: 100px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        color: $secondaryColor;
-        cursor: pointer;
-    }
-    .active-card{
-        background-color: $primaryColor;
-        color: white;
-    }
-    .slider{
-      width: 100%;
-      height: 200px;
-      overflow-x: scroll;
-      &::-webkit-scrollbar {
-        height: 5px;
-        border-radius: 5px;
+.order-card {
+  width: 90%;
+  height: 100px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: $secondaryColor;
+  cursor: pointer;
+}
 
-      }
+.active-card {
+  background-color: $primaryColor;
+  color: white;
+}
 
-    /* Track */
-        &::-webkit-scrollbar-track {
-          background: transparent;
+.slider {
+  width: 100%;
+  height: 200px;
+  overflow-x: scroll;
 
-        }
+  &::-webkit-scrollbar {
+    height: 5px;
+    border-radius: 5px;
+
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+
+  }
 
     /* Handle */
         &::-webkit-scrollbar-thumb {
