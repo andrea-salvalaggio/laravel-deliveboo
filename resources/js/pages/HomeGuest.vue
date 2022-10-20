@@ -21,7 +21,8 @@
         <div class="col-6 col-lg-2 my-3" v-for="(category, index) in categories" :key="index">
           <div
             class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"
-            :id="'categoria'+category.id" @click="activeCard(index), filterRestaurants(category.id)">
+            :class="categoryIndex[index] == true ? 'active-card' : ' ' " :id="'categoria'+category.id"
+            @click="activeCard(index), filterRestaurants(category.id)">
             {{ category.name }}
           </div>
         </div>
@@ -32,26 +33,19 @@
     <div class="container-lg pt-5">
       <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
       <div class="row flex-wrap mb-5">
-        <RestaurantCard
-          v-for="restaurant in restaurants"
-          :key="restaurant.id"
-          :restaurant="restaurant"
-        />
+        <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
       </div>
     </div>
 
     <!-- Banner info -->
-    <div
-      class="container-lg d-none d-lg-block info-container my-rounded my-shadow"
-    >
+    <div class="container-lg d-none d-lg-block info-container my-rounded my-shadow">
       <div class="overlay my-rounded"></div>
       <div class="col-12 cta-container d-flex flex-column align-items-center">
         <h2 class="text-white cta-title">Do you have a restaurant?</h2>
         <h3 class="text-white font-weight-lighter mb-5">
           Find out all the advantages of home delivery
         </h3>
-        <div
-          class="
+        <div class="
             nav-item
             my-btn
             rounded-pill
@@ -60,8 +54,7 @@
             my-btn-shadow
             mt-md-0
             text-center
-          "
-        >
+          ">
           <a href="/register" class="nav-link text-white px-0">Sign up</a>
         </div>
       </div>
@@ -71,16 +64,14 @@
     <div class="container-lg">
       <h1 class="restaurant-title mb-5">Popular restaurant</h1>
       <div class="row flex-row justify-content-between">
-        <div
-          class="
+        <div class="
             col-2
             brand-container
             d-flex
             justify-content-center
             align-items-center
             my-rounded my-shadow
-          "
-        >
+          ">
           <img src="../../images/mc-logo.png" alt="Logo McDonald's" />
         </div>
         <div class="col-2 brand-container">Logo 2</div>
@@ -135,7 +126,15 @@ export default {
       // this.currentActive = document.getElementById('categoria' + this.idCategory).classList.add('active-card')
 
       // console.log(this.idCategory)
-
+      if (this.categoryIndex[index] == false) {
+        for (let index = 0; index < this.categoryIndex.length; index++) {
+          this.categoryIndex[index] = false
+        }
+        this.categoryIndex[index] = true
+      } else if (this.categoryIndex[index] == true) {
+        this.categoryIndex[index] = false
+      }
+      console.log(this.categoryIndex)
     },
 
     getRestaurants() {
@@ -211,6 +210,7 @@ export default {
     border-radius: 5px;
   }
 }
+
 .container-jumbo {
   width: 100%;
   height: 700px;
