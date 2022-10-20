@@ -32,17 +32,13 @@
     <!-- Ristoranti -->
     <div class="container-lg pt-5">
       <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
-      <div class="row flex-wrap">
+      <div class="row flex-wrap mb-5">
         <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant"/>
       </div>
     </div>
 
     <!-- Banner info -->
-    <div class="container-lg pt-5">
-      <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
-      <div class="row flex-wrap">
-        <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant"/>
-      </div>
+    <div class="container-lg d-none d-lg-block info-container">
     </div>
 
   </div>
@@ -173,6 +169,17 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+}
+
+.info-container{
+  width: 100%;
+  height: 400px;
+  background-image: url("../../images/delivery-info.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  margin-top: 200px;
+  margin-bottom: 200px;
 }
 
 .big-title {
