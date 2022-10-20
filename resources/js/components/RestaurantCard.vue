@@ -5,10 +5,16 @@
                 <div class="img-container">
                     <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name">
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="p-4 m-0">{{restaurant.name}}</h4>
-                    <div class="add-button-container mx-3 mr-4" @click="addToCart(dish)">
-                        <div class="add-button"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>{{restaurant.name}}</h4>
+                        <div class="add-button-container" @click="addToCart(dish)">
+                            <div class="add-button"><i class="fa-solid fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="m-0"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
+                        <p class="m-0"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open}} – {{restaurant.close}}</p>
                     </div>
                 </div>
             </div>
@@ -44,6 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../sass/variables";
 .card-container {
     width: 95%;
     cursor: pointer;
@@ -81,5 +88,6 @@ a{
         font-size: 1.2rem;
     }
 }
+
 
 </style>
