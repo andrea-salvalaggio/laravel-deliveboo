@@ -30,11 +30,11 @@
 
                 <!-- Menu -->
                 <div class="col-lg-8 col-12">
-                    <div class="menu-container m-0 my-rounded py-4 px-5 mx-auto ">
+                    <div class="menu-container m-0 my-rounded py-4 px-lg-5 ">
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
                         <div class="row mt-5">
                             <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
-                                <div class="dish-card row d-flex align-items-end flex-wrap  my-shadow">
+                                <div class="dish-card row d-flex align-items-end flex-wrap mx-auto my-shadow">
                                     <div class="col-12 img-container ">
                                         <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name">
                                     </div>
@@ -92,7 +92,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 text-center">
+                              <button class="btn btn-primary">invia</button>
                             </div>
                         </div>
                     </div>
