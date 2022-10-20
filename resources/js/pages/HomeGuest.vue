@@ -7,10 +7,10 @@
     <!-- categorie -->
     <div class="container-fluid slider mt-3">
       <div class="row flex-nowrap ">
-        <div class="col-6 col-lg-2 my-3" v-for="category in categories" :key="category.id">
+        <div class="col-6 col-lg-2 my-3" v-for="(category, index) in categories" :key="index">
           <div
             class="mx-auto  my-rounded my-shadow order-card d-flex align-items-center justify-content-center text-capitalize"
-            :id="'categoria'+category.id" @click="activeCard(category), filterRestaurants(category.id)">
+            :id="'categoria'+category.id" @click="activeCard(index), filterRestaurants(category.id)">
             {{ category.name }}
           </div>
         </div>
@@ -37,6 +37,7 @@ export default {
   data: function () {
     return {
       categories: [],
+      categoryIndex: [],
       currentActive: '',
       isClicked: false,
       idCategory: null,
@@ -50,20 +51,26 @@ export default {
       axios.get('/api/category')
         .then((result) => {
           this.categories = result.data.results
-          console.log(this.categories)
+          let i = 0
+          this.categories.forEach(element => {
+            this.categoryIndex[i] = false
+            i++;
+          });
+          console.log(this.categoryIndex)
         })
         .catch((error) => {
           console.error(error)
         })
     },
-    activeCard(category) {
-      if (document.querySelector('.active-card') != null) {
-        document.querySelector('.active-card').classList.remove('active-card')
-      }
-      this.idCategory = category.id
-      this.currentActive = document.getElementById('categoria' + this.idCategory).classList.add('active-card')
+    activeCard(index) {
+      // if (document.querySelector('.active-card') != null) {
+      //   document.querySelector('.active-card').classList.remove('active-card')
+      // }
+      // this.idCategory = category.id
+      // this.currentActive = document.getElementById('categoria' + this.idCategory).classList.add('active-card')
 
-      console.log(this.idCategory)
+      // console.log(this.idCategory)
+
     },
 
     getRestaurants() {
