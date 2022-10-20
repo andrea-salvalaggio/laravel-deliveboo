@@ -5,7 +5,12 @@
                 <div class="img-container">
                     <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name">
                 </div>
-                <h4 class="p-4">{{restaurant.name}}</h4>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="p-4 m-0">{{restaurant.name}}</h4>
+                    <div class="add-button-container mx-3 mr-4" @click="addToCart(dish)">
+                        <div class="add-button"><i class="fa-solid fa-angle-right"></i></div>
+                    </div>
+                </div>
             </div>
         </a>
     </div>
@@ -61,4 +66,20 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.add-button-container{
+    background-color: green;
+    color: white;
+    font-size: 25px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+
+    i{
+        font-size: 1.2rem;
+    }
+}
+
 </style>

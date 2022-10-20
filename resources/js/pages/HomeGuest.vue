@@ -38,7 +38,7 @@
 
         <!-- Ristoranti -->
         <div class="container-lg pt-5">
-            <h1 class="restaurant-title mb-5">Recomended restaurant</h1>
+            <h1 class="restaurant-title mb-5">List of restaurant</h1>
             <div class="row flex-wrap my-5">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
             </div>
@@ -282,9 +282,5 @@
         width: calc(100% / 3 - 40px);
         height: 120px;
         margin: 40px 20px;
-
-        // img {
-        //     width: 60px;
-        // }
     }
 </style>
