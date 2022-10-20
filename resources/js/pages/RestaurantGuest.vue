@@ -34,7 +34,7 @@
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
                         <div class="row mt-5">
                             <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
-                                <div class="dish-card d-flex align-items-end flex-wrap  my-shadow">
+                                <div class="dish-card row d-flex align-items-end flex-wrap  my-shadow">
                                     <div class="col-12 img-container ">
                                         <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name">
                                     </div>
@@ -64,25 +64,35 @@
                 <!-- Carrello -->
                 <div class="col-lg-4 col-12">
                     <div class="menu-container m-0 my-rounded py-4 px-5 mx-auto ">
-                        <h3 class="text-capitalize border-bottom py-4 m-0"><i class="fa-solid fa-cart-shopping"></i>
-                            cart</h3>
+                      <div class="row border-bottom align-items-center">
+                        <div class="col-8">
+                          <h3 class="text-capitalize  py-4 m-0"><i class="fa-solid fa-cart-shopping"></i>
+                              cart
+                          </h3>
+                        </div>
+                        <div class="col-4">
+                          <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">Clear Cart</button>
+                        </div>
+                      </div>
                         <div class="row bg-white my-shadow my-rounded mt-5">
                             <div class="col-12  p-5">
                                 <div class="row cart">
                                     <div class="col-12">
                                         <div class="row" v-for="(cartItem , index) in cart" :key="index">
-                                            <div class="col-9 text-capitalize">
+                                            <div class="col-8 text-capitalize">
                                                 {{ cartItem.name }}
                                             </div>
                                             <div class="col-3">
                                                 € {{ cartItem.price }}
+                                            </div>
+                                            <div class="col-1 trash" @click='deleteSingleDish(cartItem, index)'>
+                                              <i class="fa-solid fa-trash-can"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
-                              <button class="btn btn-danger" @click="clearCart()" id="clear">Clear</button>
                             </div>
                         </div>
                     </div>
@@ -109,8 +119,6 @@
                     .then((response) => {
                         this.restaurant = response.data.results;
                         this.cart = JSON.parse(localStorage.getItem("cart"));
-                        console.log(this.cart)
-
                     }).catch((error) => {
                         console.warn(error);
                     });
@@ -118,18 +126,37 @@
 
             //! funzione che pusha in un array i piatti selezionati e li carica sul local storage
             addToCart(dish) {
-                if (this.cart == null) {
-                    this.cart = []
-                }
+              //? fixa il local storage al primo avvio o al clear in quanto risulta null
+              if (this.cart == null) {
+                  this.cart = []
+              }
+
+              //? se il carrello e' vuoto pusha il piatto
+              if(this.cart.length==0){
                 this.cart.push(dish)
                 localStorage.setItem("cart", JSON.stringify(this.cart));
-                console.log(this.cart)
+              }
+              //!  se il carrello non e' vuoto controlliamo che stiamo ordinando dallo stesso ristorante in caso contrario resettiamo il cart e pushamo il piatto
+              else if(this.cart[0].restaurant_id != this.$route.params.id){
+                const result =window.confirm('If you click add here we\'ll clear your cart, because our policy says "you can order from only one restaurant", Are you sure?')
+                if(result){
+                  this.cart=[]
+                  localStorage.clear();
+                  this.cart.push(dish)
+                  localStorage.setItem("cart", JSON.stringify(this.cart));
+                } 
+              }
+              //! pushamo il piatto aggiuntivo
+              else{
+                this.cart.push(dish)
+                localStorage.setItem("cart", JSON.stringify(this.cart));
+              }
             },
 
             //! clear del carrello
             clearCart(){
               //!popup per la conferma della cancellazione
-              if(this.cart != null){ 
+              if(this.cart != null  && this.cart.length>0){ 
                 const result =window.confirm('Are you sure?')
                 if(result){
                   this.cart=[]
@@ -139,6 +166,11 @@
               else{
                 const alert= window.alert('No item on cart')
               }
+            },
+            deleteSingleDish(dish, id){
+              this.cart.splice(id, 1)
+              localStorage.clear();
+              localStorage.setItem("cart", JSON.stringify(this.cart));
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -201,7 +233,7 @@
     }
 
     .cart {
-        height: 600px;
+        height: 400px;
         overflow-y: scroll;
     }
 
@@ -240,5 +272,8 @@
         text-align: center;
         line-height: 40px;
         cursor: pointer;
+    }
+    .trash{
+      cursor: pointer;
     }
 </style>
