@@ -111,15 +111,15 @@
             let password = document.getElementById('password');
             let passwordToMatch = document.getElementById('password-confirm');
 
-            console.log('click');
-
             if(password.value === passwordToMatch.value){
-                console.warn('Password Match');
+                passwordToMatch.setCustomValidity("");
+                console.warn('Password Match')
             } else {
+                passwordToMatch.setCustomValidity("Password dosen\'t match, please try again");
+                passwordToMatch.reportValidity();
                 console.warn('password dosen\'t match')
             }
         }
-
         document.getElementById('sign-up-button').addEventListener('click', () => {
             checkIfPswMatch()
         });
