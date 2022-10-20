@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <h1 class="text-center">Access Denied</h1>
+    <div class="text-center txt-denied">Access Denied</div>
     <div class="text-error text-center">Sorry, but you are not allowed to enter this section.</div>
 
     <div class="">
