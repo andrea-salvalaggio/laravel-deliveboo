@@ -69,19 +69,31 @@
 
         <!-- Loghi brand -->
         <div class="container-lg">
-            <h1 class="restaurant-title mb-5">Popular restaurant</h1>
-            <div class="row flex-row justify-content-between">
+            <h1 class="restaurant-title mb-3">Popular restaurant</h1>
+            <div class="row flex-row justify-content-between mb-5">
                 <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" />
+                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1"/>
                 </div>
                 <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" />
+                    <img src="../../images/kfc-logo.png" alt="Logo KFC" class="w-75 p-1"/>
                 </div>
                 <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" />
+                    <img src="../../images/bk-logo.png" alt="Logo Burger King" class="w-50"/>
                 </div>
                 <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" />
+                    <img src="../../images/domino-logo.png" alt="Logo Domino" class="w-50"/>
+                </div>
+                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/olive-logo.png" alt="Logo Olive Garden" class="w-75 p-1"/>
+                </div>
+                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/taco-bell-logo.png" alt="Logo Taco Bell" class="w-50 p-2"/>
+                </div>
+                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/qdoba-logo.png" alt="Logo Qdoba" class="w-75"/>
+                </div>
+                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/wendy-logo.png" alt="Logo Wendy" class="w-75"/>
                 </div>
             </div>
         </div>
@@ -269,10 +281,10 @@
     .brand-container {
         width: calc(100% / 3 - 40px);
         height: 120px;
-        margin: 0 20px;
+        margin: 40px 20px;
 
-        img {
-            width: 60px;
-        }
+        // img {
+        //     width: 60px;
+        // }
     }
 </style>
