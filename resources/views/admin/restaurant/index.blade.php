@@ -35,12 +35,23 @@
         @endif
 
         @if (session('created'))
-            <div class="alert alert-success my-alert-success" role="alert">
+            {{-- <div class="alert alert-success my-alert-success" role="alert">
                 <div class="pb-2">
                     <img class="w-25" src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                 </div>
                 <strong>Success!</strong>
                 <span class="text-capitalize">{{ session('created') }}</span>
+            </div> --}}
+            <div class="alert alert-success my-alert-success container-lg" role="alert">
+                <div class="row align-items-center">
+                    <div class="box-success-img ">
+                        <img src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
+                    </div>
+                    <div class="col-9">
+                        <strong>Success!</strong>
+                        <span class="text-capitalize">{{ session('created') }}</span>
+                    </div>
+                </div>
             </div>
         @endif
 
