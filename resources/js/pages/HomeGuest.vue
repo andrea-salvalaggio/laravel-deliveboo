@@ -196,7 +196,7 @@
 
     .slider {
         width: 100%;
-        height: 150px;
+        height: 120px;
         overflow-x: scroll;
 
         &:hover::-webkit-scrollbar-thumb {
@@ -209,11 +209,11 @@
             height: 8px;
         }
 
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $primaryColor;
-            border-radius: 5px;
-        }
+        // /* Handle */ -- Commentato per evitare che si veda sempre (solo hover)
+        // &::-webkit-scrollbar-thumb {
+        //     background: $primaryColor;
+        //     border-radius: 5px;
+        // }
     }
 
     .container-jumbo {
