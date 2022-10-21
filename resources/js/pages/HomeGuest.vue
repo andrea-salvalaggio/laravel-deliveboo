@@ -244,7 +244,7 @@
         font-size: 3rem;
         font-weight: 800;
         text-align: center;
-        margin-top: 200px;
+        margin-top: 50px;
     }
 
     .overlay {
