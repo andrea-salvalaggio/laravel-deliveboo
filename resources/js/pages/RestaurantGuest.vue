@@ -209,7 +209,7 @@
 
             sendOrder(){
                 console.log(this.cart[0])
-                axios.get(`http://127.0.0.1:8000/api/order/store`,{
+                axios.post(`http://127.0.0.1:8000/api/storeOrder`,{
                     data:this.cart[0]
                 }).then((response) => {
                     console.warn(response)
