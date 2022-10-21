@@ -20,15 +20,9 @@
             <div class="container-lg mt-5 slider">
                 <div class="row flex-nowrap">
                     <div class="col-6 col-lg-2" v-for="category in categories" :key="category.id">
-                        <div class="
-                mx-auto
-                my-rounded
-                order-card
-                d-flex
-                align-items-center
-                justify-content-center
-                text-capitalize
-              " :id="'categoria' + category.id" @click="activeCard(category), filterRestaurants(category.id)">
+                        <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
+                            :id="'categoria' + category.id"
+                            @click="activeCard(category), filterRestaurants(category.id)">
                             {{ category.name }}
                         </div>
                     </div>
@@ -52,16 +46,7 @@
                 <h3 class="text-white font-weight-lighter mb-5">
                     Find out all the advantages of home delivery
                 </h3>
-                <div class="
-            nav-item
-            my-btn
-            rounded-pill
-            py-1
-            px-4
-            my-btn-shadow
-            mt-md-0
-            text-center
-          ">
+                <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
                     <a href="/register" class="nav-link text-white px-0">Sign up</a>
                 </div>
             </div>
@@ -71,29 +56,37 @@
         <div class="container-lg">
             <h1 class="restaurant-title mb-3">Popular restaurant</h1>
             <div class="row flex-row justify-content-between my-5">
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/kfc-logo.png" alt="Logo KFC" class="w-75 p-1"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/kfc-logo.png" alt="Logo KFC" class="w-75 p-1" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/bk-logo.png" alt="Logo Burger King" class="w-50"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/bk-logo.png" alt="Logo Burger King" class="w-50" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/domino-logo.png" alt="Logo Domino" class="w-50"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/domino-logo.png" alt="Logo Domino" class="w-50" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/olive-logo.png" alt="Logo Olive Garden" class="w-75 p-1"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/olive-logo.png" alt="Logo Olive Garden" class="w-75 p-1" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/taco-bell-logo.png" alt="Logo Taco Bell" class="w-50 p-2"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/taco-bell-logo.png" alt="Logo Taco Bell" class="w-50 p-2" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/qdoba-logo.png" alt="Logo Qdoba" class="w-75"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/qdoba-logo.png" alt="Logo Qdoba" class="w-75" />
                 </div>
-                <div class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/wendy-logo.png" alt="Logo Wendy" class="w-75"/>
+                <div
+                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/wendy-logo.png" alt="Logo Wendy" class="w-75" />
                 </div>
             </div>
         </div>
@@ -197,31 +190,31 @@
         height: 150px;
         overflow-x: scroll;
 
-        &:hover::-webkit-scrollbar-thumb{
+        &:hover::-webkit-scrollbar-thumb {
             background-color: $primaryColor;
             border-radius: 10px;
         }
 
-        &::-webkit-scrollbar{
-          width: 10px;
-          height: 8px;
+        &::-webkit-scrollbar {
+            width: 10px;
+            height: 8px;
         }
 
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: $primaryColor;
-    border-radius: 5px;
-  }
-}
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: $primaryColor;
+            border-radius: 5px;
+        }
+    }
 
-.container-jumbo {
-  width: 100%;
-  height: 700px;
-  background-image: url("../../images/jumbotron.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
-}
+    .container-jumbo {
+        width: 100%;
+        height: 700px;
+        background-image: url("../../images/jumbotron.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+    }
 
     .info-container {
         width: 100%;
@@ -289,5 +282,4 @@
         transform: translateY(-50%);
         z-index: 2;
     }
-    
 </style>
