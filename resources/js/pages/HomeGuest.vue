@@ -16,8 +16,8 @@
         </div>
 
         <!-- categorie -->
-        <div class="container-fluid">
-            <div class="container-lg mt-5 slider">
+        <div class="container-fluid border-bottom">
+            <div class="container-lg my-5 slider">
                 <div class="row flex-nowrap">
                     <div class="col-6 col-lg-2" v-for="(category, index) in categories" :key="index">
                         <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
