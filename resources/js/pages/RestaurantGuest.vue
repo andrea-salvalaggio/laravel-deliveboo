@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" :class="length==0 ? 'd-none' : '' ">
+                                <div class="row  py-4" :class="length==0 ? 'd-none' : '' ">
                                     <div class="col-8 text-capitalize">
                                         total:
                                     </div>
@@ -262,6 +262,21 @@
     .cart {
         height: 200px;
         overflow-y: scroll;
+        &:hover::-webkit-scrollbar-thumb{
+            background-color: $primaryColor;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar{
+          width: 10px;
+          height: 8px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: $primaryColor;
+            border-radius: 5px;
+        }
     }
 
     .dish-card {
