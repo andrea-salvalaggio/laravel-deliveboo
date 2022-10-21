@@ -24,7 +24,10 @@
                             :id="'categoria' + category.id"
                             @click="activeCard(index), filterRestaurants(category.id)"
                             :class="controllerClicked[index] == true ? 'active-card' : ' '">
-                            {{ category.name }}
+                            <div class="d-flex flex-column align-items-center">
+                                <i class="fa-solid category-icon" :class="category.icon"></i>
+                                {{ category.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -304,5 +307,10 @@
                 vertical-align: middle;
             }
         }
+    }
+
+    .category-icon{
+        font-size: 1.8rem;
+        margin-bottom: 10px;
     }
 </style>
