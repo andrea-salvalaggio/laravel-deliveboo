@@ -208,8 +208,9 @@
             },
 
             sendOrder(){
-                axios.post(`http://127.0.0.1:8000/api/order/store`,{
-                    data:this.cart
+                console.log(this.cart[0])
+                axios.get(`http://127.0.0.1:8000/api/order/store`,{
+                    data:this.cart[0]
                 }).then((response) => {
                     console.warn(response)
                 }).catch((error) => {
