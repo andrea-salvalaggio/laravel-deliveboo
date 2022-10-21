@@ -310,7 +310,7 @@
     }
 
     .category-icon{
-        font-size: 1.8rem;
+        font-size: 2.5rem;
         margin-bottom: 10px;
     }
 </style>
