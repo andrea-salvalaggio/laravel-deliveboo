@@ -17,7 +17,7 @@
 
         <!-- categorie -->
         <div class="container-fluid border-bottom">
-            <div class="container-lg my-5 slider">
+            <div class="container-lg my-5 slider hide-scrollbar">
                 <div class="row flex-nowrap">
                     <div class="col-6 col-lg-2" v-for="(category, index) in categories" :key="index">
                         <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
@@ -203,7 +203,7 @@
             background-color: $primaryColor;
             border-radius: 10px;
         }
-
+        
         &::-webkit-scrollbar {
             width: 10px;
             height: 8px;
@@ -215,6 +215,17 @@
         //     border-radius: 5px;
         // }
     }
+
+    .hide-scrollbar
+        {
+            overflow: auto;
+            -ms-overflow-style: none; /* IE 11 */
+            scrollbar-width: none; /* Firefox 64 */
+
+            &:hover{
+                scrollbar-width: auto;
+            }
+        }
 
     .container-jumbo {
         width: 100%;
