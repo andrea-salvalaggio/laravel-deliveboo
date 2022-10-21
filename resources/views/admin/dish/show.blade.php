@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container-lg my-5">
+        <div class="col-lg-6 col-md-6 col-sm-10 mx-auto p-0">
+            <a href="{{ route('admin.restaurant.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2">
+                <i class="fa-solid fa-angle-left pr-2"></i>Go Back
+            </a>
+        </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 mx-auto mb-4">
             @if (session('edited'))
             <div class="alert alert-success my-alert-success container-lg" role="alert">
@@ -70,7 +75,6 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
