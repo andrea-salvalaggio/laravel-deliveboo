@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
                 @forelse ($restaurants->categories as $category)
-                    <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow mx-3"
+                    <span class="badge badge-pill text-white my-btn-shadow mx-2 px-3 py-2"
                         style="background-color: {{ $category->color }}">{{ $category->name }}</span>
                 @empty
                 @endforelse
