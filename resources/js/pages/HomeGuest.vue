@@ -34,8 +34,11 @@
         <!-- Ristoranti -->
         <div class="container-lg">
             <h1 class="restaurant-title mb-5">List of restaurant</h1>
-            <div class="row flex-wrap my-5">
+            <div v-if="restaurants.length != 0" class="row flex-wrap my-5">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
+            </div>
+            <div v-else class="col-12 badge-not-available text-center">
+                <h5><i class="fa-solid fa-circle-xmark mr-2"></i>Restaurant not available</h5>
             </div>
         </div>
 
@@ -284,5 +287,10 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
+    }
+
+    .badge-not-available{
+        background-color
+        ;
     }
 </style>
