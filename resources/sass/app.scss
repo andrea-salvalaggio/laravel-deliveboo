@@ -82,6 +82,18 @@ input[type=number] {
     }
 }
 
+// badge available e not available
+.my-badge-success{
+    background-color: $successBadgeColor;
+    color: #00e304;
+}
+
+.my-badge-danger{
+    background-color: $dangerBadgeColor;
+    color: #fd0000;
+}
+
+
 #dishPic{
     font-size: 0.8rem;
 }

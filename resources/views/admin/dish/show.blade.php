@@ -49,9 +49,9 @@
             <div class="card-body p-5">
 
                 @if ($dish->visible==0)
-                    <div class="badge my-badge-success badge-pill w-25 mb-3"><small>available</small></div>
+                    <div class="badge my-badge-success badge-pill w-25 mb-3 py-1"><small>available</small></div>
                 @else
-                    <div class="badge my-badge-danger badge-pill w-25 mb-3"><small>not available</small></div>
+                    <div class="badge my-badge-danger badge-pill w-25 mb-3 py-1"><small>not available</small></div>
                 @endif
 
                 <h2 class="card-title text-capitalize font-weight-bold">{{ $dish->name }}</h2>
