@@ -38,7 +38,7 @@
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
             </div>
             <div v-else class="col-12 badge-not-available text-center">
-                <h5><i class="fa-solid fa-circle-xmark mr-2"></i>Restaurant not available</h5>
+                <h5 class="m-0"><i class="fa-solid fa-circle-xmark"></i>Restaurant not available</h5>
             </div>
         </div>
 
@@ -290,7 +290,19 @@
     }
 
     .badge-not-available{
-        background-color
-        ;
+        background-color: #fdedee;
+        padding: 30px;
+        border-radius: 10px;
+
+        h5{
+            color: #f04d62;
+            font-weight: 400;
+            line-height: 2rem;
+            i{
+                font-size: 1.8rem;
+                padding-right: 15px;
+                vertical-align: middle;
+            }
+        }
     }
 </style>
