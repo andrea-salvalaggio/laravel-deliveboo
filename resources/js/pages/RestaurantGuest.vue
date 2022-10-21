@@ -102,7 +102,7 @@
                                       <textarea class="form-control border-0 px-4 font-weight-lighter" placeholder="Add some comment, it will help us with the delivery" name="description" rows="3" v-model="orderComment"></textarea>
                                     </div>
                                     <div class="col-12 text-center py-3">
-                                      <input type="submit" value="Checkout" class="btn btn-info rounded-pill">
+                                      <input type="submit" value="Checkout" class="btn btn-info rounded-pill" @click="sendOrder()>
                                     </div>
                                   </form>
                                 </div>
