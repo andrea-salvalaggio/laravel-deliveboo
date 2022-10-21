@@ -48,7 +48,7 @@
 
                 <!-- Carrello -->
                 <div class="col-lg-4 col-12">
-                    <div class="menu-container m-0 my-rounded py-4 px-5 mx-auto">
+                    <div class="menu-container m-0 my-rounded py-4 px-lg-5 mx-auto">
                         <div class="row border-bottom align-items-center">
                             <div class="col-8">
                                 <h3 class="text-capitalize py-4 m-0">
@@ -232,9 +232,9 @@
             },
 
             sendOrder(){
-                console.log(this.cart[0])
+                this.orderJson ={'name': this.orderName, 'surname': this.orderSurname, 'comment': this.orderComment, 'total': this.total}
                 axios.post(`http://127.0.0.1:8000/api/storeOrder`,{
-                    data:this.cart[0]
+                    data:[this.cart, this.orderJson]
                 }).then((response) => {
                     console.warn(response)
                 }).catch((error) => {
