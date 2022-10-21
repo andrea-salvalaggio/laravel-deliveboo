@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="col-12 text-center py-3">
-                                <button class="btn btn-primary rounded-pill">Checkout</button>
+                                <button class="btn btn-primary rounded-pill" @click="sendOrder()">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -206,6 +206,17 @@
                     return "/storage/" + img;
                 }
             },
+
+            sendOrder(){
+                console.log(this.cart[0])
+                axios.post(`http://127.0.0.1:8000/api/storeOrder`,{
+                    data:this.cart[0]
+                }).then((response) => {
+                    console.warn(response)
+                }).catch((error) => {
+                    console.error(error)
+                })
+            }
         },
         created() {
             this.getRestaurant();
