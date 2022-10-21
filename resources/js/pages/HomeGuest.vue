@@ -106,10 +106,12 @@
             return {
                 categories: [],
                 controllerClicked: [],
+                filterId: [],
                 currentActive: '',
                 isClicked: false,
                 idCategory: null,
                 restaurants: [],
+                filteredRestaurants: [],
                 controlFilter: -1
             }
         },
@@ -122,7 +124,6 @@
                         for (let index = 0; index < this.categories.length; index++) {
                           this.controllerClicked[index] = false
                         }
-                        console.log(this.controllerClicked);
                     })
                     .catch((error) => {
                         console.error(error)
@@ -139,7 +140,6 @@
             getRestaurants() {
                 axios.get(`/api/restaurant`)
                     .then((response) => {
-                        console.log(response.data.results.data);
                         this.restaurants = response.data.results.data;
                     }).catch((error) => {
                         console.error(error)
@@ -148,20 +148,30 @@
 
             filterRestaurants(id) {
                 if (this.controlFilter == id) {
+                    this.filterId.push(id);
                     this.getRestaurants();
                     this.controlFilter = -1
+                    this.filterId= []
+                    this.filteredRestaurants= []
                 } else {
-                    axios.get(`/api/restaurant/filter/${id}`)
+                    this.filterId.push(id);
+                    axios.get(`/api/restaurant`)
                         .then((response) => {
-                            console.log(response.data.results.data);
                             this.restaurants = response.data.results.data;
+                            this.restaurants.forEach(restaurant => {
+                                console.warn(restaurant.categories)
+                                restaurant.categories.forEach(category =>{
+                                    if (this.filterId.includes(category.id)) {
+                                        this.filteredRestaurants.push(restaurant)
+                                    }
+                                })
+                            });
+                            console.error(this.filteredRestaurants)
                         }).catch((error) => {
                             console.error(error)
                         })
                     this.controlFilter = id
                 }
-
-
             }
         },
         created() {
