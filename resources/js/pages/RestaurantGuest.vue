@@ -230,7 +230,17 @@
                     return "/storage/" + img;
                 }
             },
-            //! funzione che al click del bottone checkout popola l'oggetto
+
+            sendOrder(){
+                console.log(this.cart[0])
+                axios.post(`http://127.0.0.1:8000/api/storeOrder`,{
+                    data:this.cart[0]
+                }).then((response) => {
+                    console.warn(response)
+                }).catch((error) => {
+                    console.error(error)
+                })
+            }
         },
         created() {
             this.getRestaurant();
