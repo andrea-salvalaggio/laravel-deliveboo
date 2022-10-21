@@ -92,8 +92,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 text-center">
-                                <button class="btn btn-primary">invia</button>
+                            <div class="col-12 text-center py-3">
+                                <button class="btn btn-primary rounded-pill">Checkout</button>
                             </div>
                         </div>
 
