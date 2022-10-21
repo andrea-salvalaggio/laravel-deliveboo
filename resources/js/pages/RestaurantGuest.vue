@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="add-button-container mx-3 mb-3" @click="addToCart(dish)"
+                                        <div class="add-button-container mx-3 mb-3" @click="selectQt(dish)"
                                             :class="dish.visible == 1 ? 'd-none' : ''">
                                             <div class="add-button">+</div>
                                         </div>
@@ -72,8 +72,11 @@
                                     <div class="col-12">
                                         <div class="row border-bottom py-2" v-for="(cartItem, index) in cart"
                                             :key="index">
-                                            <div class="col-8 text-capitalize">
+                                            <div class="col-6 text-capitalize">
                                                 {{ cartItem.name }}
+                                            </div>
+                                            <div class="col-2">
+                                              x{{ cartItem.quantity }}
                                             </div>
                                             <div class="col-3">€ {{ cartItem.price }}</div>
                                             <div class="col-1 trash" @click="deleteSingleDish(cartItem, index)">
@@ -126,6 +129,7 @@
                 counter: 0,
                 total: 0,
                 length: 0,
+                qtDish: 1,
 
                 orderName : '',
                 orderSurname: '',
@@ -157,8 +161,9 @@
 
                 //? se il carrello e' vuoto pusha il piatto
                 if (this.cart.length == 0) {
-                    this.cart.push(dish);
+                    this.cart.push(dish); //<-qui mettiamo per la prima volta la qt
                     this.length++;
+                    console.log(this.cart)
                     localStorage.setItem("cart", JSON.stringify(this.cart));
                 }
                 //!  se il carrello non e' vuoto controlliamo che stiamo ordinando dallo stesso ristorante in caso contrario resettiamo il cart e pushamo il piatto
@@ -176,8 +181,16 @@
                 }
                 //! pushamo il piatto aggiuntivo
                 else {
-                    this.cart.push(dish);
-                    this.length++;
+                    this.length++
+                    for(let i=0; i<this.cart.length; i++ ){
+                      if(this.cart[i].id===dish.id){
+                        dish.quantity = this.cart[i].quantity+dish.quantity
+                        console.log('sono entrato nel caso :'+dish.quantity)
+            
+                        this.cart[i]=dish;
+                      }
+                    }  
+                    console.log(this.cart)
                     localStorage.setItem("cart", JSON.stringify(this.cart));
                 }
 
@@ -240,11 +253,41 @@
                 }).catch((error) => {
                     console.error(error)
                 })
-            }
+            },
+
+            //! questa funzione permettera' all'utente quando clicca su + parte sweetalert dove puoi selezionare la quantita' e caricare sul carrello (aggiungere addToCart())
+            selectQt(item){
+              this.qtDish = 1  
+              Vue.swal({
+                  html: "<span id='minusDish' class='btn btn-warning rounded-pill mr-1'>-</span>"+this.qtDish+"<span class='btn btn-warning rounded-pill ml-1' id='plusDish'>+</span>",
+                  confirmButtonText: "Add",
+              }).then((result) => {
+                  /* Read more about isConfirmed, isDenied below */
+                  if (result.isConfirmed) {
+                      item['quantity']= this.qtDish
+                      console.error('quanto invio '+item.quantity)
+                      this.addToCart(item)
+                  }
+              });
+              let minus = document.getElementById('minusDish')
+              let plus = document.getElementById('plusDish')
+              minus.addEventListener('click', ()=>{
+                if(this.qtDish>0){
+                  this.qtDish--
+                  console.log('Meno '+this.qtDish)
+                }
+              })
+              plus.addEventListener('click', ()=>{
+                if(this.qtDish>=0){
+                  this.qtDish++
+                  console.log('piu '+this.qtDish)
+                }
+              })
+            },
         },
         created() {
             this.getRestaurant();
-           
+            
         },
     };
 </script>
