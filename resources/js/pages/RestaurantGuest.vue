@@ -130,7 +130,7 @@
                 orderName : '',
                 orderSurname: '',
                 orderComment: '',
-                orderJson : {'name': orderName, 'surname': orderSurname, 'comment':orderComment}
+                orderJson : {}
             };
         },
         methods: {
