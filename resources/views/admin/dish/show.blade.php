@@ -2,11 +2,7 @@
 
 @section('content')
     <div class="container-lg my-5">
-        <div class="col-lg-6 col-md-6 col-sm-10 mx-auto p-0">
-            <a href="{{ route('admin.restaurant.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2">
-                <i class="fa-solid fa-angle-left pr-2"></i>Go Back
-            </a>
-        </div>
+        
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 mx-auto mb-4">
             @if (session('edited'))
             <div class="alert alert-success my-alert-success container-lg" role="alert">
@@ -21,7 +17,7 @@
                 </div>
             </div>
             @endif
-
+            
             @if (session('created'))
             <div class="alert alert-success my-alert-success container-lg" role="alert">
                 <div class="row align-items-center">
@@ -37,9 +33,16 @@
             @endif
         </div>
 
+        {{-- Bottone Go Back --}}
+        <div class="col-lg-6 col-md-6 col-sm-10 mx-auto mb-4 p-0">
+            <a href="{{ route('admin.restaurant.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2">
+                <i class="fa-solid fa-angle-left pr-2"></i>Go Back
+            </a>
+        </div>
+
         <div class="card col-lg-6 col-md-6 col-sm-10 my-rounded my-shadow mx-auto border-0">
             {{-- @dd(asset('/' . $dish->dishPic)) --}}
-
+            
             @if (filter_var($dish->dishPic, FILTER_VALIDATE_URL))
                 <img src="{{ $dish->dishPic }}" class="card-img-top my-rounded-top" alt="{{ $dish->name }} photo">
             @else
