@@ -55,13 +55,14 @@
             </div>
         @endif
 
+        {{-- Categorie --}}
         <div class="row mt-1 align-items-center">
             <div class="col-md-5 col-6">
                 <h1 class="font-weight-bolder">{{ $restaurants->name }}</h1>
             </div>
-            <div class="col-md-7 col-12 col-lg-6 d-flex justify-content-end flex-wrap">
+            <div class="col-md-7 col-12 col-lg-7 d-flex justify-content-sm-start justify-content-md-end flex-wrap mb-3">
                 @forelse ($restaurants->categories as $category)
-                    <span class="badge badge-pill text-white my-btn-shadow mx-2 px-3 py-2"
+                    <span class="badge badge-pill text-white my-btn-shadow ml-2 mt-2 mt-md-2 px-3 py-2"
                         style="background-color: {{ $category->color }}">{{ $category->name }}</span>
                 @empty
                 @endforelse
