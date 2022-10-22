@@ -59,38 +59,18 @@
             </div>
         </div>
 
-        <!-- Loghi brand -->
-        <div class="container-lg">
-            <h1 class="restaurant-title mb-2">Popular restaurant</h1>
-            <div class="row justify-content-center mt-4 px-4">
-                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
-                </div>
-                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
-                </div>
-                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
-                </div>
-                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
-                </div>
-            </div>
-        </div>
-
+        <!-- Brands -->
         <div class="container-fluid">
             <h1 class="restaurant-title mb-2">Popular restaurant</h1>
             <div class="container-lg my-5 slider slider-brand hide-scrollbar">
                 <div class="row flex-nowrap justify-content-center mt-4 px-4">
-                    <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded"
+                    <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center align-items-center"
                         v-for="(brand, index) in brands" :key="index">
-                        <img :src="brand.image" :alt="brand.name"/>
-                        </div>
+                        <img :src="brand.image" :alt="brand.name" class="w-50">
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -119,8 +99,32 @@
                         'image': '../../images/mc-logo.png'
                     },
                     {
+                        'name': 'Logo KFC',
+                        'image': '../../images/kfc-logo.png'
+                    },
+                    {
                         'name': 'Logo Burger King',
                         'image': '../../images/bk-logo.png'
+                    },
+                    {
+                        'name': 'Logo Domino\'s Pizza',
+                        'image': '../../images/domino-logo.png'
+                    },
+                    {
+                        'name': 'Logo Olive Garden',
+                        'image': '../../images/olive-logo.png'
+                    },
+                    {
+                        'name': 'Logo Taco Bell',
+                        'image': '../../images/taco-bell-logo.png'
+                    },
+                    {
+                        'name': 'Logo Qdoba',
+                        'image': '../../images/qdoba-logo.png'
+                    },
+                    {
+                        'name': 'Logo Wendy\'s',
+                        'image': '../../images/wendy-logo.png'
                     },
                 ]
             }
@@ -220,7 +224,7 @@
     }
 
     .slider-brand{
-        height: 200px;
+        height: 220px;
     }
 
     .hide-scrollbar
@@ -298,12 +302,6 @@
         font-weight: 800;
     }
 
-    .brand-container {
-        width: calc(100% / 3 - 20px);
-        height: 120px;
-        margin: 40px 10px;
-    }
-
     .title-container {
         position: absolute;
         top: 50%;
@@ -354,12 +352,6 @@
                 font-weight: 800;
             }
         }
-
-        // .brand-container {
-        //     width: calc(100% / 2 - 10px);
-        //     height: 120px;
-        //     margin: 40px 5px;
-        // }
     }
 }
 
