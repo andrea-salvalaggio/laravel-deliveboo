@@ -68,10 +68,10 @@
                 @endforelse
             </div>
             <div class="col-md-5 col-6 mb-3">
-                <p class="m-0"><span class="material-symbols-outlined h6 align-text-middle m-0">location_on</span>
-                    &nbsp;{{ $restaurants->address }}</p>
-                <p class="m-0"><span class="material-symbols-outlined h6 align-text-middle m-0">schedule</span>
-                    &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}</p>
+                <p class="m-0"><i class="fa-solid fa-location-dot align-text-middle m-0"></i> &nbsp;{{ $restaurants->address }}</p>
+                <p class="m-0"><i class="fa-solid fa-clock align-text-middle m-0"></i>
+                    &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}
+                </p>
             </div>
         </div>
         {{-- <h1 class="mt-1 d-flex align-items-center">
