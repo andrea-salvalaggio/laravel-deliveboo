@@ -16,15 +16,18 @@
         </div>
 
         <!-- categorie -->
-        <div class="container-fluid">
-            <div class="container-lg mt-5 slider">
+        <div class="container-fluid border-bottom">
+            <div class="container-lg my-5 slider hide-scrollbar">
                 <div class="row flex-nowrap">
                     <div class="col-6 col-lg-2" v-for="(category, index) in categories" :key="index">
                         <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
                             :id="'categoria' + category.id"
                             @click="activeCard(index), filterRestaurants(category.id)"
                             :class="controllerClicked[index] == true ? 'active-card' : ' '">
-                            {{ category.name }}
+                            <div class="d-flex flex-column align-items-center">
+                                <i class="fa-solid category-icon" :class="category.icon"></i>
+                                {{ category.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -34,8 +37,11 @@
         <!-- Ristoranti -->
         <div class="container-lg">
             <h1 class="restaurant-title mb-5">List of restaurant</h1>
-            <div class="row flex-wrap my-5">
+            <div v-if="restaurants.length != 0" class="row flex-wrap my-5">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
+            </div>
+            <div v-else class="col-12 badge-not-available text-center">
+                <h5 class="m-0"><i class="fa-solid fa-circle-xmark"></i>Restaurant not available</h5>
             </div>
         </div>
 
@@ -190,25 +196,36 @@
 
     .slider {
         width: 100%;
-        height: 150px;
+        height: 120px;
         overflow-x: scroll;
 
         &:hover::-webkit-scrollbar-thumb {
             background-color: $primaryColor;
             border-radius: 10px;
         }
-
+        
         &::-webkit-scrollbar {
             width: 10px;
             height: 8px;
         }
 
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $primaryColor;
-            border-radius: 5px;
-        }
+        // /* Handle */ -- Commentato per evitare che si veda sempre (solo hover)
+        // &::-webkit-scrollbar-thumb {
+        //     background: $primaryColor;
+        //     border-radius: 5px;
+        // }
     }
+
+    .hide-scrollbar
+        {
+            overflow: auto;
+            -ms-overflow-style: none; /* IE 11 */
+            scrollbar-width: none; /* Firefox 64 */
+
+            &:hover{
+                scrollbar-width: auto;
+            }
+        }
 
     .container-jumbo {
         width: 100%;
@@ -247,7 +264,7 @@
         font-size: 3rem;
         font-weight: 800;
         text-align: center;
-        margin-top: 200px;
+        margin-top: 50px;
     }
 
     .overlay {
@@ -284,5 +301,27 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
+    }
+
+    .badge-not-available{
+        background-color: #fdedee;
+        padding: 30px;
+        border-radius: 10px;
+
+        h5{
+            color: #f04d62;
+            font-weight: 400;
+            line-height: 2rem;
+            i{
+                font-size: 1.8rem;
+                padding-right: 15px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .category-icon{
+        font-size: 2.5rem;
+        margin-bottom: 10px;
     }
 </style>

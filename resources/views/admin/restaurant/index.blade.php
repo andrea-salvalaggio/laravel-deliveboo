@@ -35,12 +35,23 @@
         @endif
 
         @if (session('created'))
-            <div class="alert alert-success my-alert-success" role="alert">
+            {{-- <div class="alert alert-success my-alert-success" role="alert">
                 <div class="pb-2">
                     <img class="w-25" src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                 </div>
                 <strong>Success!</strong>
                 <span class="text-capitalize">{{ session('created') }}</span>
+            </div> --}}
+            <div class="alert alert-success my-alert-success container-lg" role="alert">
+                <div class="row align-items-center">
+                    <div class="box-success-img ">
+                        <img src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
+                    </div>
+                    <div class="col-9">
+                        <strong>Success!</strong>
+                        <span class="text-capitalize">{{ session('created') }}</span>
+                    </div>
+                </div>
             </div>
         @endif
 
@@ -50,7 +61,7 @@
             </div>
             <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
                 @forelse ($restaurants->categories as $category)
-                    <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow mx-3"
+                    <span class="badge badge-pill text-white my-btn-shadow mx-2 px-3 py-2"
                         style="background-color: {{ $category->color }}">{{ $category->name }}</span>
                 @empty
                 @endforelse

@@ -6,15 +6,15 @@
                     <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name">
                 </div>
                 <div class="p-4">
+                    <h4>{{restaurant.name}}</h4>
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4>{{restaurant.name}}</h4>
+                        <div>
+                            <p class="m-0"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
+                            <p class="m-0"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
+                        </div>
                         <div class="add-button-container" @click="addToCart(dish)">
                             <div class="add-button"><i class="fa-solid fa-angle-right"></i></div>
                         </div>
-                    </div>
-                    <div>
-                        <p class="m-0"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
-                        <p class="m-0"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
                     </div>
                 </div>
             </div>
