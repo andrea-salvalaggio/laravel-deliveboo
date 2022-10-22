@@ -75,17 +75,17 @@
                                             <div class="col-5 text-capitalize">
                                                 {{ cartItem.name }}
                                             </div>
-                                            <div class="col-1 p-0 text-center" @click="subtractionDish(cartItem, index)">
+                                            <div class="col-1 p-0 text-center icon-in-cart" @click="subtractionDish(cartItem, index)">
                                                 <i class="fa-solid fa-minus"></i>
                                             </div>
                                             <div class="col-1 p-0 text-center">
                                               x{{ cartItem.quantity }}
                                             </div>
-                                            <div class="col-1 p-0 text-center" @click="moreDish(cartItem)">
+                                            <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                                 <i class="fa-solid fa-plus"></i>
                                             </div>
                                             <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                            <div class="col-1 trash" @click="deleteSingleDish(index)">
+                                            <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </div>
                                         </div>
@@ -336,6 +336,20 @@
             background: $primaryColor;
             border-radius: 5px;
         }
+        .icon-in-cart{
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+            &:hover{
+                color: $primaryColor;
+            }
+        }
+        .icon-trash{
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+            &:hover{
+                color: red;
+            }
+        }
     }
 
     .dish-card {
@@ -389,4 +403,5 @@
         border:none;
       }
     }
+    
 </style>
