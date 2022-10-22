@@ -83,8 +83,8 @@
             <div class="container-lg my-5 slider slider-brand hide-scrollbar">
                 <div class="row flex-nowrap justify-content-center mt-4 px-4">
                     <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded"
-                        v-for="(brand, index) in categories" :key="index">
-                        <img src="../../images/mc-logo.png" alt="Logo McDonald's"/>
+                        v-for="(brand, index) in brands" :key="index">
+                        <img :src="brand.image" :alt="brand.name"/>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,19 @@
                 isClicked: false,
                 idCategory: null,
                 restaurants: [],
-                controlFilter: -1
+                controlFilter: -1,
+
+                brands:
+                [
+                    {
+                        'name': 'Logo McDonald\'s',
+                        'image': '../../images/mc-logo.png'
+                    },
+                    {
+                        'name': 'Logo Burger King',
+                        'image': '../../images/bk-logo.png'
+                    },
+                ]
             }
         },
         methods: {
