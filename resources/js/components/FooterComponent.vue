@@ -109,8 +109,8 @@ footer {
       width: 100%;
     }
     .d-lg-none{
-      max-width: 72px;
-      min-width: 72px;
+      max-width: 55px;
+      min-width: 55px;
     }
   }
 }
