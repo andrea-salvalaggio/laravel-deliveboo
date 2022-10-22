@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="add-button-container mx-3 mb-3" @click="selectQt(dish)"
+                                        <div class="add-button-container mx-3 mb-3" @click="insertToCart(dish)"
                                             :class="dish.visible == 1 ? 'd-none' : ''">
                                             <div class="add-button">+</div>
                                         </div>
@@ -70,7 +70,7 @@
                                         <h3>Your Order :</h3>
                                     </div>
                                     <div class="col-12">
-                                        <div class="row border-bottom py-2" v-for="(cartItem, index) in cart"
+                                        <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart"
                                             :key="index">
                                             <div class="col-6 text-capitalize">
                                                 {{ cartItem.name }}
@@ -126,6 +126,7 @@
             return {
                 restaurant: {},
                 cart: [],
+                newCart:[],
                 counter: 0,
                 total: 0,
                 length: 0,
@@ -143,9 +144,7 @@
                     .get(`http://127.0.0.1:8000/api/restaurant/${this.$route.params.id}`)
                     .then((response) => {
                         this.restaurant = response.data.results;
-                        this.cart = JSON.parse(localStorage.getItem("cart"));
                         this.length = this.cart.length;
-                        this.total = localStorage.getItem("total");
                     })
                     .catch((error) => {
                         console.warn(error);
@@ -153,7 +152,7 @@
             },
 
             //! funzione che pusha in un array i piatti selezionati e li carica sul local storage
-            addToCart(dish) {
+            /** addToCart(dish) {
                 //? fixa il local storage al primo avvio o al clear in quanto risulta null
                 if (this.cart == null) {
                     this.cart = [];
@@ -184,25 +183,27 @@
                     this.length++
                     for(let i=0; i<this.cart.length; i++ ){
                       if(this.cart[i].id===dish.id){
-                        dish.quantity = this.cart[i].quantity+dish.quantity
+                        console.log('dish quantity prima della somma e '+dish.quantity )
+                        console.log('il carrello prima della somma e '+this.cart[i].quantity)
+                        this.cart[i].quantity = this.cart[i].quantity+dish.quantity
                         console.log('sono entrato nel caso :'+dish.quantity)
-            
                         this.cart[i]=dish;
+
+                        console.log(this.cart)
                       }
                     }  
-                    console.log(this.cart)
                     localStorage.setItem("cart", JSON.stringify(this.cart));
+                    console.log(this.cart)
                 }
-
                 this.total = this.total + dish.price;
                 localStorage.setItem("total", this.total);
-            },
+            }, */
 
             //! clear del carrello
             clearCart() {
                 //!popup per la conferma della cancellazione
                 console.log(this.orderJson)
-                if (this.cart != null && this.cart.length > 0) {
+                if (this.newCart != null && this.newCart.length > 0) {
                     Vue.swal({
                         title: "Are you sure?",
                         showDenyButton: true,
@@ -210,10 +211,8 @@
                     }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
-                            this.cart = [];
+                            this.newCart = [];
                             localStorage.clear();
-                            this.total = 0;
-                            this.length = 0;
                             Swal.fire("Saved!", "", "success");
                         }
                     });
@@ -221,17 +220,11 @@
                     Vue.swal("No item in cart");
                 }
             },
-            deleteSingleDish(dish, id) {
-                console.log(dish);
-                this.cart.splice(id, 1);
-                this.length--;
-                localStorage.clear();
-                localStorage.setItem("cart", JSON.stringify(this.cart));
-                if (this.cart.length != 0) {
-                    this.total = this.total - dish.price;
-                } else {
-                    this.total = 0;
-                }
+
+            //! funzione che cancella il singolo piatto del carrello
+            deleteSingleDish(dish, id) { 
+                this.newCart.splice(id, 1)
+                this.setInCart() 
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -244,6 +237,7 @@
                 }
             },
 
+            //! funzione per inviare l'ordine al backoffice
             sendOrder(){
                 this.orderJson ={'name': this.orderName, 'surname': this.orderSurname, 'comment': this.orderComment, 'total': this.total}
                 axios.post(`http://127.0.0.1:8000/api/storeOrder`,{
@@ -256,13 +250,12 @@
             },
 
             //! questa funzione permettera' all'utente quando clicca su + parte sweetalert dove puoi selezionare la quantita' e caricare sul carrello (aggiungere addToCart())
-            selectQt(item){
+            /**selectQt(item){
               this.qtDish = 1  
               Vue.swal({
                   html: "<span id='minusDish' class='btn btn-warning rounded-pill mr-1'>-</span>"+this.qtDish+"<span class='btn btn-warning rounded-pill ml-1' id='plusDish'>+</span>",
                   confirmButtonText: "Add",
               }).then((result) => {
-                  /* Read more about isConfirmed, isDenied below */
                   if (result.isConfirmed) {
                       item['quantity']= this.qtDish
                       console.error('quanto invio '+item.quantity)
@@ -283,10 +276,41 @@
                   console.log('piu '+this.qtDish)
                 }
               })
+            },*/
+
+            getCurrentID(dish){
+                return this.newCart.findIndex((element)=>element.id == dish.id)
             },
+
+            // una volta ottenuto l'id dobbiamo caricare il singolo piatto
+            insertToCart(dish){
+                dish.quantity = 1
+                let currentIndex=this.getCurrentID(dish)
+
+                if(currentIndex >= 0){          
+                   this.newCart[currentIndex].quantity++
+                }
+                else{
+                   this.newCart.push({quantity: 1, ...dish})
+                }
+                this.setInCart()
+            },
+            getLocalStorage(){
+                if(JSON.parse(localStorage.getItem("newCart")) == null){
+                    this.newCart=[]
+                }
+                else{
+                    this.newCart = JSON.parse(localStorage.getItem("newCart"));
+                }
+            },
+            setInCart(){
+                localStorage.setItem("newCart", JSON.stringify(this.newCart));
+            }
+
         },
         created() {
             this.getRestaurant();
+            this.getLocalStorage();
             
         },
     };
