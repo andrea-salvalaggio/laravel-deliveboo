@@ -46,11 +46,11 @@
         </div>
 
         <!-- Banner info -->
-        <div class="container-lg d-none d-lg-block info-container my-rounded my-shadow">
+        <div class="container-lg info-container d-none d-lg-block my-rounded my-shadow">
             <div class="overlay my-rounded"></div>
             <div class="col-12 cta-container d-flex flex-column align-items-center">
-                <h2 class="text-white cta-title">Do you have a restaurant?</h2>
-                <h3 class="text-white font-weight-lighter mb-5">
+                <h2 class="text-white cta-title text-center">Do you have a restaurant?</h2>
+                <h3 class="text-white font-weight-lighter text-center mb-5">
                     Find out all the advantages of home delivery
                 </h3>
                 <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
@@ -61,40 +61,52 @@
 
         <!-- Loghi brand -->
         <div class="container-lg">
-            <h1 class="restaurant-title mb-3">Popular restaurant</h1>
-            <div class="row flex-row justify-content-between my-5">
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+            <h1 class="restaurant-title mb-2">Popular restaurant</h1>
+            <div class="row flex-row justify-content-center mt-4 px-4">
+                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
+                </div>
+                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
+                </div>
+                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
+                </div>
+                <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
+                </div>
+                <!-- <div
+                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1" />
                 </div>
                 <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/kfc-logo.png" alt="Logo KFC" class="w-75 p-1" />
                 </div>
                 <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/bk-logo.png" alt="Logo Burger King" class="w-50" />
                 </div>
                 <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/domino-logo.png" alt="Logo Domino" class="w-50" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                </div> -->
+                <!-- <div
+                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/olive-logo.png" alt="Logo Olive Garden" class="w-75 p-1" />
                 </div>
                 <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/taco-bell-logo.png" alt="Logo Taco Bell" class="w-50 p-2" />
                 </div>
                 <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/qdoba-logo.png" alt="Logo Qdoba" class="w-75" />
                 </div>
                 <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
+                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/wendy-logo.png" alt="Logo Wendy" class="w-75" />
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -244,8 +256,8 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
-        margin-top: 200px;
-        margin-bottom: 200px;
+        margin-top: 100px;
+        margin-bottom: 100px;
         position: relative;
     }
 
@@ -280,7 +292,7 @@
     }
 
     .cta-container {
-        position: absolute;
+        // position: absolute;
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
@@ -292,9 +304,9 @@
     }
 
     .brand-container {
-        width: calc(100% / 3 - 40px);
+        width: calc(100% / 3 - 20px);
         height: 120px;
-        margin: 40px 20px;
+        margin: 40px 10px;
     }
 
     .title-container {
@@ -347,6 +359,12 @@
                 font-weight: 800;
             }
         }
+
+        // .brand-container {
+        //     width: calc(100% / 2 - 10px);
+        //     height: 120px;
+        //     margin: 40px 5px;
+        // }
     }
 }
 
