@@ -17,7 +17,7 @@
 
         <!-- categorie -->
         <div class="container-fluid border-bottom">
-            <div class="container-lg my-5 slider hide-scrollbar">
+            <div class="container-lg my-5 slider slider-category hide-scrollbar">
                 <div class="row flex-nowrap">
                     <div class="col-6 col-lg-2" v-for="(category, index) in categories" :key="index">
                         <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
@@ -62,7 +62,7 @@
         <!-- Loghi brand -->
         <div class="container-lg">
             <h1 class="restaurant-title mb-2">Popular restaurant</h1>
-            <div class="row flex-row justify-content-center mt-4 px-4">
+            <div class="row justify-content-center mt-4 px-4">
                 <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
                 </div>
@@ -75,40 +75,22 @@
                 <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded my-shadow">
                     <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="" />
                 </div>
-                <!-- <div
-                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1" />
-                </div>
-                <div
-                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/kfc-logo.png" alt="Logo KFC" class="w-75 p-1" />
-                </div>
-                <div
-                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/bk-logo.png" alt="Logo Burger King" class="w-50" />
-                </div>
-                <div
-                    class="col-6 col-md-2 mx-0 mt-2 mx-md-3 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/domino-logo.png" alt="Logo Domino" class="w-50" />
-                </div> -->
-                <!-- <div
-                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/olive-logo.png" alt="Logo Olive Garden" class="w-75 p-1" />
-                </div>
-                <div
-                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/taco-bell-logo.png" alt="Logo Taco Bell" class="w-50 p-2" />
-                </div>
-                <div
-                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/qdoba-logo.png" alt="Logo Qdoba" class="w-75" />
-                </div>
-                <div
-                    class="col-6 col-md-2 m-0 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/wendy-logo.png" alt="Logo Wendy" class="w-75" />
-                </div> -->
             </div>
         </div>
+
+        <div class="container-fluid">
+            <h1 class="restaurant-title mb-2">Popular restaurant</h1>
+            <div class="container-lg my-5 slider slider-brand hide-scrollbar">
+                <div class="row flex-nowrap justify-content-center mt-4 px-4">
+                    <div class="col-6 col-md-2 mx-md-4 m-3 p-3 d-flex justify-content-center align-items-center my-rounded"
+                        v-for="(brand, index) in categories" :key="index">
+                        <img src="../../images/mc-logo.png" alt="Logo McDonald's"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -206,9 +188,8 @@
         color: white;
     }
 
-    .slider {
+    .slider{
         width: 100%;
-        height: 120px;
         overflow-x: scroll;
 
         &:hover::-webkit-scrollbar-thumb {
@@ -220,12 +201,14 @@
             width: 10px;
             height: 8px;
         }
+    }
 
-        // /* Handle */ -- Commentato per evitare che si veda sempre (solo hover)
-        // &::-webkit-scrollbar-thumb {
-        //     background: $primaryColor;
-        //     border-radius: 5px;
-        // }
+    .slider-category {
+        height: 120px;
+    }
+
+    .slider-brand{
+        height: 200px;
     }
 
     .hide-scrollbar
