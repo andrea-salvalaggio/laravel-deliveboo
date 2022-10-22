@@ -286,12 +286,27 @@
             insertToCart(dish){
                 dish.quantity = 1
                 let currentIndex=this.getCurrentID(dish)
-
-                if(currentIndex >= 0){          
-                   this.newCart[currentIndex].quantity++
+                console.log(currentIndex)
+                if(this.newCart.length > 0){ 
+                    if(this.checkOnUrl()){
+                        const result = window.confirm('If you click add here we\'ll clear your cart, because our policy says "you can order from only one restaurant", Are you sure?');
+                        if (result) {
+                            this.newCart = [];
+                            localStorage.clear();
+                            this.newCart.push({quantity: 1, ...dish})
+                            localStorage.setItem("cart", JSON.stringify(this.cart));
+                        } 
+                    }
+                    else if(currentIndex >=0 ){
+                        this.newCart[currentIndex].quantity++
+                    }
+                    else{
+                        this.newCart.push({quantity: 1, ...dish})
+                    }         
                 }
                 else{
-                   this.newCart.push({quantity: 1, ...dish})
+                    
+                    this.newCart.push({quantity: 1, ...dish})
                 }
                 this.setInCart()
             },
@@ -305,6 +320,16 @@
             },
             setInCart(){
                 localStorage.setItem("newCart", JSON.stringify(this.newCart));
+            },
+            checkOnUrl(){
+                if(this.newCart[0].restaurant_id != this.$route.params.id){
+                    console.log(true)
+                    return true
+                }
+                else{
+                    console.log(false)
+                    return false
+                }
             }
 
         },
