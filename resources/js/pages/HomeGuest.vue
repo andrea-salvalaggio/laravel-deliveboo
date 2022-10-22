@@ -1,11 +1,11 @@
 <template>
     <div>
         <!-- banner -->
-        <div class="container-jumbo d-none d-lg-block position-relative">
+        <div class="container-jumbo d-lg-block">
             <!-- testo principale -->
             <div class="container-lg">
                 <div class="row">
-                    <div class="col-5 title-container">
+                    <div class="col-12 pl-4 col-md-5 title-container">
                         <h1 class="text-white big-title">
                             Restaurant <span>Food</span>, takeaway and groceries
                             <span>Delivered</span>.
@@ -234,6 +234,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
+        position: relative;
     }
 
     .info-container {
@@ -324,4 +325,29 @@
         font-size: 2.5rem;
         margin-bottom: 10px;
     }
+
+    @media screen and (max-width: 600px) {
+        .container-jumbo {
+            width: 100%;
+            height: 700px;
+            background-image: url("../../images/jumbotron-mobile.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: bottom;
+            position: relative;
+
+        .big-title {
+            font-size: 3rem;
+            line-height: 4rem;
+            font-weight: 500;
+
+            span {
+                color: $primaryColor;
+                font-family: "Syncopate", sans-serif;
+                font-weight: 800;
+            }
+        }
+    }
+}
+
 </style>
