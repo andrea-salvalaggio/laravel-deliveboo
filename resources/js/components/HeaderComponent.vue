@@ -3,7 +3,7 @@
         <div class="position-relative w-100">
             <div class="container-lg ">
                 <div class="row justify-content-between px-md-0 px-2 align-content-center">
-                    <div class="col-4">
+                    <div class="col-4 d-flex align-items-center">
                         <router-link :to="{ name: 'home' }" >
                             <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" 
                             alt="logo image" class="d-md-block d-none">
