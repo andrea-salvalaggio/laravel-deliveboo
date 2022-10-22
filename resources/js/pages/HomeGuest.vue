@@ -36,8 +36,8 @@
 
         <!-- Ristoranti -->
         <div class="container-lg">
-            <h1 class="restaurant-title mb-5">List of restaurant</h1>
-            <div v-if="restaurants.length != 0" class="row flex-wrap my-5">
+            <h1 class="restaurant-title">List of restaurant</h1>
+            <div v-if="restaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
             </div>
             <div v-else class="col-12 badge-not-available text-center">
