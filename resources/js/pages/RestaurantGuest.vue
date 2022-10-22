@@ -264,7 +264,7 @@
                 dish.quantity++
                 console.log('la quantita e' + dish.quantity)
                 if(dish.quantity>25){
-                    Vue.swal('25 is the max, sorry') 
+                    Vue.swal('25 maybe is to much') 
                     dish.quantity--
                 }
                 else{
