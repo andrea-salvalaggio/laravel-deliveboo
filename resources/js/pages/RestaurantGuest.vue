@@ -136,11 +136,11 @@
             @click="changeStatus()">
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
-
+        <div class="notification d-lg-none" :class="showNotification ? 'd-block' : 'd-none'"></div>
         <div class="cart-smartphone my-rounded" :class="showCart ? 'd-block' : 'd-none'">
             <div class="menu-container my-rounded mx-auto">
                 <div class="row bg-white my-shadow my-rounded">
-                    <div class="col-12 p-5">
+                    <div class="col-12 p-3">
                         <!-- Piatti ordinati -->
                         <div class="row cart align-items-center">
                             <div class="col-8 restaurant-in-cart">
@@ -218,6 +218,7 @@
                 restaurant: {},
                 newCart: [],
                 showCart: false,
+                showNotification: false,
 
                 orderName: '',
                 orderSurname: '',
@@ -251,7 +252,7 @@
                         if (result.isConfirmed) {
                             this.newCart = [];
                             localStorage.clear();
-                            Swal.fire("Saved!", "", "success");
+                            this.changeStatusNotification()
                         }
                     });
                 } else {
@@ -263,6 +264,7 @@
             deleteSingleDish(id) {
                 this.newCart.splice(id, 1)
                 this.setInCart()
+                this.changeStatusNotification()
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -313,7 +315,8 @@
                                     quantity: 1,
                                     ...dish
                                 })
-                                localStorage.setItem("cart", JSON.stringify(this.cart));
+                                this.setInCart()
+                                this.changeStatusNotification()
                             }
                         })
                     } else if (currentIndex >= 0) {
@@ -323,6 +326,7 @@
                             quantity: 1,
                             ...dish
                         })
+                        this.changeStatusNotification()
                     }
                 } else {
 
@@ -330,6 +334,7 @@
                         quantity: 1,
                         ...dish
                     })
+                    this.changeStatusNotification()
                 }
                 this.setInCart()
             },
@@ -376,6 +381,16 @@
             changeStatus() {
                 this.showCart = !this.showCart
             },
+
+            //cambiera' lo status di una variabile booleana per far mostrare il pallino rosso 
+            changeStatusNotification(){
+                if(this.newCart.length>0){
+                    this.showNotification = true
+                }
+                else{
+                    this.showNotification = false
+                }
+            }
         },
         created() {
             this.getRestaurant();
@@ -528,5 +543,15 @@
         bottom: 85px;
         width: 90%;
         background: white;
+    }
+    .notification{
+        position: fixed;
+        z-index: 4;
+        bottom: 65px;
+        left: calc(50% + 7px);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
     }
 </style>
