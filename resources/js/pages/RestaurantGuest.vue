@@ -137,7 +137,7 @@
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
         <div class="notification d-lg-none" :class="showNotification ? 'd-block' : 'd-none'"></div>
-        <div class="cart-smartphone my-rounded" :class="showCart ? 'd-block' : 'd-none'">
+        <div class="cart-smartphone my-rounded slide-in-bottom" :class="showCart ? 'd-block' : 'slide-out-bottom'">
             <div class="menu-container my-rounded mx-auto">
                 <div class="row bg-white my-shadow my-rounded">
                     <div class="col-12 p-3">
@@ -553,5 +553,64 @@
         height: 20px;
         border-radius: 50%;
         background-color: red;
+    }
+
+
+    //animazione carrello
+    .slide-in-bottom {
+	-webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(1000px);
+                    transform: translateY(1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(1000px);
+                    transform: translateY(1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-out-bottom {
+	-webkit-animation: slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;        animation: slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    }
+    @-webkit-keyframes slide-out-bottom {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: translateY(1000px);
+                    transform: translateY(1000px);
+            opacity: 0;
+        }
+    }
+    @keyframes slide-out-bottom {
+        0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: translateY(1000px);
+                    transform: translateY(1000px);
+            opacity: 0;
+        }
     }
 </style>
