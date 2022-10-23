@@ -106,12 +106,17 @@
                                         <div class="col-12 mb-3">
                                             <input type="text"
                                                 class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
-                                                placeholder="Name*" required v-model="orderName">
+                                                placeholder="Name*" required v-model="orderName" minlength="2" maxlength="25">
                                         </div>
                                         <div class="col-12 mb-3">
                                             <input type="text"
                                                 class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
-                                                placeholder="Surname*" required v-model="orderSurname">
+                                                placeholder="Surname*" required v-model="orderSurname" minlength="2" maxlength="10">
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <input type="text"
+                                                class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                                placeholder="Address*" required v-model="orderAddress" minlength="10" maxlength="40">
                                         </div>
                                         <div class="col-12">
                                             <textarea class="form-control border-0 px-4 font-weight-lighter"
@@ -184,12 +189,19 @@
                                     <h5>Your info :</h5>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <input type="text" class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
-                                        placeholder="Name*" required v-model="orderName">
+                                    <input type="text"
+                                        class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                        placeholder="Name*" required v-model="orderName" minlength="2" maxlength="25">
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <input type="text" class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
-                                        placeholder="Surname*" required v-model="orderSurname">
+                                    <input type="text"
+                                        class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                        placeholder="Surname*" required v-model="orderSurname" minlength="2" maxlength="10">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text"
+                                        class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                        placeholder="Address*" required v-model="orderAddress" minlength="10" maxlength="40">
                                 </div>
                                 <div class="col-12">
                                     <textarea class="form-control border-0 px-4 font-weight-lighter"
@@ -224,6 +236,7 @@
                 orderName: '',
                 orderSurname: '',
                 orderComment: '',
+                orderAddress: '',
                 orderJson: {}
             };
         },
@@ -282,8 +295,10 @@
                 this.orderJson = {
                     'name': this.orderName,
                     'surname': this.orderSurname,
+                    'address': this.orderAddress,
                     'comment': this.orderComment,
                     'total': this.getTotal()
+
                 }
                 axios.post(`http://127.0.0.1:8000/api/storeOrder`, {
                     data: [this.newCart, this.orderJson]
