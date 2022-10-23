@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="position-relative">
         <!-- jumbo -->
         <div class="jumbo">
             <img :src="restaurant.restaurantPic" :alt="restaurant.name + 'photo'" />
@@ -35,7 +35,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="add-button-container mx-3 mb-3" @click="insertToCart(dish), getTotal()"
+                                        <div class="add-button-container mx-3 mb-3"
+                                            @click="insertToCart(dish), getTotal()"
                                             :class="dish.visible == 1 ? 'd-none' : ''">
                                             <div class="add-button">+</div>
                                         </div>
@@ -46,8 +47,8 @@
                     </div>
                 </div>
 
-                <!-- Carrello -->
-                <div class="col-lg-4 col-12">
+                <!-- Carrello  lg-->
+                <div class="col-lg-4 d-none d-lg-block">
                     <div class="menu-container m-0 my-rounded py-4 px-lg-5 mx-auto">
                         <div class="row border-bottom align-items-center">
                             <div class="col-8">
@@ -75,11 +76,12 @@
                                             <div class="col-5 text-capitalize">
                                                 {{ cartItem.name }}
                                             </div>
-                                            <div class="col-1 p-0 text-center icon-in-cart" @click="subtractionDish(cartItem, index)">
+                                            <div class="col-1 p-0 text-center icon-in-cart"
+                                                @click="subtractionDish(cartItem, index)">
                                                 <i class="fa-solid fa-minus"></i>
                                             </div>
                                             <div class="col-1 p-0 text-center">
-                                              x{{ cartItem.quantity }}
+                                                x{{ cartItem.quantity }}
                                             </div>
                                             <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                                 <i class="fa-solid fa-plus"></i>
@@ -91,31 +93,114 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row py-4" >
+                                <div class="row py-4">
                                     <div class="col-8 text-capitalize">total:</div>
                                     <div class="col-4">€{{ getTotal() }}</div>
                                 </div>
                                 <!-- form -->
                                 <div class="row form-group w-100">
-                                  <form action="" method="" class="w-100" @submit.prevent>
-                                    <div class="col-12 py-3">
-                                      <h5>Your info :</h5>
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                      <input type="text" class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control" placeholder="Name*" required v-model="orderName" >
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                      <input type="text" class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control" placeholder="Surname*" required v-model="orderSurname">
-                                    </div>
-                                    <div class="col-12">
-                                      <textarea class="form-control border-0 px-4 font-weight-lighter" placeholder="Add some comment, it will help us with the delivery" name="description" rows="3" v-model="orderComment"></textarea>
-                                    </div>
-                                    <div class="col-12 text-center py-3">
-                                      <input type="submit" value="Checkout" class="btn btn-info rounded-pill" @click="sendOrder()">
-                                    </div>
-                                  </form>
+                                    <form action="" method="" class="w-100" @submit.prevent>
+                                        <div class="col-12 py-3">
+                                            <h5>Your info :</h5>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <input type="text"
+                                                class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                                placeholder="Name*" required v-model="orderName">
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <input type="text"
+                                                class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                                placeholder="Surname*" required v-model="orderSurname">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control border-0 px-4 font-weight-lighter"
+                                                placeholder="Add some comment, it will help us with the delivery"
+                                                name="description" rows="3" v-model="orderComment"></textarea>
+                                        </div>
+                                        <div class="col-12 text-center py-3">
+                                            <input type="submit" value="Checkout" class="btn btn-info rounded-pill"
+                                                @click="sendOrder()">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Carrello smartphone -->
+        <div class="icon-cart-smartphone d-lg-none d-flex align-items-center justify-content-center"
+            @click="changeStatus()">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+
+        <div class="cart-smartphone my-rounded" :class="showCart ? 'd-block' : 'd-none'">
+            <div class="menu-container my-rounded mx-auto">
+                <div class="row bg-white my-shadow my-rounded">
+                    <div class="col-12 p-5">
+                        <!-- Piatti ordinati -->
+                        <div class="row cart align-items-center">
+                            <div class="col-8 restaurant-in-cart">
+                                <h3>Your Order :</h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
+                                    Clear
+                                </button>
+                            </div>
+                            <div class="col-12">
+                                <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart" :key="index">
+                                    <div class="col-5 text-capitalize">
+                                        {{ cartItem.name }}
+                                    </div>
+                                    <div class="col-1 p-0 text-center icon-in-cart"
+                                        @click="subtractionDish(cartItem, index)">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </div>
+                                    <div class="col-1 p-0 text-center">
+                                        x{{ cartItem.quantity }}
+                                    </div>
+                                    <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </div>
+                                    <div class="col-3 text-center">€ {{ cartItem.price }}</div>
+                                    <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="col-8 text-capitalize">total:</div>
+                            <div class="col-4">€{{ getTotal() }}</div>
+                        </div>
+                        <!-- form -->
+                        <div class="row form-group w-100">
+                            <form action="" method="" class="w-100" @submit.prevent>
+                                <div class="col-12 py-3">
+                                    <h5>Your info :</h5>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                        placeholder="Name*" required v-model="orderName">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="text" class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
+                                        placeholder="Surname*" required v-model="orderSurname">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control border-0 px-4 font-weight-lighter"
+                                        placeholder="Add some comment, it will help us with the delivery"
+                                        name="description" rows="3" v-model="orderComment"></textarea>
+                                </div>
+                                <div class="col-12 text-center py-3">
+                                    <input type="submit" value="Checkout" class="btn btn-info rounded-pill"
+                                        @click="sendOrder()">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -131,12 +216,13 @@
         data: function () {
             return {
                 restaurant: {},
-                newCart:[],
+                newCart: [],
+                showCart: false,
 
-                orderName : '',
+                orderName: '',
                 orderSurname: '',
                 orderComment: '',
-                orderJson : {}
+                orderJson: {}
             };
         },
         methods: {
@@ -174,9 +260,9 @@
             },
 
             //! funzione che cancella il singolo piatto del carrello
-            deleteSingleDish(id) { 
+            deleteSingleDish(id) {
                 this.newCart.splice(id, 1)
-                this.setInCart() 
+                this.setInCart()
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -189,10 +275,15 @@
             },
 
             //! funzione per inviare l'ordine al backoffice
-            sendOrder(){
-                this.orderJson ={'name': this.orderName, 'surname': this.orderSurname, 'comment': this.orderComment, 'total': this.getTotal()}
-                axios.post(`http://127.0.0.1:8000/api/storeOrder`,{
-                    data:[this.newCart, this.orderJson]
+            sendOrder() {
+                this.orderJson = {
+                    'name': this.orderName,
+                    'surname': this.orderSurname,
+                    'comment': this.orderComment,
+                    'total': this.getTotal()
+                }
+                axios.post(`http://127.0.0.1:8000/api/storeOrder`, {
+                    data: [this.newCart, this.orderJson]
                 }).then((response) => {
                     console.warn(response)
                 }).catch((error) => {
@@ -200,89 +291,96 @@
                 })
             },
 
-            getCurrentID(dish){
-                return this.newCart.findIndex((element)=>element.id == dish.id)
+            getCurrentID(dish) {
+                return this.newCart.findIndex((element) => element.id == dish.id)
             },
 
             // una volta ottenuto l'id dobbiamo caricare il singolo piatto
-            insertToCart(dish){
+            insertToCart(dish) {
                 dish.quantity = 1
-                let currentIndex=this.getCurrentID(dish)
-                if(this.newCart.length > 0){ 
-                    if(this.checkOnUrl()){
+                let currentIndex = this.getCurrentID(dish)
+                if (this.newCart.length > 0) {
+                    if (this.checkOnUrl()) {
                         Vue.swal({
                             title: 'You can order from only one restaurant, are you sure to clear the cart?',
                             showCancelButton: true,
                             confirmButtonText: 'Yes',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    this.newCart = [];
-                                    localStorage.clear();
-                                    this.newCart.push({quantity: 1, ...dish})
-                                    localStorage.setItem("cart", JSON.stringify(this.cart));
-                                }
-                            }) 
-                    }
-                    else if(currentIndex >=0 ){
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                this.newCart = [];
+                                localStorage.clear();
+                                this.newCart.push({
+                                    quantity: 1,
+                                    ...dish
+                                })
+                                localStorage.setItem("cart", JSON.stringify(this.cart));
+                            }
+                        })
+                    } else if (currentIndex >= 0) {
                         this.newCart[currentIndex].quantity++
+                    } else {
+                        this.newCart.push({
+                            quantity: 1,
+                            ...dish
+                        })
                     }
-                    else{
-                        this.newCart.push({quantity: 1, ...dish})
-                    }         
-                }
-                else{
-                    
-                    this.newCart.push({quantity: 1, ...dish})
+                } else {
+
+                    this.newCart.push({
+                        quantity: 1,
+                        ...dish
+                    })
                 }
                 this.setInCart()
             },
-            getLocalStorage(){
-                if(JSON.parse(localStorage.getItem("newCart")) == null){
-                    this.newCart=[]
-                }
-                else{
+            getLocalStorage() {
+                if (JSON.parse(localStorage.getItem("newCart")) == null) {
+                    this.newCart = []
+                } else {
                     this.newCart = JSON.parse(localStorage.getItem("newCart"));
                 }
             },
-            setInCart(){
+            setInCart() {
                 localStorage.setItem("newCart", JSON.stringify(this.newCart));
             },
-            checkOnUrl(){
-                if(this.newCart[0].restaurant_id != this.$route.params.id){
+            checkOnUrl() {
+                if (this.newCart[0].restaurant_id != this.$route.params.id) {
                     return true
-                }
-                else{
+                } else {
                     return false
                 }
             },
-            getTotal(){
+            getTotal() {
                 let total = this.newCart.reduce((acc, item) => acc + item.price * item.quantity, 0)
                 total = Math.round(total * 100) / 100
                 return total
             },
-            moreDish(dish){
+            moreDish(dish) {
                 dish.quantity++
                 console.log('la quantita e' + dish.quantity)
-                if(dish.quantity>25){
-                    Vue.swal('25 maybe is to much') 
+                if (dish.quantity > 25) {
+                    Vue.swal('25 maybe is to much')
                     dish.quantity--
-                }
-                else{
+                } else {
                     localStorage.setItem("cart", JSON.stringify(this.cart));
                 }
             },
-            subtractionDish(dish, id){
+            subtractionDish(dish, id) {
                 dish.quantity--
-                if(dish.quantity == 0){
+                if (dish.quantity == 0) {
                     this.deleteSingleDish(id)
                 }
             },
 
+            // cambiera' lo status di una variabile booleana per far mostrare al click il carrello (smartphone)
+            changeStatus() {
+                this.showCart = !this.showCart
+            },
         },
         created() {
             this.getRestaurant();
             this.getLocalStorage();
-            
+
         },
     };
 </script>
@@ -336,17 +434,21 @@
             background: $primaryColor;
             border-radius: 5px;
         }
-        .icon-in-cart{
+
+        .icon-in-cart {
             cursor: pointer;
             transition: 0.2s ease-in-out;
-            &:hover{
+
+            &:hover {
                 color: $primaryColor;
             }
         }
-        .icon-trash{
+
+        .icon-trash {
             cursor: pointer;
             transition: 0.2s ease-in-out;
-            &:hover{
+
+            &:hover {
                 color: red;
             }
         }
@@ -398,10 +500,33 @@
         opacity: 0.5;
     }
 
-    .form-container{
-      input{
-        border:none;
-      }
+    .form-container {
+        input {
+            border: none;
+        }
     }
-    
+
+    .icon-cart-smartphone {
+        position: fixed;
+        z-index: 3;
+        bottom: 30px;
+        right: calc(50% - 25px);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $primaryColor;
+        color: white;
+        cursor: pointer;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
+
+    }
+
+    .cart-smartphone {
+        position: fixed;
+        z-index: 3;
+        left: calc(50% - 45%);
+        bottom: 85px;
+        width: 90%;
+        background: white;
+    }
 </style>
