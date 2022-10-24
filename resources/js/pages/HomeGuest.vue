@@ -36,7 +36,7 @@
         <!-- Ristoranti -->
         <div class="container-lg">
             <h1 class="restaurant-title mb-5">List of restaurant</h1>
-            <div class="row flex-wrap my-5">
+            <div v-if="restaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <RestaurantCard v-for="restaurant in filteredRestaurants" :key="restaurant.id"
                     :restaurant="restaurant" />
             </div>
@@ -94,7 +94,42 @@ export default {
             idCategory: null,
             restaurants: [],
             filteredRestaurants: [],
-            controlFilter: -1
+            controlFilter: -1,
+            brands:
+                [
+                    {
+                        'name': 'Logo McDonald\'s',
+                        'image': '../../images/mc-logo.png'
+                    },
+                    {
+                        'name': 'Logo KFC',
+                        'image': '../../images/kfc-logo.png'
+                    },
+                    {
+                        'name': 'Logo Burger King',
+                        'image': '../../images/bk-logo.png'
+                    },
+                    {
+                        'name': 'Logo Domino\'s Pizza',
+                        'image': '../../images/domino-logo.png'
+                    },
+                    {
+                        'name': 'Logo Olive Garden',
+                        'image': '../../images/olive-logo.png'
+                    },
+                    {
+                        'name': 'Logo Taco Bell',
+                        'image': '../../images/taco-bell-logo.png'
+                    },
+                    {
+                        'name': 'Logo Qdoba',
+                        'image': '../../images/qdoba-logo.png'
+                    },
+                    {
+                        'name': 'Logo Wendy\'s',
+                        'image': '../../images/wendy-logo.png'
+                    },
+                ]
         }
     },
     methods: {
