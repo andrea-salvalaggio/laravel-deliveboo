@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container-lg mt-4">
+
+        {{-- Bottone Go Back --}}
+        <div class="col-lg-6 col-md-6 col-sm-10 mx-auto mb-4 p-0">
+            <a href="{{ route('admin.restaurant.index') }}" class="btn btn-outline-secondary rounded-pill px-3 py-2">
+                <i class="fa-solid fa-angle-left pr-2"></i>Go Back
+            </a>
+        </div>
+        
         <div class="card col-lg-6 col-md-6 col-sm-10 mx-auto my-rounded my-shadow mx-auto border-0">
             <div class="card-body p-5">
                 <h2 class="font-weight-bold">Details:</h2>
