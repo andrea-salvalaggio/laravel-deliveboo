@@ -24,7 +24,7 @@ class OrderController extends Controller
         $newOrder->save();
 
         foreach ($orderDishes as $dish) {
-            $newOrder->dishes()->attach($dish['id']);
+            $newOrder->dishes()->attach($dish['id'], ['quantity' => $dish['quantity']]);
         }
 
         return response()->json([
