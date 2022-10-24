@@ -21,8 +21,7 @@
                 <div class="row flex-nowrap">
                     <div class="col-6 col-lg-2" v-for="(category, index) in categories" :key="index">
                         <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
-                            :id="'categoria' + category.id"
-                            @click="activeCard(index), filterRestaurants(category.id)"
+                            :id="'categoria' + category.id" @click="activeCard(index), filterRestaurants(category.id, index)"
                             :class="controllerClicked[index] == true ? 'active-card' : ' '">
                             {{ category.name }}
                         </div>
@@ -35,7 +34,8 @@
         <div class="container-lg">
             <h1 class="restaurant-title mb-5">List of restaurant</h1>
             <div class="row flex-wrap my-5">
-                <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
+                <RestaurantCard v-for="restaurant in filteredRestaurants" :key="restaurant.id"
+                    :restaurant="restaurant" />
             </div>
         </div>
 
@@ -95,204 +95,217 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    import RestaurantCard from '../components/RestaurantCard.vue';
+import axios from 'axios';
+import RestaurantCard from '../components/RestaurantCard.vue';
 
-    export default {
-        components: {
-            RestaurantCard
-        },
-        data: function () {
-            return {
-                categories: [],
-                controllerClicked: [],
-                filterId: [],
-                currentActive: '',
-                isClicked: false,
-                idCategory: null,
-                restaurants: [],
-                filteredRestaurants: [],
-                controlFilter: -1
-            }
-        },
-        methods: {
-            //! funzione per effettuare la chiamata
-            ApiCallAllCategories() {
-                axios.get('/api/category')
-                    .then((result) => {
-                        this.categories = result.data.results
-                        for (let index = 0; index < this.categories.length; index++) {
-                          this.controllerClicked[index] = false
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error)
-                    });
-            },
-            activeCard(index) {
-                if (this.controllerClicked[index] == false) {
-                  this.controllerClicked[index] = true
-                }else{
-                  this.controllerClicked[index] = false
-                }
-            },
-
-            getRestaurants() {
-                axios.get(`/api/restaurant`)
-                    .then((response) => {
-                        this.restaurants = response.data.results.data;
-                    }).catch((error) => {
-                        console.error(error)
-                    });
-            },
-
-            filterRestaurants(id) {
-                if (this.controlFilter == id) {
-                    this.filterId.push(id);
-                    this.getRestaurants();
-                    this.controlFilter = -1
-                    this.filterId= []
-                    this.filteredRestaurants= []
-                } else {
-                    this.filterId.push(id);
-                    axios.get(`/api/restaurant`)
-                        .then((response) => {
-                            this.restaurants = response.data.results.data;
-                            this.restaurants.forEach(restaurant => {
-                                console.warn(restaurant.categories)
-                                restaurant.categories.forEach(category =>{
-                                    if (this.filterId.includes(category.id)) {
-                                        this.filteredRestaurants.push(restaurant)
-                                    }
-                                })
-                            });
-                            console.error(this.filteredRestaurants)
-                        }).catch((error) => {
-                            console.error(error)
-                        })
-                    this.controlFilter = id
-                }
-            }
-        },
-        created() {
-            this.ApiCallAllCategories();
-            this.getRestaurants()
+export default {
+    components: {
+        RestaurantCard
+    },
+    data: function () {
+        return {
+            categories: [],
+            controllerClicked: [],
+            filterId: [],
+            currentActive: '',
+            isClicked: false,
+            idCategory: null,
+            restaurants: [],
+            filteredRestaurants: [],
+            controlFilter: -1
         }
+    },
+    methods: {
+        //! funzione per effettuare la chiamata
+        ApiCallAllCategories() {
+            axios.get('/api/category')
+                .then((result) => {
+                    this.categories = result.data.results
+                    for (let index = 0; index < this.categories.length; index++) {
+                        this.controllerClicked[index] = false
+                    }
+                })
+                .catch((error) => {
+                    console.error(error)
+                });
+        },
+        activeCard(index) {
+            if (this.controllerClicked[index] == false) {
+                this.controllerClicked[index] = true
+            } else {
+                this.controllerClicked[index] = false
+            }
+        },
+
+        getRestaurants() {
+            axios.get(`/api/restaurant`)
+                .then((response) => {
+                    this.restaurants = response.data.results.data
+                    this.filteredRestaurants = this.restaurants
+                }).catch((error) => {
+                    console.error(error)
+                })
+        },
+
+        getFilteredRestaurants() {
+            axios.get(`/api/restaurant`)
+                .then((response) => {
+                    this.restaurants = response.data.results.data;
+                    this.restaurants.forEach(restaurant => {
+                        restaurant.categories.forEach(category => {
+                            if (this.filterId.includes(category.id)) {
+                                if (!this.filteredRestaurants.includes(restaurant)) {
+                                    this.filteredRestaurants.push(restaurant)
+                                    console.warn(this.filteredRestaurants)
+                                }
+                            }
+                        })
+                    });
+                }).catch((error) => {
+                    console.error(error)
+                });
+        },
+
+
+
+        filterRestaurants(id, index) {
+            console.error(this.controllerClicked)
+            if (this.controllerClicked[index] == false) {
+                this.filterId.splice(this.filterId.indexOf(id), 1)
+                if (this.filterId.length > 0) {
+                    this.filteredRestaurants = []
+                    this.getFilteredRestaurants();
+                }else{
+                    this.getRestaurants()
+                    this.filteredRestaurants = this.restaurants
+                }
+            } else {
+                console.log('ìsono entrato nell else')
+                this.filterId.push(id);
+                this.filteredRestaurants = []
+                this.getFilteredRestaurants()
+            }
+        }
+    },
+    created() {
+        this.ApiCallAllCategories();
+        this.getRestaurants()
     }
+}
 </script>
 
 <style scoped lang="scss">
-    @import "../../sass/variables";
+@import "../../sass/variables";
 
-    .order-card {
-        width: 90%;
-        height: 100px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 600;
-        color: $secondaryColor;
-        cursor: pointer;
-    }
+.order-card {
+    width: 90%;
+    height: 100px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: $secondaryColor;
+    cursor: pointer;
+}
 
-    .active-card {
+.active-card {
+    background-color: $primaryColor;
+    color: white;
+}
+
+.slider {
+    width: 100%;
+    height: 150px;
+    overflow-x: scroll;
+
+    &:hover::-webkit-scrollbar-thumb {
         background-color: $primaryColor;
-        color: white;
+        border-radius: 10px;
     }
 
-    .slider {
-        width: 100%;
-        height: 150px;
-        overflow-x: scroll;
-
-        &:hover::-webkit-scrollbar-thumb {
-            background-color: $primaryColor;
-            border-radius: 10px;
-        }
-
-        &::-webkit-scrollbar {
-            width: 10px;
-            height: 8px;
-        }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $primaryColor;
-            border-radius: 5px;
-        }
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 8px;
     }
 
-    .container-jumbo {
-        width: 100%;
-        height: 700px;
-        background-image: url("../../images/jumbotron.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: bottom;
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $primaryColor;
+        border-radius: 5px;
     }
+}
 
-    .info-container {
-        width: 100%;
-        height: 450px;
-        background-image: url("../../images/delivery-info.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: bottom;
-        margin-top: 200px;
-        margin-bottom: 200px;
-        position: relative;
-    }
+.container-jumbo {
+    width: 100%;
+    height: 700px;
+    background-image: url("../../images/jumbotron.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
 
-    .big-title {
-        font-size: 3.5rem;
-        line-height: 4.8rem;
-        font-weight: 500;
+.info-container {
+    width: 100%;
+    height: 450px;
+    background-image: url("../../images/delivery-info.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    position: relative;
+}
 
-        span {
-            color: $primaryColor;
-            font-family: "Syncopate", sans-serif;
-            font-weight: 800;
-        }
-    }
+.big-title {
+    font-size: 3.5rem;
+    line-height: 4.8rem;
+    font-weight: 500;
 
-    .restaurant-title {
-        font-size: 3rem;
-        font-weight: 800;
-        text-align: center;
-        margin-top: 200px;
-    }
-
-    .overlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 1;
-        background-color: black;
-        opacity: 0.3;
-    }
-
-    .cta-container {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-    }
-
-    .cta-title {
-        font-size: 3.7rem;
+    span {
+        color: $primaryColor;
+        font-family: "Syncopate", sans-serif;
         font-weight: 800;
     }
+}
 
-    .brand-container {
-        width: calc(100% / 3 - 40px);
-        height: 120px;
-        margin: 40px 20px;
-    }
+.restaurant-title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 200px;
+}
 
-    .title-container {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-    }
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.3;
+}
+
+.cta-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.cta-title {
+    font-size: 3.7rem;
+    font-weight: 800;
+}
+
+.brand-container {
+    width: calc(100% / 3 - 40px);
+    height: 120px;
+    margin: 40px 20px;
+}
+
+.title-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
 </style>
