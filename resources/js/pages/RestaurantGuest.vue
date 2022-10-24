@@ -297,8 +297,8 @@
                     'surname': this.orderSurname,
                     'address': this.orderAddress,
                     'comment': this.orderComment,
-                    'total': this.getTotal()
-
+                    'total': this.getTotal(),
+                    'restaurant_id': this.$route.params.id
                 }
                 axios.post(`http://127.0.0.1:8000/api/storeOrder`, {
                     data: [this.newCart, this.orderJson]
