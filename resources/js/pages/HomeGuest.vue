@@ -46,16 +46,18 @@
         </div>
 
         <!-- Banner info -->
-        <div class="container-lg info-container d-none d-lg-block my-rounded my-shadow">
-            <div class="overlay my-rounded"></div>
-            <div class="col-12 cta-container d-flex flex-column align-items-center">
-                <h2 class="text-white cta-title text-center">Do you have a restaurant?</h2>
-                <h3 class="text-white font-weight-lighter text-center mb-5">
-                    Find out all the advantages of home delivery
-                </h3>
-                <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
-                    <a href="/register" class="nav-link text-white px-0">Sign up</a>
+        <div class="container-lg info-container mx-auto my-shadow">
+            <div class="row">
+                <div class="col-12 d-flex flex-column align-items-center cta-container">
+                    <h2 class="text-white cta-title text-center">Do you have a restaurant?</h2>
+                    <h3 class="text-white font-weight-lighter text-center mb-4">
+                        Find out all the advantages of home delivery
+                    </h3>
+                    <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
+                        <a href="/register" class="nav-link text-white px-0">Sign up</a>
+                    </div>
                 </div>
+                <div class="overlay"></div>
             </div>
         </div>
 
@@ -255,13 +257,14 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
+        position: relative;
+        border-radius: 30px;
         margin-top: 100px;
         margin-bottom: 100px;
-        position: relative;
     }
 
     .big-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
         line-height: 4.8rem;
         font-weight: 500;
 
@@ -285,20 +288,25 @@
         right: 0;
         left: 0;
         bottom: 0;
-        z-index: 1;
+        // z-index: 1;
+        border-radius: 30px;
         background-color: black;
         opacity: 0.3;
     }
 
     .cta-container {
-        // position: absolute;
+        position: absolute;
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
+
+        h3{
+            font-size: 1.5rem;
+        }
     }
 
     .cta-title {
-        font-size: 3.7rem;
+        font-size: 3rem;
         font-weight: 800;
     }
 
@@ -342,7 +350,7 @@
             position: relative;
 
         .big-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             line-height: 4rem;
             font-weight: 500;
 
