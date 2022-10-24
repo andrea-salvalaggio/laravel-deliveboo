@@ -22,7 +22,7 @@ class CreateDishOrderTable extends Migration
 
             $table->primary(['dish_id', 'order_id']);
 
-            $table->integer('quantity')->unsigned();
+            $table->integer('quantity')->unsigned()->nullable();
             $table->timestamps();
         });
     }
