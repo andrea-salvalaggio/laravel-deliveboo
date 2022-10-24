@@ -264,7 +264,7 @@
     }
 
     .big-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
         line-height: 4.8rem;
         font-weight: 500;
 
@@ -350,7 +350,7 @@
             position: relative;
 
         .big-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             line-height: 4rem;
             font-weight: 500;
 
