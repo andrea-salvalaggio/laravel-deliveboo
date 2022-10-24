@@ -123,13 +123,18 @@
                                                 placeholder="Add some comment, it will help us with the delivery"
                                                 name="description" rows="3" v-model="orderComment"></textarea>
                                         </div>
-                                        <div class="col-12 text-center py-3">
-                                            <input type="submit" value="Checkout" class="btn btn-info rounded-pill"
-                                                @click="sendOrder()">
-                                        </div>
                                     </form>
                                 </div>
+                                <v-braintree
+                                    authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
+                                    locale="it_IT"
+                                    btnText="Checkout"
+                                    @success="onSuccess"
+                                    @error="onError"
+                                class="mx-auto"></v-braintree>
                             </div>
+                           
+
                         </div>
                     </div>
                 </div>
@@ -407,8 +412,18 @@
                     this.showNotification = false
                 }
             },
+            onSuccess (payload) {
+                let nonce = payload.nonce;
+                this.sendOrder()
+                // Do something great with the nonce...
+            },
+            onError (error) {
+                let message = error.message;
 
+                // Whoops, an error has occured while trying to get the nonce
+            }
         },
+
         created() {
             this.getRestaurant();
             this.getLocalStorage();
@@ -602,4 +617,7 @@
             opacity: 1;
         }
     }
+
+    //pagamento
+
 </style>
