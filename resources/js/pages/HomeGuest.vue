@@ -1,11 +1,11 @@
 <template>
     <div>
         <!-- banner -->
-        <div class="container-jumbo d-none d-lg-block position-relative">
+        <div class="container-jumbo d-lg-block">
             <!-- testo principale -->
             <div class="container-lg">
                 <div class="row">
-                    <div class="col-5 title-container">
+                    <div class="col-12 pl-4 col-md-5 title-container">
                         <h1 class="text-white big-title">
                             Restaurant <span>Food</span>, takeaway and groceries
                             <span>Delivered</span>.
@@ -16,14 +16,18 @@
         </div>
 
         <!-- categorie -->
-        <div class="container-fluid">
-            <div class="container-lg mt-5 slider">
+        <div class="container-fluid border-bottom">
+            <div class="container-lg my-5 slider slider-category hide-scrollbar">
                 <div class="row flex-nowrap">
-                    <div class="col-6 col-lg-2" v-for="category in categories" :key="category.id">
+                    <div class="col-6 col-lg-2" v-for="(category, index) in categories" :key="index">
                         <div class="mx-auto my-rounded order-card d-flex align-items-center justify-content-center text-capitalize"
                             :id="'categoria' + category.id"
-                            @click="activeCard(category), filterRestaurants(category.id)">
-                            {{ category.name }}
+                            @click="activeCard(index), filterRestaurants(category.id)"
+                            :class="controllerClicked[index] == true ? 'active-card' : ' '">
+                            <div class="d-flex flex-column align-items-center">
+                                <i class="fa-solid category-icon" :class="category.icon"></i>
+                                {{ category.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -32,61 +36,40 @@
 
         <!-- Ristoranti -->
         <div class="container-lg">
-            <h1 class="restaurant-title mb-5">List of restaurant</h1>
-            <div class="row flex-wrap my-5">
+            <h1 class="restaurant-title">List of restaurant</h1>
+            <div v-if="restaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
+            </div>
+            <div v-else class="col-12 badge-not-available text-center">
+                <h5 class="m-0"><i class="fa-solid fa-circle-xmark"></i>Restaurant not available</h5>
             </div>
         </div>
 
         <!-- Banner info -->
-        <div class="container-lg d-none d-lg-block info-container my-rounded my-shadow">
-            <div class="overlay my-rounded"></div>
-            <div class="col-12 cta-container d-flex flex-column align-items-center">
-                <h2 class="text-white cta-title">Do you have a restaurant?</h2>
-                <h3 class="text-white font-weight-lighter mb-5">
-                    Find out all the advantages of home delivery
-                </h3>
-                <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
-                    <a href="/register" class="nav-link text-white px-0">Sign up</a>
+        <div class="container-lg info-container mx-auto my-shadow">
+            <div class="row">
+                <div class="col-12 d-flex flex-column align-items-center cta-container">
+                    <h2 class="text-white cta-title text-center">Do you have a restaurant?</h2>
+                    <h3 class="text-white font-weight-lighter text-center mb-4">
+                        Find out all the advantages of home delivery
+                    </h3>
+                    <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
+                        <a href="/register" class="nav-link text-white px-0">Sign up</a>
+                    </div>
                 </div>
+                <div class="overlay"></div>
             </div>
         </div>
 
-        <!-- Loghi brand -->
-        <div class="container-lg">
-            <h1 class="restaurant-title mb-3">Popular restaurant</h1>
-            <div class="row flex-row justify-content-between my-5">
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/mc-logo.png" alt="Logo McDonald's" class="w-50 p-1" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/kfc-logo.png" alt="Logo KFC" class="w-75 p-1" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/bk-logo.png" alt="Logo Burger King" class="w-50" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/domino-logo.png" alt="Logo Domino" class="w-50" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/olive-logo.png" alt="Logo Olive Garden" class="w-75 p-1" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/taco-bell-logo.png" alt="Logo Taco Bell" class="w-50 p-2" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/qdoba-logo.png" alt="Logo Qdoba" class="w-75" />
-                </div>
-                <div
-                    class="col-2 brand-container d-flex justify-content-center align-items-center my-rounded my-shadow">
-                    <img src="../../images/wendy-logo.png" alt="Logo Wendy" class="w-75" />
+        <!-- Brands -->
+        <div class="container-fluid">
+            <h1 class="restaurant-title mb-2">Popular restaurant</h1>
+            <div class="container-lg mt-5 slider slider-brand hide-scrollbar">
+                <div class="row flex-nowrap justify-content-center mt-4 px-4">
+                    <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center align-items-center"
+                        v-for="(brand, index) in brands" :key="index">
+                        <img :src="brand.image" :alt="brand.name" class="w-50">
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,11 +87,48 @@
         data: function () {
             return {
                 categories: [],
+                controllerClicked: [],
                 currentActive: '',
                 isClicked: false,
                 idCategory: null,
                 restaurants: [],
-                controlFilter: -1
+                controlFilter: -1,
+
+                brands:
+                [
+                    {
+                        'name': 'Logo McDonald\'s',
+                        'image': '../../images/mc-logo.png'
+                    },
+                    {
+                        'name': 'Logo KFC',
+                        'image': '../../images/kfc-logo.png'
+                    },
+                    {
+                        'name': 'Logo Burger King',
+                        'image': '../../images/bk-logo.png'
+                    },
+                    {
+                        'name': 'Logo Domino\'s Pizza',
+                        'image': '../../images/domino-logo.png'
+                    },
+                    {
+                        'name': 'Logo Olive Garden',
+                        'image': '../../images/olive-logo.png'
+                    },
+                    {
+                        'name': 'Logo Taco Bell',
+                        'image': '../../images/taco-bell-logo.png'
+                    },
+                    {
+                        'name': 'Logo Qdoba',
+                        'image': '../../images/qdoba-logo.png'
+                    },
+                    {
+                        'name': 'Logo Wendy\'s',
+                        'image': '../../images/wendy-logo.png'
+                    },
+                ]
             }
         },
         methods: {
@@ -117,20 +137,21 @@
                 axios.get('/api/category')
                     .then((result) => {
                         this.categories = result.data.results
-                        console.log(this.categories)
+                        for (let index = 0; index < this.categories.length; index++) {
+                          this.controllerClicked[index] = false
+                        }
+                        console.log(this.controllerClicked);
                     })
                     .catch((error) => {
                         console.error(error)
-                    })
+                    });
             },
-            activeCard(category) {
-                if (document.querySelector('.active-card') != null) {
-                    document.querySelector('.active-card').classList.remove('active-card')
+            activeCard(index) {
+                if (this.controllerClicked[index] == false) {
+                  this.controllerClicked[index] = true
+                }else{
+                  this.controllerClicked[index] = false
                 }
-                this.idCategory = category.id
-                this.currentActive = document.getElementById('categoria' + this.idCategory).classList.add('active-card')
-
-                console.log(this.idCategory)
             },
 
             getRestaurants() {
@@ -185,27 +206,39 @@
         color: white;
     }
 
-    .slider {
+    .slider{
         width: 100%;
-        height: 150px;
         overflow-x: scroll;
 
         &:hover::-webkit-scrollbar-thumb {
             background-color: $primaryColor;
             border-radius: 10px;
         }
-
+        
         &::-webkit-scrollbar {
             width: 10px;
             height: 8px;
         }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $primaryColor;
-            border-radius: 5px;
-        }
     }
+
+    .slider-category {
+        height: 120px;
+    }
+
+    .slider-brand{
+        height: 220px;
+    }
+
+    .hide-scrollbar
+        {
+            overflow: auto;
+            -ms-overflow-style: none; /* IE 11 */
+            scrollbar-width: none; /* Firefox 64 */
+
+            &:hover{
+                scrollbar-width: auto;
+            }
+        }
 
     .container-jumbo {
         width: 100%;
@@ -214,6 +247,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
+        position: relative;
     }
 
     .info-container {
@@ -223,9 +257,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
-        margin-top: 200px;
-        margin-bottom: 200px;
         position: relative;
+        border-radius: 30px;
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
 
     .big-title {
@@ -244,7 +279,7 @@
         font-size: 3rem;
         font-weight: 800;
         text-align: center;
-        margin-top: 200px;
+        margin-top: 50px;
     }
 
     .overlay {
@@ -253,7 +288,8 @@
         right: 0;
         left: 0;
         bottom: 0;
-        z-index: 1;
+        // z-index: 1;
+        border-radius: 30px;
         background-color: black;
         opacity: 0.3;
     }
@@ -263,17 +299,15 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
+
+        h3{
+            font-size: 1.5rem;
+        }
     }
 
     .cta-title {
-        font-size: 3.7rem;
+        font-size: 3rem;
         font-weight: 800;
-    }
-
-    .brand-container {
-        width: calc(100% / 3 - 40px);
-        height: 120px;
-        margin: 40px 20px;
     }
 
     .title-container {
@@ -282,4 +316,51 @@
         transform: translateY(-50%);
         z-index: 2;
     }
+
+    .badge-not-available{
+        background-color: #fdedee;
+        padding: 30px;
+        border-radius: 10px;
+
+        h5{
+            color: #f04d62;
+            font-weight: 400;
+            line-height: 2rem;
+            i{
+                font-size: 1.8rem;
+                padding-right: 15px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .category-icon{
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .container-jumbo {
+            width: 100%;
+            height: 700px;
+            background-image: url("../../images/jumbotron-mobile.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: bottom;
+            position: relative;
+
+        .big-title {
+            font-size: 3rem;
+            line-height: 4rem;
+            font-weight: 500;
+
+            span {
+                color: $primaryColor;
+                font-family: "Syncopate", sans-serif;
+                font-weight: 800;
+            }
+        }
+    }
+}
+
 </style>

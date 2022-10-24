@@ -35,31 +35,43 @@
         @endif
 
         @if (session('created'))
-            <div class="alert alert-success my-alert-success" role="alert">
+            {{-- <div class="alert alert-success my-alert-success" role="alert">
                 <div class="pb-2">
                     <img class="w-25" src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
                 </div>
                 <strong>Success!</strong>
                 <span class="text-capitalize">{{ session('created') }}</span>
+            </div> --}}
+            <div class="alert alert-success my-alert-success container-lg" role="alert">
+                <div class="row align-items-center">
+                    <div class="box-success-img ">
+                        <img src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
+                    </div>
+                    <div class="col-9">
+                        <strong>Success!</strong>
+                        <span class="text-capitalize">{{ session('created') }}</span>
+                    </div>
+                </div>
             </div>
         @endif
 
+        {{-- Categorie --}}
         <div class="row mt-1 align-items-center">
             <div class="col-md-5 col-6">
                 <h1 class="font-weight-bolder">{{ $restaurants->name }}</h1>
             </div>
-            <div class="col-md-7 col-6 d-flex justify-content-end flex-wrap">
+            <div class="col-md-7 col-12 col-lg-7 d-flex justify-content-sm-start justify-content-md-end flex-wrap mb-3">
                 @forelse ($restaurants->categories as $category)
-                    <span class="badge category-badge badge-pill text-white font-weight-lighter my-btn-shadow mx-3"
+                    <span class="badge badge-pill text-white my-btn-shadow ml-2 mt-2 mt-md-2 px-3 py-2"
                         style="background-color: {{ $category->color }}">{{ $category->name }}</span>
                 @empty
                 @endforelse
             </div>
             <div class="col-md-5 col-6 mb-3">
-                <p class="m-0"><span class="material-symbols-outlined h6 align-text-middle m-0">location_on</span>
-                    &nbsp;{{ $restaurants->address }}</p>
-                <p class="m-0"><span class="material-symbols-outlined h6 align-text-middle m-0">schedule</span>
-                    &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}</p>
+                <p class="m-0"><i class="fa-solid fa-location-dot align-text-middle m-0"></i> &nbsp;{{ $restaurants->address }}</p>
+                <p class="m-0"><i class="fa-solid fa-clock align-text-middle m-0"></i>
+                    &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}
+                </p>
             </div>
         </div>
         {{-- <h1 class="mt-1 d-flex align-items-center">
@@ -163,7 +175,7 @@
                     </h2>
                 </div>
             </div>
-            <div class="row justify-content-between px-md-5">
+            <div class="row justify-content-between px-md-5 p-2">
                 @forelse ($restaurants->dishes as $dish)
                     <div class="col-12 col-md-5 my-card my-shadow mb-5">
                         <div class="row">
@@ -270,7 +282,7 @@
                     </h2>
                 </div>
             </div>
-            <div class="row justify-content-between px-md-5">
+            <div class="row justify-content-between px-md-5 p-2">
                 @forelse ($restaurants->orders as $order)
                     <div class="col-12 col-md-5 my-card my-shadow mb-5">
                         <div class="row">

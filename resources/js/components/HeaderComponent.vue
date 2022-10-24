@@ -2,12 +2,12 @@
     <header class="position-fixed w-100 border-bottom">
         <div class="position-relative w-100">
             <div class="container-lg ">
-                <div class="row justify-content-between px-md-0 px-2 align-content-center">
-                    <div class="col-4">
+                <div class="row justify-content-between px-md-0 pl-md-2 px-2 align-content-center">
+                    <div class="col-4 d-flex align-items-center">
                         <router-link :to="{ name: 'home' }" >
                             <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102818239041627/deliveboo-logo-desktop.png" 
                             alt="logo image" class="d-md-block d-none">
-                            <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none"></img>
+                            <img src="https://cdn.discordapp.com/attachments/1027584701415833620/1030102849801179208/deliveboo-logo-mobile.png" alt="logo image" class="d-md-none">
                         </router-link>
                     </div>
                     <!-- hamburger menu -->
@@ -21,9 +21,9 @@
                     </div>
                     <!-- bottoni in desktop -->
                     <div class="col-4 d-none d-md-flex align-items-center justify-content-end">
-                        <div class="row w-75 justify-content-end">
-                            <div class="col-8 nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow text-center">
-                                <a href="/login" class="nav-link text-white px-0 ">Personal Area</a>
+                        <div class="row justify-content-end pr-md-4">
+                            <div class="col-12 nav-item my-btn rounded-pill my-btn-shadow text-center px-3">
+                                <a href="/login" class="nav-link text-white px-0"><i class="fa-solid fa-circle-user align-middle pr-2"></i>My Area</a>
                             </div>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
         bottom: -80px;
     }
     header{
-        z-index: 3;
+        z-index: 4;
         height: 105.25px;
         display: flex;
         align-items: center;

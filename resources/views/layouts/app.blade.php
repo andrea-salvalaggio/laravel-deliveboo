@@ -40,7 +40,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light mb-5">
+        <nav class="navbar navbar-expand-md navbar-light mb-5 border-bottom">
             <div class="container">
                 <a class="navbar-brand py-4 d-none d-md-block" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
