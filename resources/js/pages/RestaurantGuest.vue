@@ -595,6 +595,7 @@
         max-height: 700px;
         overflow-x: hidden;
         overflow-y: scroll;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308), -5px -5px 5px rgba(0, 0, 0, 0.308)
     }
     .notification{
         position: fixed;
