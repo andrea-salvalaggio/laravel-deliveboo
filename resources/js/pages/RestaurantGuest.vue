@@ -99,9 +99,9 @@
                                                 <i class="fa-solid fa-plus"></i>
                                             </div>
                                             <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                            <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
+                                            <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                                 <i class="fa-solid fa-trash-can text-danger"></i>
-                                            </div>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
                                     <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                    <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
+                                    <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </div>
                                 </div>
@@ -352,7 +352,7 @@
                                     ...dish
                                 })
                                 this.setInCart()
-                                this.changeStatusNotification()
+                               
                             }
                         })
                     } else if (currentIndex >= 0) {
@@ -362,7 +362,6 @@
                             quantity: 1,
                             ...dish
                         })
-                        this.changeStatusNotification()
                     }
                 } else {
 
@@ -370,13 +369,12 @@
                         quantity: 1,
                         ...dish
                     })
-                    this.changeStatusNotification()
                 }
                 this.setInCart()
             },
             getLocalStorage() {
                 if (JSON.parse(localStorage.getItem("newCart")) == null) {
-                    this.newCart = []
+                    console.log('ciao')
                 } else {
                     this.newCart = JSON.parse(localStorage.getItem("newCart"));
                 }
