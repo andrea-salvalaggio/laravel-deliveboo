@@ -12,7 +12,7 @@
 
             <!-- Bottoni in desktop -->
             <div class="nav-item my-btn rounded-pill my-btn-shadow text-center mx-auto px-4 py-1 mt-3">
-                <a href="/" class="nav-link text-white my-btn rounded-pill my-btn-shadow px-0"><i class="fa-solid fa-house mr-2"></i>Back Home</a>
+                <a href="/" class="nav-link text-white my-btn px-0"><i class="fa-solid fa-house mr-2"></i>Back Home</a>
             </div>
         </div>
     </div>
