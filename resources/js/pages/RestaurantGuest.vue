@@ -29,21 +29,24 @@
                                         </div>
                                         <div v-else class="badge my-badge-danger badge-pill w-25 mb-3 py-1"><small>not available</small></div>
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                    <div class="col-12 w-100">
                                         <div>
-                                            <div class=" text-left font-weight-bold col-12 text-capitalize px-4">
+                                            <h4 class="text-left font-weight-bold col-12 text-capitalize p-0">
                                                 {{ dish.name }}
-                                            </div>
+                                            </h4>
 
-                                            <div class=" text-left font-weight-bold col-12 text-capitalize px-4 mb-3">
-                                                <span class="euro">€ </span>{{ dish.price }}
-                                            </div>
+                                            <p class="p-0"> {{ dish.description }}</p>
+                                            <hr>
                                         </div>
 
-                                        <div class="add-button-container mx-3 mb-3"
-                                            @click="insertToCart(dish), getTotal()"
+                                        <div class="col-12 d-flex justify-content-between align-items-center mb-3 p-0">
+                                            <h4 class="text-left font-weight-bold text-capitalize p-0">
+                                                <span class="euro">€ </span>{{ dish.price }}
+                                            </h4>
+                                            <div class="add-button-container" @click="insertToCart(dish), getTotal()"
                                             :class="dish.visible == 1 ? 'd-none' : ''">
                                             <div class="add-button">+</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
