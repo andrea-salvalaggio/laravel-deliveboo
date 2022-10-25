@@ -203,11 +203,13 @@
                         </div>
                         <div class="row">
                             <div class="col-6 font-weight-lighter">
-                                @foreach ($order->dishes as $dish )
-                                {{ $dish->name }} x{{ $dish->pivot->quantity }}
-                                @endforeach
-                                <div class="col-6 font-weight-lighter px-0">€ {{ $order->price }}</div>
+                                <ul class="pl-0">
+                                     @foreach ($order->dishes as $dish )
+                                        <li>{{ $dish->name }} x{{ $dish->pivot->quantity }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
+                            <div class="col-6 font-weight-lighter pl-3">€ {{ $order->price }}</div>
                         </div>
                         <div class="row mt-5">
                             <div class="col-12 py-2 text-center">
