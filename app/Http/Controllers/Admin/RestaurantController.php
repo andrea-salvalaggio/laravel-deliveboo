@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Dish;
+use App\Models\Order;
 use App\Models\Restaurant;
 use App\User;
 use Illuminate\Http\Request;
@@ -55,7 +56,8 @@ class RestaurantController extends Controller
             return redirect()->route('admin.restaurant.create');
         } else{
             $dishes=Dish::where('restaurant_id', Auth::id())->orderBy('name', 'asc')->get();
-            return view('admin.restaurant.index', compact(['restaurants', 'dishes']));
+            $orders = Order::where('restaurant_id', Auth::id())->orderBy('id', 'desc')->get();
+            return view('admin.restaurant.index', compact(['restaurants', 'dishes', 'orders']));
         }
     }
 

@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="row justify-content-between px-md-5 p-2">
-                @forelse ($restaurants->dishes as $dish)
+                @forelse ($dishes as $dish)
                     <div class="col-12 col-md-5 my-card my-shadow mb-5">
                         <div class="row">
                             <div class="col-2 my-text">ID</div>
@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="row justify-content-between px-md-5 p-2">
-                @forelse ($restaurants->orders as $order)
+                @forelse ($orders as $order)
                     <div class="col-12 col-md-5 my-card my-shadow mb-5">
                         <div class="row">
                             <div class="col-4 my-text">ID</div>
@@ -184,24 +184,32 @@
                             <div class="col-4 px-1 font-weight-lighter">{{ $order->surname }}</div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-4 my-text text-capitalize">address</div>
-                            <div class="col-4 my-text text-capitalize">comment</div>
-                            <div class="col-4 my-text text-capitalize px-0">total price</div>
+                            <div class="col-6 my-text text-capitalize">address</div>
+                            <div class="col-6 my-text text-capitalize">comment</div>
                             <div class="col-12 pr-md-4 w-100">
                                 <hr>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4 font-weight-lighter">{{ $order->address }}</div>
-                            <div class="col-4 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
-                            <div class="col-4 font-weight-lighter px-0">€ {{ $order->price }}</div>
+                            <div class="col-6 font-weight-lighter">{{ $order->address }}</div>
+                            <div class="col-6 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
                         </div>
-                          <div class="row">
-                            <div class="col-4 font-weight-lighter">
-                                @foreach ($order->dishes as $dish )
-                                    {{ $dish->name }} x{{ $dish->pivot->quantity }}
-                                @endforeach
+                        <div class="row mt-5">
+                            <div class="col-6 my-text text-capitalize">dishes</div>
+                            <div class="col-6 my-text text-capitalize pl-3">total price</div>
+                            <div class="col-12 pr-md-4 w-100">
+                                <hr>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 font-weight-lighter">
+                                <ul class="pl-0">
+                                     @foreach ($order->dishes as $dish )
+                                        <li>{{ $dish->name }} x{{ $dish->pivot->quantity }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-6 font-weight-lighter pl-3">€ {{ $order->price }}</div>
                         </div>
                         <div class="row mt-5">
                             <div class="col-12 py-2 text-center">
