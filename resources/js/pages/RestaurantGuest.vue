@@ -21,7 +21,7 @@
                 <div class="col-lg-8 col-12">
                     <div class="menu-container m-0 my-rounded py-4 px-lg-5">
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
-                        <div class="row mt-5">
+                        <div class="row mt-5 mx-auto">
                             <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
                                 <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow"
                                     :class="dish.visible == 1 ? 'grey-filter' : ''">
@@ -225,10 +225,13 @@
                                         placeholder="Add some comment, it will help us with the delivery"
                                         name="description" rows="3" v-model="orderComment"></textarea>
                                 </div>
-                                <div class="col-12 text-center py-3">
-                                    <input type="submit" value="Checkout" class="btn btn-info rounded-pill"
-                                        @click="sendOrder()">
-                                </div>
+                                <v-braintree v-if="newCart.length != 0"
+                                            authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
+                                            locale="it_IT"
+                                            btnText="Checkout"
+                                            @success="onSuccess"
+                                            @error="onError"
+                                        class="ml-4"></v-braintree>
                             </form>
                         </div>
                     </div>
@@ -598,6 +601,9 @@
         bottom: 85px;
         width: 90%;
         background: white;
+        max-height: 700px;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
     .notification{
         position: fixed;
