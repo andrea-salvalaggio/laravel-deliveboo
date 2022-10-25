@@ -23,17 +23,16 @@
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
                         <div class="row mt-5 mx-auto">
                             <div class="col-12 col-md-6 col-lg-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
-                                <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow"
-                                    :class="dish.visible == 1 ? 'grey-filter' : ''">
-                                    <div class="col-12 img-container">
+                                <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow">
+                                    <div class="col-12 img-container" :class="dish.visible == 1 ? 'grey-filter' : ''">
                                         <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name" />
                                     </div>
                                     <div class="col-12 pt-3">
                                         <div v-if="dish.visible==0" class="badge my-badge-success badge-pill w-25 mb-3 py-1"><small>available</small>
                                         </div>
-                                        <div v-else class="badge my-badge-danger badge-pill w-25 mb-3 py-1"><small>not available</small></div>
+                                        <div v-else class="badge my-badge-danger badge-pill mb-3 py-1"><small>not available</small></div>
                                     </div>
-                                    <div class="col-12 w-100">
+                                    <div class="col-12 w-100" :class="dish.visible == 1 ? 'grey-filter' : ''">
                                         <div>
                                             <h4 class="text-left font-weight-bold col-12 text-capitalize p-0">
                                                 {{ dish.name }}
