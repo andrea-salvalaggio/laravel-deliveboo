@@ -107,10 +107,10 @@ class RestaurantsTableSeeder extends Seeder
             [
                 'user_id' => 10,
                 'name'=> 'Pancheros',
-                'address'=> 'Piazza S Maria Liberatrice, 44',
+                'address'=> 'Piazza Santa Maria, 44',
                 'open'=> '09:30',
                 'close'=>'23:00',
-                'restaurantPic'=> 'https://www.restaurantnews.com/wp-content/uploads/2018/08/Paciugo-Gelato-Caffe-Acquired-by-Dallas-based-Sinelli-Concepts-International-1024x683.jpg',
+                'restaurantPic'=> 'https://pancherosfranchise.com/wp-content/uploads/2020/03/Ingersoll-Exterior-2048x1386.jpg',
 
             ],
 
