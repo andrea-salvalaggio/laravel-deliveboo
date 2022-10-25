@@ -24,7 +24,12 @@
                                     <div class="col-12 img-container">
                                         <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name" />
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center w-100 mt-3">
+                                    <div class="col-12 pt-3">
+                                        <div v-if="dish.visible==0" class="badge my-badge-success badge-pill w-25 mb-3 py-1"><small>available</small>
+                                        </div>
+                                        <div v-else class="badge my-badge-danger badge-pill w-25 mb-3 py-1"><small>not available</small></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center w-100">
                                         <div>
                                             <div class=" text-left font-weight-bold col-12 text-capitalize px-4">
                                                 {{ dish.name }}
