@@ -39,7 +39,7 @@
             <h1 class="restaurant-title mb-5" >Restaurants</h1>
             <div v-if="filteredRestaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <div v-for="(restaurant, index) in filteredRestaurants" :key="index"
-                    class="col-12 col-md-6 col-lg-4 my-4">
+                    class="col-12 col-md-6 col-lg-4 my-4 ">
                     <RestaurantCard :restaurant="restaurant" v-if="index < restaurantNumber"  class="slide-in-bottom"/>
                 </div>
                 <div class="row w-100" v-if="filteredRestaurants.length > 6">
@@ -423,15 +423,15 @@ export default {
 }
 
 
-
-
-
-
+.link-anchor{
+    text-decoration: none;
+}
 
 .slide-in-bottom {
 	-webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 @-webkit-keyframes slide-in-bottom {
   0% {
     -webkit-transform: translateY(1000px);
@@ -455,8 +455,5 @@ export default {
             transform: translateY(0);
     opacity: 1;
   }
-}
-.link-anchor{
-    text-decoration: none;
 }
 </style>
