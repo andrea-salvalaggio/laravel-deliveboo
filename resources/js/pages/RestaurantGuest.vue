@@ -110,8 +110,8 @@
                                     <div class="col-4">€{{ getTotal() }}</div>
                                 </div>
                                 <!-- form -->
-                                <div class="row form-group w-100">
-                                    <form action="" method="" class="w-100" @submit.prevent>
+                                <div class="row form-group w-100 ">
+                                    <form action="" method="" class="w-100 scale-in-center" @submit.prevent v-if="newCart.length != 0">
                                         <div class="col-12 py-3">
                                             <h5>Your info :</h5>
                                         </div>
@@ -135,7 +135,7 @@
                                                 placeholder="Add some comment, it will help us with the delivery"
                                                 name="description" rows="3" v-model="orderComment"></textarea>
                                         </div>
-                                        <v-braintree v-if="newCart.length != 0"
+                                        <v-braintree 
                                             authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
                                             locale="it_IT"
                                             btnText="Checkout"
@@ -200,7 +200,7 @@
                             <div class="col-4">€{{ getTotal() }}</div>
                         </div>
                         <!-- form -->
-                        <div class="row form-group w-100">
+                        <div class="row form-group w-100 " v-if="newCart.length != 0" >
                             <form action="" method="" class="w-100" @submit.prevent>
                                 <div class="col-12 py-3">
                                     <h5>Your info :</h5>
@@ -225,7 +225,7 @@
                                         placeholder="Add some comment, it will help us with the delivery"
                                         name="description" rows="3" v-model="orderComment"></textarea>
                                 </div>
-                                <v-braintree v-if="newCart.length != 0"
+                                <v-braintree
                                             authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
                                             locale="it_IT"
                                             btnText="Checkout"
@@ -400,7 +400,7 @@
                 dish.quantity++
                 console.log('la quantita e' + dish.quantity)
                 if (dish.quantity > 25) {
-                    Vue.swal('25 maybe is to much')
+                    Vue.swal('25 maybe is too much')
                     dish.quantity--
                 } else {
                     localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -420,6 +420,7 @@
 
             onSuccess (payload) {
                 let nonce = payload.nonce;
+                Vue.swal('Successs on payment, the restaurant will receive the order soon')
                 this.sendOrder()
                 setTimeout(()=>{
                 console.log('helo')
@@ -639,6 +640,32 @@
         }
     }
 
-    //pagamento
-
+    .scale-in-center {
+	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 </style>
