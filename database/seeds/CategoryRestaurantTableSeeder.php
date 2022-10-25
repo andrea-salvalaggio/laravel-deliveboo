@@ -51,16 +51,47 @@ class CategoryRestaurantTableSeeder extends Seeder
         $restaurants[0]->categories()->attach($categories[1]);
 
         $restaurants[1]->categories()->attach($categories[0]);
-        
-        $restaurants[2]->categories()->attach($categories[1]);
+        $restaurants[1]->categories()->attach($categories[1]);
+        $restaurants[1]->categories()->attach($categories[2]);
 
-        $restaurants[3]->categories()->attach($categories[2]);
+        $restaurants[2]->categories()->attach($categories[5]);
 
-        $restaurants[4]->categories()->attach($categories[7]);
-        
-        $restaurants[5]->categories()->attach($categories[5]);
+        $restaurants[3]->categories()->attach($categories[1]);
 
-        $restaurants[6]->categories()->attach($categories[8]);
-       
+        $restaurants[4]->categories()->attach($categories[1]);
+
+        $restaurants[5]->categories()->attach($categories[1]);
+
+        $restaurants[6]->categories()->attach($categories[2]);
+
+        $restaurants[7]->categories()->attach($categories[5]);
+        $restaurants[7]->categories()->attach($categories[1]);
+
+        $restaurants[8]->categories()->attach($categories[2]);
+        $restaurants[8]->categories()->attach($categories[3]);
+        $restaurants[8]->categories()->attach($categories[4]);
+
+        $restaurants[9]->categories()->attach($categories[5]);
+
+        $restaurants[10]->categories()->attach($categories[0]);
+        $restaurants[10]->categories()->attach($categories[1]);
+        $restaurants[10]->categories()->attach($categories[2]);
+
+        $restaurants[11]->categories()->attach($categories[1]);
+
+        $restaurants[12]->categories()->attach($categories[1]);
+        $restaurants[12]->categories()->attach($categories[3]);
+
+        $restaurants[13]->categories()->attach($categories[7]);
+
+        $restaurants[14]->categories()->attach($categories[6]);
+
+        $restaurants[15]->categories()->attach($categories[11]);
+
+        $restaurants[16]->categories()->attach($categories[9]);
+
+        $restaurants[17]->categories()->attach($categories[10]);
+
+
     }
 }
