@@ -22,7 +22,7 @@
                     <div class="menu-container m-0 my-rounded py-4 px-lg-5">
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
                         <div class="row mt-5 mx-auto">
-                            <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
                                 <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow"
                                     :class="dish.visible == 1 ? 'grey-filter' : ''">
                                     <div class="col-12 img-container">
@@ -69,7 +69,7 @@
                                     cart
                                 </h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 scale-in-center" v-if="newCart.length>0">
                                 <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
                                     Clear Cart
                                 </button>
@@ -82,7 +82,7 @@
                                     <div class="col-12 restaurant-in-cart">
                                         <h3>Your Order :</h3>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12" v-if="newCart.length>0">
                                         <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart"
                                             :key="index">
                                             <div class="col-5 text-capitalize">
@@ -98,11 +98,14 @@
                                             <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                                 <i class="fa-solid fa-plus"></i>
                                             </div>
-                                            <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                            <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
+                                            <div class="col-3 text-center">€ {{ cartItem.price*cartItem.quantity }}</div>
+                                            <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                                 <i class="fa-solid fa-trash-can text-danger"></i>
-                                            </div>
+                                            </div> 
                                         </div>
+                                    </div>
+                                    <div class="col-12 scale-in-center" v-else>
+                                        <h2>ciao</h2>
                                     </div>
                                 </div>
                                 <div class="row py-4">
@@ -110,8 +113,8 @@
                                     <div class="col-4">€{{ getTotal() }}</div>
                                 </div>
                                 <!-- form -->
-                                <div class="row form-group w-100">
-                                    <form action="" method="" class="w-100" @submit.prevent>
+                                <div class="row form-group w-100 ">
+                                    <form action="" method="" class="w-100 scale-in-center" @submit.prevent v-if="newCart.length != 0">
                                         <div class="col-12 py-3">
                                             <h5>Your info :</h5>
                                         </div>
@@ -135,7 +138,7 @@
                                                 placeholder="Add some comment, it will help us with the delivery"
                                                 name="description" rows="3" v-model="orderComment"></textarea>
                                         </div>
-                                        <v-braintree v-if="newCart.length != 0"
+                                        <v-braintree 
                                             authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
                                             locale="it_IT"
                                             btnText="Checkout"
@@ -158,7 +161,7 @@
             @click="changeStatus()">
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
-        <div class="notification d-lg-none" :class="showNotification ? 'd-block' : 'd-none'"></div>
+        <div class="notification d-lg-none" v-if="newCart.length>0"></div>
         <div class="cart-smartphone my-rounded slide-in-bottom" :class="showCart ? 'd-block' : 'd-none'">
             <div class="menu-container my-rounded mx-auto">
                 <div class="row bg-white my-shadow my-rounded">
@@ -168,7 +171,7 @@
                             <div class="col-8 restaurant-in-cart">
                                 <h3>Your Order :</h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4" v-if="newCart.length>0">
                                 <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
                                     Clear
                                 </button>
@@ -188,8 +191,8 @@
                                     <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
-                                    <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                    <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
+                                    <div class="col-3 text-center">€ {{ roundFunctionOnTotal(cartItem.price, cartItem.quantity) }}</div>
+                                    <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </div>
                                 </div>
@@ -200,7 +203,7 @@
                             <div class="col-4">€{{ getTotal() }}</div>
                         </div>
                         <!-- form -->
-                        <div class="row form-group w-100">
+                        <div class="row form-group w-100 " v-if="newCart.length != 0" >
                             <form action="" method="" class="w-100" @submit.prevent>
                                 <div class="col-12 py-3">
                                     <h5>Your info :</h5>
@@ -225,7 +228,7 @@
                                         placeholder="Add some comment, it will help us with the delivery"
                                         name="description" rows="3" v-model="orderComment"></textarea>
                                 </div>
-                                <v-braintree v-if="newCart.length != 0"
+                                <v-braintree
                                             authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
                                             locale="it_IT"
                                             btnText="Checkout"
@@ -286,7 +289,6 @@
                         if (result.isConfirmed) {
                             this.newCart = [];
                             localStorage.clear();
-                            this.changeStatusNotification()
                         }
                     });
                 } else {
@@ -298,7 +300,6 @@
             deleteSingleDish(id) {
                 this.newCart.splice(id, 1)
                 this.setInCart()
-                this.changeStatusNotification()
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -352,7 +353,7 @@
                                     ...dish
                                 })
                                 this.setInCart()
-                                this.changeStatusNotification()
+                               
                             }
                         })
                     } else if (currentIndex >= 0) {
@@ -362,7 +363,6 @@
                             quantity: 1,
                             ...dish
                         })
-                        this.changeStatusNotification()
                     }
                 } else {
 
@@ -370,13 +370,12 @@
                         quantity: 1,
                         ...dish
                     })
-                    this.changeStatusNotification()
                 }
                 this.setInCart()
             },
             getLocalStorage() {
                 if (JSON.parse(localStorage.getItem("newCart")) == null) {
-                    this.newCart = []
+                    console.log('ciao')
                 } else {
                     this.newCart = JSON.parse(localStorage.getItem("newCart"));
                 }
@@ -400,7 +399,7 @@
                 dish.quantity++
                 console.log('la quantita e' + dish.quantity)
                 if (dish.quantity > 25) {
-                    Vue.swal('25 maybe is to much')
+                    Vue.swal('25 maybe is too much')
                     dish.quantity--
                 } else {
                     localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -418,17 +417,9 @@
                 this.showCart = !this.showCart
             },
 
-            //cambiera' lo status di una variabile booleana per far mostrare il pallino rosso 
-            changeStatusNotification(){
-                if(this.newCart.length>0){
-                    this.showNotification = true
-                }
-                else{
-                    this.showNotification = false
-                }
-            },
             onSuccess (payload) {
                 let nonce = payload.nonce;
+                Vue.swal('Successs on payment, the restaurant will receive the order soon')
                 this.sendOrder()
                 setTimeout(()=>{
                 console.log('helo')
@@ -442,8 +433,12 @@
 
                 // Whoops, an error has occured while trying to get the nonce
             },
+            roundFunctionOnTotal(item, qt){
+                let total = item * qt
+                total = Math.round(total * 100) / 100
+                return total
+            },
         },
-
         created() {
             this.getRestaurant();
             this.getLocalStorage();
@@ -604,6 +599,7 @@
         max-height: 700px;
         overflow-x: hidden;
         overflow-y: scroll;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308), -5px -5px 5px rgba(0, 0, 0, 0.308)
     }
     .notification{
         position: fixed;
@@ -647,6 +643,32 @@
         }
     }
 
-    //pagamento
-
+    .scale-in-center {
+	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 </style>
