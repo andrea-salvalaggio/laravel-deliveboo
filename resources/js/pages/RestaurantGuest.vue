@@ -158,7 +158,7 @@
             @click="changeStatus()">
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
-        <div class="notification d-lg-none" :class="showNotification ? 'd-block' : 'd-none'"></div>
+        <div class="notification d-lg-none" v-if="newCart.length>0"></div>
         <div class="cart-smartphone my-rounded slide-in-bottom" :class="showCart ? 'd-block' : 'd-none'">
             <div class="menu-container my-rounded mx-auto">
                 <div class="row bg-white my-shadow my-rounded">
@@ -418,15 +418,6 @@
                 this.showCart = !this.showCart
             },
 
-            //cambiera' lo status di una variabile booleana per far mostrare il pallino rosso 
-            changeStatusNotification(){
-                if(this.newCart.length>0){
-                    this.showNotification = true
-                }
-                else{
-                    this.showNotification = false
-                }
-            },
             onSuccess (payload) {
                 let nonce = payload.nonce;
                 this.sendOrder()
