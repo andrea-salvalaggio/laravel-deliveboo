@@ -98,7 +98,7 @@
                                             <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                                 <i class="fa-solid fa-plus"></i>
                                             </div>
-                                            <div class="col-3 text-center">€ {{ cartItem.price }}</div>
+                                            <div class="col-3 text-center">€ {{ cartItem.price*cartItem.quantity }}</div>
                                             <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                                 <i class="fa-solid fa-trash-can text-danger"></i>
                                             </div> 
@@ -188,7 +188,7 @@
                                     <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
-                                    <div class="col-3 text-center">€ {{ cartItem.price }}</div>
+                                    <div class="col-3 text-center">€ {{ roundFunctionOnTotal(cartItem.price, cartItem.quantity) }}</div>
                                     <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </div>
@@ -432,8 +432,12 @@
 
                 // Whoops, an error has occured while trying to get the nonce
             },
+            roundFunctionOnTotal(item, qt){
+                let total = item * qt
+                total = Math.round(total * 100) / 100
+                return total
+            },
         },
-
         created() {
             this.getRestaurant();
             this.getLocalStorage();
