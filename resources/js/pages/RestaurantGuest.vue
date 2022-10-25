@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="col-3 text-center">€ {{ cartItem.price }}</div>
                                             <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
-                                                <i class="fa-solid fa-trash-can"></i>
+                                                <i class="fa-solid fa-trash-can text-danger"></i>
                                             </div>
                                         </div>
                                     </div>
