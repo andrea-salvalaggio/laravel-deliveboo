@@ -42,10 +42,14 @@
                     class="col-12 col-md-6 col-lg-4 my-4">
                     <RestaurantCard :restaurant="restaurant" v-if="index < restaurantNumber" />
                 </div>
-                <div class="row w-100">
-                    <div class="w-25 mx-auto" @click="showMore()">
+                <div class="row w-100" v-if="filteredRestaurants.length > 6">
+                    <div class="w-25 mx-auto" @click="showMore()" v-if="restaurantNumber < filteredRestaurants.length">
                         <div class="col-12 text-center">Show More</div>
                         <div class="col-12 text-center"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="w-25 mx-auto" @click="showLess()" v-else>
+                        <div class="col-12 text-center">Show Less</div>
+                        <div class="col-12 text-center"><i class="fa-solid fa-chevron-up"></i></div>
                     </div>
                 </div>
             </div>
@@ -225,7 +229,10 @@ export default {
             } else {
                 this.restaurantNumber = 6
             }
-
+        },
+        showLess(){
+            this.restaurantNumber = 6
+            this.filterRestaurants = this.restaurants
         }
     },
     created() {
