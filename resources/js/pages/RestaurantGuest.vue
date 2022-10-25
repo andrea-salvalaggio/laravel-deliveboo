@@ -367,7 +367,12 @@
                             }
                         })
                     } else if (currentIndex >= 0) {
-                        this.newCart[currentIndex].quantity++
+                        if(this.newCart[currentIndex].quantity==25){
+                            Vue.swal('25 maybe is too much')
+                        }
+                        else{
+                            this.newCart[currentIndex].quantity++
+                        }
                     } else {
                         this.newCart.push({
                             quantity: 1,
@@ -432,7 +437,6 @@
                 Vue.swal('Successs on payment, the restaurant will receive the order soon')
                 this.sendOrder()
                 setTimeout(()=>{
-                console.log('helo')
                     this.newCart= []
                     this.setInCart()
                 },2000)
