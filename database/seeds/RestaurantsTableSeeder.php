@@ -107,10 +107,10 @@ class RestaurantsTableSeeder extends Seeder
             [
                 'user_id' => 10,
                 'name'=> 'Pancheros',
-                'address'=> 'Piazza Santa Maria Liberatrice, 44',
+                'address'=> 'Piazza S Maria Liberatrice, 44',
                 'open'=> '09:30',
                 'close'=>'23:00',
-                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c7/da/9e/mykonos-interior.jpg',
+                'restaurantPic'=> 'https://www.restaurantnews.com/wp-content/uploads/2018/08/Paciugo-Gelato-Caffe-Acquired-by-Dallas-based-Sinelli-Concepts-International-1024x683.jpg',
 
             ],
 
@@ -120,7 +120,7 @@ class RestaurantsTableSeeder extends Seeder
                 'address'=> 'Lungotevere Testaccio, 7',
                 'open'=> '06:30',
                 'close'=>'02:00',
-                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c7/da/9e/mykonos-interior.jpg',
+                'restaurantPic'=> 'https://securecdn.pymnts.com/wp-content/uploads/2021/01/shutterstock_1150633349-1-768x461.jpg',
 
             ],
 
@@ -130,7 +130,7 @@ class RestaurantsTableSeeder extends Seeder
                 'address'=> 'Via Beniamino Franklin, 12',
                 'open'=> '07:00',
                 'close'=>'01:00',
-                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c7/da/9e/mykonos-interior.jpg',
+                'restaurantPic'=> 'https://lh4.googleusercontent.com/wpL70zui6NIxhfQ77P-bk05JicebmHptF6_Dixze8JdJRx6QBiZeM3PZN7WH5Cq7xjjOLzCKNA1fW86uqbviT9nABUSo5hnQ3hp5ylsI6ITl9NXnIBXMwtnIbNNchjQa85wmMKrm',
 
             ],
 
@@ -140,14 +140,14 @@ class RestaurantsTableSeeder extends Seeder
                 'address'=> 'Via Cesare Battisti, 23',
                 'open'=> '06:30',
                 'close'=>'22:30',
-                'restaurantPic'=> 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c7/da/9e/mykonos-interior.jpg',
+                'restaurantPic'=> 'https://www.nrn.com/sites/nrn.com/files/styles/article_featured_retina/public/wendys%20tech%20investments.jpg?itok=bH24LEE5',
 
             ],
 
             [
                 'user_id' => 14,
                 'name'=> 'Mr.Greek',
-                'address'=> 'Via Michelangelo Buonarroti, 69',
+                'address'=> 'Via Michelangelo, 69',
                 'open'=> '09:00',
                 'close'=>'22:00',
                 'restaurantPic'=> 'https://nationalfranchisedirectory.com/photos/main/308-0-nowopenfront-no-vinyl-3.jpg',
