@@ -34,7 +34,7 @@
 
     <script src="https://unpkg.com/vue-braintree/dist/vue-braintree.umd.min.js"></script>
     
-    <title>DeliveBoo | Home</title>
+    <title>DeliveBoo</title>
 </head>
 <body>
     <div id="root"></div>

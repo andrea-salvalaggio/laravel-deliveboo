@@ -22,7 +22,7 @@
                     <div class="menu-container m-0 my-rounded py-4 px-lg-5">
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
                         <div class="row mt-5 mx-auto">
-                            <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
                                 <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow"
                                     :class="dish.visible == 1 ? 'grey-filter' : ''">
                                     <div class="col-12 img-container">
@@ -69,7 +69,7 @@
                                     cart
                                 </h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 scale-in-center" v-if="newCart.length>0">
                                 <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
                                     Clear Cart
                                 </button>
@@ -82,7 +82,7 @@
                                     <div class="col-12 restaurant-in-cart">
                                         <h3>Your Order :</h3>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12" v-if="newCart.length>0">
                                         <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart"
                                             :key="index">
                                             <div class="col-5 text-capitalize">
@@ -103,6 +103,9 @@
                                                 <i class="fa-solid fa-trash-can text-danger"></i>
                                             </div> 
                                         </div>
+                                    </div>
+                                    <div class="col-12 scale-in-center" v-else>
+                                        <h2>ciao</h2>
                                     </div>
                                 </div>
                                 <div class="row py-4">
@@ -168,7 +171,7 @@
                             <div class="col-8 restaurant-in-cart">
                                 <h3>Your Order :</h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4" v-if="newCart.length>0">
                                 <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
                                     Clear
                                 </button>
@@ -286,7 +289,6 @@
                         if (result.isConfirmed) {
                             this.newCart = [];
                             localStorage.clear();
-                            this.changeStatusNotification()
                         }
                     });
                 } else {
@@ -298,7 +300,6 @@
             deleteSingleDish(id) {
                 this.newCart.splice(id, 1)
                 this.setInCart()
-                this.changeStatusNotification()
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
