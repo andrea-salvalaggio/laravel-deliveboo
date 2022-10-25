@@ -34,7 +34,7 @@
         </div>
 
         <!-- Ristoranti -->
-        <div class="container-lg">
+        <div class="container-lg" v-if="isLoading == false">
             <h1 class="restaurant-title mb-5">Restaurants</h1>
             <div v-if="filteredRestaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <RestaurantCard v-for="restaurant in filteredRestaurants" :key="restaurant.id"
@@ -45,6 +45,10 @@
             </div>
         </div>
 
+        <!-- loader -->
+        <div class="container-lg" v-else>
+            <LoaderComponent />
+        </div>
         <!-- Banner info -->
         <div class="container-lg info-container mx-auto my-shadow">
             <div class="row">
@@ -79,10 +83,12 @@
 <script>
 import axios from 'axios';
 import RestaurantCard from '../components/RestaurantCard.vue';
+import LoaderComponent from '../components/LoaderComponent.vue';
 
 export default {
     components: {
-        RestaurantCard
+        RestaurantCard,
+        LoaderComponent,
     },
     data: function () {
         return {
@@ -95,6 +101,7 @@ export default {
             restaurants: [],
             filteredRestaurants: [],
             controlFilter: -1,
+            isLoading: true,
             brands:
                 [
                     {
@@ -155,16 +162,19 @@ export default {
         },
 
         getRestaurants() {
+            this.isLoading=true
             axios.get(`/api/restaurant`)
                 .then((response) => {
                     this.restaurants = response.data.results.data
                     this.filteredRestaurants = this.restaurants
+                    this.isLoading = false
                 }).catch((error) => {
                     console.error(error)
                 })
         },
 
         getFilteredRestaurants() {
+            this.isLoading=true
             axios.get(`/api/restaurant`)
                 .then((response) => {
                     this.restaurants = response.data.results.data;
@@ -177,7 +187,8 @@ export default {
                                 }
                             }
                         })
-                    });
+                    })
+                    this.isLoading=false
                 }).catch((error) => {
                     console.error(error)
                 });
