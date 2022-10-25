@@ -9,6 +9,10 @@
             <h1 class="text-center my-4">
                 {{ restaurant.name }}
             </h1>
+            <div class="col-12 d-flex justify-content-center">
+                <p class="mx-4"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
+                <p><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
+            </div>
         </div>
 
         <div class="container-fluid">
