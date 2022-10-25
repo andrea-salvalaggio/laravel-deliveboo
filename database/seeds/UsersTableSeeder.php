@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     {
         $users=[
             [
-                'name'=> 'boolean1',
+                'name'=> 'Alessio Calabrese',
                 'email'=> 'deliveboo1@ciao.com',
                 'password'=> Hash::make('team4'),
                 'p_iva'=>'39829432912',
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             ],
 
             [
-                'name'=> 'boolean2',
+                'name'=> 'Stefano Calarota',
                 'email'=> 'deliveboo2@ciao.com',
                 'password'=> Hash::make('team4'),
                 'p_iva'=>'39824932456',
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             ],
 
             [
-                'name'=> 'boolean3',
+                'name'=> 'Simone Rizzo',
                 'email'=> 'deliveboo3@ciao.com',
                 'password'=> Hash::make('team4'),
                 'p_iva'=>'32798427989',
@@ -42,42 +42,139 @@ class UsersTableSeeder extends Seeder
             ],
 
             [
-                'name'=> 'boolean4',
+                'name'=> 'Simone Saffiotti',
                 'email'=> 'deliveboo4@ciao.com',
                 'password'=> Hash::make('team4'),
-                'p_iva'=>'32798432989',
+                'p_iva'=>'328563058395',
                 'role'=> 1,
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
             ],
 
             [
-                'name'=> 'boolean5',
+                'name'=> 'Antonino Spena',
                 'email'=> 'deliveboo5@ciao.com',
                 'password'=> Hash::make('team4'),
-                'p_iva'=>'32798428549',
+                'p_iva'=>'37465937757',
                 'role'=> 1,
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
             ],
 
             [
-                'name'=> 'boolean6',
+                'name'=> 'Andrea Salvalaggio',
                 'email'=> 'deliveboo6@ciao.com',
                 'password'=> Hash::make('team4'),
-                'p_iva'=>'32798427989',
+                'p_iva'=>'32539844938',
                 'role'=> 1,
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
             ],
 
             [
-                'name'=> 'boolean7',
+                'name'=> 'Matteo Genovese',
                 'email'=> 'deliveboo7@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'36663398592',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Stefano Caratozzolo',
+                'email'=> 'deliveboo8@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'39874987423',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Vito Farenga',
+                'email'=> 'deliveboo9@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'36954226648',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Antonio Mendetta',
+                'email'=> 'deliveboo10@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'32748573511',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Gianpiero Fideli',
+                'email'=> 'deliveboo11@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'37593757328',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Riccardo Petricca',
+                'email'=> 'deliveboo12@ciao.com',
                 'password'=> Hash::make('team4'),
                 'p_iva'=>'32792127989',
                 'role'=> 1,
                 'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
             ],
 
-            
+            [
+                'name'=> 'Sofia Verdi',
+                'email'=> 'deliveboo13@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'32792127989',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Riccardo Petricca',
+                'email'=> 'deliveboo14@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'32792127989',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Leonardo Di Caprio',
+                'email'=> 'deliveboo15@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'32792127989',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Julian Picco',
+                'email'=> 'deliveboo16@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'32792127989',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Amal Jomon',
+                'email'=> 'deliveboo17@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'32792127989',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
+
+            [
+                'name'=> 'Jim Morrison',
+                'email'=> 'deliveboo18@ciao.com',
+                'password'=> Hash::make('team4'),
+                'p_iva'=>'37466264892',
+                'role'=> 1,
+                'profilePic'=> 'https://static.wikia.nocookie.net/villains/images/1/1f/BCS_S4_Gustavo_Fring.jpg/revision/latest?cb=20180828045024',
+            ],
 
         ];
 
