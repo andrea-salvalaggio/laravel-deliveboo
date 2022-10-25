@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Deliveboo | My Area')
+
 @section('content')
     <div class="container" id="restaurant">
 
