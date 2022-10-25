@@ -131,15 +131,15 @@
                                                 placeholder="Add some comment, it will help us with the delivery"
                                                 name="description" rows="3" v-model="orderComment"></textarea>
                                         </div>
+                                        <v-braintree v-if="newCart.length != 0"
+                                            authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
+                                            locale="it_IT"
+                                            btnText="Checkout"
+                                            @success="onSuccess"
+                                            @error="onError"
+                                        class="mx-auto"></v-braintree>
                                     </form>
                                 </div>
-                                <v-braintree
-                                    authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
-                                    locale="it_IT"
-                                    btnText="Checkout"
-                                    @success="onSuccess"
-                                    @error="onError"
-                                class="mx-auto"></v-braintree>
                             </div>
                            
 
@@ -423,13 +423,18 @@
             onSuccess (payload) {
                 let nonce = payload.nonce;
                 this.sendOrder()
+                setTimeout(()=>{
+                console.log('helo')
+                    this.newCart= []
+                    this.setInCart()
+                },2000)
                 // Do something great with the nonce...
             },
             onError (error) {
                 let message = error.message;
 
                 // Whoops, an error has occured while trying to get the nonce
-            }
+            },
         },
 
         created() {
