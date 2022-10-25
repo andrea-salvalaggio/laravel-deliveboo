@@ -6,7 +6,7 @@
                 <img class="img-fluid" src="../../../images/404-page.png" alt="404 page | Return Home">
             </div>
 
-            <div class="col-12 justify-content-center">
+            <div class="col-12 px-4">
                 <h4 class="text-center">Whoops! The page you are looking for is not on the menu</h4>
             </div>
 
