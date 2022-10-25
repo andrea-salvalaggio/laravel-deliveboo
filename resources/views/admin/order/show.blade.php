@@ -15,10 +15,17 @@
                 <h2 class="font-weight-bold">Details:</h2>
                 <p class="card-title text-capitalize mt-5">Name: &nbsp;{{ $order->name . ' ' . $order->surname}}</p>
                 <p class="card-text">Address: &nbsp;{{ $order->address }}</p>
-                <p class="card-text">Dishes: &nbsp;
-                    @foreach ( $order->dishes as $dish)
-                        {{ $dish->name }} x{{ $dish->pivot->quantity }} <br>
-                    @endforeach</p>
+                <div class="d-flex">
+                    <p class="card-text">Dishes:
+                        <div>
+                            <ul class="pl-2">
+                                @foreach ( $order->dishes as $dish)
+                                <li>{{ $dish->name }} x{{ $dish->pivot->quantity }} - €{{ $dish->price }} (Cad.)</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </p>
+                </div>
                 <p class="card-text text-capitalize">Other info: &nbsp;{{ $order->description }}</p>
                 <hr class="my-4">
                 <p class="mb-0">Total Price: <span class="card-text font-weight-bolder h4 align-botton">&nbsp;€ {{ $order->price }}</span></p>

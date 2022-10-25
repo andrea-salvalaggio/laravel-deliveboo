@@ -184,23 +184,29 @@
                             <div class="col-4 px-1 font-weight-lighter">{{ $order->surname }}</div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-4 my-text text-capitalize">address</div>
-                            <div class="col-4 my-text text-capitalize">comment</div>
-                            <div class="col-4 my-text text-capitalize px-0">total price</div>
+                            <div class="col-6 my-text text-capitalize">address</div>
+                            <div class="col-6 my-text text-capitalize">comment</div>
                             <div class="col-12 pr-md-4 w-100">
                                 <hr>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4 font-weight-lighter">{{ $order->address }}</div>
-                            <div class="col-4 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
-                            <div class="col-4 font-weight-lighter px-0">€ {{ $order->price }}</div>
+                            <div class="col-6 font-weight-lighter">{{ $order->address }}</div>
+                            <div class="col-6 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
                         </div>
-                          <div class="row">
-                            <div class="col-4 font-weight-lighter">
+                        <div class="row mt-5">
+                            <div class="col-6 my-text text-capitalize">dishes</div>
+                            <div class="col-6 my-text text-capitalize pl-3">total price</div>
+                            <div class="col-12 pr-md-4 w-100">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 font-weight-lighter">
                                 @foreach ($order->dishes as $dish )
-                                    {{ $dish->name }} x{{ $dish->pivot->quantity }}
+                                {{ $dish->name }} x{{ $dish->pivot->quantity }}
                                 @endforeach
+                                <div class="col-6 font-weight-lighter px-0">€ {{ $order->price }}</div>
                             </div>
                         </div>
                         <div class="row mt-5">
