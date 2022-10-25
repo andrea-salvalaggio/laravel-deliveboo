@@ -35,7 +35,7 @@
                                                 {{ dish.name }}
                                             </h4>
 
-                                            <p class="p-0"> {{ dish.description }}</p>
+                                            <p class="p-0 overflo-auto description-container"> {{ dish.description }}</p>
                                             <hr>
                                         </div>
 
@@ -518,6 +518,12 @@
         background-color: white;
         border-radius: 30px;
         width: 98%;
+        height: 510px;
+    }
+
+    .description-container{
+        max-height: 50px;
+        overflow-y: scroll;
     }
 
     .euro {
