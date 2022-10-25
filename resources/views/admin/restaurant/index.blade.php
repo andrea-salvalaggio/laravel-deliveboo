@@ -196,12 +196,20 @@
                             <div class="col-4 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
                             <div class="col-4 font-weight-lighter px-0">€ {{ $order->price }}</div>
                         </div>
+                          <div class="row">
+                            <div class="col-4 font-weight-lighter">
+                                @foreach ($order->dishes as $dish )
+                                    {{ $dish->name }} x{{ $dish->pivot->quantity }}
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="row mt-5">
                             <div class="col-12 py-2 text-center">
                                 <a href="{{ route('admin.order.show', $order->id) }}"
                                     class="btn my-btn-primary rounded-pill w-100 text-white my-btn-shadow p-2">View</a>
                             </div>
                         </div>
+
                     </div>
 
                 @empty
