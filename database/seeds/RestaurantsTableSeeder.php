@@ -186,11 +186,11 @@ class RestaurantsTableSeeder extends Seeder
 
             [
                 'user_id' => 18,
-                'name'=> 'Pret a Manger',
+                'name'=> 'Sukuya',
                 'address'=> 'Viale Luzzati, 88',
                 'open'=> '07:30',
                 'close'=>'21:00',
-                'restaurantPic'=>'https://ichef.bbci.co.uk/news/976/cpsprodpb/EAB0/production/_119908006_pret.jpg',
+                'restaurantPic'=>'https://coconuts.co/wp-content/uploads/2020/08/sukiya-hong-kong-mongkok.jpg',
 
             ],
 
