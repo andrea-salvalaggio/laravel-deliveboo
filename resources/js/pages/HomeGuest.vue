@@ -35,8 +35,8 @@
 
         <!-- Ristoranti -->
         <div class="container-lg">
-            <h1 class="restaurant-title mb-5">List of restaurant</h1>
-            <div v-if="restaurants.length != 0" class="row flex-wrap my-4 p-2">
+            <h1 class="restaurant-title mb-5">Restaurants</h1>
+            <div v-if="filteredRestaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <RestaurantCard v-for="restaurant in filteredRestaurants" :key="restaurant.id"
                     :restaurant="restaurant" />
             </div>
@@ -63,7 +63,7 @@
 
         <!-- Brands -->
         <div class="container-fluid">
-            <h1 class="restaurant-title mb-2">Popular restaurant</h1>
+            <h1 class="restaurant-title mb-2">Popular restaurants</h1>
             <div class="container-lg mt-5 slider slider-brand hide-scrollbar">
                 <div class="row flex-nowrap justify-content-center mt-4 px-4">
                     <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center align-items-center"
