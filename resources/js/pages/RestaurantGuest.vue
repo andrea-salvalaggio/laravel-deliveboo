@@ -104,8 +104,12 @@
                                             </div> 
                                         </div>
                                     </div>
+
+                                    <!-- Placeholder carello -->
                                     <div class="col-12 scale-in-center" v-else>
-                                        <h2>ciao</h2>
+                                        <div class="placeholder-container">
+                                            <img src="../../images/cart-placeholder.jpg" alt="Your Cart is Empty">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row py-4">
@@ -176,7 +180,7 @@
                                     Clear
                                 </button>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12" v-if="newCart.length>0">
                                 <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart" :key="index">
                                     <div class="col-5 text-capitalize">
                                         {{ cartItem.name }}
@@ -195,6 +199,13 @@
                                     <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Placeholder carello -->
+                            <div class="col-12 scale-in-center" v-else>
+                                <div class="placeholder-container">
+                                    <img src="../../images/cart-placeholder.jpg" alt="Your Cart is Empty">
                                 </div>
                             </div>
                         </div>
@@ -478,7 +489,7 @@
     }
 
     .cart {
-        height: 200px;
+        height: 300px;
         overflow-y: scroll;
 
         &:hover::-webkit-scrollbar-thumb {
@@ -669,6 +680,16 @@
             -webkit-transform: scale(1);
             transform: scale(1);
             opacity: 1;
+        }
+    }
+    
+    .placeholder-container{
+        width: 60%;
+        min-width: 70px;
+        margin: 0 auto;
+
+        img{
+            width: 100%;
         }
     }
 </style>
