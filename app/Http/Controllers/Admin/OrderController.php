@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Auth::user()->restaurant->orders;
+        $orders = Auth::user()->restaurant-> orders;
         return view('admin.order.index', compact('orders'));
     }
 
