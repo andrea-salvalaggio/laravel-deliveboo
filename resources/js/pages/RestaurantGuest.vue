@@ -2,7 +2,7 @@
     <section class="position-relative">
         <!-- jumbo -->
         <div class="jumbo">
-            <img :src="restaurant.restaurantPic" :alt="restaurant.name + 'photo'" />
+            <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name + 'photo'" />
         </div>
         <!-- restaurant name -->
         <div class="container-lg py-4">
