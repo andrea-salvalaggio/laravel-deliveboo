@@ -25,7 +25,7 @@ class DishesTableSeeder extends Seeder
             ],
             [
                 'restaurant_id'=> 1,
-                'name'=> 'Cheeseburger',
+                'name'=> 'Cheese burger',
                 'description'=> 'Our simple, classic cheeseburger begins with a 100% pure beef burger seasoned with just a pinch of salt and pepper. ',
                 'dishPic'=> 'https://media.discordapp.net/attachments/1027584701415833620/1034741251469217862/Cheeseburger.jpg',
                 'price'=> 2.00,
@@ -45,7 +45,7 @@ class DishesTableSeeder extends Seeder
                 'description'=> 'Chicken McNuggets® are made with all white meat chicken and no artificial colors, flavors, or preservatives. ',
                 'dishPic'=> 'https://media.discordapp.net/attachments/1027584701415833620/1034741251037220884/Chicken_McNuggets.jpg',
                 'price'=> 5.00,
-                'visible'=> 0,
+                'visible'=> 1,
             ],
             [
                 'restaurant_id'=> 1,
