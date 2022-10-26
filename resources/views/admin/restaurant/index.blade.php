@@ -63,7 +63,7 @@
                 @empty
                 @endforelse
             </div>
-            <div class="col-md-5 col-6">
+            <div class="col-12 col-md-5">
                 <p class="m-0"><i class="fa-solid fa-location-dot align-text-middle m-0"></i> &nbsp;{{ $restaurants->address }}</p>
                 <p class="m-0"><i class="fa-solid fa-clock align-text-middle m-0"></i>
                     &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}
@@ -72,13 +72,15 @@
         </div>
 
         {{-- Bottoni link Dishes e Orders --}}
-        <div class="col-md-5 col-6 p-0 mt-3 mb-4">
-            <h6 type="button" class="btn btn-light badge border rounded-pill mr-2 py-2 px-3">
-                <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-dishes" class="text-dark text-decoration-none">Go to Dishes</a>
-            </h6>
-            <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3">
-                <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-orders" class="text-dark text-decoration-none">Go to Orders</a>
-            </h6>
+        <div class="col-12 col-md-5 p-0 mt-3 mb-4">
+            <div class="col-5 col-md-4 d-flex p-0">
+                <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3 mr-2">
+                    <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-dishes" class="text-dark text-decoration-none">Go to Dishes</a>
+                </h6>
+                <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3 mx-0">
+                    <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-orders" class="text-dark text-decoration-none">Go to Orders</a>
+                </h6>
+            </div>
         </div>
 
         <div class="container-fluid p-0 my-3 position-relative">
