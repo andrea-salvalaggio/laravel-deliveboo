@@ -3,7 +3,7 @@
 @section('title','Deliveboo | My Area')
 
 @section('content')
-    <div class="container" id="restaurant">
+    <div class="container position-realative" id="restaurant">
 
         @if (session('delete'))
             <div class="alert alert-success my-alert-delete container-lg" role="alert">

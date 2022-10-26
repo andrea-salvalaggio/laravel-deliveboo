@@ -1,6 +1,6 @@
 <div class="container-lg">
     <div class="row p-3">
-        <div class="col-12">
+        <div class="col-12 head-form">
             <form action="{{ route($route, $argument) }}" method="POST" enctype="multipart/form-data" id="checkGroup">
                 @csrf
                 @method($method)

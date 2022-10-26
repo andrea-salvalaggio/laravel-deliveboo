@@ -14,6 +14,8 @@ body{
     background-color: $backgroundColor;
 }
 #restaurant{
+    padding-top: 130px;
+
     .container-fluid{
         .radius-shadow{
             border-radius: 40px;
@@ -202,6 +204,15 @@ text-error{
         width: 50px;
         margin-left: 20px;
     }
+}
+
+.head-navbar{
+    background-color: $backgroundColor;
+    z-index: 1;
+}
+
+.head-form{
+    padding-top: 100px;
 }
 
 
