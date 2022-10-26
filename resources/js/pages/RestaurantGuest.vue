@@ -38,7 +38,7 @@
                                                 {{ dish.name }}
                                             </h4>
 
-                                            <p class="p-0 overflo-auto description-container hide-scrollbar"> {{ dish.description }}</p>
+                                            <p class="p-0 overflo-auto description-container hide-scrollbar slider"> {{ dish.description }}</p>
                                             <hr>
                                         </div>
 
@@ -708,6 +708,21 @@
             width: 100%;
         }
     }
+
+    .slider {
+    width: 100%;
+    overflow-x: scroll;
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: $primaryColor;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 8px;
+    }
+}
 
     .hide-scrollbar {
         overflow: auto;
