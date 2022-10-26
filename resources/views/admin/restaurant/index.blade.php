@@ -63,12 +63,17 @@
                 @empty
                 @endforelse
             </div>
-            <div class="col-md-5 col-6 mb-3">
+            <div class="col-md-5 col-6">
                 <p class="m-0"><i class="fa-solid fa-location-dot align-text-middle m-0"></i> &nbsp;{{ $restaurants->address }}</p>
                 <p class="m-0"><i class="fa-solid fa-clock align-text-middle m-0"></i>
                     &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}
                 </p>
             </div>
+        </div>
+
+        <div class="col-md-5 col-6 p-0 my-3">
+            <button type="button" class="btn btn-light border mr-2">Light</button>
+            <button type="button" class="btn btn-light border">Light</button>
         </div>
 
         <div class="container-fluid p-0 my-3 position-relative">
