@@ -235,7 +235,7 @@
                                 <div class="col-12 mb-3">
                                     <input type="text"
                                         class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
-                                        placeholder="Address*" required v-model="orderAddress" minlength="10" maxlength="40">
+                                        placeholder="Address*" required v-model="orderAddress" minlength="6" maxlength="40">
                                 </div>
                                 <div class="col-12">
                                     <textarea class="form-control border-0 px-4 font-weight-lighter"
@@ -250,7 +250,7 @@
                                             @success="onSuccess"
                                             @error="onError"
                                         class="ml-4"></v-braintree>
-                                        <input type="submit" value="Checkout" class="btn btn-primary trick-btn-mobile" :class="orderName != '' && orderSurname != '' && orderAddress != '' ? 'd-none' : ''">
+                                        <input type="submit" value="Checkout" class="btn btn-primary trick-btn-mobile" :class="orderName.length>=2 && orderSurname.length>=2 && orderAddress.length>=6 ? 'd-none' : ''">
                                 </div>
                             </form>
                         </div>
