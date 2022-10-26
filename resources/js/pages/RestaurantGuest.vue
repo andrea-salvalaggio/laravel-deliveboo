@@ -141,13 +141,17 @@
                                                 placeholder="Add some comment, it will help us with the delivery"
                                                 name="description" rows="3" v-model="orderComment"></textarea>
                                         </div>
-                                        <v-braintree 
-                                            authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
-                                            locale="it_IT"
-                                            btnText="Checkout"
-                                            @success="onSuccess"
-                                            @error="onError"
-                                        class="mx-auto"></v-braintree>
+                                        <div class="col-12 position-relative">    
+                                            <v-braintree 
+                                                authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
+                                                locale="it_IT"
+                                                btnText="Checkout"
+                                                @success="onSuccess"
+                                                @error="onError"
+                                            class="mx-auto">
+                                            </v-braintree>
+                                            <input type="submit" value="Checkout" class="btn btn-primary trick-btn" :class="orderName != '' && orderSurname != '' && orderAddress != '' ? 'd-none' : ''">
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -238,6 +242,7 @@
                                         placeholder="Add some comment, it will help us with the delivery"
                                         name="description" rows="3" v-model="orderComment"></textarea>
                                 </div>
+                                <div class="col-12 position-relative">
                                 <v-braintree
                                             authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
                                             locale="it_IT"
@@ -245,6 +250,8 @@
                                             @success="onSuccess"
                                             @error="onError"
                                         class="ml-4"></v-braintree>
+                                        <input type="submit" value="Checkout" class="btn btn-primary trick-btn-mobile" :class="orderName != '' && orderSurname != '' && orderAddress != '' ? 'd-none' : ''">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -433,6 +440,7 @@
             },
 
             onSuccess (payload) {
+                
                 let nonce = payload.nonce;
                 Vue.swal('Successs on payment, the restaurant will receive the order soon')
                 this.sendOrder()
@@ -440,11 +448,15 @@
                     this.newCart= []
                     this.setInCart()
                 },2000)
+                this.orderName = ''
+                this.orderSurname = ''
+                this.orderAddress = ''
+                this.orderComment  = ''
+                
                 // Do something great with the nonce...
             },
             onError (error) {
                 let message = error.message;
-
                 // Whoops, an error has occured while trying to get the nonce
             },
             roundFunctionOnTotal(item, qt){
@@ -452,6 +464,7 @@
                 total = Math.round(total * 100) / 100
                 return total
             },
+            
         },
         created() {
             this.getRestaurant();
@@ -694,5 +707,16 @@
         img{
             width: 100%;
         }
+    }
+    .trick-btn, .trick-btn-mobile{
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+    }
+    .trick-btn{
+        left: 15px;
+    }
+    .trick-btn-mobile{
+        left: 39px;
     }
 </style>
