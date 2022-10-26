@@ -119,7 +119,7 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('errors.404');
     }
 
     /**
