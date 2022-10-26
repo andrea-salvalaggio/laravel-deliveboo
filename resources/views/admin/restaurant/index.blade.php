@@ -71,9 +71,14 @@
             </div>
         </div>
 
-        <div class="col-md-5 col-6 p-0 my-3">
-            <button type="button" class="btn btn-light border mr-2">Light</button>
-            <button type="button" class="btn btn-light border">Light</button>
+        {{-- Bottoni link Dishes e Orders --}}
+        <div class="col-md-5 col-6 p-0 mt-3 mb-4">
+            <h6 type="button" class="btn btn-light badge border rounded-pill mr-2 py-2 px-3">
+                <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-dishes" class="text-dark text-decoration-none">Go to Dishes</a>
+            </h6>
+            <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3">
+                <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-orders" class="text-dark text-decoration-none">Go to Orders</a>
+            </h6>
         </div>
 
         <div class="container-fluid p-0 my-3 position-relative">
@@ -97,7 +102,7 @@
                                 info
                             </a>
                         </div>
-                        <div class="col-12 col-md-6 mt-5 mt-md-0">
+                        <div class="col-12 col-md-6 mt-5 mt-md-0" id="anchor-dishes">
                             <a href="{{ route('admin.dish.create') }}"
                                 class="btn btn-outline-warning rounded-pill w-100 py-4 font-weight-bold">
                                 <span class="material-symbols-outlined align-middle mx-1">add</span> Add new Dish
@@ -167,7 +172,7 @@
 
             {{-- TABELLA ORDINI --}}
 
-            <div class="row">
+            <div class="row" id="anchor-orders">
                 <div class="col-12 my-4">
                     <h2><span class="material-symbols-outlined h1 align-middle">list_alt</span>
                         &nbsp;<span class="text-capitalize">orders</span>
