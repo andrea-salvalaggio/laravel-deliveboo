@@ -195,7 +195,7 @@
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
                                     <div class="col-3 text-center">€ {{ roundFunctionOnTotal(cartItem.price, cartItem.quantity) }}</div>
-                                    <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
+                                    <div class="col-1 trash icon-trash text-danger px-0" @click="deleteSingleDish(index)">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </div>
                                 </div>
