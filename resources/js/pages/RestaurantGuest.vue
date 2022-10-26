@@ -38,7 +38,7 @@
                                                 {{ dish.name }}
                                             </h4>
 
-                                            <p class="p-0 overflo-auto description-container"> {{ dish.description }}</p>
+                                            <p class="p-0 overflo-auto description-container hide-scrollbar"> {{ dish.description }}</p>
                                             <hr>
                                         </div>
 
@@ -693,6 +693,18 @@
 
         img{
             width: 100%;
+        }
+    }
+
+    .hide-scrollbar {
+        overflow: auto;
+        -ms-overflow-style: none;
+        /* IE 11 */
+        scrollbar-width: none;
+        /* Firefox 64 */
+
+        &:hover {
+            scrollbar-width: auto;
         }
     }
 </style>
