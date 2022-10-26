@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex">
+    <div class="d-flex head-padding">
         <div class="container-fluid myBackground text-center align-self-center">
             <img class="error-img-responsive pt-3" src="{{ url('https://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG96715.png') }}" alt="no pass">
         </div>
