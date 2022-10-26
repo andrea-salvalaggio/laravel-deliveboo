@@ -232,7 +232,7 @@ export default {
         },
         showLess(){
             this.restaurantNumber = 6
-            this.filterRestaurants = this.restaurants
+            this.filteredRestaurants = this.restaurants
         }
     },
     created() {
