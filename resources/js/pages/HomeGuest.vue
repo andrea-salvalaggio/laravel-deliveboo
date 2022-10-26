@@ -70,7 +70,7 @@
                     <h3 class="text-white font-weight-lighter text-center mb-4">
                         Find out all the advantages of home delivery
                     </h3>
-                    <div class="nav-item my-btn rounded-pill py-1 px-4 my-btn-shadow mt-md-0 text-center">
+                    <div class="nav-item my-btn rounded-pill px-3 my-btn-shadow mt-md-0 text-center">
                         <a href="/register" class="nav-link text-white px-0">Sign up</a>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
 
         <!-- Brands -->
         <div class="container-fluid">
-            <h1 class="restaurant-title mb-2">Popular restaurants</h1>
+            <h1 class="restaurant-title mb-2">Partnership</h1>
             <div class="container-lg mt-5 slider slider-brand hide-scrollbar">
                 <div class="row flex-nowrap justify-content-center mt-4 px-4">
                     <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center align-items-center"
