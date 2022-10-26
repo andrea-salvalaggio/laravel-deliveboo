@@ -26,7 +26,7 @@
                         </div>
                     </p>
                 </div>
-                <p class="card-text text-capitalize">Other info: &nbsp;{{ $order->description }}</p>
+                <p class="card-text text-capitalize">Other info: &nbsp;{{ $order->comment }}</p>
                 <hr class="my-4">
                 <p class="mb-0">Total Price: <span class="card-text font-weight-bolder h4 align-botton">&nbsp;€ {{ $order->price }}</span></p>
             </div>
