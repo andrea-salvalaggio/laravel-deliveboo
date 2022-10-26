@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-lg my-5">
+    <div class="container-lg head-form">
         
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 mx-auto mb-4">
             @if (session('edited'))

@@ -38,7 +38,7 @@
                                                 {{ dish.name }}
                                             </h4>
 
-                                            <p class="p-0 overflo-auto description-container"> {{ dish.description }}</p>
+                                            <p class="p-0 overflo-auto description-container hide-scrollbar"> {{ dish.description }}</p>
                                             <hr>
                                         </div>
 
@@ -612,7 +612,7 @@
         background-color: $primaryColor;
         color: white;
         cursor: pointer;
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
+        box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
 
     }
 
@@ -706,6 +706,18 @@
 
         img{
             width: 100%;
+        }
+    }
+
+    .hide-scrollbar {
+        overflow: auto;
+        -ms-overflow-style: none;
+        /* IE 11 */
+        scrollbar-width: none;
+        /* Firefox 64 */
+
+        &:hover {
+            scrollbar-width: auto;
         }
     }
     .trick-btn, .trick-btn-mobile{

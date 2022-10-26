@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-lg mt-4">
+    <div class="container-lg mt-4 head-form">
 
         {{-- Bottone Go Back --}}
         <div class="col-lg-6 col-md-6 col-sm-10 mx-auto mb-4 p-0">

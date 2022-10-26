@@ -3,7 +3,7 @@
 @section('title','Deliveboo | My Area')
 
 @section('content')
-    <div class="container" id="restaurant">
+    <div class="container position-realative" id="restaurant">
 
         @if (session('delete'))
             <div class="alert alert-success my-alert-delete container-lg" role="alert">
@@ -63,11 +63,23 @@
                 @empty
                 @endforelse
             </div>
-            <div class="col-md-5 col-6 mb-3">
+            <div class="col-12 col-md-5">
                 <p class="m-0"><i class="fa-solid fa-location-dot align-text-middle m-0"></i> &nbsp;{{ $restaurants->address }}</p>
                 <p class="m-0"><i class="fa-solid fa-clock align-text-middle m-0"></i>
                     &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}
                 </p>
+            </div>
+        </div>
+
+        {{-- Bottoni link Dishes e Orders --}}
+        <div class="col-12 col-md-5 p-0 mt-3 mb-4">
+            <div class="col-5 col-md-4 d-flex p-0">
+                <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3 mr-2">
+                    <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-dishes" class="text-dark text-decoration-none">Go to Dishes</a>
+                </h6>
+                <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3 mx-0">
+                    <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-orders" class="text-dark text-decoration-none">Go to Orders</a>
+                </h6>
             </div>
         </div>
 
@@ -92,7 +104,7 @@
                                 info
                             </a>
                         </div>
-                        <div class="col-12 col-md-6 mt-5 mt-md-0">
+                        <div class="col-12 col-md-6 mt-5 mt-md-0" id="anchor-dishes">
                             <a href="{{ route('admin.dish.create') }}"
                                 class="btn btn-outline-warning rounded-pill w-100 py-4 font-weight-bold">
                                 <span class="material-symbols-outlined align-middle mx-1">add</span> Add new Dish
@@ -162,7 +174,7 @@
 
             {{-- TABELLA ORDINI --}}
 
-            <div class="row">
+            <div class="row" id="anchor-orders">
                 <div class="col-12 my-4">
                     <h2><span class="material-symbols-outlined h1 align-middle">list_alt</span>
                         &nbsp;<span class="text-capitalize">orders</span>
