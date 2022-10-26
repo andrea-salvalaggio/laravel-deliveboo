@@ -19,7 +19,7 @@ class DishesTableSeeder extends Seeder
                 'name'=> 'big mac',
                 'description'=> 'One of the most iconic hamburger of the history, you can find it all around the world!',
                 'dishPic'=> 'https://images.dissapore.com/wp-content/uploads/2022/08/big-mac-chicken.jpg',
-                'price'=> 4.53,
+                'price'=> 4.50,
                 'visible'=> 0,
             ],
             [
@@ -27,7 +27,7 @@ class DishesTableSeeder extends Seeder
                 'name'=> 'big potatoes',
                 'description'=> 'The perfect side of every meal!',
                 'dishPic'=> 'https://www.mcdonalds.it/sites/default/files/products/patate-regolari_isolated_0.png',
-                'price'=> 1.52,
+                'price'=> 1.50,
                 'visible'=> 0,
             ],
             [
@@ -98,7 +98,23 @@ class DishesTableSeeder extends Seeder
                 'price'=> 5.00,
                 'visible'=> 0,
             ],
-
+            [
+                'restaurant_id'=> 1,
+                'name'=> 'Double Chicken Bbq',
+                'description'=> 'A must for all the chicken\'s lovers. Two crispy slices of breaded chicken are the basis for the stringy cheese, fresh lettuce and barbecue sauce. Thus was born a "Grande Classico" with a truly irresistible smoked taste.',
+                'dishPic' => 'https://cdn.discordapp.com/attachments/1027584701415833620/1034737154871545906/double-chicken-bbq--hero-isolated.png',
+                'price'=> 5.00,
+                'visible'=> 0,
+            ],
+            [
+                'restaurant_id'=> 1,
+                'name'=> 'McChicken',
+                'description'=> 'It’s a classic for a reason. Savor the satisfying crunch of our juicy chicken patty, topped with shredded lettuce and just the right amount of creamy mayonnaise, all served on a perfectly toasted bun.* The McChicken® has 400 calories',
+                'dishPic' => 'https://cdn.discordapp.com/attachments/1027584701415833620/1034737326162727002/mcchicken--hero-isolated.png',
+                'price'=> 3.30,
+                'visible'=> 0,
+            ],
+            
         ];
 
         foreach ($dishes as $dish) {

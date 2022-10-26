@@ -9,9 +9,9 @@
             <h1 class="text-center my-4">
                 {{ restaurant.name }}
             </h1>
-            <div class="col-12 d-flex justify-content-center">
-                <p class="mx-4"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
-                <p><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
+            <div class="col-12 d-flex justify-content-center flex-wrap">
+                <p class="mx-4 my-1"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
+                <p class="my-1"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
             </div>
         </div>
 
@@ -607,13 +607,13 @@
         position: fixed;
         z-index: 3;
         left: calc(50% - 45%);
-        bottom: 85px;
+        bottom: 95px;
         width: 90%;
         background: white;
         max-height: 700px;
         overflow-x: hidden;
         overflow-y: scroll;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308), -5px -5px 5px rgba(0, 0, 0, 0.308)
+        border: 1px solid #999999;
     }
     .notification{
         position: fixed;

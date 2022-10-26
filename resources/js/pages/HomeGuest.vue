@@ -39,7 +39,7 @@
             <h1 class="restaurant-title mb-5" >Restaurants</h1>
             <div v-if="filteredRestaurants.length != 0" class="row flex-wrap my-4 p-2">
                 <div v-for="(restaurant, index) in filteredRestaurants" :key="index"
-                    class="col-12 col-md-6 col-lg-4 my-4 ">
+                    class="col-12 col-md-6 col-lg-4 ciao">
                     <RestaurantCard :restaurant="restaurant" v-if="index < restaurantNumber"  class="slide-in-bottom"/>
                 </div>
                 <div class="row w-100" v-if="filteredRestaurants.length > 6">
@@ -455,5 +455,11 @@ export default {
             transform: translateY(0);
     opacity: 1;
   }
+}
+.ciao{
+    transition: 0.5s ease-in-out;
+}
+.ciao:hover{
+    transform: translateY(-20px);
 }
 </style>

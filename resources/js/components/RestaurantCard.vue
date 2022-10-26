@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container bg-white my-rounded my-shadow  mx-auto">
+    <div class="card-container bg-white my-rounded my-shadow  mx-auto my-4">
         <a :href="'/HomeRestaurant/' + restaurant.id">
             <div class="img-container">
                 <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name">
