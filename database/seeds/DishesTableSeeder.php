@@ -25,14 +25,6 @@ class DishesTableSeeder extends Seeder
             ],
             [
                 'restaurant_id'=> 1,
-                'name'=> 'big potatoes',
-                'description'=> 'The perfect side of every meal!',
-                'dishPic'=> 'https://www.mcdonalds.it/sites/default/files/products/patate-regolari_isolated_0.png',
-                'price'=> 1.50,
-                'visible'=> 0,
-            ],
-            [
-                'restaurant_id'=> 1,
                 'name'=> 'Cheeseburger',
                 'description'=> 'Our simple, classic cheeseburger begins with a 100% pure beef burger seasoned with just a pinch of salt and pepper. ',
                 'dishPic'=> 'https://media.discordapp.net/attachments/1027584701415833620/1034741251469217862/Cheeseburger.jpg',
