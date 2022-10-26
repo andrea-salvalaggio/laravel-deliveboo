@@ -599,7 +599,7 @@
         background-color: $primaryColor;
         color: white;
         cursor: pointer;
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
+        box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
 
     }
 
