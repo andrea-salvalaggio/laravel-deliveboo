@@ -442,7 +442,7 @@
             onSuccess (payload) {
                 
                 let nonce = payload.nonce;
-                Vue.swal('Successs on payment, the restaurant will receive the order soon')
+                Vue.swal('Success, the restaurant will receive the order soon')
                 this.sendOrder()
                 setTimeout(()=>{
                     this.newCart= []
