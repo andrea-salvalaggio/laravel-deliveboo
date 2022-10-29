@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title','Deliveboo | My Area')
+
 @section('content')
-    <div class="container" id="restaurant">
+    <div class="container position-realative" id="restaurant">
 
         @if (session('delete'))
             <div class="alert alert-success my-alert-delete container-lg" role="alert">
@@ -35,13 +37,7 @@
         @endif
 
         @if (session('created'))
-            {{-- <div class="alert alert-success my-alert-success" role="alert">
-                <div class="pb-2">
-                    <img class="w-25" src="{{ url('https://www.svgrepo.com/show/13650/success.svg') }}" alt="success">
-                </div>
-                <strong>Success!</strong>
-                <span class="text-capitalize">{{ session('created') }}</span>
-            </div> --}}
+
             <div class="alert alert-success my-alert-success container-lg" role="alert">
                 <div class="row align-items-center">
                     <div class="box-success-img ">
@@ -67,25 +63,26 @@
                 @empty
                 @endforelse
             </div>
-            <div class="col-md-5 col-6 mb-3">
+            <div class="col-12 col-md-5">
                 <p class="m-0"><i class="fa-solid fa-location-dot align-text-middle m-0"></i> &nbsp;{{ $restaurants->address }}</p>
                 <p class="m-0"><i class="fa-solid fa-clock align-text-middle m-0"></i>
                     &nbsp;{{ substr($restaurants->open, 0, 5) }} – {{ substr($restaurants->close, 0, 5) }}
                 </p>
             </div>
         </div>
-        {{-- <h1 class="mt-1 d-flex align-items-center">
-        {{ $restaurants->name }}
-        @forelse ($restaurants->categories as $category)
-        <span class="badge badge-danger badge-pill small-badge mx-4">{{ $category->name }}</span>
-        @empty
 
-        @endforelse
-    </h1>
-    <p>
-        {{ $restaurants->address }} | {{ substr( $restaurants->open , 0 , 5 ) }} - {{ substr( $restaurants->close , 0 ,
-        5 ) }}
-    </p> --}}
+        {{-- Bottoni link Dishes e Orders --}}
+        <div class="col-12 col-md-5 p-0 mt-3 mb-4">
+            <div class="col-5 col-md-4 d-flex p-0">
+                <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3 mr-2">
+                    <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-dishes" class="text-dark text-decoration-none">Go to Dishes</a>
+                </h6>
+                <h6 type="button" class="btn btn-light badge border rounded-pill py-2 px-3 mx-0">
+                    <i class="fa-solid fa-angle-down pr-2"></i><a href="#anchor-orders" class="text-dark text-decoration-none">Go to Orders</a>
+                </h6>
+            </div>
+        </div>
+
         <div class="container-fluid p-0 my-3 position-relative">
             @if (filter_var($restaurants->restaurantPic, FILTER_VALIDATE_URL))
                 <img src="{{ $restaurants->restaurantPic }}" alt="{{ $restaurants->name }} photo" class="rounded-5 radius-shadow">
@@ -96,59 +93,7 @@
         </div>
 
         <div class="container-lg">
-            {{-- <table class="table table-striped mt-5">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Available</th>
-                    <th scope="col" class="text-center"><a href="{{ route('admin.dish.create') }}"
-                            class="btn btn-warning rounded-pill px-5 ">Add new Dish</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($restaurants->dishes as $dish)
-                <tr>
-                    <th scope="row">{{ $dish->id }}</th>
-                    <td class="text-capitalize">{{ $dish->name }}</td>
-                    <td> --}}
-            {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-            {{-- @if (strlen($dish->description) > 15)
-                        {{ substr($dish->description, 0, 15) }}...
-                        @else
-                        {{ $dish->description }}
-                        @endif --}}
-            {{-- </td>
-                    <td>€{{ $dish->price }}</td>
-                    <td>
-                        @if ($dish->visible == 0)
-                        Yes
-                        @else
-                        No
-                        @endif
-                    </td>
-                    <td class="d-flex justify-content-center">
-                        <a href="{{ route('admin.dish.show' , $dish->id) }}"
-                            class="btn btn-primary rounded-pill">View</a>
-                        <a href="{{ route('admin.dish.edit', $dish->id) }}"
-                            class="btn btn-success rounded-pill mx-1">Edit</a>
-                        <form action="{{ route('admin.dish.destroy' , $dish->id) }}" method="POST" class="btn-delete">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger rounded-pill ">Delete</button>
 
-                        </form>
-                    </td>
-
-                    @empty
-                    <td scope="row">Could not find any dish</td>
-                    @endforelse
-                </tr>
-            </tbody>
-        </table>
-        --}}
             <div class="row ">
                 <div class="col-12 my-5">
                     <div class="row">
@@ -159,7 +104,7 @@
                                 info
                             </a>
                         </div>
-                        <div class="col-12 col-md-6 mt-5 mt-md-0">
+                        <div class="col-12 col-md-6 mt-5 mt-md-0" id="anchor-dishes">
                             <a href="{{ route('admin.dish.create') }}"
                                 class="btn btn-outline-warning rounded-pill w-100 py-4 font-weight-bold">
                                 <span class="material-symbols-outlined align-middle mx-1">add</span> Add new Dish
@@ -176,7 +121,7 @@
                 </div>
             </div>
             <div class="row justify-content-between px-md-5 p-2">
-                @forelse ($restaurants->dishes as $dish)
+                @forelse ($dishes as $dish)
                     <div class="col-12 col-md-5 my-card my-shadow mb-5">
                         <div class="row">
                             <div class="col-2 my-text">ID</div>
@@ -228,54 +173,8 @@
 
 
             {{-- TABELLA ORDINI --}}
-            {{--
-        <table class="table table-striped mt-5">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Surname</th>
-                    <th scope='col'>Description</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($restaurants->orders as $order)
-                <tr>
-                    <th scope="row">{{ $order->id }}</th>
-                    <td class="text-capitalize">{{ $order->name }}</td>
-                    <td class="text-capitalize">{{ $order->surname }}</td>
-                    <td> --}}
-            {{-- Controlliamo la lunghezza della stringa, se è maggiore di 15 la tagliamo --}}
-            {{-- @if (strlen($order->description) > 15)
-                        {{ substr($order->description, 0, 15) }}...
-                        @else
-                        {{ $order->description }}
-                        @endif --}}
-            {{-- </td>
-                    <td>{{ $order->address }}</td>
-                    <td>€ {{ $order->price}}</td>
 
-                    <td class="d-flex justify-content-center">
-                        <a href="{{ route('admin.order.show' , $order->id) }}"
-                            class="btn btn-primary rounded-pill">View</a>
-                        <form action="{{ route('admin.order.destroy' , $order->id) }}" method="POST" class="btn-delete">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger rounded-pill ">Delete</button>
-
-                        </form>
-                    </td>
-
-                    @empty
-                    <td scope="row">Could not find any order</td>
-                    @endforelse
-                </tr>
-            </tbody>
-        </table> --}}
-            <div class="row">
+            <div class="row" id="anchor-orders">
                 <div class="col-12 my-4">
                     <h2><span class="material-symbols-outlined h1 align-middle">list_alt</span>
                         &nbsp;<span class="text-capitalize">orders</span>
@@ -283,7 +182,7 @@
                 </div>
             </div>
             <div class="row justify-content-between px-md-5 p-2">
-                @forelse ($restaurants->orders as $order)
+                @forelse ($orders as $order)
                     <div class="col-12 col-md-5 my-card my-shadow mb-5">
                         <div class="row">
                             <div class="col-4 my-text">ID</div>
@@ -299,32 +198,40 @@
                             <div class="col-4 px-1 font-weight-lighter">{{ $order->surname }}</div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-4 my-text text-capitalize">address</div>
-                            <div class="col-4 my-text text-capitalize">comment</div>
-                            <div class="col-4 my-text text-capitalize px-0">total price</div>
+                            <div class="col-6 my-text text-capitalize">address</div>
+                            <div class="col-6 my-text text-capitalize">comment</div>
                             <div class="col-12 pr-md-4 w-100">
                                 <hr>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4 font-weight-lighter">{{ $order->address }}</div>
-                            <div class="col-4 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
-                            <div class="col-4 font-weight-lighter px-0">€ {{ $order->price }}</div>
+                            <div class="col-6 font-weight-lighter">{{ $order->address }}</div>
+                            <div class="col-6 text-capitalize font-weight-lighter">{{ $order->comment }}</div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-6 my-text text-capitalize">dishes</div>
+                            <div class="col-6 my-text text-capitalize pl-3">total price</div>
+                            <div class="col-12 pr-md-4 w-100">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 font-weight-lighter">
+                                <ul class="pl-0">
+                                     @foreach ($order->dishes as $dish )
+                                        <li>{{ $dish->name }} x{{ $dish->pivot->quantity }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-6 font-weight-lighter pl-3">€ {{ $order->price }}</div>
                         </div>
                         <div class="row mt-5">
                             <div class="col-12 py-2 text-center">
                                 <a href="{{ route('admin.order.show', $order->id) }}"
                                     class="btn my-btn-primary rounded-pill w-100 text-white my-btn-shadow p-2">View</a>
                             </div>
-                            {{-- <div class="col-6 py-2 text-center">
-                            <form action="{{ route('admin.order.destroy' , $order->id) }}" method="POST" class="btn-delete">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn my-btn-danger rounded-pill w-100 text-white my-btn-shadow p-2">Delete</button>
-
-                            </form>
-                        </div> --}}
                         </div>
+
                     </div>
 
                 @empty

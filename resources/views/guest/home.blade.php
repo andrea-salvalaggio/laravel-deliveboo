@@ -31,8 +31,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/vue-braintree/dist/vue-braintree.umd.min.js"></script>
     
-    <title>DeliveBoo | Home</title>
+    <title>DeliveBoo</title>
 </head>
 <body>
     <div id="root"></div>

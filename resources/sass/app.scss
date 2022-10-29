@@ -6,11 +6,16 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+html {
+    scroll-behavior: smooth;
+  }
 body{
     font-family: 'Poppins', sans-serif;
     background-color: $backgroundColor;
 }
 #restaurant{
+    padding-top: 130px;
+
     .container-fluid{
         .radius-shadow{
             border-radius: 40px;
@@ -199,6 +204,19 @@ text-error{
         width: 50px;
         margin-left: 20px;
     }
+}
+
+.head-navbar{
+    background-color: $backgroundColor;
+    z-index: 1;
+}
+
+.head-form{
+    padding-top: 100px;
+}
+
+.head-padding{
+    padding-top: 130px;
 }
 
 

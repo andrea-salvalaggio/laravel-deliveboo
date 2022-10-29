@@ -2,13 +2,17 @@
     <section class="position-relative">
         <!-- jumbo -->
         <div class="jumbo">
-            <img :src="restaurant.restaurantPic" :alt="restaurant.name + 'photo'" />
+            <img :src="checkUrl(restaurant.restaurantPic)" :alt="restaurant.name + 'photo'" />
         </div>
         <!-- restaurant name -->
         <div class="container-lg py-4">
             <h1 class="text-center my-4">
                 {{ restaurant.name }}
             </h1>
+            <div class="col-12 d-flex justify-content-center flex-wrap">
+                <p class="mx-4 my-1"><span><i class="fa-solid fa-location-dot"></i></span> &nbsp;{{ restaurant.address }}</p>
+                <p class="my-1"><span><i class="fa-sharp fa-solid fa-clock"></i></span> &nbsp;{{restaurant.open.slice(0, 5)}} – {{restaurant.close.slice(0, 5)}}</p>
+            </div>
         </div>
 
         <div class="container-fluid">
@@ -17,28 +21,35 @@
                 <div class="col-lg-8 col-12">
                     <div class="menu-container m-0 my-rounded py-4 px-lg-5">
                         <h3 class="text-capitalize border-bottom py-4 m-0">menu</h3>
-                        <div class="row mt-5">
-                            <div class="col-12 col-md-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
-                                <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow"
-                                    :class="dish.visible == 1 ? 'grey-filter' : ''">
-                                    <div class="col-12 img-container">
+                        <div class="row mt-5 mx-auto">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4 mt-0" v-for="dish in restaurant.dishes" :key="dish.id">
+                                <div class=" dish-card row align-items-end flex-wrap mx-auto my-shadow">
+                                    <div class="col-12 img-container" :class="dish.visible == 1 ? 'grey-filter' : ''">
                                         <img class="img-fluid image" :src="checkUrl(dish.dishPic)" :alt="dish.name" />
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center w-100 mt-3">
+                                    <div class="col-12 pt-3">
+                                        <div v-if="dish.visible==0" class="badge my-badge-success badge-pill w-25 mb-3 py-1"><small>available</small>
+                                        </div>
+                                        <div v-else class="badge my-badge-danger badge-pill mb-3 py-1"><small>not available</small></div>
+                                    </div>
+                                    <div class="col-12 w-100" :class="dish.visible == 1 ? 'grey-filter' : ''">
                                         <div>
-                                            <div class=" text-left font-weight-bold col-12 text-capitalize px-4">
+                                            <h4 class="text-left font-weight-bold col-12 text-capitalize p-0">
                                                 {{ dish.name }}
-                                            </div>
+                                            </h4>
 
-                                            <div class=" text-left font-weight-bold col-12 text-capitalize px-4 mb-3">
-                                                <span class="euro">€ </span>{{ dish.price }}
-                                            </div>
+                                            <p class="p-0 overflo-auto description-container hide-scrollbar slider"> {{ dish.description }}</p>
+                                            <hr>
                                         </div>
 
-                                        <div class="add-button-container mx-3 mb-3"
-                                            @click="insertToCart(dish), getTotal()"
+                                        <div class="col-12 d-flex justify-content-between align-items-center mb-3 p-0">
+                                            <h4 class="text-left font-weight-bold text-capitalize p-0">
+                                                <span class="euro">€ </span>{{ dish.price }}
+                                            </h4>
+                                            <div class="add-button-container" @click="insertToCart(dish), getTotal()"
                                             :class="dish.visible == 1 ? 'd-none' : ''">
                                             <div class="add-button">+</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +68,7 @@
                                     cart
                                 </h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 scale-in-center" v-if="newCart.length>0">
                                 <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
                                     Clear Cart
                                 </button>
@@ -70,7 +81,7 @@
                                     <div class="col-12 restaurant-in-cart">
                                         <h3>Your Order :</h3>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12" v-if="newCart.length>0">
                                         <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart"
                                             :key="index">
                                             <div class="col-5 text-capitalize">
@@ -86,10 +97,17 @@
                                             <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                                 <i class="fa-solid fa-plus"></i>
                                             </div>
-                                            <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                            <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </div>
+                                            <div class="col-3 text-center">€ {{ cartItem.price*cartItem.quantity }}</div>
+                                            <div class="col-1 trash icon-trash text-danger" @click="deleteSingleDish(index)">
+                                                <i class="fa-solid fa-trash-can text-danger"></i>
+                                            </div> 
+                                        </div>
+                                    </div>
+
+                                    <!-- Placeholder carello -->
+                                    <div class="col-12 scale-in-center" v-else>
+                                        <div class="placeholder-container">
+                                            <img src="../../images/cart-placeholder.jpg" alt="Your Cart is Empty">
                                         </div>
                                     </div>
                                 </div>
@@ -98,8 +116,8 @@
                                     <div class="col-4">€{{ getTotal() }}</div>
                                 </div>
                                 <!-- form -->
-                                <div class="row form-group w-100">
-                                    <form action="" method="" class="w-100" @submit.prevent>
+                                <div class="row form-group w-100 ">
+                                    <form action="" method="" class="w-100 scale-in-center" @submit.prevent v-if="newCart.length != 0">
                                         <div class="col-12 py-3">
                                             <h5>Your info :</h5>
                                         </div>
@@ -123,13 +141,22 @@
                                                 placeholder="Add some comment, it will help us with the delivery"
                                                 name="description" rows="3" v-model="orderComment"></textarea>
                                         </div>
-                                        <div class="col-12 text-center py-3">
-                                            <input type="submit" value="Checkout" class="btn btn-info rounded-pill"
-                                                @click="sendOrder()">
+                                        <div class="col-12 position-relative">    
+                                            <v-braintree 
+                                                authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
+                                                locale="it_IT"
+                                                btnText="Checkout"
+                                                @success="onSuccess"
+                                                @error="onError"
+                                            class="mx-auto">
+                                            </v-braintree>
+                                            <input type="submit" value="Checkout" class="btn btn-primary trick-btn" :class="orderName != '' && orderSurname != '' && orderAddress != '' ? 'd-none' : ''">
                                         </div>
                                     </form>
                                 </div>
                             </div>
+                           
+
                         </div>
                     </div>
                 </div>
@@ -141,7 +168,7 @@
             @click="changeStatus()">
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
-        <div class="notification d-lg-none" :class="showNotification ? 'd-block' : 'd-none'"></div>
+        <div class="notification d-lg-none" v-if="newCart.length>0"></div>
         <div class="cart-smartphone my-rounded slide-in-bottom" :class="showCart ? 'd-block' : 'd-none'">
             <div class="menu-container my-rounded mx-auto">
                 <div class="row bg-white my-shadow my-rounded">
@@ -151,12 +178,12 @@
                             <div class="col-8 restaurant-in-cart">
                                 <h3>Your Order :</h3>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4" v-if="newCart.length>0">
                                 <button class="btn btn-danger rounded-pill" @click="clearCart()" id="clear">
                                     Clear
                                 </button>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12" v-if="newCart.length>0">
                                 <div class="row border-bottom py-2" v-for="(cartItem, index) in newCart" :key="index">
                                     <div class="col-5 text-capitalize">
                                         {{ cartItem.name }}
@@ -171,10 +198,17 @@
                                     <div class="col-1 p-0 text-center icon-in-cart" @click="moreDish(cartItem)">
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
-                                    <div class="col-3 text-center">€ {{ cartItem.price }}</div>
-                                    <div class="col-1 trash icon-trash" @click="deleteSingleDish(index)">
+                                    <div class="col-3 text-center">€ {{ roundFunctionOnTotal(cartItem.price, cartItem.quantity) }}</div>
+                                    <div class="col-1 trash icon-trash text-danger px-0" @click="deleteSingleDish(index)">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Placeholder carello -->
+                            <div class="col-12 scale-in-center" v-else>
+                                <div class="placeholder-container">
+                                    <img src="../../images/cart-placeholder.jpg" alt="Your Cart is Empty">
                                 </div>
                             </div>
                         </div>
@@ -183,7 +217,7 @@
                             <div class="col-4">€{{ getTotal() }}</div>
                         </div>
                         <!-- form -->
-                        <div class="row form-group w-100">
+                        <div class="row form-group w-100 " v-if="newCart.length != 0" >
                             <form action="" method="" class="w-100" @submit.prevent>
                                 <div class="col-12 py-3">
                                     <h5>Your info :</h5>
@@ -201,16 +235,22 @@
                                 <div class="col-12 mb-3">
                                     <input type="text"
                                         class="border-0 my-rounded bg-light w-100 px-4 py-2 form-control"
-                                        placeholder="Address*" required v-model="orderAddress" minlength="10" maxlength="40">
+                                        placeholder="Address*" required v-model="orderAddress" minlength="6" maxlength="40">
                                 </div>
                                 <div class="col-12">
                                     <textarea class="form-control border-0 px-4 font-weight-lighter"
                                         placeholder="Add some comment, it will help us with the delivery"
                                         name="description" rows="3" v-model="orderComment"></textarea>
                                 </div>
-                                <div class="col-12 text-center py-3">
-                                    <input type="submit" value="Checkout" class="btn btn-info rounded-pill"
-                                        @click="sendOrder()">
+                                <div class="col-12 position-relative">
+                                <v-braintree
+                                            authorization="sandbox_mfpgm8gp_j6kyrc5ff9wmsngg"
+                                            locale="it_IT"
+                                            btnText="Checkout"
+                                            @success="onSuccess"
+                                            @error="onError"
+                                        class="ml-4"></v-braintree>
+                                        <input type="submit" value="Checkout" class="btn btn-primary trick-btn-mobile" :class="orderName.length>=2 && orderSurname.length>=2 && orderAddress.length>=6 ? 'd-none' : ''">
                                 </div>
                             </form>
                         </div>
@@ -266,7 +306,6 @@
                         if (result.isConfirmed) {
                             this.newCart = [];
                             localStorage.clear();
-                            this.changeStatusNotification()
                         }
                     });
                 } else {
@@ -278,7 +317,6 @@
             deleteSingleDish(id) {
                 this.newCart.splice(id, 1)
                 this.setInCart()
-                this.changeStatusNotification()
             },
 
             //! funzione che controlla il path delle immagini se sono link o immagini caricate
@@ -332,17 +370,21 @@
                                     ...dish
                                 })
                                 this.setInCart()
-                                this.changeStatusNotification()
+                               
                             }
                         })
                     } else if (currentIndex >= 0) {
-                        this.newCart[currentIndex].quantity++
+                        if(this.newCart[currentIndex].quantity==25){
+                            Vue.swal('25 maybe is too much')
+                        }
+                        else{
+                            this.newCart[currentIndex].quantity++
+                        }
                     } else {
                         this.newCart.push({
                             quantity: 1,
                             ...dish
                         })
-                        this.changeStatusNotification()
                     }
                 } else {
 
@@ -350,13 +392,12 @@
                         quantity: 1,
                         ...dish
                     })
-                    this.changeStatusNotification()
                 }
                 this.setInCart()
             },
             getLocalStorage() {
                 if (JSON.parse(localStorage.getItem("newCart")) == null) {
-                    this.newCart = []
+                    console.log('ciao')
                 } else {
                     this.newCart = JSON.parse(localStorage.getItem("newCart"));
                 }
@@ -380,7 +421,7 @@
                 dish.quantity++
                 console.log('la quantita e' + dish.quantity)
                 if (dish.quantity > 25) {
-                    Vue.swal('25 maybe is to much')
+                    Vue.swal('25 maybe is too much')
                     dish.quantity--
                 } else {
                     localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -398,16 +439,32 @@
                 this.showCart = !this.showCart
             },
 
-            //cambiera' lo status di una variabile booleana per far mostrare il pallino rosso 
-            changeStatusNotification(){
-                if(this.newCart.length>0){
-                    this.showNotification = true
-                }
-                else{
-                    this.showNotification = false
-                }
+            onSuccess (payload) {
+                
+                let nonce = payload.nonce;
+                Vue.swal('Success, the restaurant will receive the order soon')
+                this.sendOrder()
+                setTimeout(()=>{
+                    this.newCart= []
+                    this.setInCart()
+                },2000)
+                this.orderName = ''
+                this.orderSurname = ''
+                this.orderAddress = ''
+                this.orderComment  = ''
+                
+                // Do something great with the nonce...
             },
-
+            onError (error) {
+                let message = error.message;
+                // Whoops, an error has occured while trying to get the nonce
+            },
+            roundFunctionOnTotal(item, qt){
+                let total = item * qt
+                total = Math.round(total * 100) / 100
+                return total
+            },
+            
         },
         created() {
             this.getRestaurant();
@@ -448,7 +505,7 @@
     }
 
     .cart {
-        height: 200px;
+        height: 300px;
         overflow-y: scroll;
 
         &:hover::-webkit-scrollbar-thumb {
@@ -490,6 +547,12 @@
         background-color: white;
         border-radius: 30px;
         width: 98%;
+        height: 510px;
+    }
+
+    .description-container{
+        max-height: 50px;
+        overflow-y: scroll;
     }
 
     .euro {
@@ -549,7 +612,7 @@
         background-color: $primaryColor;
         color: white;
         cursor: pointer;
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
+        box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
 
     }
 
@@ -557,9 +620,13 @@
         position: fixed;
         z-index: 3;
         left: calc(50% - 45%);
-        bottom: 85px;
+        bottom: 95px;
         width: 90%;
         background: white;
+        max-height: 700px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        border: 1px solid #999999;
     }
     .notification{
         position: fixed;
@@ -601,5 +668,82 @@
                     transform: translateY(0);
             opacity: 1;
         }
+    }
+
+    .scale-in-center {
+	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .placeholder-container{
+        width: 60%;
+        min-width: 70px;
+        margin: 0 auto;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .slider {
+    width: 100%;
+    overflow-x: scroll;
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: $primaryColor;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 8px;
+    }
+}
+
+    .hide-scrollbar {
+        overflow: auto;
+        -ms-overflow-style: none;
+        /* IE 11 */
+        scrollbar-width: none;
+        /* Firefox 64 */
+
+        &:hover {
+            scrollbar-width: auto;
+        }
+    }
+    .trick-btn, .trick-btn-mobile{
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+    }
+    .trick-btn{
+        left: 15px;
+    }
+    .trick-btn-mobile{
+        left: 39px;
     }
 </style>
