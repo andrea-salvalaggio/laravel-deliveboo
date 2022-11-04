@@ -14,7 +14,7 @@
 ## Setup
 - Start MAMP
 - Create database
-- Duplicate file .env.example -> rename it .env -> insert info (name, port and password)
+- Duplicate file `.env.example` → rename it as `.env` → insert info (name, port and password)
 
 
 ## Run
