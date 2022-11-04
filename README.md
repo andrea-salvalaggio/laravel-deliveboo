@@ -1,3 +1,7 @@
+![Deliveboo-presentation-1](https://user-images.githubusercontent.com/102479632/200083545-ae3b2440-b68e-4bfc-898f-fd35ac463a69.jpg)
+![Deliveboo-presentation-2](https://user-images.githubusercontent.com/102479632/200084170-9f434bd1-be6d-4f0a-b2de-a9c55260e845.jpg)
+![Deliveboo-presentation-3](https://user-images.githubusercontent.com/102479632/200084199-cc72c7fe-a50d-4806-8363-21478b254e29.jpg)
+
 # Deliveboo
 > Deliveboo is a food delivery web app that allows customers to order food from their favorite restaurant without registration, but entering only the
   data necessary for delivery (Credit card number, name, address). Restaurateurs can register in the platform and create, modify and delete dishes and
@@ -18,7 +22,7 @@
 
 
 ## Run
-- Use these comands to **install** properly the project
+- Use these comands to **install** properly the project:
 ```
 composer install
 npm install
@@ -29,7 +33,7 @@ php artisan config:cache
 php artisan migrate --seed
 ```
 
-- Use these comands to **run** properly the project
+- Use these comands to **run** properly the project:
 ```
 npm run watch
 php artisan serve
